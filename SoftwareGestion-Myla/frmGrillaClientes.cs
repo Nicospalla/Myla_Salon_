@@ -62,16 +62,10 @@ namespace SoftwareGestion_Myla
             if (dgvGrillaClientes.CurrentRow.DataBoundItem != null)
             {
                 Clientes cliente = (Clientes)dgvGrillaClientes.CurrentRow.DataBoundItem;
+                frmPrincipal.nuevaVenta(cliente);
             }
         }
-<<<<<<< HEAD
-=======
 
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-
-        }
->>>>>>> master
     }
 }
 

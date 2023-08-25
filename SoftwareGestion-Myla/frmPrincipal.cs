@@ -96,5 +96,15 @@ namespace SoftwareGestion_Myla
             frmNuevoCliente.Location = new Point((panelPpal.Width - frmNuevoCliente.Width) / 2, (panelPpal.Height - frmNuevoCliente.Height) / 2);
             frmNuevoCliente.Show();
         }
+        public void nuevaVenta(Clientes cliente)
+        {
+            limpiaPanel();
+            frmNuevaVenta frmNuevaVenta = new frmNuevaVenta(cliente, this);
+            frmNuevaVenta.TopLevel = false;
+            panelPpal.Controls.Add(frmNuevaVenta);
+            frmNuevaVenta.Dock = DockStyle.Fill;
+            frmNuevaVenta.Location = new Point((panelPpal.Width - frmNuevaVenta.Width) / 2, (panelPpal.Height - frmNuevaVenta.Height) / 2);
+            frmNuevaVenta.Show();
+        }
     }
 }

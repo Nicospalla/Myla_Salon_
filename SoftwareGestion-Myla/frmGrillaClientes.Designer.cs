@@ -34,7 +34,6 @@
             txtFiltroRapido = new TextBox();
             dgvGrillaClientes = new DataGridView();
             btnVenta = new Button();
-            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvGrillaClientes).BeginInit();
             SuspendLayout();
             // 
@@ -107,23 +106,12 @@
             btnVenta.UseVisualStyleBackColor = true;
             btnVenta.Click += btnVenta_Click;
             // 
-            // button1
-            // 
-            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            button1.Location = new Point(407, 500);
-            button1.Name = "button1";
-            button1.Size = new Size(157, 54);
-            button1.TabIndex = 9;
-            button1.Text = "Eliminar";
-            button1.UseVisualStyleBackColor = true;
-            // 
             // frmGrillaClientes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(881, 588);
-            Controls.Add(button1);
             Controls.Add(btnVenta);
             Controls.Add(btnHistorial);
             Controls.Add(lblFiltroRap);
@@ -146,6 +134,5 @@
         private TextBox txtFiltroRapido;
         private DataGridView dgvGrillaClientes;
         private Button btnVenta;
-        private Button button1;
     }
 }

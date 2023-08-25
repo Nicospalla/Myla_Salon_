@@ -52,5 +52,28 @@ namespace Negocio
             }
             
         }
+
+        public void nuevaVenta(HistoVentas venta)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("  insert into HISTORIAL_VENTAS (IdCliente,IdEspecialista,IdCategoria,IdSubcategoria,ServicioAdicional,CodigoTinte,Fecha,Precio) values (@IdCliente,@IdEspecialista,@IdCategoria,@IdSubcategoria,@ServicioAdicional,@CodigoTinte,@Fecha,@Precio)");
+                datos.setearParametros("@IdCliente",venta.IdCliente);
+                datos.setearParametros("@IdEspecialista",venta.IdEspecialista);
+                datos.setearParametros("@IdCategoria",venta.IdCat);
+                datos.setearParametros("@IdSubcategoria",venta.IdSub);
+                datos.setearParametros("@ServicioAdicional",venta.ServicioAdicional);
+                datos.setearParametros("@CodigoTinte",venta.CodigoTinte);
+                datos.setearParametros("@Fecha",venta.Fecha);
+                datos.setearParametros("@Precio",venta.Precio);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
