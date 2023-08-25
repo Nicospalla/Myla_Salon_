@@ -50,3 +50,4 @@ D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\Sof
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion_Myla.frmHistorial.resources
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion_Myla.frmGrillaClientes.resources
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion_Myla.frmNuevoCliente.resources
+D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion_Myla.frmNuevaVenta.resources

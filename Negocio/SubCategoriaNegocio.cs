@@ -10,7 +10,7 @@ namespace Negocio
 {
     public class SubCategoriaNegocio
     {
-        public List<SubCategoria> listarCat()
+        public List<SubCategoria> listarSubCat()
         {
             AccesoDatos  datos = new AccesoDatos();
             List<SubCategoria> lista = new List<SubCategoria>();
