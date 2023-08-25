@@ -50,11 +50,24 @@ namespace SoftwareGestion_Myla
 
         private void btnHistorial_Click(object sender, EventArgs e)
         {
-            Clientes cliente = (Clientes)dgvGrillaClientes.CurrentRow.DataBoundItem != null? dgvGrillaClientes.CurrentRow.DataBoundItem as Clientes : null;
-            if(cliente != null)
+            if (dgvGrillaClientes.CurrentRow.DataBoundItem != null)
             {
+                Clientes cliente = (Clientes)dgvGrillaClientes.CurrentRow.DataBoundItem;
                 frmPrincipal.muestraHistorial(cliente.Id);
             }
+        }
+
+        private void btnVenta_Click(object sender, EventArgs e)
+        {
+            if (dgvGrillaClientes.CurrentRow.DataBoundItem != null)
+            {
+                Clientes cliente = (Clientes)dgvGrillaClientes.CurrentRow.DataBoundItem;
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
