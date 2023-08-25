@@ -64,6 +64,14 @@ namespace SoftwareGestion_Myla
                 Clientes cliente = (Clientes)dgvGrillaClientes.CurrentRow.DataBoundItem;
             }
         }
+<<<<<<< HEAD
+=======
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+>>>>>>> master
     }
 }
 
