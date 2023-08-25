@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             dgvHistorial = new DataGridView();
+            btnAtras = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvHistorial).BeginInit();
             SuspendLayout();
             // 
@@ -37,7 +38,7 @@
             dgvHistorial.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvHistorial.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvHistorial.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvHistorial.Location = new Point(74, 68);
+            dgvHistorial.Location = new Point(80, 42);
             dgvHistorial.MultiSelect = false;
             dgvHistorial.Name = "dgvHistorial";
             dgvHistorial.ReadOnly = true;
@@ -47,12 +48,24 @@
             dgvHistorial.Size = new Size(701, 385);
             dgvHistorial.TabIndex = 5;
             // 
+            // btnAtras
+            // 
+            btnAtras.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnAtras.Location = new Point(80, 444);
+            btnAtras.Name = "btnAtras";
+            btnAtras.Size = new Size(144, 42);
+            btnAtras.TabIndex = 6;
+            btnAtras.Text = "Atrás";
+            btnAtras.UseVisualStyleBackColor = true;
+            btnAtras.Click += btnAtras_Click;
+            // 
             // frmHistorial
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(848, 521);
+            Controls.Add(btnAtras);
             Controls.Add(dgvHistorial);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmHistorial";
@@ -66,5 +79,6 @@
         #endregion
 
         private DataGridView dgvHistorial;
+        private Button btnAtras;
     }
 }

@@ -16,17 +16,24 @@ namespace SoftwareGestion_Myla
     {
         List<HistoVentas> listaVentas;
         HistoVentasNegocio histoVentasNegocio = new HistoVentasNegocio();
+        private frmPrincipal frm;
         public int IdCliente { get; set; }
-        public frmHistorial(int id)
+        public frmHistorial(int id, frmPrincipal frm)
         {
             InitializeComponent();
             this.IdCliente = id;
+            this.frm = frm;
         }
 
         private void frmHistorial_Load(object sender, EventArgs e)
         {
             listaVentas = histoVentasNegocio.buscaHistorial(IdCliente);
             dgvHistorial.DataSource = listaVentas;
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            frm.verGrilla();
         }
     }
 }

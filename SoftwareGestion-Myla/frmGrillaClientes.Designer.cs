@@ -28,19 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             btnHistorial = new Button();
             lblFiltroRap = new Label();
             txtFiltroRapido = new TextBox();
             dgvGrillaClientes = new DataGridView();
+            btnVenta = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvGrillaClientes).BeginInit();
             SuspendLayout();
             // 
             // btnHistorial
             // 
             btnHistorial.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnHistorial.Location = new Point(90, 500);
+            btnHistorial.Location = new Point(253, 500);
             btnHistorial.Name = "btnHistorial";
-            btnHistorial.Size = new Size(148, 29);
+            btnHistorial.Size = new Size(148, 54);
             btnHistorial.TabIndex = 7;
             btnHistorial.Text = "Ver Historial ";
             btnHistorial.UseVisualStyleBackColor = true;
@@ -66,9 +69,23 @@
             // 
             // dgvGrillaClientes
             // 
+            dgvGrillaClientes.AllowUserToAddRows = false;
+            dgvGrillaClientes.AllowUserToDeleteRows = false;
+            dgvGrillaClientes.AllowUserToResizeColumns = false;
+            dgvGrillaClientes.AllowUserToResizeRows = false;
             dgvGrillaClientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvGrillaClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvGrillaClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvGrillaClientes.Cursor = Cursors.Hand;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvGrillaClientes.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvGrillaClientes.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgvGrillaClientes.Location = new Point(90, 99);
             dgvGrillaClientes.MultiSelect = false;
             dgvGrillaClientes.Name = "dgvGrillaClientes";
@@ -79,12 +96,35 @@
             dgvGrillaClientes.Size = new Size(701, 385);
             dgvGrillaClientes.TabIndex = 4;
             // 
+            // btnVenta
+            // 
+            btnVenta.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnVenta.Location = new Point(90, 500);
+            btnVenta.Name = "btnVenta";
+            btnVenta.Size = new Size(157, 54);
+            btnVenta.TabIndex = 8;
+            btnVenta.Text = "Nueva Venta";
+            btnVenta.UseVisualStyleBackColor = true;
+            btnVenta.Click += btnVenta_Click;
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            button1.Location = new Point(407, 500);
+            button1.Name = "button1";
+            button1.Size = new Size(157, 54);
+            button1.TabIndex = 9;
+            button1.Text = "Eliminar";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // frmGrillaClientes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(881, 588);
+            Controls.Add(button1);
+            Controls.Add(btnVenta);
             Controls.Add(btnHistorial);
             Controls.Add(lblFiltroRap);
             Controls.Add(txtFiltroRapido);
@@ -105,5 +145,7 @@
         private Label lblFiltroRap;
         private TextBox txtFiltroRapido;
         private DataGridView dgvGrillaClientes;
+        private Button btnVenta;
+        private Button button1;
     }
 }

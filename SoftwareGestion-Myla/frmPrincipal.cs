@@ -42,15 +42,17 @@ namespace SoftwareGestion_Myla
 
         private void btnGrillaClientes_Click(object sender, EventArgs e)
         {
+            verGrilla();
+        }
+        public void verGrilla()
+        {
             limpiaPanel();
             frmGrillaClientes frmGrillaClientes = new frmGrillaClientes(this);
             frmGrillaClientes.TopLevel = false;
             panelPpal.Controls.Add(frmGrillaClientes);
             frmGrillaClientes.Dock = DockStyle.Fill;
             frmGrillaClientes.Show();
-
         }
-
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -76,7 +78,7 @@ namespace SoftwareGestion_Myla
         public void muestraHistorial(int id)
         {
             limpiaPanel();
-            frmHistorial frmHistorial = new frmHistorial(id);
+            frmHistorial frmHistorial = new frmHistorial(id, this);
             frmHistorial.TopLevel = false;
             panelPpal.Controls.Add(frmHistorial);
             frmHistorial.Dock = DockStyle.Fill;
@@ -87,10 +89,11 @@ namespace SoftwareGestion_Myla
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             limpiaPanel();
-            frmNuevoCliente frmNuevoCliente = new frmNuevoCliente();
+            frmNuevoCliente frmNuevoCliente = new frmNuevoCliente(this);
             frmNuevoCliente.TopLevel = false;
             panelPpal.Controls.Add(frmNuevoCliente);
             frmNuevoCliente.Dock = DockStyle.Fill;
+            frmNuevoCliente.Location = new Point((panelPpal.Width - frmNuevoCliente.Width) / 2, (panelPpal.Height - frmNuevoCliente.Height) / 2);
             frmNuevoCliente.Show();
         }
     }
