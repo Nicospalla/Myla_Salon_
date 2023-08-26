@@ -30,6 +30,19 @@ namespace Accesorios
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = consulta;
         }
+        public void setearStoredProcedure(string procedure)
+        {
+            try
+            {
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandText = procedure;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
         public void ejecutarLectura()
         {
             try
@@ -43,7 +56,6 @@ namespace Accesorios
                 throw ex;
             }
         }
-
         public void ejecutarAccion()
         {
             try

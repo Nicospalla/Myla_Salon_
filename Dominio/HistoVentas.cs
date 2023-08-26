@@ -13,7 +13,7 @@ namespace Dominio
         public int IdCliente { get; set; }
         public Clientes Cliente { get; set; }
         [DisplayName("Especialista")]
-        public int IdEspecialista { get; set; }
+        public Especialista Especialista { get; set; }
         [DisplayName("Categoria")]
         public Categorias IdCat { get; set; }
         [DisplayName("Sub Categoria")]

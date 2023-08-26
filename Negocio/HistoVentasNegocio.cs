@@ -17,7 +17,8 @@ namespace Negocio
             List<HistoVentas> lista = new List<HistoVentas>();
             try
             {
-                datos.setearConsulta("SELECT IdCliente, IdEspecialista,HV.IdCategoria,IdSubcategoria, S.Descripcion, S.Id as IdSub,S.Descripcion as Subcategoria , C.Descripcion as Categoria ,DC.Nombre as Nombre, ServicioAdicional,CodigoTinte,Fecha,Precio from HISTORIAL_VENTAS as HV, CATEGORIAS as C, SUBCATEGORIA as S, DATOSCLIENTES as DC where HV.IdCategoria = C.Id and IdSubcategoria = S.Id and DC.Id = HV.IdCliente and IdCliente = @IdCliente");
+                datos.setearStoredProcedure("ObtenerVentasConIdSubCategoria");
+                //datos.setearConsulta("  SELECT IdCliente, IdEspecialista, E.Nombre as NombreEsp,HV.IdCategoria,IdSubcategoria, S.Descripcion, S.Id as IdSub,S.Descripcion as Subcategoria , C.Descripcion as Categoria ,DC.Nombre as Nombre, ServicioAdicional,CodigoTinte,Fecha,Precio from HISTORIAL_VENTAS as HV, CATEGORIAS as C, SUBCATEGORIA as S, DATOSCLIENTES as DC, ESPECIALISTAS as E where HV.IdCategoria = C.Id and IdSubcategoria = S.Id and E.Id = IdEspecialista and DC.Id = HV.IdCliente and IdCliente = 1");
                 datos.setearParametros("@IdCliente", idCliente);
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
@@ -26,17 +27,27 @@ namespace Negocio
                     aux.IdCliente = idCliente;
                     aux.Cliente = new Clientes();
                     aux.Cliente.Nombre = (string)datos.Lector["Nombre"];
-                    aux.IdEspecialista = (int)datos.Lector["IdEspecialista"];
+
+                    aux.Especialista = new Especialista();
+                    aux.Especialista.IdEspecialista = (int)datos.Lector["IdEspecialista"];
+                    aux.Especialista.Nombre = (string)datos.Lector["NombreEsp"];
+                    
+                    
                     aux.IdCat = new Categorias();
                     aux.IdCat.idCat = (int)datos.Lector["IdCategoria"];
                     aux.IdCat.Descripcion = (string)datos.Lector["Categoria"];
-                    aux.IdSub = new SubCategoria();
-                    aux.IdSub.idSub = (int)datos.Lector["IdSub"];
-                    aux.IdSub.Descripcion = (string)datos.Lector["Subcategoria"];
+                    
+                    if(datos.Lector["IdSub"] != DBNull.Value)
+                    {
+                        aux.IdSub = new SubCategoria();
+                        aux.IdSub.idSub = (int)datos.Lector["IdSub"];
+                        aux.IdSub.Descripcion = (string)datos.Lector["Subcategoria"];
+                    }
+
                     aux.ServicioAdicional = (string)datos.Lector["ServicioAdicional"];
                     aux.CodigoTinte = (string)datos.Lector["CodigoTinte"];
                     aux.Fecha = (DateTime)datos.Lector["Fecha"];
-                    aux.Precio = (Decimal)datos.Lector["Precio"];
+                    aux.Precio =Math.Truncate((Decimal)datos.Lector["Precio"]*100)/100;
                     lista.Add(aux);
                 }
                 return lista;
@@ -58,11 +69,11 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("  insert into HISTORIAL_VENTAS (IdCliente,IdEspecialista,IdCategoria,IdSubcategoria,ServicioAdicional,CodigoTinte,Fecha,Precio) values (@IdCliente,@IdEspecialista,@IdCategoria,@IdSubcategoria,@ServicioAdicional,@CodigoTinte,@Fecha,@Precio)");
+                datos.setearConsulta(" insert into HISTORIAL_VENTAS (IdCliente,IdEspecialista,IdCategoria,IdSubcategoria,ServicioAdicional,CodigoTinte,Fecha,Precio) values (@IdCliente,@IdEspecialista,@IdCategoria,@IdSubcategoria,@ServicioAdicional,@CodigoTinte,@Fecha,@Precio)");
                 datos.setearParametros("@IdCliente",venta.IdCliente);
-                datos.setearParametros("@IdEspecialista",venta.IdEspecialista);
-                datos.setearParametros("@IdCategoria",venta.IdCat);
-                datos.setearParametros("@IdSubcategoria",venta.IdSub);
+                datos.setearParametros("@IdEspecialista",venta.Especialista.IdEspecialista);
+                datos.setearParametros("@IdCategoria",venta.IdCat.idCat);
+                datos.setearParametros("@IdSubcategoria", venta.IdSub.idSub != -1 ? venta.IdSub.idSub : DBNull.Value);
                 datos.setearParametros("@ServicioAdicional",venta.ServicioAdicional);
                 datos.setearParametros("@CodigoTinte",venta.CodigoTinte);
                 datos.setearParametros("@Fecha",venta.Fecha);

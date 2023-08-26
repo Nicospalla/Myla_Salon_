@@ -14,5 +14,11 @@ namespace Dominio
         public string Email { get; set; }
         public string Telefono { get; set; }
         public DateTime Cumple { get; set; }
+
+        public override string ToString()
+        {
+            return Nombre;
+        }
+
     }
 }

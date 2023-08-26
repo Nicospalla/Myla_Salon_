@@ -16,12 +16,13 @@ namespace Negocio
             List<Especialista> lista = new List<Especialista>();
             try
             {
-                datos.setearConsulta("  select E.Nombre as Nombre from ESPECIALISTAS_CATEGORIAS as EC, ESPECIALISTAS as E, CATEGORIAS as C where E.Id = idEsp and C.Id = idCat and idCat = @idCat");
+                datos.setearConsulta("  select E.Nombre as Nombre, E.Id as IdEspecialista from ESPECIALISTAS_CATEGORIAS as EC, ESPECIALISTAS as E, CATEGORIAS as C where E.Id = idEsp and C.Id = idCat and idCat = @idCat");
                 datos.setearParametros("@IdCat", id);
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
                     Especialista aux = new Especialista();
+                    aux.IdEspecialista = (int)datos.Lector["IdEspecialista"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     lista.Add(aux);
                 }

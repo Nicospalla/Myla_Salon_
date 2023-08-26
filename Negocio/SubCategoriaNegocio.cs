@@ -10,13 +10,21 @@ namespace Negocio
 {
     public class SubCategoriaNegocio
     {
-        public List<SubCategoria> listarSubCat()
+        public List<SubCategoria> listarSubCat(int idCat = 0)
         {
             AccesoDatos  datos = new AccesoDatos();
             List<SubCategoria> lista = new List<SubCategoria>();
             try
             {
-                datos.setearConsulta("select Id, IdCategoria, Descripcion from SUBCATEGORIAS");
+                if (idCat != 0)
+                {
+                    datos.setearConsulta("select S.Id as Id, S.IdCategoria as IdCategoria, S.Descripcion as Descripcion from SUBCATEGORIA as S, CATEGORIAS as C where S.IdCategoria = C.Id and C.Id = @IdCat");
+                    datos.setearParametros("@IdCat", idCat);
+                }
+                else
+                {
+                    datos.setearConsulta("select Id, IdCategoria, Descripcion from SUBCATEGORIAS ");
+                }
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -31,9 +39,10 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
+        //  
+        
     }
 }

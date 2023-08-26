@@ -38,12 +38,14 @@
             lblSubCat = new Label();
             txtServAdc = new TextBox();
             lblSerAdc = new Label();
-            textBox3 = new TextBox();
+            txtCodigoTinte = new TextBox();
             lblCodigoTinte = new Label();
             txtPrecio = new TextBox();
             lblPrecio = new Label();
             btnAceptar = new Button();
             btnLimpiar = new Button();
+            lblErrorCat = new Label();
+            lblErrorEspe = new Label();
             SuspendLayout();
             // 
             // lblCliente
@@ -75,6 +77,7 @@
             // 
             // cboEspecialista
             // 
+            cboEspecialista.DropDownStyle = ComboBoxStyle.DropDownList;
             cboEspecialista.FormattingEnabled = true;
             cboEspecialista.Location = new Point(100, 359);
             cboEspecialista.Name = "cboEspecialista";
@@ -83,6 +86,7 @@
             // 
             // cboCategoria
             // 
+            cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCategoria.FormattingEnabled = true;
             cboCategoria.Location = new Point(99, 244);
             cboCategoria.Name = "cboCategoria";
@@ -102,12 +106,12 @@
             // 
             // cboSubCat
             // 
+            cboSubCat.DropDownStyle = ComboBoxStyle.DropDownList;
             cboSubCat.FormattingEnabled = true;
             cboSubCat.Location = new Point(463, 120);
             cboSubCat.Name = "cboSubCat";
             cboSubCat.Size = new Size(225, 28);
             cboSubCat.TabIndex = 8;
-            cboSubCat.SelectedIndexChanged += cboSubCat_SelectedIndexChanged;
             // 
             // lblSubCat
             // 
@@ -136,12 +140,12 @@
             lblSerAdc.TabIndex = 9;
             lblSerAdc.Text = "Servicio Adicional:";
             // 
-            // textBox3
+            // txtCodigoTinte
             // 
-            textBox3.Location = new Point(463, 360);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(224, 27);
-            textBox3.TabIndex = 12;
+            txtCodigoTinte.Location = new Point(463, 360);
+            txtCodigoTinte.Name = "txtCodigoTinte";
+            txtCodigoTinte.Size = new Size(224, 27);
+            txtCodigoTinte.TabIndex = 12;
             // 
             // lblCodigoTinte
             // 
@@ -178,6 +182,7 @@
             btnAceptar.TabIndex = 15;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
+            btnAceptar.Click += btnAceptar_Click;
             // 
             // btnLimpiar
             // 
@@ -187,6 +192,27 @@
             btnLimpiar.TabIndex = 16;
             btnLimpiar.Text = "Limpiar Datos";
             btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += btnLimpiar_Click;
+            // 
+            // lblErrorCat
+            // 
+            lblErrorCat.AutoSize = true;
+            lblErrorCat.Font = new Font("Verdana", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lblErrorCat.ForeColor = Color.Red;
+            lblErrorCat.Location = new Point(99, 275);
+            lblErrorCat.Name = "lblErrorCat";
+            lblErrorCat.Size = new Size(0, 16);
+            lblErrorCat.TabIndex = 17;
+            // 
+            // lblErrorEspe
+            // 
+            lblErrorEspe.AutoSize = true;
+            lblErrorEspe.Font = new Font("Verdana", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lblErrorEspe.ForeColor = Color.Red;
+            lblErrorEspe.Location = new Point(99, 390);
+            lblErrorEspe.Name = "lblErrorEspe";
+            lblErrorEspe.Size = new Size(0, 16);
+            lblErrorEspe.TabIndex = 18;
             // 
             // frmNuevaVenta
             // 
@@ -195,11 +221,13 @@
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(929, 622);
+            Controls.Add(lblErrorEspe);
+            Controls.Add(lblErrorCat);
             Controls.Add(btnLimpiar);
             Controls.Add(btnAceptar);
             Controls.Add(txtPrecio);
             Controls.Add(lblPrecio);
-            Controls.Add(textBox3);
+            Controls.Add(txtCodigoTinte);
             Controls.Add(lblCodigoTinte);
             Controls.Add(txtServAdc);
             Controls.Add(lblSerAdc);
@@ -231,11 +259,13 @@
         private Label lblSubCat;
         private TextBox txtServAdc;
         private Label lblSerAdc;
-        private TextBox textBox3;
+        private TextBox txtCodigoTinte;
         private Label lblCodigoTinte;
         private TextBox txtPrecio;
         private Label lblPrecio;
         private Button btnAceptar;
         private Button btnLimpiar;
+        private Label lblErrorCat;
+        private Label lblErrorEspe;
     }
 }
