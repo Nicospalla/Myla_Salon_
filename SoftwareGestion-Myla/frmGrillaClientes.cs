@@ -32,15 +32,16 @@ namespace SoftwareGestion_Myla
             clientes = clientesNegocio.listar();
             dgvGrillaClientes.DataSource = clientes;
             txtFiltroRapido.PlaceholderText = "Filtrar por Nombre, Apellido o Teléfono.";
+            txtFiltroId.PlaceholderText = "Filtrar solo por Numero de Cliente";
         }
 
         private void txtFiltroRapido_TextChanged(object sender, EventArgs e)
         {
             string filtro = txtFiltroRapido.Text.ToLower();
             List<Clientes> listaFiltrada;
-            if (filtro.Length > 2)
+            if (filtro.Length > 0)
             {
-                listaFiltrada = clientes.FindAll(x => x.Nombre.ToLower().Contains(filtro) || x.Apellido.ToLower().Contains(filtro) || x.Telefono.Contains(filtro));
+                listaFiltrada = clientes.FindAll(x => x.Nombre.ToLower().Contains(filtro) || x.Id.ToString().Contains(filtro) || x.Apellido.ToLower().Contains(filtro) || x.Telefono.Contains(filtro));
                 dgvGrillaClientes.DataSource = listaFiltrada;
 
             }
@@ -66,6 +67,19 @@ namespace SoftwareGestion_Myla
             }
         }
 
+        private void txtFiltroId_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = txtFiltroId.Text.ToLower();
+            List<Clientes> listaFiltrada;
+            if (filtro.Length > 0)
+            {
+                listaFiltrada = clientes.FindAll(x =>  x.Id.ToString().Contains(filtro));
+                dgvGrillaClientes.DataSource = listaFiltrada;
+
+            }
+            else
+                dgvGrillaClientes.DataSource = clientes;
+        }
     }
 }
 

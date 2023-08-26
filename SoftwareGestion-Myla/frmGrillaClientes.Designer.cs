@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             btnHistorial = new Button();
             lblFiltroRap = new Label();
             txtFiltroRapido = new TextBox();
             dgvGrillaClientes = new DataGridView();
             btnVenta = new Button();
+            lblFiltroID = new Label();
+            txtFiltroId = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvGrillaClientes).BeginInit();
             SuspendLayout();
             // 
@@ -52,7 +54,7 @@
             // 
             lblFiltroRap.AutoSize = true;
             lblFiltroRap.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblFiltroRap.Location = new Point(100, 64);
+            lblFiltroRap.Location = new Point(498, 70);
             lblFiltroRap.Name = "lblFiltroRap";
             lblFiltroRap.Size = new Size(63, 18);
             lblFiltroRap.TabIndex = 6;
@@ -60,9 +62,11 @@
             // 
             // txtFiltroRapido
             // 
-            txtFiltroRapido.Location = new Point(174, 60);
+            txtFiltroRapido.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtFiltroRapido.Location = new Point(572, 66);
+            txtFiltroRapido.MaximumSize = new Size(450, 27);
             txtFiltroRapido.Name = "txtFiltroRapido";
-            txtFiltroRapido.Size = new Size(440, 27);
+            txtFiltroRapido.Size = new Size(200, 27);
             txtFiltroRapido.TabIndex = 5;
             txtFiltroRapido.TextChanged += txtFiltroRapido_TextChanged;
             // 
@@ -76,14 +80,14 @@
             dgvGrillaClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvGrillaClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvGrillaClientes.Cursor = Cursors.Hand;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvGrillaClientes.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvGrillaClientes.DefaultCellStyle = dataGridViewCellStyle1;
             dgvGrillaClientes.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgvGrillaClientes.Location = new Point(90, 99);
             dgvGrillaClientes.MultiSelect = false;
@@ -106,12 +110,34 @@
             btnVenta.UseVisualStyleBackColor = true;
             btnVenta.Click += btnVenta_Click;
             // 
+            // lblFiltroID
+            // 
+            lblFiltroID.AutoSize = true;
+            lblFiltroID.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblFiltroID.Location = new Point(105, 70);
+            lblFiltroID.Name = "lblFiltroID";
+            lblFiltroID.Size = new Size(63, 18);
+            lblFiltroID.TabIndex = 10;
+            lblFiltroID.Text = "Filtrar:";
+            // 
+            // txtFiltroId
+            // 
+            txtFiltroId.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtFiltroId.Location = new Point(179, 66);
+            txtFiltroId.MaximumSize = new Size(250, 27);
+            txtFiltroId.Name = "txtFiltroId";
+            txtFiltroId.Size = new Size(200, 27);
+            txtFiltroId.TabIndex = 9;
+            txtFiltroId.TextChanged += txtFiltroId_TextChanged;
+            // 
             // frmGrillaClientes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(881, 588);
+            Controls.Add(lblFiltroID);
+            Controls.Add(txtFiltroId);
             Controls.Add(btnVenta);
             Controls.Add(btnHistorial);
             Controls.Add(lblFiltroRap);
@@ -134,5 +160,7 @@
         private TextBox txtFiltroRapido;
         private DataGridView dgvGrillaClientes;
         private Button btnVenta;
+        private Label lblFiltroID;
+        private TextBox txtFiltroId;
     }
 }

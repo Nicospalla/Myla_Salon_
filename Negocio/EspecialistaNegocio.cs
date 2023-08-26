@@ -39,5 +39,25 @@ namespace Negocio
             }
         }
 
+        public void nuevoEsp(Especialista aux)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT into ESPECIALISTAS (Nombre,Apellido,Email,Telefono,Cumple) values (@Nombre, @Apellido, @Email, @Telefono, @Cumple)");
+                datos.setearParametros("@Nombre", aux.Nombre);
+                datos.setearParametros("@Apellido", aux.Apellido);
+                datos.setearParametros("@Email", aux.Email);
+                datos.setearParametros("@Telefono", aux.Telefono);
+                datos.setearParametros("@Cumple", aux.Cumple);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
     }
 }

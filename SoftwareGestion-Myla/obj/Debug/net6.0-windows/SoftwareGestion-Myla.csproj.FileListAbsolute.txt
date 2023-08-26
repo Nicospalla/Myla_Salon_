@@ -34,6 +34,11 @@ D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Debug\net6.0-windows\Dom
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Debug\net6.0-windows\Negocio.pdb
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Debug\net6.0-windows\Accesorios.pdb
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion-Myla.csproj.AssemblyReference.cache
+D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion_Myla.frmGrillaClientes.resources
+D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion_Myla.frmHistorial.resources
+D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion_Myla.frmLogin.resources
+D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion_Myla.frmNuevaVenta.resources
+D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion_Myla.frmNuevoCliente.resources
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion_Myla.frmPrincipal.resources
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion-Myla.csproj.GenerateResource.cache
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion-Myla.GeneratedMSBuildEditorConfig.editorconfig
@@ -46,8 +51,3 @@ D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\ref
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion-Myla.pdb
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion-Myla.genruntimeconfig.cache
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\ref\SoftwareGestion-Myla.dll
-D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion_Myla.frmLogin.resources
-D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion_Myla.frmHistorial.resources
-D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion_Myla.frmGrillaClientes.resources
-D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion_Myla.frmNuevoCliente.resources
-D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Debug\net6.0-windows\SoftwareGestion_Myla.frmNuevaVenta.resources

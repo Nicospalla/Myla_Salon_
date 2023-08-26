@@ -16,11 +16,26 @@ namespace SoftwareGestion_Myla
     public partial class frmNuevoCliente : Form
     {
         private frmPrincipal form;
-        public frmNuevoCliente(frmPrincipal frmPrincipal)
+        private bool cliente;
+        public frmNuevoCliente(frmPrincipal frmPrincipal, bool cliente)
         {
             InitializeComponent();
             this.form = frmPrincipal;
+            Anchor = AnchorStyles.Right;
+            this.cliente = cliente;
+        }
+        private void frmNuevoCliente_Load(object sender, EventArgs e)
+        {
+            if (cliente)
+            {
+                lblTitulo.Text = "Nuevo Cliente:";
+                pnlEsp.Visible = false;
+            }
+            else if (!cliente)
+            {
+                lblTitulo.Text = "Nuevo Especialista:";
 
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -34,8 +49,15 @@ namespace SoftwareGestion_Myla
                 aux.Email = txtEmail.Text;
                 aux.Telefono = txtTel.Text;
                 aux.Cumple = datePickerCumple.Value.Date;
-                aux.UltContacto = DateTime.Today;
-                clientesNegocio.crearCliente(aux);
+                if (cliente)
+                {
+                    aux.UltContacto = DateTime.Today;
+                    clientesNegocio.crearCliente(aux);
+                }
+                //else if (!cliente)
+                //{
+
+                //}
             }
             catch (Exception ex)
             {
@@ -51,8 +73,8 @@ namespace SoftwareGestion_Myla
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-           DialogResult result = MessageBox.Show("Esta seguro que desea limpia la planilla?", "Limpiar Datos", MessageBoxButtons.OKCancel);
-           if(result == DialogResult.OK)
+            DialogResult result = MessageBox.Show("Esta seguro que desea limpia la planilla?", "Limpiar Datos", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
             {
                 txtNombre.Text = null;
                 txtApellido.Text = null;
@@ -66,5 +88,11 @@ namespace SoftwareGestion_Myla
                 return;
             }
         }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            form.verGrilla();
+        }
+
     }
 }

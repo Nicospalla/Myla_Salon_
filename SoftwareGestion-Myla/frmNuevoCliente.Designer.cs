@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            lblTitulo = new Label();
             txtNombre = new TextBox();
             lblNombre = new Label();
             lblApellido = new Label();
@@ -41,17 +41,24 @@
             datePickerCumple = new DateTimePicker();
             btnAgregar = new Button();
             btnLimpiar = new Button();
+            btnAtras = new Button();
+            pnlEsp = new Panel();
+            lblCat = new Label();
+            lblSubCat = new Label();
+            comboBox2 = new ComboBox();
+            comboBox1 = new ComboBox();
+            pnlEsp.SuspendLayout();
             SuspendLayout();
             // 
-            // label1
+            // lblTitulo
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(130, 86);
-            label1.Name = "label1";
-            label1.Size = new Size(184, 28);
-            label1.TabIndex = 0;
-            label1.Text = "Nuevo Cliente:";
+            lblTitulo.AutoSize = true;
+            lblTitulo.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTitulo.Location = new Point(130, 86);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(184, 28);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "Nuevo Cliente:";
             // 
             // txtNombre
             // 
@@ -108,7 +115,7 @@
             // 
             lblTel.AutoSize = true;
             lblTel.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTel.Location = new Point(478, 162);
+            lblTel.Location = new Point(475, 162);
             lblTel.Name = "lblTel";
             lblTel.Size = new Size(77, 18);
             lblTel.TabIndex = 8;
@@ -116,16 +123,16 @@
             // 
             // txtTel
             // 
-            txtTel.Location = new Point(478, 197);
+            txtTel.Location = new Point(475, 197);
             txtTel.Name = "txtTel";
-            txtTel.Size = new Size(248, 27);
+            txtTel.Size = new Size(250, 27);
             txtTel.TabIndex = 7;
             // 
             // lblCumple
             // 
             lblCumple.AutoSize = true;
             lblCumple.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCumple.Location = new Point(478, 252);
+            lblCumple.Location = new Point(475, 252);
             lblCumple.Name = "lblCumple";
             lblCumple.Size = new Size(170, 18);
             lblCumple.TabIndex = 9;
@@ -133,14 +140,14 @@
             // 
             // datePickerCumple
             // 
-            datePickerCumple.Location = new Point(478, 285);
+            datePickerCumple.Location = new Point(475, 285);
             datePickerCumple.Name = "datePickerCumple";
             datePickerCumple.Size = new Size(250, 27);
             datePickerCumple.TabIndex = 10;
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(170, 460);
+            btnAgregar.Location = new Point(170, 491);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(204, 63);
             btnAgregar.TabIndex = 11;
@@ -150,7 +157,7 @@
             // 
             // btnLimpiar
             // 
-            btnLimpiar.Location = new Point(463, 460);
+            btnLimpiar.Location = new Point(463, 491);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(204, 63);
             btnLimpiar.TabIndex = 12;
@@ -158,12 +165,74 @@
             btnLimpiar.UseVisualStyleBackColor = true;
             btnLimpiar.Click += btnLimpiar_Click;
             // 
+            // btnAtras
+            // 
+            btnAtras.AutoSize = true;
+            btnAtras.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAtras.Location = new Point(12, 12);
+            btnAtras.Name = "btnAtras";
+            btnAtras.Size = new Size(90, 90);
+            btnAtras.TabIndex = 13;
+            btnAtras.Text = "Atrás";
+            btnAtras.UseVisualStyleBackColor = true;
+            btnAtras.Click += btnAtras_Click;
+            // 
+            // pnlEsp
+            // 
+            pnlEsp.Controls.Add(lblCat);
+            pnlEsp.Controls.Add(lblSubCat);
+            pnlEsp.Controls.Add(comboBox2);
+            pnlEsp.Controls.Add(comboBox1);
+            pnlEsp.Location = new Point(463, 329);
+            pnlEsp.Name = "pnlEsp";
+            pnlEsp.Size = new Size(278, 144);
+            pnlEsp.TabIndex = 14;
+            // 
+            // lblCat
+            // 
+            lblCat.AutoSize = true;
+            lblCat.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCat.Location = new Point(12, 14);
+            lblCat.Name = "lblCat";
+            lblCat.Size = new Size(87, 18);
+            lblCat.TabIndex = 21;
+            lblCat.Text = "Categoria:";
+            // 
+            // lblSubCat
+            // 
+            lblSubCat.AutoSize = true;
+            lblSubCat.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSubCat.Location = new Point(12, 82);
+            lblSubCat.Name = "lblSubCat";
+            lblSubCat.Size = new Size(115, 18);
+            lblSubCat.TabIndex = 20;
+            lblSubCat.Text = "SubCategoria:";
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(11, 103);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(250, 28);
+            comboBox2.TabIndex = 18;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(12, 35);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(249, 28);
+            comboBox1.TabIndex = 17;
+            // 
             // frmNuevoCliente
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(839, 571);
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(950, 600);
+            Controls.Add(pnlEsp);
+            Controls.Add(btnAtras);
             Controls.Add(btnLimpiar);
             Controls.Add(btnAgregar);
             Controls.Add(datePickerCumple);
@@ -176,18 +245,21 @@
             Controls.Add(txtApellido);
             Controls.Add(lblNombre);
             Controls.Add(txtNombre);
-            Controls.Add(label1);
+            Controls.Add(lblTitulo);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmNuevoCliente";
             StartPosition = FormStartPosition.CenterParent;
             Text = "frmVenta";
+            Load += frmNuevoCliente_Load;
+            pnlEsp.ResumeLayout(false);
+            pnlEsp.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
+        private Label lblTitulo;
         private TextBox txtNombre;
         private Label lblNombre;
         private Label lblApellido;
@@ -200,5 +272,11 @@
         private DateTimePicker datePickerCumple;
         private Button btnAgregar;
         private Button btnLimpiar;
+        private Button btnAtras;
+        private Panel pnlEsp;
+        private Label lblCat;
+        private Label lblSubCat;
+        private ComboBox comboBox2;
+        private ComboBox comboBox1;
     }
 }

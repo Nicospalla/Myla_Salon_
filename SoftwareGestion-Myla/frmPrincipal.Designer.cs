@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             panelIzq = new Panel();
+            btnNuevoEsp = new Button();
             btnNuevo = new Button();
-            btnGrillaClientes = new Button();
             btnCerrar = new Button();
+            btnGrillaClientes = new Button();
             panelSup = new Panel();
             panelLogin = new Panel();
             btnCerrarSession = new Button();
@@ -51,13 +52,27 @@
             // 
             panelIzq.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panelIzq.BackColor = SystemColors.ActiveCaption;
+            panelIzq.Controls.Add(btnNuevoEsp);
             panelIzq.Controls.Add(btnNuevo);
-            panelIzq.Controls.Add(btnGrillaClientes);
             panelIzq.Controls.Add(btnCerrar);
             panelIzq.Location = new Point(1, 109);
             panelIzq.Name = "panelIzq";
-            panelIzq.Size = new Size(229, 539);
+            panelIzq.Size = new Size(229, 543);
             panelIzq.TabIndex = 0;
+            // 
+            // btnNuevoEsp
+            // 
+            btnNuevoEsp.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
+            btnNuevoEsp.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btnNuevoEsp.FlatStyle = FlatStyle.Flat;
+            btnNuevoEsp.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNuevoEsp.Location = new Point(11, 99);
+            btnNuevoEsp.Name = "btnNuevoEsp";
+            btnNuevoEsp.Size = new Size(202, 60);
+            btnNuevoEsp.TabIndex = 3;
+            btnNuevoEsp.Text = "Nuevo Especialista";
+            btnNuevoEsp.UseVisualStyleBackColor = true;
+            btnNuevoEsp.Click += btnNuevoEsp_Click;
             // 
             // btnNuevo
             // 
@@ -73,20 +88,6 @@
             btnNuevo.UseVisualStyleBackColor = true;
             btnNuevo.Click += btnNuevo_Click;
             // 
-            // btnGrillaClientes
-            // 
-            btnGrillaClientes.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
-            btnGrillaClientes.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
-            btnGrillaClientes.FlatStyle = FlatStyle.Flat;
-            btnGrillaClientes.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGrillaClientes.Location = new Point(11, 119);
-            btnGrillaClientes.Name = "btnGrillaClientes";
-            btnGrillaClientes.Size = new Size(202, 60);
-            btnGrillaClientes.TabIndex = 1;
-            btnGrillaClientes.Text = "Listado Clientes";
-            btnGrillaClientes.UseVisualStyleBackColor = true;
-            btnGrillaClientes.Click += btnGrillaClientes_Click;
-            // 
             // btnCerrar
             // 
             btnCerrar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
@@ -94,7 +95,7 @@
             btnCerrar.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnCerrar.FlatStyle = FlatStyle.Flat;
             btnCerrar.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCerrar.Location = new Point(11, 465);
+            btnCerrar.Location = new Point(11, 469);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(202, 63);
             btnCerrar.TabIndex = 0;
@@ -102,15 +103,30 @@
             btnCerrar.UseVisualStyleBackColor = true;
             btnCerrar.Click += btnCerrar_Click;
             // 
+            // btnGrillaClientes
+            // 
+            btnGrillaClientes.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
+            btnGrillaClientes.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btnGrillaClientes.FlatStyle = FlatStyle.Flat;
+            btnGrillaClientes.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGrillaClientes.Location = new Point(235, 28);
+            btnGrillaClientes.Name = "btnGrillaClientes";
+            btnGrillaClientes.Size = new Size(200, 60);
+            btnGrillaClientes.TabIndex = 1;
+            btnGrillaClientes.Text = "Pantalla Principal";
+            btnGrillaClientes.UseVisualStyleBackColor = true;
+            btnGrillaClientes.Click += btnGrillaClientes_Click;
+            // 
             // panelSup
             // 
             panelSup.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelSup.BackColor = SystemColors.ActiveCaption;
             panelSup.Controls.Add(panelLogin);
             panelSup.Controls.Add(panelReloj);
+            panelSup.Controls.Add(btnGrillaClientes);
             panelSup.Location = new Point(1, 0);
             panelSup.Name = "panelSup";
-            panelSup.Size = new Size(1026, 114);
+            panelSup.Size = new Size(1081, 114);
             panelSup.TabIndex = 0;
             // 
             // panelLogin
@@ -120,7 +136,7 @@
             panelLogin.Controls.Add(btnCerrarSession);
             panelLogin.Controls.Add(lblUser);
             panelLogin.Controls.Add(lblUserActivo);
-            panelLogin.Location = new Point(412, 12);
+            panelLogin.Location = new Point(467, 12);
             panelLogin.Name = "panelLogin";
             panelLogin.Size = new Size(437, 88);
             panelLogin.TabIndex = 7;
@@ -162,7 +178,7 @@
             panelReloj.BorderStyle = BorderStyle.Fixed3D;
             panelReloj.Controls.Add(lblFecha);
             panelReloj.Controls.Add(lblReloj);
-            panelReloj.Location = new Point(855, 12);
+            panelReloj.Location = new Point(910, 12);
             panelReloj.Name = "panelReloj";
             panelReloj.Size = new Size(159, 88);
             panelReloj.TabIndex = 8;
@@ -194,18 +210,18 @@
             panelPpal.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panelPpal.Location = new Point(236, 117);
             panelPpal.Name = "panelPpal";
-            panelPpal.Size = new Size(788, 531);
+            panelPpal.Size = new Size(843, 535);
             panelPpal.TabIndex = 8;
             // 
             // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1027, 649);
+            ClientSize = new Size(1082, 653);
             Controls.Add(panelPpal);
             Controls.Add(panelSup);
             Controls.Add(panelIzq);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MinimumSize = new Size(1100, 700);
             Name = "frmPrincipal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Myla Salon Studio";
@@ -235,5 +251,6 @@
         private Label lblUser;
         private Label lblUserActivo;
         private Button btnNuevo;
+        private Button btnNuevoEsp;
     }
 }

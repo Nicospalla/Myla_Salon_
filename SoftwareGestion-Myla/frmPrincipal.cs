@@ -25,12 +25,13 @@ namespace SoftwareGestion_Myla
         {
             TextInfo textInfo = new CultureInfo("en-US").TextInfo;
             lblUser.Text = textInfo.ToTitleCase(user.Usuario);
-            if (user.Admin == true)
-            {
-                btnGrillaClientes.Enabled = true;
-            }
-            else
-                btnGrillaClientes.Enabled = false;
+            //if (user.Admin == true)
+            //{
+            //    btnGrillaClientes.Enabled = true;
+            //}
+            //else
+            //    btnGrillaClientes.Enabled = false;
+            verGrilla();
         }
 
         private void eventoTimer(object sender, EventArgs e)
@@ -89,7 +90,7 @@ namespace SoftwareGestion_Myla
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             limpiaPanel();
-            frmNuevoCliente frmNuevoCliente = new frmNuevoCliente(this);
+            frmNuevoCliente frmNuevoCliente = new frmNuevoCliente(this, true);
             frmNuevoCliente.TopLevel = false;
             panelPpal.Controls.Add(frmNuevoCliente);
             frmNuevoCliente.Dock = DockStyle.Fill;
@@ -105,6 +106,17 @@ namespace SoftwareGestion_Myla
             frmNuevaVenta.Dock = DockStyle.Fill;
             frmNuevaVenta.Location = new Point((panelPpal.Width - frmNuevaVenta.Width) / 2, (panelPpal.Height - frmNuevaVenta.Height) / 2);
             frmNuevaVenta.Show();
+        }
+
+        private void btnNuevoEsp_Click(object sender, EventArgs e)
+        {
+            limpiaPanel();
+            frmNuevoCliente frmNuevoCliente = new frmNuevoCliente(this, false);
+            frmNuevoCliente.TopLevel = false;
+            panelPpal.Controls.Add(frmNuevoCliente);
+            frmNuevoCliente.Dock = DockStyle.Fill;
+            frmNuevoCliente.Location = new Point((panelPpal.Width - frmNuevoCliente.Width) / 2, (panelPpal.Height - frmNuevoCliente.Height) / 2);
+            frmNuevoCliente.Show();
         }
     }
 }
