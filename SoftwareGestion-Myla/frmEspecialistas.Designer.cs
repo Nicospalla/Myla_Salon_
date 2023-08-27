@@ -32,7 +32,7 @@
             lblTitulo = new Label();
             lblEsp = new Label();
             label1 = new Label();
-            txtNombre = new TextBox();
+            txtId = new TextBox();
             txtApellido = new TextBox();
             label2 = new Label();
             txtEmail = new TextBox();
@@ -41,8 +41,8 @@
             dateCumple = new DateTimePicker();
             dgvCat = new DataGridView();
             dgvSubCat = new DataGridView();
-            button1 = new Button();
-            button2 = new Button();
+            btnAgregaCat = new Button();
+            btnAgregaSub = new Button();
             dgvCatResul = new DataGridView();
             dgvSubCatResul = new DataGridView();
             lblCat = new Label();
@@ -60,16 +60,17 @@
             // 
             cboEsp.DropDownStyle = ComboBoxStyle.DropDownList;
             cboEsp.FormattingEnabled = true;
-            cboEsp.Location = new Point(113, 191);
+            cboEsp.Location = new Point(157, 232);
             cboEsp.Name = "cboEsp";
             cboEsp.Size = new Size(232, 28);
             cboEsp.TabIndex = 0;
+            cboEsp.SelectedIndexChanged += cboEsp_SelectedIndexChanged;
             // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTitulo.Location = new Point(113, 92);
+            lblTitulo.Location = new Point(157, 133);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(232, 28);
             lblTitulo.TabIndex = 1;
@@ -79,32 +80,32 @@
             // 
             lblEsp.AutoSize = true;
             lblEsp.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblEsp.Location = new Point(113, 153);
+            lblEsp.Location = new Point(157, 194);
             lblEsp.Name = "lblEsp";
-            lblEsp.Size = new Size(197, 18);
+            lblEsp.Size = new Size(205, 18);
             lblEsp.TabIndex = 2;
-            lblEsp.Text = "Seleccione un especialita:";
+            lblEsp.Text = "Seleccione un especialista:";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(113, 239);
+            label1.Location = new Point(157, 280);
             label1.Name = "label1";
-            label1.Size = new Size(75, 18);
+            label1.Size = new Size(187, 18);
             label1.TabIndex = 3;
-            label1.Text = "Nombre:";
+            label1.Text = "Número de Especialista:";
             // 
-            // txtNombre
+            // txtId
             // 
-            txtNombre.Location = new Point(113, 277);
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(232, 27);
-            txtNombre.TabIndex = 4;
+            txtId.Location = new Point(157, 318);
+            txtId.Name = "txtId";
+            txtId.Size = new Size(232, 27);
+            txtId.TabIndex = 4;
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(113, 362);
+            txtApellido.Location = new Point(157, 403);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(232, 27);
             txtApellido.TabIndex = 6;
@@ -113,7 +114,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(113, 324);
+            label2.Location = new Point(157, 365);
             label2.Name = "label2";
             label2.Size = new Size(71, 18);
             label2.TabIndex = 5;
@@ -121,7 +122,7 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(113, 447);
+            txtEmail.Location = new Point(157, 488);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(232, 27);
             txtEmail.TabIndex = 8;
@@ -130,7 +131,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(113, 409);
+            label3.Location = new Point(157, 450);
             label3.Name = "label3";
             label3.Size = new Size(54, 18);
             label3.TabIndex = 7;
@@ -140,7 +141,7 @@
             // 
             lblCumple.AutoSize = true;
             lblCumple.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCumple.Location = new Point(113, 494);
+            lblCumple.Location = new Point(157, 535);
             lblCumple.Name = "lblCumple";
             lblCumple.Size = new Size(168, 18);
             lblCumple.TabIndex = 9;
@@ -148,7 +149,7 @@
             // 
             // dateCumple
             // 
-            dateCumple.Location = new Point(113, 532);
+            dateCumple.Location = new Point(157, 573);
             dateCumple.Name = "dateCumple";
             dateCumple.Size = new Size(232, 27);
             dateCumple.TabIndex = 10;
@@ -156,7 +157,7 @@
             // dgvCat
             // 
             dgvCat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCat.Location = new Point(423, 172);
+            dgvCat.Location = new Point(467, 213);
             dgvCat.Name = "dgvCat";
             dgvCat.RowHeadersWidth = 51;
             dgvCat.RowTemplate.Height = 29;
@@ -166,35 +167,35 @@
             // dgvSubCat
             // 
             dgvSubCat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSubCat.Location = new Point(743, 172);
+            dgvSubCat.Location = new Point(787, 213);
             dgvSubCat.Name = "dgvSubCat";
             dgvSubCat.RowHeadersWidth = 51;
             dgvSubCat.RowTemplate.Height = 29;
             dgvSubCat.Size = new Size(300, 149);
             dgvSubCat.TabIndex = 12;
             // 
-            // button1
+            // btnAgregaCat
             // 
-            button1.Location = new Point(423, 352);
-            button1.Name = "button1";
-            button1.Size = new Size(300, 29);
-            button1.TabIndex = 13;
-            button1.Text = "Agregar Categoria";
-            button1.UseVisualStyleBackColor = true;
+            btnAgregaCat.Location = new Point(467, 393);
+            btnAgregaCat.Name = "btnAgregaCat";
+            btnAgregaCat.Size = new Size(300, 29);
+            btnAgregaCat.TabIndex = 13;
+            btnAgregaCat.Text = "Agregar Categoría";
+            btnAgregaCat.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnAgregaSub
             // 
-            button2.Location = new Point(743, 352);
-            button2.Name = "button2";
-            button2.Size = new Size(300, 29);
-            button2.TabIndex = 14;
-            button2.Text = "Agregar Subcategoria";
-            button2.UseVisualStyleBackColor = true;
+            btnAgregaSub.Location = new Point(787, 393);
+            btnAgregaSub.Name = "btnAgregaSub";
+            btnAgregaSub.Size = new Size(300, 29);
+            btnAgregaSub.TabIndex = 14;
+            btnAgregaSub.Text = "Agregar Subcategoría";
+            btnAgregaSub.UseVisualStyleBackColor = true;
             // 
             // dgvCatResul
             // 
             dgvCatResul.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCatResul.Location = new Point(423, 409);
+            dgvCatResul.Location = new Point(467, 450);
             dgvCatResul.Name = "dgvCatResul";
             dgvCatResul.RowHeadersWidth = 51;
             dgvCatResul.RowTemplate.Height = 29;
@@ -204,7 +205,7 @@
             // dgvSubCatResul
             // 
             dgvSubCatResul.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSubCatResul.Location = new Point(743, 409);
+            dgvSubCatResul.Location = new Point(787, 450);
             dgvSubCatResul.Name = "dgvSubCatResul";
             dgvSubCatResul.RowHeadersWidth = 51;
             dgvSubCatResul.RowTemplate.Height = 29;
@@ -215,41 +216,41 @@
             // 
             lblCat.AutoSize = true;
             lblCat.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCat.Location = new Point(423, 142);
+            lblCat.Location = new Point(467, 183);
             lblCat.Name = "lblCat";
             lblCat.Size = new Size(180, 18);
             lblCat.TabIndex = 17;
-            lblCat.Text = "Categorias disponibles:";
+            lblCat.Text = "Categorías disponibles:";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(743, 142);
+            label5.Location = new Point(787, 183);
             label5.Name = "label5";
             label5.Size = new Size(205, 18);
             label5.TabIndex = 18;
-            label5.Text = "Subcategorias disponibles:";
+            label5.Text = "Subcategorías disponibles:";
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(423, 384);
+            label6.Location = new Point(467, 425);
             label6.Name = "label6";
             label6.Size = new Size(161, 18);
             label6.TabIndex = 19;
-            label6.Text = "Categorias incluidas:";
+            label6.Text = "Categorías incluidas:";
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(743, 384);
+            label7.Location = new Point(787, 425);
             label7.Name = "label7";
             label7.Size = new Size(189, 18);
             label7.TabIndex = 20;
-            label7.Text = "SubCategorias incluidas:";
+            label7.Text = "SubCategorías incluidas:";
             // 
             // btnAtras
             // 
@@ -266,7 +267,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1080, 604);
+            ClientSize = new Size(1137, 678);
             Controls.Add(btnAtras);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -274,8 +275,8 @@
             Controls.Add(lblCat);
             Controls.Add(dgvSubCatResul);
             Controls.Add(dgvCatResul);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnAgregaSub);
+            Controls.Add(btnAgregaCat);
             Controls.Add(dgvSubCat);
             Controls.Add(dgvCat);
             Controls.Add(dateCumple);
@@ -284,7 +285,7 @@
             Controls.Add(label3);
             Controls.Add(txtApellido);
             Controls.Add(label2);
-            Controls.Add(txtNombre);
+            Controls.Add(txtId);
             Controls.Add(label1);
             Controls.Add(lblEsp);
             Controls.Add(lblTitulo);
@@ -308,7 +309,7 @@
         private Label lblTitulo;
         private Label lblEsp;
         private Label label1;
-        private TextBox txtNombre;
+        private TextBox txtId;
         private TextBox txtApellido;
         private Label label2;
         private TextBox txtEmail;
@@ -317,8 +318,8 @@
         private DateTimePicker dateCumple;
         private DataGridView dgvCat;
         private DataGridView dgvSubCat;
-        private Button button1;
-        private Button button2;
+        private Button btnAgregaCat;
+        private Button btnAgregaSub;
         private DataGridView dgvCatResul;
         private DataGridView dgvSubCatResul;
         private Label lblCat;

@@ -58,10 +58,6 @@ namespace SoftwareGestion_Myla
                         aux.UltContacto = DateTime.Today;
                         clientesNegocio.crearCliente(aux);
                     }
-                    //else if (!cliente)
-                    //{
-
-                    //}
                 }
                 catch (Exception ex)
                 {
@@ -86,13 +82,17 @@ namespace SoftwareGestion_Myla
                     aux.Email = txtEmail.Text;
                     aux.Telefono = txtTel.Text;
                     aux.Cumple = datePickerCumple.Value.Date;
-
-
+                    int id = especialistaNegocio.nuevoEsp(aux);
+                    aux.IdEspecialista = id;
                 }
                 catch (Exception ex)
                 {
 
                     throw ex;
+                }
+                finally
+                {
+                    form.editarEsp(aux);
                 }
 
 

@@ -128,5 +128,11 @@ namespace SoftwareGestion_Myla
             frmEspecialistas.Dock = DockStyle.Fill;
             frmEspecialistas.Show();
         }
+
+        private void btnEditarEsp_Click(object sender, EventArgs e)
+        {
+            Especialista? esp = null;
+            editarEsp(esp);
+        }
     }
 }

@@ -12,12 +12,20 @@ namespace Negocio
     {
         AccesoDatos datos = new AccesoDatos();
 
-        public List<Especialista> listaEspecialista()
+        public List<Especialista> listaEspecialista(int id = 0)
         {
             List<Especialista> lista = new List<Especialista>();
             try
             {
-                datos.setearConsulta("select Id, Nombre,Apellido,Email,Telefono from ESPECIALISTAS ");
+                if(id == 0)
+                {
+                    datos.setearConsulta("select Id, Nombre,Apellido,Email,Telefono from ESPECIALISTAS ");
+                }
+                else
+                {
+                    datos.setearConsulta("select Id, Nombre,Apellido,Email,Telefono from ESPECIALISTAS where Id = @IdEsp");
+                    datos.setearParametros("@IdEsp", id);
+                }
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -40,9 +48,11 @@ namespace Negocio
             finally { datos.cerrarConn(); }
         }
 
-        public void nuevoEsp(Especialista aux, int idCat = 0, int idSubCat = 0)
+        public int nuevoEsp(Especialista aux)
         {
             AccesoDatos datos = new AccesoDatos();
+
+            int idEsp;
             try
             {
                 datos.setearConsulta("INSERT into ESPECIALISTAS (Nombre,Apellido,Email,Telefono,Cumple)output inserted.Id values (@Nombre, @Apellido, @Email, @Telefono, @Cumple)");
@@ -51,26 +61,9 @@ namespace Negocio
                 datos.setearParametros("@Email", aux.Email);
                 datos.setearParametros("@Telefono", aux.Telefono);
                 datos.setearParametros("@Cumple", aux.Cumple);
-                int idEsp = datos.ejecutarAccionInt();
-                if (idCat != 0 || idSubCat != 0)
-                {
-                    if (idSubCat == 0)
-                    {
-                        datos.setearConsulta("Insert into ESPECIALISTAS_CATEGORIAS (IdCat, IdEsp) values (@IdCat, @IdEsp)");
-                        datos.setearParametros("@IdCat", idCat);
-                    }
-                    else
-                    {
-                        datos.setearConsulta("Insert into ESPECIALISTAS_CATEGORIAS(IdCat, IdEsp) values(@IdCat, @IdEsp) insert into ESPECIALISTAS_SUBCATEGORIAS(IdSubCat, IdEsp) values(@IdSubCat, @IdEsp)");
-                        datos.setearParametros("@idCat",idCat);
-                        datos.setearParametros("IdSubCat",idSubCat);
-
-                    }
-                    datos.setearParametros("@IdEsp", idEsp);
-                    datos.ejecutarAccion();
-                }
-
+                idEsp = datos.ejecutarAccionInt();
             }
+
             catch (Exception ex)
             {
 
@@ -80,6 +73,7 @@ namespace Negocio
             {
                 datos.cerrarConn();
             }
+            return idEsp;
         }
 
     }

@@ -42,6 +42,7 @@
             lblFecha = new Label();
             lblReloj = new Label();
             panelPpal = new Panel();
+            btnEditarEsp = new Button();
             panelIzq.SuspendLayout();
             panelSup.SuspendLayout();
             panelLogin.SuspendLayout();
@@ -52,6 +53,7 @@
             // 
             panelIzq.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panelIzq.BackColor = SystemColors.ActiveCaption;
+            panelIzq.Controls.Add(btnEditarEsp);
             panelIzq.Controls.Add(btnNuevoEsp);
             panelIzq.Controls.Add(btnNuevo);
             panelIzq.Controls.Add(btnCerrar);
@@ -213,6 +215,20 @@
             panelPpal.Size = new Size(843, 535);
             panelPpal.TabIndex = 8;
             // 
+            // btnEditarEsp
+            // 
+            btnEditarEsp.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
+            btnEditarEsp.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btnEditarEsp.FlatStyle = FlatStyle.Flat;
+            btnEditarEsp.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEditarEsp.Location = new Point(11, 177);
+            btnEditarEsp.Name = "btnEditarEsp";
+            btnEditarEsp.Size = new Size(202, 60);
+            btnEditarEsp.TabIndex = 4;
+            btnEditarEsp.Text = "Editar Especialista";
+            btnEditarEsp.UseVisualStyleBackColor = true;
+            btnEditarEsp.Click += btnEditarEsp_Click;
+            // 
             // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -252,5 +268,6 @@
         private Label lblUserActivo;
         private Button btnNuevo;
         private Button btnNuevoEsp;
+        private Button btnEditarEsp;
     }
 }

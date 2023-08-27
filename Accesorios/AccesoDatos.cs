@@ -74,11 +74,12 @@ namespace Accesorios
         }
         public int ejecutarAccionInt()
         {
+            int idEsp;
             try
             {
                 cmd.Connection = conn;
                 conn.Open();
-                int idEsp = (int)cmd.ExecuteScalar();
+                idEsp = (int)cmd.ExecuteScalar();
             }
             catch (Exception ex)
             {
@@ -87,7 +88,7 @@ namespace Accesorios
             }
             
             
-            return 1;
+            return idEsp;
         }
         public void setearParametros(string nombre, object valor)
         {
