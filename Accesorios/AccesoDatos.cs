@@ -55,6 +55,7 @@ namespace Accesorios
             {
                 throw ex;
             }
+            
         }
         public void ejecutarAccion()
         {
@@ -69,6 +70,24 @@ namespace Accesorios
 
                 throw ex;
             }
+            
+        }
+        public int ejecutarAccionInt()
+        {
+            try
+            {
+                cmd.Connection = conn;
+                conn.Open();
+                int idEsp = (int)cmd.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
+            
+            return 1;
         }
         public void setearParametros(string nombre, object valor)
         {

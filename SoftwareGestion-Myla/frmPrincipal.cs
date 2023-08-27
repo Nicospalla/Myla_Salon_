@@ -118,5 +118,15 @@ namespace SoftwareGestion_Myla
             frmNuevoCliente.Location = new Point((panelPpal.Width - frmNuevoCliente.Width) / 2, (panelPpal.Height - frmNuevoCliente.Height) / 2);
             frmNuevoCliente.Show();
         }
+
+        public void editarEsp(Especialista esp)
+        {
+            limpiaPanel();
+            frmEspecialistas frmEspecialistas = new frmEspecialistas(esp);
+            frmEspecialistas.TopLevel = false;
+            panelPpal.Controls.Add(frmEspecialistas);
+            frmEspecialistas.Dock = DockStyle.Fill;
+            frmEspecialistas.Show();
+        }
     }
 }

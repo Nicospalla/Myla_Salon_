@@ -8,8 +8,8 @@ namespace Dominio
 {
     public class SubCategoria
     {
-        public int Id { get; set; }
-        public int idSub { get; set; }
+        public int IdSub { get; set; }
+        public int idCategoria { get; set; }
         public string Descripcion { get; set; }
 
         public override string ToString()

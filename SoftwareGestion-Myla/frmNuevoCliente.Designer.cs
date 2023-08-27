@@ -42,12 +42,6 @@
             btnAgregar = new Button();
             btnLimpiar = new Button();
             btnAtras = new Button();
-            pnlEsp = new Panel();
-            lblCat = new Label();
-            lblSubCat = new Label();
-            comboBox2 = new ComboBox();
-            comboBox1 = new ComboBox();
-            pnlEsp.SuspendLayout();
             SuspendLayout();
             // 
             // lblTitulo
@@ -147,7 +141,7 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(170, 491);
+            btnAgregar.Location = new Point(182, 457);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(204, 63);
             btnAgregar.TabIndex = 11;
@@ -157,7 +151,7 @@
             // 
             // btnLimpiar
             // 
-            btnLimpiar.Location = new Point(463, 491);
+            btnLimpiar.Location = new Point(475, 457);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(204, 63);
             btnLimpiar.TabIndex = 12;
@@ -177,53 +171,6 @@
             btnAtras.UseVisualStyleBackColor = true;
             btnAtras.Click += btnAtras_Click;
             // 
-            // pnlEsp
-            // 
-            pnlEsp.Controls.Add(lblCat);
-            pnlEsp.Controls.Add(lblSubCat);
-            pnlEsp.Controls.Add(comboBox2);
-            pnlEsp.Controls.Add(comboBox1);
-            pnlEsp.Location = new Point(463, 329);
-            pnlEsp.Name = "pnlEsp";
-            pnlEsp.Size = new Size(278, 144);
-            pnlEsp.TabIndex = 14;
-            // 
-            // lblCat
-            // 
-            lblCat.AutoSize = true;
-            lblCat.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCat.Location = new Point(12, 14);
-            lblCat.Name = "lblCat";
-            lblCat.Size = new Size(87, 18);
-            lblCat.TabIndex = 21;
-            lblCat.Text = "Categoria:";
-            // 
-            // lblSubCat
-            // 
-            lblSubCat.AutoSize = true;
-            lblSubCat.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblSubCat.Location = new Point(12, 82);
-            lblSubCat.Name = "lblSubCat";
-            lblSubCat.Size = new Size(115, 18);
-            lblSubCat.TabIndex = 20;
-            lblSubCat.Text = "SubCategoria:";
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(11, 103);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(250, 28);
-            comboBox2.TabIndex = 18;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(12, 35);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(249, 28);
-            comboBox1.TabIndex = 17;
-            // 
             // frmNuevoCliente
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -231,7 +178,6 @@
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(950, 600);
-            Controls.Add(pnlEsp);
             Controls.Add(btnAtras);
             Controls.Add(btnLimpiar);
             Controls.Add(btnAgregar);
@@ -251,8 +197,6 @@
             StartPosition = FormStartPosition.CenterParent;
             Text = "frmVenta";
             Load += frmNuevoCliente_Load;
-            pnlEsp.ResumeLayout(false);
-            pnlEsp.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -276,7 +220,7 @@
         private Panel pnlEsp;
         private Label lblCat;
         private Label lblSubCat;
-        private ComboBox comboBox2;
-        private ComboBox comboBox1;
+        private ComboBox cboSubCat;
+        private ComboBox cboCat;
     }
 }

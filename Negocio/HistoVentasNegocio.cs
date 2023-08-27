@@ -40,7 +40,7 @@ namespace Negocio
                     if(datos.Lector["IdSub"] != DBNull.Value)
                     {
                         aux.IdSub = new SubCategoria();
-                        aux.IdSub.idSub = (int)datos.Lector["IdSub"];
+                        aux.IdSub.idCategoria = (int)datos.Lector["IdSub"];
                         aux.IdSub.Descripcion = (string)datos.Lector["Subcategoria"];
                     }
 
@@ -69,11 +69,11 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta(" insert into HISTORIAL_VENTAS (IdCliente,IdEspecialista,IdCategoria,IdSubcategoria,ServicioAdicional,CodigoTinte,Fecha,Precio) values (@IdCliente,@IdEspecialista,@IdCategoria,@IdSubcategoria,@ServicioAdicional,@CodigoTinte,@Fecha,@Precio)");
+                datos.setearConsulta(" insert into HISTORIAL_VENTAS (IdCliente,IdEspecialista,IdCategoria,IdSubcategoria,ServicioAdicional,CodigoTinte,Fecha,Precio) values (@IdCliente,@IdEspecialista,@IdCategoria,@IdSubcategoria,@ServicioAdicional,@CodigoTinte,@Fecha,@Precio)  UPDATE DATOSCLIENTES  set UltimaVisita = '2023-08-27', UltimoContacto = '2023-08-27' where Id = @IdCliente");
                 datos.setearParametros("@IdCliente",venta.IdCliente);
                 datos.setearParametros("@IdEspecialista",venta.Especialista.IdEspecialista);
                 datos.setearParametros("@IdCategoria",venta.IdCat.idCat);
-                datos.setearParametros("@IdSubcategoria", venta.IdSub.idSub != -1 ? venta.IdSub.idSub : DBNull.Value);
+                datos.setearParametros("@IdSubcategoria", venta.IdSub.idCategoria != -1 ? venta.IdSub.idCategoria : DBNull.Value);
                 datos.setearParametros("@ServicioAdicional",venta.ServicioAdicional);
                 datos.setearParametros("@CodigoTinte",venta.CodigoTinte);
                 datos.setearParametros("@Fecha",venta.Fecha);

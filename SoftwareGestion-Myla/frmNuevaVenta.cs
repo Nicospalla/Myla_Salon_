@@ -53,7 +53,8 @@ namespace SoftwareGestion_Myla
                 cboEspecialista.SelectedIndex = -1;
 
                 cboSubCat.DataSource = SubCategoriaNegocio.listarSubCat(id);
-                cboSubCat.ValueMember = "Descripcion";
+                cboSubCat.DisplayMember = "Descripcion";
+                cboSubCat.ValueMember = "IdSub";
                 cboSubCat.SelectedIndex = -1;
 
             }
@@ -109,8 +110,8 @@ namespace SoftwareGestion_Myla
                     venta.Fecha = DateTime.Today;
 
                     venta.IdSub = new SubCategoria();
-                    SubCategoria sub = (SubCategoria)cboSubCat.SelectedValue;
-                    venta.IdSub.idSub = cboSubCat.SelectedIndex != -1 ? sub.idSub : -1;
+                    //SubCategoria sub = (SubCategoria)cboSubCat.SelectedValue;
+                    venta.IdSub.idCategoria = (int)cboSubCat.SelectedValue != -1 ? (int)cboSubCat.SelectedValue : -1;
 
                     venta.ServicioAdicional = txtServAdc.Text;
                     ventasNegocio.nuevaVenta(venta);

@@ -18,7 +18,7 @@ namespace Negocio
             {
                 if (idCat != 0)
                 {
-                    datos.setearConsulta("select S.Id as Id, S.IdCategoria as IdCategoria, S.Descripcion as Descripcion from SUBCATEGORIA as S, CATEGORIAS as C where S.IdCategoria = C.Id and C.Id = @IdCat");
+                    datos.setearConsulta("select S.Id as IdSub, S.IdCategoria as IdCategoria, S.Descripcion as Descripcion from SUBCATEGORIA as S, CATEGORIAS as C where S.IdCategoria = C.Id and C.Id = @IdCat");
                     datos.setearParametros("@IdCat", idCat);
                 }
                 else
@@ -30,8 +30,8 @@ namespace Negocio
                 {
                     SubCategoria SubCategoria = new SubCategoria();
 
-                    SubCategoria.Id = (int)datos.Lector["Id"];
-                    SubCategoria.idSub = (int)datos.Lector["IdCategoria"];
+                    SubCategoria.IdSub = (int)datos.Lector["IdSub"];
+                    SubCategoria.idCategoria = (int)datos.Lector["IdCategoria"];
                     SubCategoria.Descripcion = (string)datos.Lector["Descripcion"];
                     lista.Add(SubCategoria);
                 }

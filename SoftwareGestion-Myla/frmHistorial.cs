@@ -23,6 +23,7 @@ namespace SoftwareGestion_Myla
             InitializeComponent();
             this.IdCliente = id;
             this.frm = frm;
+
         }
 
         private void frmHistorial_Load(object sender, EventArgs e)
@@ -35,5 +36,7 @@ namespace SoftwareGestion_Myla
         {
             frm.verGrilla();
         }
+
+  
     }
 }
