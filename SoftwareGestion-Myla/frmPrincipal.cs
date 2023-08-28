@@ -122,7 +122,7 @@ namespace SoftwareGestion_Myla
         public void editarEsp(Especialista esp)
         {
             limpiaPanel();
-            frmEspecialistas frmEspecialistas = new frmEspecialistas(esp);
+            frmEspecialistas frmEspecialistas = new frmEspecialistas(this,esp);
             frmEspecialistas.TopLevel = false;
             panelPpal.Controls.Add(frmEspecialistas);
             frmEspecialistas.Dock = DockStyle.Fill;

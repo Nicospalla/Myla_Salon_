@@ -16,13 +16,13 @@ namespace SoftwareGestion_Myla
     {
         public Especialista? esp { get; set; }
         EspecialistaNegocio especialistaNegocio = new EspecialistaNegocio();
-        //public frmEspecialistas()
-        //{
-        //    InitializeComponent();
-        //}
-        public frmEspecialistas(Especialista? esp = null)
+        CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+        SubCategoriaNegocio subCategoriaNegocio = new SubCategoriaNegocio();
+        frmPrincipal frmPrincipal;
+        public frmEspecialistas(frmPrincipal frmPrincipal,Especialista? esp = null)
         {
             InitializeComponent();
+            this.frmPrincipal = frmPrincipal;
             if (esp != null)
             {
                 this.esp = esp;
@@ -31,6 +31,7 @@ namespace SoftwareGestion_Myla
 
         private void frmEspecialistas_Load(object sender, EventArgs e)
         {
+
             cboEsp.DataSource = especialistaNegocio.listaEspecialista();
             cboEsp.ValueMember = "IdEspecialista";
             cboEsp.DisplayMember = "Nombre";
@@ -43,10 +44,26 @@ namespace SoftwareGestion_Myla
 
                 //dateCumple.Value = esp.Cumple.Date;
             }
-            else
-            {
-                cboEsp.SelectedIndex = -1;
-            }
+
+        }
+
+        private void cargaDGVS(int idEsp)
+        {
+            //List<Categorias> lista1 = categoriaNegocio.listarCat(esp.IdEspecialista, false);
+            //List<int> listInt = new List<int>();
+            //for(int i = 0; i < lista1.Count; i++)
+            //{
+            //    Categorias aux = lista1[i];
+            //    listInt.Add(aux.idCat); 
+            //}
+            dgvCat.DataSource = categoriaNegocio.listarCat(esp.IdEspecialista, false);
+            dgvCat.Columns["IdCat"].Visible = false;
+            dgvNoCat.DataSource = categoriaNegocio.listarCat(esp.IdEspecialista, true);
+            dgvNoCat.Columns["IdCat"].Visible = false;
+            dgvNoSubCat.DataSource = subCategoriaNegocio.listarSubCat(0,idEsp,false);
+            dgvNoSubCat.Columns["IdSub"].Visible = false;
+            dgvNoSubCat.Columns["IdCategoria"].Visible = false;
+            
         }
 
         private void cboEsp_SelectedIndexChanged(object sender, EventArgs e)
@@ -67,8 +84,13 @@ namespace SoftwareGestion_Myla
                 //Categorias cat = (Categorias)cboCategoria.SelectedValue;
                 //int id = cat.idCat;
                 //cboEspecialista.DataSource = Especialistas_Categorias_Negocio.listarEspCat(id);
-
+                cargaDGVS(esp.IdEspecialista);
             }
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            frmPrincipal.verGrilla();
         }
     }
 }

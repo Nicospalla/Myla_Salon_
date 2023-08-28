@@ -37,8 +37,6 @@ namespace SoftwareGestion_Myla
             cboCategoria.DisplayMember = "Descripcion";
             cboCategoria.SelectedIndex = -1;
 
-            //cboEspecialista.DataSource = EspecialistaNegocio.listaEspecialista();
-            //cboEspecialista.ValueMember = "Nombre";
         }
 
         private void cboCategoria_SelectedValueChanged(object sender, EventArgs e)

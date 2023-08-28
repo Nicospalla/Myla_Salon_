@@ -45,7 +45,7 @@
             dgvHistorial.ReadOnly = true;
             dgvHistorial.RowHeadersWidth = 51;
             dgvHistorial.RowTemplate.Height = 29;
-            dgvHistorial.SelectionMode = DataGridViewSelectionMode.FullColumnSelect;
+            dgvHistorial.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvHistorial.Size = new Size(701, 385);
             dgvHistorial.TabIndex = 5;
             // 

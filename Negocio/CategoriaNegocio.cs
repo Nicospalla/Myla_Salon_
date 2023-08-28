@@ -12,12 +12,24 @@ namespace Negocio
     {
         AccesoDatos datos = new AccesoDatos();
         
-        public List<Categorias> listarCat()
+        public List<Categorias> listarCat(int idEsp = 0, bool contiene = false)
         {
             List<Categorias> lista = new List<Categorias>();
             try
             {
-                datos.setearConsulta("select Id, Descripcion from CATEGORIAS");
+                if(idEsp != 0 && contiene == false)
+                {
+                    datos.setearConsulta("SELECT C.Id as Id, C.Descripcion as Descripcion FROM CATEGORIAS C WHERE C.Id NOT IN ( SELECT EC.IdCat FROM ESPECIALISTAS_CATEGORIAS EC WHERE EC.IdEsp = @idEsp)");
+                    datos.setearParametros("@IdEsp",idEsp);
+                }else if(idEsp != 0 && contiene == true)
+                {
+                    datos.setearConsulta("SELECT C.Id as Id, C.Descripcion as Descripcion FROM CATEGORIAS C WHERE C.Id IN ( SELECT EC.IdCat FROM ESPECIALISTAS_CATEGORIAS EC WHERE EC.IdEsp = @idEsp)");
+                    datos.setearParametros("@IdEsp", idEsp);
+                }
+                else
+                {
+                    datos.setearConsulta("select Id, Descripcion from CATEGORIAS");
+                }
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -33,6 +45,7 @@ namespace Negocio
 
                 throw ex;
             }
+            finally { datos.cerrarConn(); }
         }
     }
 }

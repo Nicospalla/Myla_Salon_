@@ -37,6 +37,6 @@ namespace SoftwareGestion_Myla
             frm.verGrilla();
         }
 
-  
+
     }
 }
