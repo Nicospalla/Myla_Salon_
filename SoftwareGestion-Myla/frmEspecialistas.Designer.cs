@@ -30,8 +30,6 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             cboEsp = new ComboBox();
             lblTitulo = new Label();
             lblEsp = new Label();
@@ -44,24 +42,16 @@
             lblCumple = new Label();
             dateCumple = new DateTimePicker();
             dgvCat = new DataGridView();
-            dgvSubCat = new DataGridView();
             btnAgregaCat = new Button();
-            btnAgregaSub = new Button();
             lblCat = new Label();
-            label5 = new Label();
             label6 = new Label();
-            label7 = new Label();
             btnAtras = new Button();
             btnModifEsp = new Button();
             btnEliminarEsp = new Button();
             dgvNoCat = new DataGridView();
-            dgvNoSubCat = new DataGridView();
-            button1 = new Button();
-            btnQuitaSub = new Button();
+            btnQuitarCat = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCat).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvSubCat).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvNoCat).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvNoSubCat).BeginInit();
             SuspendLayout();
             // 
             // cboEsp
@@ -70,7 +60,7 @@
             cboEsp.FormattingEnabled = true;
             cboEsp.Location = new Point(157, 232);
             cboEsp.Name = "cboEsp";
-            cboEsp.Size = new Size(232, 28);
+            cboEsp.Size = new Size(280, 28);
             cboEsp.TabIndex = 0;
             cboEsp.SelectedIndexChanged += cboEsp_SelectedIndexChanged;
             // 
@@ -108,14 +98,14 @@
             // 
             txtId.Location = new Point(157, 318);
             txtId.Name = "txtId";
-            txtId.Size = new Size(232, 27);
+            txtId.Size = new Size(280, 27);
             txtId.TabIndex = 4;
             // 
             // txtApellido
             // 
             txtApellido.Location = new Point(157, 403);
             txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(232, 27);
+            txtApellido.Size = new Size(280, 27);
             txtApellido.TabIndex = 6;
             // 
             // label2
@@ -132,7 +122,7 @@
             // 
             txtEmail.Location = new Point(157, 488);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(232, 27);
+            txtEmail.Size = new Size(280, 27);
             txtEmail.TabIndex = 8;
             // 
             // label3
@@ -159,7 +149,7 @@
             // 
             dateCumple.Location = new Point(157, 573);
             dateCumple.Name = "dateCumple";
-            dateCumple.Size = new Size(232, 27);
+            dateCumple.Size = new Size(280, 27);
             dateCumple.TabIndex = 10;
             // 
             // dgvCat
@@ -175,91 +165,43 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dgvCat.DefaultCellStyle = dataGridViewCellStyle1;
-            dgvCat.Location = new Point(467, 213);
+            dgvCat.Location = new Point(476, 213);
             dgvCat.Name = "dgvCat";
             dgvCat.RowHeadersWidth = 51;
             dgvCat.RowTemplate.Height = 29;
             dgvCat.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCat.Size = new Size(300, 149);
+            dgvCat.Size = new Size(238, 387);
             dgvCat.TabIndex = 11;
-            // 
-            // dgvSubCat
-            // 
-            dgvSubCat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvSubCat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSubCat.ColumnHeadersVisible = false;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvSubCat.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvSubCat.Location = new Point(787, 213);
-            dgvSubCat.Name = "dgvSubCat";
-            dgvSubCat.RowHeadersWidth = 51;
-            dgvSubCat.RowTemplate.Height = 29;
-            dgvSubCat.Size = new Size(300, 149);
-            dgvSubCat.TabIndex = 12;
             // 
             // btnAgregaCat
             // 
-            btnAgregaCat.Location = new Point(467, 368);
+            btnAgregaCat.Location = new Point(720, 289);
             btnAgregaCat.Name = "btnAgregaCat";
-            btnAgregaCat.Size = new Size(300, 29);
+            btnAgregaCat.Size = new Size(85, 85);
             btnAgregaCat.TabIndex = 13;
-            btnAgregaCat.Text = "Agregar Categoría";
+            btnAgregaCat.Text = "Agregar Categoría  <==";
             btnAgregaCat.UseVisualStyleBackColor = true;
-            // 
-            // btnAgregaSub
-            // 
-            btnAgregaSub.Location = new Point(787, 368);
-            btnAgregaSub.Name = "btnAgregaSub";
-            btnAgregaSub.Size = new Size(300, 29);
-            btnAgregaSub.TabIndex = 14;
-            btnAgregaSub.Text = "Agregar Subcategoría";
-            btnAgregaSub.UseVisualStyleBackColor = true;
+            btnAgregaCat.Click += btnAgregaCat_Click;
             // 
             // lblCat
             // 
             lblCat.AutoSize = true;
             lblCat.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCat.Location = new Point(467, 183);
+            lblCat.Location = new Point(476, 183);
             lblCat.Name = "lblCat";
-            lblCat.Size = new Size(180, 18);
+            lblCat.Size = new Size(163, 18);
             lblCat.TabIndex = 17;
-            lblCat.Text = "Categorías disponibles:";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(787, 183);
-            label5.Name = "label5";
-            label5.Size = new Size(205, 18);
-            label5.TabIndex = 18;
-            label5.Text = "Subcategorías disponibles:";
+            lblCat.Text = "Categorías Incluidas:";
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(467, 440);
+            label6.Location = new Point(811, 183);
             label6.Name = "label6";
-            label6.Size = new Size(161, 18);
+            label6.Size = new Size(189, 18);
             label6.TabIndex = 19;
-            label6.Text = "Categorías incluidas:";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(787, 440);
-            label7.Name = "label7";
-            label7.Size = new Size(189, 18);
-            label7.TabIndex = 20;
-            label7.Text = "SubCategorías incluidas:";
+            label6.Text = "Categorías NO incluidas:";
             // 
             // btnAtras
             // 
@@ -275,7 +217,7 @@
             // 
             // btnModifEsp
             // 
-            btnModifEsp.Location = new Point(277, 640);
+            btnModifEsp.Location = new Point(328, 638);
             btnModifEsp.Name = "btnModifEsp";
             btnModifEsp.Size = new Size(204, 63);
             btnModifEsp.TabIndex = 22;
@@ -284,7 +226,7 @@
             // 
             // btnEliminarEsp
             // 
-            btnEliminarEsp.Location = new Point(529, 640);
+            btnEliminarEsp.Location = new Point(580, 638);
             btnEliminarEsp.Name = "btnEliminarEsp";
             btnEliminarEsp.Size = new Size(204, 63);
             btnEliminarEsp.TabIndex = 23;
@@ -296,80 +238,45 @@
             dgvNoCat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvNoCat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvNoCat.ColumnHeadersVisible = false;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvNoCat.DefaultCellStyle = dataGridViewCellStyle3;
-            dgvNoCat.Location = new Point(467, 466);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvNoCat.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvNoCat.Location = new Point(811, 213);
             dgvNoCat.Name = "dgvNoCat";
             dgvNoCat.RowHeadersWidth = 51;
             dgvNoCat.RowTemplate.Height = 29;
             dgvNoCat.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvNoCat.Size = new Size(300, 149);
+            dgvNoCat.Size = new Size(238, 387);
             dgvNoCat.TabIndex = 24;
             // 
-            // dgvNoSubCat
+            // btnQuitarCat
             // 
-            dgvNoSubCat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvNoSubCat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvNoSubCat.ColumnHeadersVisible = false;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvNoSubCat.DefaultCellStyle = dataGridViewCellStyle4;
-            dgvNoSubCat.Location = new Point(787, 466);
-            dgvNoSubCat.Name = "dgvNoSubCat";
-            dgvNoSubCat.RowHeadersWidth = 51;
-            dgvNoSubCat.RowTemplate.Height = 29;
-            dgvNoSubCat.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvNoSubCat.Size = new Size(300, 149);
-            dgvNoSubCat.TabIndex = 25;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(467, 408);
-            button1.Name = "button1";
-            button1.Size = new Size(300, 29);
-            button1.TabIndex = 26;
-            button1.Text = "Quitar Categoría";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // btnQuitaSub
-            // 
-            btnQuitaSub.Location = new Point(787, 408);
-            btnQuitaSub.Name = "btnQuitaSub";
-            btnQuitaSub.Size = new Size(300, 29);
-            btnQuitaSub.TabIndex = 27;
-            btnQuitaSub.Text = "Quitar Subcategoría";
-            btnQuitaSub.UseVisualStyleBackColor = true;
+            btnQuitarCat.Location = new Point(720, 430);
+            btnQuitarCat.Name = "btnQuitarCat";
+            btnQuitarCat.Size = new Size(85, 85);
+            btnQuitarCat.TabIndex = 26;
+            btnQuitarCat.Text = "Quitar Categoría  ==>";
+            btnQuitarCat.UseVisualStyleBackColor = true;
+            btnQuitarCat.Click += btnQuitarCat_Click;
             // 
             // frmEspecialistas
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1137, 750);
-            Controls.Add(btnQuitaSub);
-            Controls.Add(button1);
-            Controls.Add(dgvNoSubCat);
+            ClientSize = new Size(1167, 750);
+            Controls.Add(btnQuitarCat);
             Controls.Add(dgvNoCat);
             Controls.Add(btnEliminarEsp);
             Controls.Add(btnModifEsp);
             Controls.Add(btnAtras);
-            Controls.Add(label7);
             Controls.Add(label6);
-            Controls.Add(label5);
             Controls.Add(lblCat);
-            Controls.Add(btnAgregaSub);
             Controls.Add(btnAgregaCat);
-            Controls.Add(dgvSubCat);
             Controls.Add(dgvCat);
             Controls.Add(dateCumple);
             Controls.Add(lblCumple);
@@ -388,9 +295,7 @@
             Text = "frmEspecialistas";
             Load += frmEspecialistas_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCat).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvSubCat).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvNoCat).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvNoSubCat).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -409,19 +314,13 @@
         private Label lblCumple;
         private DateTimePicker dateCumple;
         private DataGridView dgvCat;
-        private DataGridView dgvSubCat;
         private Button btnAgregaCat;
-        private Button btnAgregaSub;
         private Label lblCat;
-        private Label label5;
         private Label label6;
-        private Label label7;
         private Button btnAtras;
         private Button btnModifEsp;
         private Button btnEliminarEsp;
         private DataGridView dgvNoCat;
-        private DataGridView dgvNoSubCat;
-        private Button button1;
-        private Button btnQuitaSub;
+        private Button btnQuitarCat;
     }
 }

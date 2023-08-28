@@ -12,7 +12,7 @@ namespace Negocio
     {
         AccesoDatos datos = new AccesoDatos();
         
-        public List<Categorias> listarCat(int idEsp = 0, bool contiene = false)
+        public List<Categorias> listarCat(int idEsp = 0, bool contiene = false, List<int>? listaCat = null)
         {
             List<Categorias> lista = new List<Categorias>();
             try
@@ -46,6 +46,41 @@ namespace Negocio
                 throw ex;
             }
             finally { datos.cerrarConn(); }
+        }
+
+        public void quitarCategoria(int idEsp, int idCat)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("delete from ESPECIALISTAS_CATEGORIAS where idEsp = @idEsp and idCat =@idCat ");
+                datos.setearParametros("@idEsp",idEsp);
+                datos.setearParametros("@idCat",idCat);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally { datos.cerrarConn(); }
+        }
+        public void insertarCategoria(int idEsp, int idCat)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("insert into ESPECIALISTAS_CATEGORIAS (idCat, idEsp) values (@idCat, @idEsp)");
+                datos.setearParametros("@idCat",idCat);
+                datos.setearParametros("@idEsp",idEsp);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }finally { datos.cerrarConn(); }
         }
     }
 }

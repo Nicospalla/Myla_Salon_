@@ -19,22 +19,27 @@ namespace SoftwareGestion_Myla
         CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
         SubCategoriaNegocio subCategoriaNegocio = new SubCategoriaNegocio();
         frmPrincipal frmPrincipal;
-        public frmEspecialistas(frmPrincipal frmPrincipal,Especialista? esp = null)
+        public int indexPrev { get; set; }
+        public frmEspecialistas(frmPrincipal frmPrincipal, Especialista? esp = null)
         {
             InitializeComponent();
             this.frmPrincipal = frmPrincipal;
             if (esp != null)
             {
                 this.esp = esp;
+                
             }
         }
 
         private void frmEspecialistas_Load(object sender, EventArgs e)
         {
 
+            
             cboEsp.DataSource = especialistaNegocio.listaEspecialista();
             cboEsp.ValueMember = "IdEspecialista";
+            int selected = esp != null ? esp.IdEspecialista : 1;
             cboEsp.DisplayMember = "Nombre";
+            cboEsp.SelectedValue = selected;
             if (esp != null)
             {
                 cboEsp.SelectedValue = esp.IdEspecialista;
@@ -45,34 +50,30 @@ namespace SoftwareGestion_Myla
                 //dateCumple.Value = esp.Cumple.Date;
             }
 
+
         }
 
         private void cargaDGVS(int idEsp)
         {
-            //List<Categorias> lista1 = categoriaNegocio.listarCat(esp.IdEspecialista, false);
-            //List<int> listInt = new List<int>();
-            //for(int i = 0; i < lista1.Count; i++)
-            //{
-            //    Categorias aux = lista1[i];
-            //    listInt.Add(aux.idCat); 
-            //}
-            dgvCat.DataSource = categoriaNegocio.listarCat(esp.IdEspecialista, false);
+
+            dgvCat.DataSource = categoriaNegocio.listarCat(esp.IdEspecialista, true);
             dgvCat.Columns["IdCat"].Visible = false;
-            dgvNoCat.DataSource = categoriaNegocio.listarCat(esp.IdEspecialista, true);
+            dgvNoCat.DataSource = categoriaNegocio.listarCat(esp.IdEspecialista, false);
             dgvNoCat.Columns["IdCat"].Visible = false;
-            dgvNoSubCat.DataSource = subCategoriaNegocio.listarSubCat(0,idEsp,false);
-            dgvNoSubCat.Columns["IdSub"].Visible = false;
-            dgvNoSubCat.Columns["IdCategoria"].Visible = false;
-            
+
+
         }
 
         private void cboEsp_SelectedIndexChanged(object sender, EventArgs e)
         {
+      
             string a = cboEsp.SelectedValue.ToString();
             int numero;
             if (cboEsp.SelectedIndex != -1 && int.TryParse(a, out numero))
             {
-                esp = new Especialista();
+                if (esp == null)
+                    esp = new Especialista();
+
                 esp.IdEspecialista = (int)cboEsp.SelectedValue;
                 int id = esp.IdEspecialista;
                 List<Especialista> listaUnica = especialistaNegocio.listaEspecialista(esp.IdEspecialista);
@@ -91,6 +92,29 @@ namespace SoftwareGestion_Myla
         private void btnAtras_Click(object sender, EventArgs e)
         {
             frmPrincipal.verGrilla();
+        }
+
+        private void btnAgregaCat_Click(object sender, EventArgs e)
+        {
+            dgvNoCat.Focus();
+            if(dgvNoCat.CurrentRow != null)
+            {
+                Categorias aux = (Categorias)dgvNoCat.CurrentRow.DataBoundItem;
+                categoriaNegocio.insertarCategoria(esp.IdEspecialista, aux.idCat);
+                frmPrincipal.editarEsp(esp);
+
+            }
+        }
+
+        private void btnQuitarCat_Click(object sender, EventArgs e)
+        {
+            dgvCat.Focus();
+            if (dgvCat.CurrentRow != null)
+            {
+                Categorias aux = (Categorias)dgvCat.CurrentRow.DataBoundItem;
+                categoriaNegocio.quitarCategoria(esp.IdEspecialista, aux.idCat);
+                frmPrincipal.editarEsp(esp);
+            }
         }
     }
 }
