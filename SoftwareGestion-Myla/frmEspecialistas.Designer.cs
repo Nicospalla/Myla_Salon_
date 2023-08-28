@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             cboEsp = new ComboBox();
             lblTitulo = new Label();
             lblEsp = new Label();
@@ -50,6 +50,11 @@
             btnEliminarEsp = new Button();
             dgvNoCat = new DataGridView();
             btnQuitarCat = new Button();
+            txtPorcentaje = new TextBox();
+            txtSueldo = new TextBox();
+            label4 = new Label();
+            label5 = new Label();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvCat).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvNoCat).BeginInit();
             SuspendLayout();
@@ -157,14 +162,14 @@
             dgvCat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCat.ColumnHeadersVisible = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dgvCat.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvCat.DefaultCellStyle = dataGridViewCellStyle3;
             dgvCat.Location = new Point(476, 213);
             dgvCat.Name = "dgvCat";
             dgvCat.RowHeadersWidth = 51;
@@ -175,7 +180,9 @@
             // 
             // btnAgregaCat
             // 
-            btnAgregaCat.Location = new Point(720, 289);
+            btnAgregaCat.Font = new Font("Times New Roman", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAgregaCat.ForeColor = SystemColors.ActiveCaptionText;
+            btnAgregaCat.Location = new Point(720, 280);
             btnAgregaCat.Name = "btnAgregaCat";
             btnAgregaCat.Size = new Size(85, 85);
             btnAgregaCat.TabIndex = 13;
@@ -186,20 +193,20 @@
             // lblCat
             // 
             lblCat.AutoSize = true;
-            lblCat.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCat.Font = new Font("Verdana", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             lblCat.Location = new Point(476, 183);
             lblCat.Name = "lblCat";
-            lblCat.Size = new Size(163, 18);
+            lblCat.Size = new Size(181, 18);
             lblCat.TabIndex = 17;
             lblCat.Text = "Categorías Incluidas:";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Font = new Font("Verdana", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             label6.Location = new Point(811, 183);
             label6.Name = "label6";
-            label6.Size = new Size(189, 18);
+            label6.Size = new Size(207, 18);
             label6.TabIndex = 19;
             label6.Text = "Categorías NO incluidas:";
             // 
@@ -238,14 +245,14 @@
             dgvNoCat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvNoCat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvNoCat.ColumnHeadersVisible = false;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvNoCat.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvNoCat.DefaultCellStyle = dataGridViewCellStyle4;
             dgvNoCat.Location = new Point(811, 213);
             dgvNoCat.Name = "dgvNoCat";
             dgvNoCat.RowHeadersWidth = 51;
@@ -256,6 +263,7 @@
             // 
             // btnQuitarCat
             // 
+            btnQuitarCat.Font = new Font("Times New Roman", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             btnQuitarCat.Location = new Point(720, 430);
             btnQuitarCat.Name = "btnQuitarCat";
             btnQuitarCat.Size = new Size(85, 85);
@@ -264,11 +272,60 @@
             btnQuitarCat.UseVisualStyleBackColor = true;
             btnQuitarCat.Click += btnQuitarCat_Click;
             // 
+            // txtPorcentaje
+            // 
+            txtPorcentaje.Location = new Point(1094, 386);
+            txtPorcentaje.Name = "txtPorcentaje";
+            txtPorcentaje.Size = new Size(230, 27);
+            txtPorcentaje.TabIndex = 27;
+            // 
+            // txtSueldo
+            // 
+            txtSueldo.Location = new Point(1094, 301);
+            txtSueldo.Name = "txtSueldo";
+            txtSueldo.Size = new Size(230, 27);
+            txtSueldo.TabIndex = 28;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(1094, 213);
+            label4.Name = "label4";
+            label4.Size = new Size(123, 28);
+            label4.TabIndex = 29;
+            label4.Text = "Finanzas:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(1094, 263);
+            label5.Name = "label5";
+            label5.Size = new Size(103, 18);
+            label5.TabIndex = 30;
+            label5.Text = "Sueldo FIJO:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(1094, 348);
+            label7.Name = "label7";
+            label7.Size = new Size(95, 18);
+            label7.TabIndex = 31;
+            label7.Text = "Porcentaje:";
+            // 
             // frmEspecialistas
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1167, 750);
+            ClientSize = new Size(1423, 750);
+            Controls.Add(label7);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(txtSueldo);
+            Controls.Add(txtPorcentaje);
             Controls.Add(btnQuitarCat);
             Controls.Add(dgvNoCat);
             Controls.Add(btnEliminarEsp);
@@ -322,5 +379,10 @@
         private Button btnEliminarEsp;
         private DataGridView dgvNoCat;
         private Button btnQuitarCat;
+        private TextBox txtPorcentaje;
+        private TextBox txtSueldo;
+        private Label label4;
+        private Label label5;
+        private Label label7;
     }
 }

@@ -18,19 +18,19 @@ namespace Negocio
             {
                 if (idEsp != 0 && contiene ==true)
                 {
-                    datos.setearConsulta("select s.Id as IdSub ,S.descripcion as Descripcion, S.IdCategoria as IdCategoria from SUBCATEGORIA S, CATEGORIAS C, ESPECIALISTAS_CATEGORIAS EC, ESPECIALISTAS E where s.IdCategoria = c.Id and C.Id = ec.idCat and ec.idEsp = E.Id and e.Id = @IdEsp");
+                    datos.setearConsulta("select S.descripcion as Descripcion, S.IdCategoria as IdCategoria from SUBCATEGORIA S, CATEGORIAS C, ESPECIALISTAS_CATEGORIAS EC, ESPECIALISTAS E where s.IdCategoria = c.Id and C.Id = ec.idCat and ec.idEsp = E.Id and e.Id = @IdEsp");
                     datos.setearParametros("@IdEsp", idEsp);
                 }
                 else
                 {
-                    datos.setearConsulta("select Id as IdSub, IdCategoria, Descripcion from SUBCATEGORIA ");
+                    datos.setearConsulta("select IdCategoria, Descripcion from SUBCATEGORIA ");
                 }
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
                     SubCategoria SubCategoria = new SubCategoria();
 
-                    SubCategoria.IdSub = (int)datos.Lector["IdSub"];
+                    //SubCategoria.IdSub = (int)datos.Lector["IdSub"];
                     SubCategoria.idCategoria = (int)datos.Lector["IdCategoria"];
                     SubCategoria.Descripcion = (string)datos.Lector["Descripcion"];
                     lista.Add(SubCategoria);

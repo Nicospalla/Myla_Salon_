@@ -33,33 +33,27 @@ namespace SoftwareGestion_Myla
         {
             txtCliente.ReadOnly = true;
             txtCliente.Text = cliente.Nombre;
-            cboCategoria.DataSource = categoriaNegocio.listarCat();
-            cboCategoria.DisplayMember = "Descripcion";
-            cboCategoria.SelectedIndex = -1;
+            cboEspecialista.DataSource = EspecialistaNegocio.listaEspecialista();
+            cboEspecialista.DisplayMember = "Descripcion";
+            cboEspecialista.SelectedIndex = -1;
 
         }
 
         private void cboCategoria_SelectedValueChanged(object sender, EventArgs e)
         {
+            //Aca carga la seccion de sub categorias, que depende del ESPECIALISTA (A su vez, tiene la
+            //  - dependencia con las CAT)
             if (cboCategoria.SelectedIndex != -1)
             {
-                Categorias cat = (Categorias)cboCategoria.SelectedValue;
-                int id = cat.idCat;
-                cboEspecialista.DataSource = Especialistas_Categorias_Negocio.listarEspCat(id);
-                cboEspecialista.ValueMember = "IdEspecialista";
-                cboEspecialista.DisplayMember = "Nombre";
-                cboEspecialista.SelectedIndex = -1;
-
-                cboSubCat.DataSource = SubCategoriaNegocio.listarSubCat(id);
+                Especialista aux = (Especialista)cboEspecialista.SelectedValue;
+                cboSubCat.DataSource = SubCategoriaNegocio.listarSubCat(aux.IdEspecialista,true);
                 cboSubCat.DisplayMember = "Descripcion";
                 cboSubCat.ValueMember = "IdSub";
                 cboSubCat.SelectedIndex = -1;
-
             }
             else
             {
-                cboEspecialista.DataSource = null;
-                cboEspecialista.SelectedIndex = -1;
+
                 cboSubCat.DataSource = null;
                 cboSubCat.SelectedIndex = -1;
             }
@@ -98,13 +92,13 @@ namespace SoftwareGestion_Myla
 
                     venta.IdCliente = cliente.Id;
 
-                    venta.Especialista =new Especialista();
+                    venta.Especialista = new Especialista();
                     //Especialista esp = (Especialista)cboEspecialista.SelectedValue;
                     //venta.Especialista.IdEspecialista = esp.IdEspecialista;
                     venta.Especialista.IdEspecialista = (int)cboEspecialista.SelectedValue;
 
                     venta.CodigoTinte = txtCodigoTinte.Text;
-                    venta.Precio = txtPrecio.Text != "" ? Math.Truncate(Decimal.Parse(txtPrecio.Text)*100)/100 : 0;
+                    venta.Precio = txtPrecio.Text != "" ? Math.Truncate(Decimal.Parse(txtPrecio.Text) * 100) / 100 : 0;
                     venta.Fecha = DateTime.Today;
 
                     venta.IdSub = new SubCategoria();
@@ -115,6 +109,24 @@ namespace SoftwareGestion_Myla
                     ventasNegocio.nuevaVenta(venta);
                 }
 
+            }
+        }
+
+        private void cboEspecialista_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (cboEspecialista.SelectedIndex != -1)
+            {
+                Especialista aux = (Especialista)cboEspecialista.SelectedValue;
+                cboCategoria.DataSource = categoriaNegocio.listarCat(aux.IdEspecialista, true);
+                cboCategoria.DisplayMember = "Descripcion";
+                cboCategoria.SelectedIndex = -1;
+
+            }
+            else
+            {
+                cboCategoria.DataSource = null;
+                cboCategoria.SelectedIndex = -1;
             }
         }
     }

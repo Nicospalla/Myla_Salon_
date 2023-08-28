@@ -52,7 +52,7 @@
             // 
             lblCliente.AutoSize = true;
             lblCliente.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCliente.Location = new Point(99, 84);
+            lblCliente.Location = new Point(100, 98);
             lblCliente.Name = "lblCliente";
             lblCliente.Size = new Size(65, 18);
             lblCliente.TabIndex = 1;
@@ -60,7 +60,7 @@
             // 
             // txtCliente
             // 
-            txtCliente.Location = new Point(99, 121);
+            txtCliente.Location = new Point(100, 146);
             txtCliente.Name = "txtCliente";
             txtCliente.Size = new Size(224, 27);
             txtCliente.TabIndex = 2;
@@ -69,7 +69,7 @@
             // 
             lblEspecialista.AutoSize = true;
             lblEspecialista.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblEspecialista.Location = new Point(101, 313);
+            lblEspecialista.Location = new Point(100, 203);
             lblEspecialista.Name = "lblEspecialista";
             lblEspecialista.Size = new Size(99, 18);
             lblEspecialista.TabIndex = 3;
@@ -79,16 +79,17 @@
             // 
             cboEspecialista.DropDownStyle = ComboBoxStyle.DropDownList;
             cboEspecialista.FormattingEnabled = true;
-            cboEspecialista.Location = new Point(100, 359);
+            cboEspecialista.Location = new Point(100, 251);
             cboEspecialista.Name = "cboEspecialista";
             cboEspecialista.Size = new Size(225, 28);
             cboEspecialista.TabIndex = 4;
+            cboEspecialista.SelectedIndexChanged += cboEspecialista_SelectedIndexChanged;
             // 
             // cboCategoria
             // 
             cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCategoria.FormattingEnabled = true;
-            cboCategoria.Location = new Point(99, 244);
+            cboCategoria.Location = new Point(100, 357);
             cboCategoria.Name = "cboCategoria";
             cboCategoria.Size = new Size(225, 28);
             cboCategoria.TabIndex = 6;
@@ -98,7 +99,7 @@
             // 
             lblCategoria.AutoSize = true;
             lblCategoria.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCategoria.Location = new Point(100, 198);
+            lblCategoria.Location = new Point(100, 309);
             lblCategoria.Name = "lblCategoria";
             lblCategoria.Size = new Size(87, 18);
             lblCategoria.TabIndex = 5;
@@ -108,7 +109,7 @@
             // 
             cboSubCat.DropDownStyle = ComboBoxStyle.DropDownList;
             cboSubCat.FormattingEnabled = true;
-            cboSubCat.Location = new Point(463, 120);
+            cboSubCat.Location = new Point(458, 145);
             cboSubCat.Name = "cboSubCat";
             cboSubCat.Size = new Size(225, 28);
             cboSubCat.TabIndex = 8;
@@ -117,7 +118,7 @@
             // 
             lblSubCat.AutoSize = true;
             lblSubCat.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblSubCat.Location = new Point(464, 84);
+            lblSubCat.Location = new Point(460, 98);
             lblSubCat.Name = "lblSubCat";
             lblSubCat.Size = new Size(120, 18);
             lblSubCat.TabIndex = 7;
@@ -125,7 +126,7 @@
             // 
             // txtServAdc
             // 
-            txtServAdc.Location = new Point(463, 245);
+            txtServAdc.Location = new Point(458, 252);
             txtServAdc.Name = "txtServAdc";
             txtServAdc.Size = new Size(224, 27);
             txtServAdc.TabIndex = 10;
@@ -134,7 +135,7 @@
             // 
             lblSerAdc.AutoSize = true;
             lblSerAdc.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblSerAdc.Location = new Point(464, 198);
+            lblSerAdc.Location = new Point(460, 203);
             lblSerAdc.Name = "lblSerAdc";
             lblSerAdc.Size = new Size(142, 18);
             lblSerAdc.TabIndex = 9;
@@ -142,7 +143,7 @@
             // 
             // txtCodigoTinte
             // 
-            txtCodigoTinte.Location = new Point(463, 360);
+            txtCodigoTinte.Location = new Point(458, 358);
             txtCodigoTinte.Name = "txtCodigoTinte";
             txtCodigoTinte.Size = new Size(224, 27);
             txtCodigoTinte.TabIndex = 12;
@@ -151,7 +152,7 @@
             // 
             lblCodigoTinte.AutoSize = true;
             lblCodigoTinte.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCodigoTinte.Location = new Point(463, 313);
+            lblCodigoTinte.Location = new Point(458, 309);
             lblCodigoTinte.Name = "lblCodigoTinte";
             lblCodigoTinte.Size = new Size(131, 18);
             lblCodigoTinte.TabIndex = 11;
@@ -159,7 +160,7 @@
             // 
             // txtPrecio
             // 
-            txtPrecio.Location = new Point(100, 467);
+            txtPrecio.Location = new Point(100, 463);
             txtPrecio.Name = "txtPrecio";
             txtPrecio.Size = new Size(224, 27);
             txtPrecio.TabIndex = 14;
@@ -168,7 +169,7 @@
             // 
             lblPrecio.AutoSize = true;
             lblPrecio.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPrecio.Location = new Point(100, 430);
+            lblPrecio.Location = new Point(100, 415);
             lblPrecio.Name = "lblPrecio";
             lblPrecio.Size = new Size(60, 18);
             lblPrecio.TabIndex = 13;

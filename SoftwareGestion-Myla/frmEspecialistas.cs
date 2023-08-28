@@ -27,19 +27,21 @@ namespace SoftwareGestion_Myla
             if (esp != null)
             {
                 this.esp = esp;
-                
+
             }
         }
 
         private void frmEspecialistas_Load(object sender, EventArgs e)
         {
 
-            
+
             cboEsp.DataSource = especialistaNegocio.listaEspecialista();
             cboEsp.ValueMember = "IdEspecialista";
             int selected = esp != null ? esp.IdEspecialista : 1;
             cboEsp.DisplayMember = "Nombre";
             cboEsp.SelectedValue = selected;
+            txtSueldo.PlaceholderText = "Solo ingrese Numeros";
+            txtPorcentaje.PlaceholderText = "Solo ingrese Numeros";
             if (esp != null)
             {
                 cboEsp.SelectedValue = esp.IdEspecialista;
@@ -66,7 +68,7 @@ namespace SoftwareGestion_Myla
 
         private void cboEsp_SelectedIndexChanged(object sender, EventArgs e)
         {
-      
+
             string a = cboEsp.SelectedValue.ToString();
             int numero;
             if (cboEsp.SelectedIndex != -1 && int.TryParse(a, out numero))
@@ -97,7 +99,7 @@ namespace SoftwareGestion_Myla
         private void btnAgregaCat_Click(object sender, EventArgs e)
         {
             dgvNoCat.Focus();
-            if(dgvNoCat.CurrentRow != null)
+            if (dgvNoCat.CurrentRow != null)
             {
                 Categorias aux = (Categorias)dgvNoCat.CurrentRow.DataBoundItem;
                 categoriaNegocio.insertarCategoria(esp.IdEspecialista, aux.idCat);

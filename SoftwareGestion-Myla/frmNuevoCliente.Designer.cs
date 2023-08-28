@@ -42,6 +42,13 @@
             btnAgregar = new Button();
             btnLimpiar = new Button();
             btnAtras = new Button();
+            pnlEsp = new Panel();
+            lblPorcentaje = new Label();
+            lblSueldo = new Label();
+            lblFinanzas = new Label();
+            txtSueldo = new TextBox();
+            txtPorcentaje = new TextBox();
+            pnlEsp.SuspendLayout();
             SuspendLayout();
             // 
             // lblTitulo
@@ -171,13 +178,70 @@
             btnAtras.UseVisualStyleBackColor = true;
             btnAtras.Click += btnAtras_Click;
             // 
+            // pnlEsp
+            // 
+            pnlEsp.Controls.Add(lblPorcentaje);
+            pnlEsp.Controls.Add(lblSueldo);
+            pnlEsp.Controls.Add(lblFinanzas);
+            pnlEsp.Controls.Add(txtSueldo);
+            pnlEsp.Controls.Add(txtPorcentaje);
+            pnlEsp.Location = new Point(797, 86);
+            pnlEsp.Name = "pnlEsp";
+            pnlEsp.Size = new Size(317, 456);
+            pnlEsp.TabIndex = 37;
+            // 
+            // lblPorcentaje
+            // 
+            lblPorcentaje.AutoSize = true;
+            lblPorcentaje.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPorcentaje.Location = new Point(18, 246);
+            lblPorcentaje.Name = "lblPorcentaje";
+            lblPorcentaje.Size = new Size(95, 18);
+            lblPorcentaje.TabIndex = 41;
+            lblPorcentaje.Text = "Porcentaje:";
+            // 
+            // lblSueldo
+            // 
+            lblSueldo.AutoSize = true;
+            lblSueldo.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSueldo.Location = new Point(18, 161);
+            lblSueldo.Name = "lblSueldo";
+            lblSueldo.Size = new Size(103, 18);
+            lblSueldo.TabIndex = 40;
+            lblSueldo.Text = "Sueldo FIJO:";
+            // 
+            // lblFinanzas
+            // 
+            lblFinanzas.AutoSize = true;
+            lblFinanzas.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lblFinanzas.Location = new Point(18, 111);
+            lblFinanzas.Name = "lblFinanzas";
+            lblFinanzas.Size = new Size(123, 28);
+            lblFinanzas.TabIndex = 39;
+            lblFinanzas.Text = "Finanzas:";
+            // 
+            // txtSueldo
+            // 
+            txtSueldo.Location = new Point(18, 199);
+            txtSueldo.Name = "txtSueldo";
+            txtSueldo.Size = new Size(230, 27);
+            txtSueldo.TabIndex = 38;
+            // 
+            // txtPorcentaje
+            // 
+            txtPorcentaje.Location = new Point(18, 284);
+            txtPorcentaje.Name = "txtPorcentaje";
+            txtPorcentaje.Size = new Size(230, 27);
+            txtPorcentaje.TabIndex = 37;
+            // 
             // frmNuevoCliente
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(950, 600);
+            ClientSize = new Size(1200, 600);
+            Controls.Add(pnlEsp);
             Controls.Add(btnAtras);
             Controls.Add(btnLimpiar);
             Controls.Add(btnAgregar);
@@ -197,6 +261,8 @@
             StartPosition = FormStartPosition.CenterParent;
             Text = "frmVenta";
             Load += frmNuevoCliente_Load;
+            pnlEsp.ResumeLayout(false);
+            pnlEsp.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -222,5 +288,10 @@
         private Label lblSubCat;
         private ComboBox cboSubCat;
         private ComboBox cboCat;
+        private Label lblPorcentaje;
+        private Label lblSueldo;
+        private Label lblFinanzas;
+        private TextBox txtSueldo;
+        private TextBox txtPorcentaje;
     }
 }

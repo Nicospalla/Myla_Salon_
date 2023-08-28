@@ -31,12 +31,12 @@ namespace SoftwareGestion_Myla
             if (cliente)
             {
                 lblTitulo.Text = "Nuevo Cliente:";
-                
+                pnlEsp.Visible = false;
             }
             else if (!cliente)
             {
                 lblTitulo.Text = "Nuevo Especialista:";
-
+                pnlEsp.Visible = true;
             }
         }
 
