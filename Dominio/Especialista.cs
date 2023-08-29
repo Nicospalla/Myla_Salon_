@@ -15,6 +15,10 @@ namespace Dominio
         public string Telefono { get; set; }
         public DateTime Cumple { get; set; }
 
+        public int Sueldo { get; set; }
+        public int Porcentaje { get; set; }
+
+
         public override string ToString()
         {
             return Nombre;

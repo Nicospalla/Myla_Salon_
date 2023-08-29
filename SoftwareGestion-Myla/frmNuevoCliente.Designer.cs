@@ -43,11 +43,13 @@
             btnLimpiar = new Button();
             btnAtras = new Button();
             pnlEsp = new Panel();
-            lblPorcentaje = new Label();
-            lblSueldo = new Label();
-            lblFinanzas = new Label();
-            txtSueldo = new TextBox();
             txtPorcentaje = new TextBox();
+            txtSueldo = new TextBox();
+            lblFinanzas = new Label();
+            lblSueldo = new Label();
+            lblPorcentaje = new Label();
+            label9 = new Label();
+            label8 = new Label();
             pnlEsp.SuspendLayout();
             SuspendLayout();
             // 
@@ -180,6 +182,8 @@
             // 
             // pnlEsp
             // 
+            pnlEsp.Controls.Add(label8);
+            pnlEsp.Controls.Add(label9);
             pnlEsp.Controls.Add(lblPorcentaje);
             pnlEsp.Controls.Add(lblSueldo);
             pnlEsp.Controls.Add(lblFinanzas);
@@ -190,25 +194,19 @@
             pnlEsp.Size = new Size(317, 456);
             pnlEsp.TabIndex = 37;
             // 
-            // lblPorcentaje
+            // txtPorcentaje
             // 
-            lblPorcentaje.AutoSize = true;
-            lblPorcentaje.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPorcentaje.Location = new Point(18, 246);
-            lblPorcentaje.Name = "lblPorcentaje";
-            lblPorcentaje.Size = new Size(95, 18);
-            lblPorcentaje.TabIndex = 41;
-            lblPorcentaje.Text = "Porcentaje:";
+            txtPorcentaje.Location = new Point(18, 284);
+            txtPorcentaje.Name = "txtPorcentaje";
+            txtPorcentaje.Size = new Size(230, 27);
+            txtPorcentaje.TabIndex = 37;
             // 
-            // lblSueldo
+            // txtSueldo
             // 
-            lblSueldo.AutoSize = true;
-            lblSueldo.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblSueldo.Location = new Point(18, 161);
-            lblSueldo.Name = "lblSueldo";
-            lblSueldo.Size = new Size(103, 18);
-            lblSueldo.TabIndex = 40;
-            lblSueldo.Text = "Sueldo FIJO:";
+            txtSueldo.Location = new Point(18, 199);
+            txtSueldo.Name = "txtSueldo";
+            txtSueldo.Size = new Size(230, 27);
+            txtSueldo.TabIndex = 38;
             // 
             // lblFinanzas
             // 
@@ -220,19 +218,45 @@
             lblFinanzas.TabIndex = 39;
             lblFinanzas.Text = "Finanzas:";
             // 
-            // txtSueldo
+            // lblSueldo
             // 
-            txtSueldo.Location = new Point(18, 199);
-            txtSueldo.Name = "txtSueldo";
-            txtSueldo.Size = new Size(230, 27);
-            txtSueldo.TabIndex = 38;
+            lblSueldo.AutoSize = true;
+            lblSueldo.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSueldo.Location = new Point(18, 161);
+            lblSueldo.Name = "lblSueldo";
+            lblSueldo.Size = new Size(103, 18);
+            lblSueldo.TabIndex = 40;
+            lblSueldo.Text = "Sueldo FIJO:";
             // 
-            // txtPorcentaje
+            // lblPorcentaje
             // 
-            txtPorcentaje.Location = new Point(18, 284);
-            txtPorcentaje.Name = "txtPorcentaje";
-            txtPorcentaje.Size = new Size(230, 27);
-            txtPorcentaje.TabIndex = 37;
+            lblPorcentaje.AutoSize = true;
+            lblPorcentaje.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPorcentaje.Location = new Point(18, 246);
+            lblPorcentaje.Name = "lblPorcentaje";
+            lblPorcentaje.Size = new Size(95, 18);
+            lblPorcentaje.TabIndex = 41;
+            lblPorcentaje.Text = "Porcentaje:";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = SystemColors.Window;
+            label9.Location = new Point(214, 204);
+            label9.Name = "label9";
+            label9.Size = new Size(17, 20);
+            label9.TabIndex = 42;
+            label9.Text = "$";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = SystemColors.Window;
+            label8.Location = new Point(214, 287);
+            label8.Name = "label8";
+            label8.Size = new Size(21, 20);
+            label8.TabIndex = 43;
+            label8.Text = "%";
             // 
             // frmNuevoCliente
             // 
@@ -293,5 +317,7 @@
         private Label lblFinanzas;
         private TextBox txtSueldo;
         private TextBox txtPorcentaje;
+        private Label label9;
+        private Label label8;
     }
 }

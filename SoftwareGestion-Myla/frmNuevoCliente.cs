@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,7 +74,6 @@ namespace SoftwareGestion_Myla
             else if (!cliente)
             {
                 EspecialistaNegocio especialistaNegocio = new EspecialistaNegocio();
-                Especialistas_Categorias auxCatSub = new Especialistas_Categorias();
                 Especialista aux = new Especialista();
                 try
                 {
@@ -82,6 +82,8 @@ namespace SoftwareGestion_Myla
                     aux.Email = txtEmail.Text;
                     aux.Telefono = txtTel.Text;
                     aux.Cumple = datePickerCumple.Value.Date;
+                    aux.Sueldo =int.Parse( txtSueldo.Text);
+                    aux.Porcentaje =int.Parse( txtPorcentaje.Text);
                     int id = especialistaNegocio.nuevoEsp(aux);
                     aux.IdEspecialista = id;
                 }

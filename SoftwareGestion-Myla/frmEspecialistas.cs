@@ -19,6 +19,7 @@ namespace SoftwareGestion_Myla
         CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
         SubCategoriaNegocio subCategoriaNegocio = new SubCategoriaNegocio();
         frmPrincipal frmPrincipal;
+        public List<int> listaCat { get; set; }
         public int indexPrev { get; set; }
         public frmEspecialistas(frmPrincipal frmPrincipal, Especialista? esp = null)
         {
@@ -58,7 +59,15 @@ namespace SoftwareGestion_Myla
         private void cargaDGVS(int idEsp)
         {
 
-            dgvCat.DataSource = categoriaNegocio.listarCat(esp.IdEspecialista, true);
+            //dgvCat.DataSource = categoriaNegocio.listarCat(esp.IdEspecialista, true);
+            List<Categorias> listaDgvCat = categoriaNegocio.listarCat(esp.IdEspecialista, true);
+            dgvCat.DataSource = listaDgvCat;
+            listaCat = new List<int>();
+            for (int i = 0; i < listaDgvCat.Count; i++)
+            {
+                int idCat = ((Categorias)listaDgvCat[i]).idCat;
+                listaCat.Add(idCat);
+            }
             dgvCat.Columns["IdCat"].Visible = false;
             dgvNoCat.DataSource = categoriaNegocio.listarCat(esp.IdEspecialista, false);
             dgvNoCat.Columns["IdCat"].Visible = false;
@@ -83,7 +92,9 @@ namespace SoftwareGestion_Myla
                 txtId.Text = esp.IdEspecialista.ToString();
                 txtEmail.Text = esp.Email;
                 txtApellido.Text = esp.Apellido;
-
+                txtSueldo.Text = esp.Sueldo.ToString();
+                txtPorcentaje.Text = esp.Porcentaje.ToString(); 
+                dateCumple.Value = esp.Cumple;
                 //Categorias cat = (Categorias)cboCategoria.SelectedValue;
                 //int id = cat.idCat;
                 //cboEspecialista.DataSource = Especialistas_Categorias_Negocio.listarEspCat(id);
@@ -118,5 +129,31 @@ namespace SoftwareGestion_Myla
                 frmPrincipal.editarEsp(esp);
             }
         }
+
+        private void btnModifEsp_Click(object sender, EventArgs e)
+        {
+            EspecialistaNegocio especialistaNegocio = new EspecialistaNegocio();
+            try
+            {
+                Especialista aux = new Especialista();
+                aux.Nombre = cboEsp.Text;
+                aux.Apellido = txtApellido.Text;
+                aux.IdEspecialista = int.Parse(txtId.Text);
+                aux.Email = txtEmail.Text;
+                aux.Telefono = txtTelefono.Text;
+                aux.Cumple = dateCumple.Value; 
+                if (txtSueldo.Text != "" && int.TryParse(txtSueldo.Text, out int val))
+                    aux.Sueldo = int.Parse(txtSueldo.Text);
+                if(txtPorcentaje.Text != "" && int.TryParse(txtPorcentaje.Text, out int valo))
+                    aux.Porcentaje = int.Parse(txtPorcentaje.Text);
+                especialistaNegocio.editarEspecialista(aux);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
     }
 }
