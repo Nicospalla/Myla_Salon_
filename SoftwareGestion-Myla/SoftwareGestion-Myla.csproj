@@ -10,12 +10,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Img\**" />
+    <Compile Remove="NewFolder1\**" />
+    <EmbeddedResource Remove="Img\**" />
+    <EmbeddedResource Remove="NewFolder1\**" />
+    <None Remove="Img\**" />
+    <None Remove="NewFolder1\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="o3yd0coa.rld~" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Accesorios\Accesorios.csproj" />
     <ProjectReference Include="..\Dominio\Dominio.csproj" />
     <ProjectReference Include="..\Negocio\Negocio.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Imgs\MYLA.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -61,7 +61,7 @@ namespace SoftwareGestion_Myla
             if (dgvGrillaClientes.CurrentRow.DataBoundItem != null)
             {
                 Clientes cliente = (Clientes)dgvGrillaClientes.CurrentRow.DataBoundItem;
-                frmPrincipal.muestraHistorial(cliente.Id);
+                frmPrincipal.muestraHistorial(cliente);
             }
         }
 

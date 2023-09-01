@@ -206,6 +206,9 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
+              "D:\\Proyectos Csharp\\Myla Salon\\Accesorios\\Accesorios.csproj": {
+                "projectPath": "D:\\Proyectos Csharp\\Myla Salon\\Accesorios\\Accesorios.csproj"
+              },
               "D:\\Proyectos Csharp\\Myla Salon\\Dominio\\Dominio.csproj": {
                 "projectPath": "D:\\Proyectos Csharp\\Myla Salon\\Dominio\\Dominio.csproj"
               },

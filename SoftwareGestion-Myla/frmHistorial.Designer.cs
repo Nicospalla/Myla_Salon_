@@ -30,6 +30,7 @@
         {
             dgvHistorial = new DataGridView();
             btnAtras = new Button();
+            btnEditaVta = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvHistorial).BeginInit();
             SuspendLayout();
             // 
@@ -60,12 +61,24 @@
             btnAtras.UseVisualStyleBackColor = true;
             btnAtras.Click += btnAtras_Click;
             // 
+            // btnEditaVta
+            // 
+            btnEditaVta.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnEditaVta.Location = new Point(230, 444);
+            btnEditaVta.Name = "btnEditaVta";
+            btnEditaVta.Size = new Size(144, 42);
+            btnEditaVta.TabIndex = 7;
+            btnEditaVta.Text = "Editar Venta";
+            btnEditaVta.UseVisualStyleBackColor = true;
+            btnEditaVta.Click += btnEditaVta_Click;
+            // 
             // frmHistorial
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(848, 521);
+            Controls.Add(btnEditaVta);
             Controls.Add(btnAtras);
             Controls.Add(dgvHistorial);
             FormBorderStyle = FormBorderStyle.None;
@@ -81,5 +94,6 @@
 
         private DataGridView dgvHistorial;
         private Button btnAtras;
+        private Button btnEditaVta;
     }
 }

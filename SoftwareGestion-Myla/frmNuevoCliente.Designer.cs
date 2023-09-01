@@ -43,6 +43,8 @@
             btnLimpiar = new Button();
             btnAtras = new Button();
             pnlEsp = new Panel();
+            lblErrorPorcen = new Label();
+            lblErrorSueldo = new Label();
             label8 = new Label();
             label9 = new Label();
             lblPorcentaje = new Label();
@@ -50,6 +52,10 @@
             lblFinanzas = new Label();
             txtSueldo = new TextBox();
             txtPorcentaje = new TextBox();
+            lblErrorTel = new Label();
+            lblErrorMail = new Label();
+            lblErrorNombre = new Label();
+            lblErrorApellid = new Label();
             pnlEsp.SuspendLayout();
             SuspendLayout();
             // 
@@ -101,7 +107,7 @@
             // 
             lblEmail.AutoSize = true;
             lblEmail.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblEmail.Location = new Point(178, 394);
+            lblEmail.Location = new Point(178, 406);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(54, 18);
             lblEmail.TabIndex = 6;
@@ -182,6 +188,8 @@
             // 
             // pnlEsp
             // 
+            pnlEsp.Controls.Add(lblErrorPorcen);
+            pnlEsp.Controls.Add(lblErrorSueldo);
             pnlEsp.Controls.Add(label8);
             pnlEsp.Controls.Add(label9);
             pnlEsp.Controls.Add(lblPorcentaje);
@@ -191,8 +199,28 @@
             pnlEsp.Controls.Add(txtPorcentaje);
             pnlEsp.Location = new Point(839, 132);
             pnlEsp.Name = "pnlEsp";
-            pnlEsp.Size = new Size(230, 280);
+            pnlEsp.Size = new Size(473, 280);
             pnlEsp.TabIndex = 37;
+            // 
+            // lblErrorPorcen
+            // 
+            lblErrorPorcen.AutoSize = true;
+            lblErrorPorcen.Font = new Font("Verdana", 7.8F, FontStyle.Italic, GraphicsUnit.Point);
+            lblErrorPorcen.ForeColor = Color.Red;
+            lblErrorPorcen.Location = new Point(20, 241);
+            lblErrorPorcen.Name = "lblErrorPorcen";
+            lblErrorPorcen.Size = new Size(0, 16);
+            lblErrorPorcen.TabIndex = 45;
+            // 
+            // lblErrorSueldo
+            // 
+            lblErrorSueldo.AutoSize = true;
+            lblErrorSueldo.Font = new Font("Verdana", 7.8F, FontStyle.Italic, GraphicsUnit.Point);
+            lblErrorSueldo.ForeColor = Color.Red;
+            lblErrorSueldo.Location = new Point(20, 153);
+            lblErrorSueldo.Name = "lblErrorSueldo";
+            lblErrorSueldo.Size = new Size(0, 16);
+            lblErrorSueldo.TabIndex = 44;
             // 
             // label8
             // 
@@ -258,13 +286,56 @@
             txtPorcentaje.Size = new Size(170, 27);
             txtPorcentaje.TabIndex = 37;
             // 
+            // lblErrorTel
+            // 
+            lblErrorTel.AutoSize = true;
+            lblErrorTel.Font = new Font("Verdana", 7.8F, FontStyle.Italic, GraphicsUnit.Point);
+            lblErrorTel.ForeColor = Color.Red;
+            lblErrorTel.Location = new Point(512, 285);
+            lblErrorTel.Name = "lblErrorTel";
+            lblErrorTel.Size = new Size(0, 16);
+            lblErrorTel.TabIndex = 46;
+            // 
+            // lblErrorMail
+            // 
+            lblErrorMail.AutoSize = true;
+            lblErrorMail.Font = new Font("Verdana", 7.8F, FontStyle.Italic, GraphicsUnit.Point);
+            lblErrorMail.ForeColor = Color.Red;
+            lblErrorMail.Location = new Point(174, 468);
+            lblErrorMail.Name = "lblErrorMail";
+            lblErrorMail.Size = new Size(0, 16);
+            lblErrorMail.TabIndex = 47;
+            // 
+            // lblErrorNombre
+            // 
+            lblErrorNombre.AutoSize = true;
+            lblErrorNombre.Font = new Font("Verdana", 7.8F, FontStyle.Italic, GraphicsUnit.Point);
+            lblErrorNombre.ForeColor = Color.Red;
+            lblErrorNombre.Location = new Point(178, 285);
+            lblErrorNombre.Name = "lblErrorNombre";
+            lblErrorNombre.Size = new Size(0, 16);
+            lblErrorNombre.TabIndex = 48;
+            // 
+            // lblErrorApellid
+            // 
+            lblErrorApellid.AutoSize = true;
+            lblErrorApellid.Font = new Font("Verdana", 7.8F, FontStyle.Italic, GraphicsUnit.Point);
+            lblErrorApellid.ForeColor = Color.Red;
+            lblErrorApellid.Location = new Point(174, 375);
+            lblErrorApellid.Name = "lblErrorApellid";
+            lblErrorApellid.Size = new Size(0, 16);
+            lblErrorApellid.TabIndex = 49;
+            // 
             // frmNuevoCliente
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(1277, 718);
+            ClientSize = new Size(1324, 900);
+            Controls.Add(lblErrorApellid);
+            Controls.Add(lblErrorNombre);
+            Controls.Add(lblErrorMail);
+            Controls.Add(lblErrorTel);
             Controls.Add(pnlEsp);
             Controls.Add(btnAtras);
             Controls.Add(btnLimpiar);
@@ -319,5 +390,11 @@
         private TextBox txtPorcentaje;
         private Label label9;
         private Label label8;
+        private Label lblErrorPorcen;
+        private Label lblErrorSueldo;
+        private Label lblErrorTel;
+        private Label lblErrorMail;
+        private Label lblErrorNombre;
+        private Label lblErrorApellid;
     }
 }

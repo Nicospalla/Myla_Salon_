@@ -25,7 +25,10 @@ namespace SoftwareGestion_Myla
         {
             TextInfo textInfo = new CultureInfo("en-US").TextInfo;
             lblUser.Text = textInfo.ToTitleCase(user.Usuario);
-            picBox.Load(".\\Img\\MYLA.jpeg");
+            string ruta = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imgs", "MYLA.jpeg");
+            //picBox.ImageLocation = "D:\\Proyectos Csharp\\Myla Salon\\SoftwareGestion-Myla\\Imgs\\MYLA.jpeg";
+            picBox.Load(ruta);
+
 
             if (user.Admin == true)
             {
@@ -88,10 +91,10 @@ namespace SoftwareGestion_Myla
             }
         }
 
-        public void muestraHistorial(int id)
+        public void muestraHistorial(Clientes cliente)
         {
             limpiaPanel();
-            frmHistorial frmHistorial = new frmHistorial(id, this);
+            frmHistorial frmHistorial = new frmHistorial(cliente, this);
             frmHistorial.TopLevel = false;
             panelPpal.Controls.Add(frmHistorial);
             frmHistorial.Dock = DockStyle.Fill;
@@ -109,10 +112,10 @@ namespace SoftwareGestion_Myla
             frmNuevoCliente.Location = new Point((panelPpal.Width - frmNuevoCliente.Width) / 2, (panelPpal.Height - frmNuevoCliente.Height) / 2);
             frmNuevoCliente.Show();
         }
-        public void nuevaVenta(Clientes cliente)
+        public void nuevaVenta(Clientes cliente, HistoVentas? ventas = null)
         {
             limpiaPanel();
-            frmNuevaVenta frmNuevaVenta = new frmNuevaVenta(cliente, this);
+            frmNuevaVenta frmNuevaVenta = new frmNuevaVenta(cliente, this,ventas);
             frmNuevaVenta.TopLevel = false;
             panelPpal.Controls.Add(frmNuevaVenta);
             frmNuevaVenta.Dock = DockStyle.Fill;

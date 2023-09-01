@@ -17,18 +17,18 @@ namespace SoftwareGestion_Myla
         List<HistoVentas> listaVentas;
         HistoVentasNegocio histoVentasNegocio = new HistoVentasNegocio();
         private frmPrincipal frm;
-        public int IdCliente { get; set; }
-        public frmHistorial(int id, frmPrincipal frm)
+        public Clientes cliente { get; set; }
+        public frmHistorial(Clientes clientes, frmPrincipal frm)
         {
             InitializeComponent();
-            this.IdCliente = id;
+            this.cliente = clientes;
             this.frm = frm;
 
         }
 
         private void frmHistorial_Load(object sender, EventArgs e)
         {
-            listaVentas = histoVentasNegocio.buscaHistorial(IdCliente);
+            listaVentas = histoVentasNegocio.buscaHistorial(cliente.Id);
             dgvHistorial.DataSource = listaVentas;
         }
 
@@ -37,6 +37,10 @@ namespace SoftwareGestion_Myla
             frm.verGrilla();
         }
 
-
+        private void btnEditaVta_Click(object sender, EventArgs e)
+        {
+            HistoVentas venta = (HistoVentas)dgvHistorial.CurrentRow.DataBoundItem;
+            frm.nuevaVenta(cliente, venta);
+        }
     }
 }

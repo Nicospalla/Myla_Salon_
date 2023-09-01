@@ -40,6 +40,7 @@ namespace Negocio
                     if(datos.Lector["IdSub"] != DBNull.Value)
                     {
                         aux.IdSub = new SubCategoria();
+                        
                         aux.IdSub.idCategoria = (int)datos.Lector["IdSub"];
                         aux.IdSub.Descripcion = (string)datos.Lector["Subcategoria"];
                     }

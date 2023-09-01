@@ -22,35 +22,85 @@ namespace SoftwareGestion_Myla
         EspecialistaNegocio EspecialistaNegocio = new EspecialistaNegocio();
         Especialistas_Categorias_Negocio Especialistas_Categorias_Negocio = new Especialistas_Categorias_Negocio();
         HistoVentasNegocio ventasNegocio = new HistoVentasNegocio();
-        public frmNuevaVenta(Clientes cliente, frmPrincipal frmPrincipal)
+        HistoVentas? venta = new HistoVentas();
+        List<Especialista> listaEsp = new List<Especialista>();
+        public int indexCboCat { get; set; }
+        public frmNuevaVenta(Clientes cliente, frmPrincipal frmPrincipal, HistoVentas? venta = null)
         {
             InitializeComponent();
             this.FrmPrincipal = frmPrincipal;
             this.cliente = cliente;
+            if (venta != null)
+            {
+                this.venta = venta;
+            }
+            indexCboCat = -1;
         }
 
         private void frmNuevaVenta_Load(object sender, EventArgs e)
         {
             txtCliente.ReadOnly = true;
             txtCliente.Text = cliente.Nombre;
-            cboEspecialista.DataSource = EspecialistaNegocio.listaEspecialista();
-            cboEspecialista.DisplayMember = "Descripcion";
+            listaEsp = EspecialistaNegocio.listaEspecialista();
+            cboEspecialista.DataSource = listaEsp;
+            //cboEspecialista.DisplayMember = "Descripcion";
+            //cboEspecialista.ValueMember = "IdEspecialista";
             cboEspecialista.SelectedIndex = -1;
+            if (venta != null)
+            {
+                
+                cboCategoria.SelectedValue = venta.IdCat;
+                txtPrecio.Text = venta.Precio.ToString();
+                txtServAdc.Text = venta.ServicioAdicional.ToString();
+                txtCodigoTinte.Text = venta.CodigoTinte;
+
+                int index = -1;
+                for(int i = 0; i < listaEsp.Count; i++)
+                {
+                    if (listaEsp[i].Nombre == venta.Especialista.Nombre)
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+                cboEspecialista.SelectedIndex = index;
+
+
+
+
+                //int idEsp = aux.IdEspecialista;
+                //cboEspecialista.SelectedValue = idEsp;
+            }
 
         }
 
         private void cboCategoria_SelectedValueChanged(object sender, EventArgs e)
         {
-            //Aca carga la seccion de sub categorias, que depende del ESPECIALISTA (A su vez, tiene la
-            //  - dependencia con las CAT)
+            //    //Aca carga la seccion de sub categorias, que depende del ESPECIALISTA (A su vez, tiene la
+            //    //  - dependencia con las CAT)
             if (cboCategoria.SelectedIndex != -1)
             {
                 Categorias auxCat = (Categorias)cboCategoria.SelectedValue;
                 Especialista aux = (Especialista)cboEspecialista.SelectedValue;
-                cboSubCat.DataSource = SubCategoriaNegocio.listarSubCat(aux.IdEspecialista, auxCat.idCat, true);
+                List<SubCategoria> subCategorias = SubCategoriaNegocio.listarSubCat(aux.IdEspecialista, auxCat.idCat, true);
+                cboSubCat.DataSource = subCategorias;
                 cboSubCat.DisplayMember = "Descripcion";
                 //cboSubCat.ValueMember = "IdSub";
                 cboSubCat.SelectedIndex = -1;
+                int indexSub = -1;
+                if (venta != null && cboCategoria.SelectedIndex == indexCboCat )
+                {
+                    for (int i = 0; i < subCategorias.Count; i++)
+                    {
+                        if (subCategorias[i].IdSub == venta.IdSub.idCategoria)
+                        {
+                            indexSub = i;
+                            break;
+                        }
+                    }
+                    //cboSubCat.SelectedIndex = indexSub;
+                }
+                cboSubCat.SelectedIndex = indexSub;
             }
             else
             {
@@ -108,7 +158,7 @@ namespace SoftwareGestion_Myla
 
                     venta.ServicioAdicional = txtServAdc.Text;
                     ventasNegocio.nuevaVenta(venta);
-                    FrmPrincipal.muestraHistorial(cliente.Id);
+                    FrmPrincipal.muestraHistorial(cliente);
                 }
                 else
                     return;
@@ -122,9 +172,29 @@ namespace SoftwareGestion_Myla
             if (cboEspecialista.SelectedIndex != -1)
             {
                 Especialista aux = (Especialista)cboEspecialista.SelectedValue;
-                cboCategoria.DataSource = categoriaNegocio.listarCat(aux.IdEspecialista, true);
+                List<Categorias> listaCat = categoriaNegocio.listarCat(aux.IdEspecialista, true);
+                cboCategoria.DataSource = listaCat;
                 cboCategoria.DisplayMember = "Descripcion";
-                cboCategoria.SelectedIndex = -1;
+
+                if(venta != null)
+                {
+                    indexCboCat = -1;
+                    for (int i = 0; i < listaCat.Count; i++)
+                    {
+                        if (listaCat[i].idCat == venta.IdCat.idCat)
+                        {
+                            indexCboCat = i;
+                            break;
+                        }
+                    }
+
+                    cboCategoria.SelectedIndex = indexCboCat;
+                }
+                else
+                {
+                    cboCategoria.SelectedIndex = -1;
+
+                }
 
             }
             else

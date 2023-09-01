@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +21,7 @@ namespace SoftwareGestion_Myla
         private bool cliente;
         CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
         SubCategoriaNegocio subCategoriaNegocio = new SubCategoriaNegocio();
+        Helpers help = new Helpers();
         public frmNuevoCliente(frmPrincipal frmPrincipal, bool cliente)
         {
             InitializeComponent();
@@ -47,14 +49,37 @@ namespace SoftwareGestion_Myla
             {
                 ClientesNegocio clientesNegocio = new ClientesNegocio();
                 Clientes aux = new Clientes();
+                bool banderaC = true;
                 try
                 {
-                    aux.Nombre = txtNombre.Text;
-                    aux.Apellido = txtApellido.Text;
-                    aux.Email = txtEmail.Text;
+                    if (!string.IsNullOrEmpty(txtNombre.Text))
+                        aux.Nombre = txtNombre.Text;
+                    else
+                    {
+                        lblErrorNombre.Text = "El Nombre es obligatorio";
+                        banderaC = false;
+                    }
+                    if(!string.IsNullOrEmpty(txtApellido.Text))
+                        aux.Apellido = txtApellido.Text;
+                    else
+                    {
+                        lblErrorApellid.Text = "El apellido es obligatorio";
+                        banderaC = false;
+                    }
+                    if (help.validEmail(txtEmail.Text))
+                    {
+                        aux.Email = txtEmail.Text;
+                        lblErrorMail.Text = string.Empty;
+                    }
+                    else
+                    {
+                        lblErrorMail.Text = "Ingrese un email correcto";
+                        banderaC = false;
+                    }
+
                     aux.Telefono = txtTel.Text;
                     aux.Cumple = datePickerCumple.Value.Date;
-                    if (cliente)
+                    if (banderaC)
                     {
                         aux.UltContacto = DateTime.Today;
                         clientesNegocio.crearCliente(aux);
@@ -75,17 +100,74 @@ namespace SoftwareGestion_Myla
             {
                 EspecialistaNegocio especialistaNegocio = new EspecialistaNegocio();
                 Especialista aux = new Especialista();
+                bool bandera = true;
                 try
                 {
-                    aux.Nombre = txtNombre.Text;
-                    aux.Apellido = txtApellido.Text;
-                    aux.Email = txtEmail.Text;
-                    aux.Telefono = txtTel.Text;
+                    if (!string.IsNullOrEmpty(txtNombre.Text))
+                        aux.Nombre = txtNombre.Text;
+                    else
+                    {
+                        lblErrorNombre.Text = "El Nombre es obligatorio";
+                        bandera = false;
+                    }
+                    if (!string.IsNullOrEmpty(txtApellido.Text))
+                        aux.Apellido = txtApellido.Text;
+                    else
+                    {
+                        lblErrorApellid.Text = "El apellido es obligatorio";
+                        bandera = false;
+                    }
                     aux.Cumple = datePickerCumple.Value.Date;
-                    aux.Sueldo = int.Parse(txtSueldo.Text);
-                    aux.Porcentaje = int.Parse(txtPorcentaje.Text);
-                    int id = especialistaNegocio.nuevoEsp(aux);
-                    aux.IdEspecialista = id;
+                    if (help.validEmail(txtEmail.Text))
+                    {
+                        aux.Email = txtEmail.Text;
+                        lblErrorMail.Text = string.Empty;
+                    }
+                    else
+                    {
+                        lblErrorMail.Text = "Ingrese un email correcto";
+                        bandera = false;
+                    }
+
+                    if (string.IsNullOrEmpty(txtTel.Text) && help.soloNum(txtTel.Text) && !(txtTel.Text.Contains(",") || txtTel.Text.Contains(".")))
+                    {
+                        aux.Telefono = txtTel.Text;
+                        lblErrorTel.Text = string.Empty;
+                    }
+                    else
+                    {
+                        lblErrorTel.Text = "Debe ingresar un numero válido como teléfono";
+                        bandera = false;
+                    }
+
+                    if (help.soloNum(txtSueldo.Text))
+                    {
+                        aux.Sueldo = txtSueldo.Text != "" ? Decimal.Parse(txtSueldo.Text) : 0;
+                        lblErrorSueldo.Text = string.Empty;
+                    }
+                    else
+                    {
+                        lblErrorSueldo.Text = "Solo puede ingresar números enteros y un separador decimal.";
+                        bandera = false;
+                    }
+
+                    if (help.soloNum(txtPorcentaje.Text))
+                    {
+                        aux.Porcentaje = txtPorcentaje.Text != "" ? double.Parse(txtPorcentaje.Text) : 0;
+                        lblErrorPorcen.Text = string.Empty;
+                    }
+                    else
+                    {
+                        lblErrorPorcen.Text = "Solo puede ingresar números enteros y un separador decimal.";
+                        bandera = false;
+                    }
+
+
+                    if (bandera)
+                    {
+                        int id = especialistaNegocio.nuevoEsp(aux);
+                        aux.IdEspecialista = id;
+                    }
                 }
                 catch (Exception ex)
                 {

@@ -12,19 +12,24 @@ namespace Negocio
     {
         AccesoDatos datos = new AccesoDatos();
 
-        public List<Especialista> listaEspecialista(int id = 0)
+        public List<Especialista> listaEspecialista(int id = 0, string nombre = "")
         {
             List<Especialista> lista = new List<Especialista>();
             try
             {
-                if(id == 0)
+                if(id == 0 && nombre =="")
                 {
                     datos.setearConsulta("select Id, Nombre,Apellido,Email,Telefono,Sueldo, Porcentaje, Cumple from ESPECIALISTAS where Estado = 1");
                 }
-                else
+                else if(id != 0 && nombre == "") 
                 {
                     datos.setearConsulta("select Id, Nombre,Apellido,Email,Telefono,Sueldo, Porcentaje, Cumple from ESPECIALISTAS where Id = @IdEsp and Estado = 1");
                     datos.setearParametros("@IdEsp", id);
+                }
+                else if(nombre != "")
+                {
+                    datos.setearConsulta("select Id, Nombre,Apellido,Email,Telefono,Sueldo, Porcentaje, Cumple from ESPECIALISTAS where Nombre = @IdNombre and Estado = 1");
+                    datos.setearParametros("@IdNombre", nombre);
                 }
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
@@ -41,8 +46,8 @@ namespace Negocio
                     {
                         aux.Cumple = DateTime.Today;
                     }
-                    aux.Sueldo = datos.Lector["Sueldo"] != DBNull.Value ? (int)datos.Lector["Sueldo"] :  0;
-                    aux.Porcentaje = datos.Lector["Porcentaje"] != DBNull.Value ? (int)datos.Lector["Porcentaje"] : 0;
+                    aux.Sueldo = datos.Lector["Sueldo"] != DBNull.Value ? Math.Truncate((Decimal)datos.Lector["Sueldo"]*100)/100 :  0;
+                    aux.Porcentaje = datos.Lector["Porcentaje"] != DBNull.Value ? (double)datos.Lector["Porcentaje"] : 0f;
                     lista.Add(aux);
                 }
                 return lista;
