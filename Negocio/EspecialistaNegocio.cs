@@ -19,11 +19,11 @@ namespace Negocio
             {
                 if(id == 0)
                 {
-                    datos.setearConsulta("select Id, Nombre,Apellido,Email,Telefono,Sueldo, Porcentaje, Cumple from ESPECIALISTAS ");
+                    datos.setearConsulta("select Id, Nombre,Apellido,Email,Telefono,Sueldo, Porcentaje, Cumple from ESPECIALISTAS where Estado = 1");
                 }
                 else
                 {
-                    datos.setearConsulta("select Id, Nombre,Apellido,Email,Telefono,Sueldo, Porcentaje, Cumple from ESPECIALISTAS where Id = @IdEsp");
+                    datos.setearConsulta("select Id, Nombre,Apellido,Email,Telefono,Sueldo, Porcentaje, Cumple from ESPECIALISTAS where Id = @IdEsp and Estado = 1");
                     datos.setearParametros("@IdEsp", id);
                 }
                 datos.ejecutarLectura();
@@ -62,7 +62,7 @@ namespace Negocio
             int idEsp;
             try
             {
-                datos.setearConsulta("INSERT into ESPECIALISTAS (Nombre,Apellido,Email,Telefono,Cumple,Sueldo, Porcentaje)output inserted.Id values (@Nombre, @Apellido, @Email, @Telefono, @Cumple, @Sueldo, @Porcentaje)");
+                datos.setearConsulta("INSERT into ESPECIALISTAS (Nombre,Apellido,Email,Telefono,Cumple,Sueldo, Porcentaje, Estado)output inserted.Id values (@Nombre, @Apellido, @Email, @Telefono, @Cumple, @Sueldo, @Porcentaje, 1)");
                 datos.setearParametros("@Nombre", aux.Nombre);
                 datos.setearParametros("@Apellido", aux.Apellido);
                 datos.setearParametros("@Email", aux.Email);
@@ -83,6 +83,22 @@ namespace Negocio
                 datos.cerrarConn();
             }
             return idEsp;
+        }
+
+        public void eliminaEspecialista(int idEsp)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Update ESPECIALISTAS set Estado = 0 where Id = @IdEsp");
+                datos.setearParametros("@IdEsp", idEsp);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }finally { datos.cerrarConn(); }
         }
         public void editarEspecialista(Especialista aux)
         {

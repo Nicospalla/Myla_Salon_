@@ -93,7 +93,7 @@ namespace SoftwareGestion_Myla
                 txtEmail.Text = esp.Email;
                 txtApellido.Text = esp.Apellido;
                 txtSueldo.Text = esp.Sueldo.ToString();
-                txtPorcentaje.Text = esp.Porcentaje.ToString(); 
+                txtPorcentaje.Text = esp.Porcentaje.ToString();
                 dateCumple.Value = esp.Cumple;
                 //Categorias cat = (Categorias)cboCategoria.SelectedValue;
                 //int id = cat.idCat;
@@ -141,10 +141,10 @@ namespace SoftwareGestion_Myla
                 aux.IdEspecialista = int.Parse(txtId.Text);
                 aux.Email = txtEmail.Text;
                 aux.Telefono = txtTelefono.Text;
-                aux.Cumple = dateCumple.Value; 
+                aux.Cumple = dateCumple.Value;
                 if (txtSueldo.Text != "" && int.TryParse(txtSueldo.Text, out int val))
                     aux.Sueldo = int.Parse(txtSueldo.Text);
-                if(txtPorcentaje.Text != "" && int.TryParse(txtPorcentaje.Text, out int valo))
+                if (txtPorcentaje.Text != "" && int.TryParse(txtPorcentaje.Text, out int valo))
                     aux.Porcentaje = int.Parse(txtPorcentaje.Text);
                 especialistaNegocio.editarEspecialista(aux);
             }
@@ -155,5 +155,15 @@ namespace SoftwareGestion_Myla
 
         }
 
+        private void btnEliminarEsp_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Está seguro que desea eliminar permanentemente a éste Especialista??", "Eliminar especialista", MessageBoxButtons.OKCancel);
+            if(result == DialogResult.OK)
+            {
+                especialistaNegocio.eliminaEspecialista(esp.IdEspecialista);
+
+            }
+            frmPrincipal.editarEsp(null);
+        }
     }
 }

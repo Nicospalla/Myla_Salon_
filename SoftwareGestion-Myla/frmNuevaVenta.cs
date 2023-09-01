@@ -45,10 +45,11 @@ namespace SoftwareGestion_Myla
             //  - dependencia con las CAT)
             if (cboCategoria.SelectedIndex != -1)
             {
+                Categorias auxCat = (Categorias)cboCategoria.SelectedValue;
                 Especialista aux = (Especialista)cboEspecialista.SelectedValue;
-                cboSubCat.DataSource = SubCategoriaNegocio.listarSubCat(aux.IdEspecialista,true);
+                cboSubCat.DataSource = SubCategoriaNegocio.listarSubCat(aux.IdEspecialista, auxCat.idCat, true);
                 cboSubCat.DisplayMember = "Descripcion";
-                cboSubCat.ValueMember = "IdSub";
+                //cboSubCat.ValueMember = "IdSub";
                 cboSubCat.SelectedIndex = -1;
             }
             else
@@ -72,7 +73,7 @@ namespace SoftwareGestion_Myla
         {
             bool status = true;
             status = cboCategoria.SelectedIndex != -1 ? status : false;
-            lblErrorCat.Text = cboCategoria.SelectedIndex == -1 ? "Debe seleccionar una Categoria" : "";
+            lblErrorCat.Text = cboCategoria.SelectedIndex == -1 ? "Debe seleccionar una Categoría" : "";
             status = cboEspecialista.SelectedIndex != -1 ? status : false;
             lblErrorEspe.Text = cboEspecialista.SelectedIndex == -1 ? "Debe seleccionar un Especialista" : "";
             if (status == false)
@@ -94,8 +95,8 @@ namespace SoftwareGestion_Myla
 
                     venta.Especialista = new Especialista();
                     //Especialista esp = (Especialista)cboEspecialista.SelectedValue;
-                    //venta.Especialista.IdEspecialista = esp.IdEspecialista;
-                    venta.Especialista.IdEspecialista = (int)cboEspecialista.SelectedValue;
+                    venta.Especialista.IdEspecialista = ((Especialista)cboEspecialista.SelectedValue).IdEspecialista;
+                    //venta.Especialista.IdEspecialista = (int)cboEspecialista.SelectedValue;
 
                     venta.CodigoTinte = txtCodigoTinte.Text;
                     venta.Precio = txtPrecio.Text != "" ? Math.Truncate(Decimal.Parse(txtPrecio.Text) * 100) / 100 : 0;
@@ -103,11 +104,14 @@ namespace SoftwareGestion_Myla
 
                     venta.IdSub = new SubCategoria();
                     //SubCategoria sub = (SubCategoria)cboSubCat.SelectedValue;
-                    venta.IdSub.idCategoria = (int)cboSubCat.SelectedValue != -1 ? (int)cboSubCat.SelectedValue : -1;
+                    venta.IdSub.IdSub = ((SubCategoria)cboSubCat.SelectedValue).IdSub;
 
                     venta.ServicioAdicional = txtServAdc.Text;
                     ventasNegocio.nuevaVenta(venta);
+                    FrmPrincipal.muestraHistorial(cliente.Id);
                 }
+                else
+                    return;
 
             }
         }
@@ -128,6 +132,11 @@ namespace SoftwareGestion_Myla
                 cboCategoria.DataSource = null;
                 cboCategoria.SelectedIndex = -1;
             }
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            FrmPrincipal.verGrilla();
         }
     }
 }

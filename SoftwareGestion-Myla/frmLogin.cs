@@ -32,13 +32,18 @@ namespace SoftwareGestion_Myla
             try
             {
                 aux = userNegocio.getUser(txtUser.Text, txtPass.Text);
-                if(aux != null )
+                if (aux.Id != 0)
                 {
-                    
                     frmPrincipal frmPrincipal = new frmPrincipal(aux);
                     frmPrincipal.Show();
                     this.Hide();
+
                 }
+                else
+                    lblError.Text = "Datos incorrectos o usuario inexistente.";
+              
+
+
             }
             catch (Exception ex)
             {

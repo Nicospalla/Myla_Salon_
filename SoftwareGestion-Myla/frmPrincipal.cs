@@ -25,12 +25,19 @@ namespace SoftwareGestion_Myla
         {
             TextInfo textInfo = new CultureInfo("en-US").TextInfo;
             lblUser.Text = textInfo.ToTitleCase(user.Usuario);
-            //if (user.Admin == true)
-            //{
-            //    btnGrillaClientes.Enabled = true;
-            //}
-            //else
-            //    btnGrillaClientes.Enabled = false;
+            picBox.Load(".\\Img\\MYLA.jpeg");
+
+            if (user.Admin == true)
+            {
+                btnGrillaClientes.Enabled = true;
+            }
+            else
+            {
+                btnEditarEsp.Enabled = false;
+                btnNuevoEsp.Enabled = false;
+
+            }
+
             verGrilla();
         }
 
@@ -47,6 +54,7 @@ namespace SoftwareGestion_Myla
         }
         public void verGrilla()
         {
+
             limpiaPanel();
             frmGrillaClientes frmGrillaClientes = new frmGrillaClientes(this);
             frmGrillaClientes.TopLevel = false;
@@ -56,7 +64,11 @@ namespace SoftwareGestion_Myla
         }
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult resulta = MessageBox.Show("Seguro desea salir?", "Cerrar sistema", MessageBoxButtons.OKCancel);
+            if (resulta == DialogResult.OK)
+            {
+                Application.Exit();
+            }
         }
 
         private void btnCerrarSession_Click(object sender, EventArgs e)
@@ -122,7 +134,7 @@ namespace SoftwareGestion_Myla
         public void editarEsp(Especialista esp)
         {
             limpiaPanel();
-            frmEspecialistas frmEspecialistas = new frmEspecialistas(this,esp);
+            frmEspecialistas frmEspecialistas = new frmEspecialistas(this, esp);
             frmEspecialistas.TopLevel = false;
             panelPpal.Controls.Add(frmEspecialistas);
             frmEspecialistas.Dock = DockStyle.Fill;
@@ -133,6 +145,16 @@ namespace SoftwareGestion_Myla
         {
             Especialista? esp = null;
             editarEsp(esp);
+        }
+
+        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void panelIzq_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

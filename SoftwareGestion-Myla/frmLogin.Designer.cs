@@ -34,6 +34,7 @@
             txtPass = new TextBox();
             lblUser = new Label();
             lblPass = new Label();
+            lblError = new Label();
             SuspendLayout();
             // 
             // btnIngresar
@@ -89,11 +90,22 @@
             lblPass.TabIndex = 5;
             lblPass.Text = "Contraseña:";
             // 
+            // lblError
+            // 
+            lblError.AutoSize = true;
+            lblError.Font = new Font("Verdana", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            lblError.ForeColor = Color.Red;
+            lblError.Location = new Point(79, 205);
+            lblError.Name = "lblError";
+            lblError.Size = new Size(0, 18);
+            lblError.TabIndex = 6;
+            // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(508, 344);
+            Controls.Add(lblError);
             Controls.Add(lblPass);
             Controls.Add(lblUser);
             Controls.Add(txtPass);
@@ -118,5 +130,6 @@
         private TextBox txtPass;
         private Label lblUser;
         private Label lblPass;
+        private Label lblError;
     }
 }

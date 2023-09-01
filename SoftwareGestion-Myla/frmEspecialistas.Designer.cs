@@ -228,6 +228,7 @@
             btnEliminarEsp.TabIndex = 23;
             btnEliminarEsp.Text = "Eliminar Especialista";
             btnEliminarEsp.UseVisualStyleBackColor = true;
+            btnEliminarEsp.Click += btnEliminarEsp_Click;
             // 
             // dgvNoCat
             // 

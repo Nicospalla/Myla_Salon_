@@ -21,6 +21,7 @@ namespace SoftwareGestion_Myla
         List<Clientes> listaClientes = new List<Clientes>();
         private frmPrincipal frmPrincipal;
         public int indexUltimo { get; set; }
+
         public frmGrillaClientes()
         {
             InitializeComponent();
@@ -29,11 +30,13 @@ namespace SoftwareGestion_Myla
         {
             InitializeComponent();
             this.frmPrincipal = frmPrincipal;
+    
         }
         private void frmGrillaClientes_Load(object sender, EventArgs e)
         {
             listaClientes = clientesNegocio.listar();
             dgvGrillaClientes.DataSource = listaClientes;
+
             txtFiltroRapido.PlaceholderText = "Filtrar por Nombre, Apellido o Teléfono.";
             txtFiltroId.PlaceholderText = "Filtrar solo por Numero de Cliente";
             indexUltimo = -1;

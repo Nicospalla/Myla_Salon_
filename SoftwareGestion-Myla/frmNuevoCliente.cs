@@ -82,8 +82,8 @@ namespace SoftwareGestion_Myla
                     aux.Email = txtEmail.Text;
                     aux.Telefono = txtTel.Text;
                     aux.Cumple = datePickerCumple.Value.Date;
-                    aux.Sueldo =int.Parse( txtSueldo.Text);
-                    aux.Porcentaje =int.Parse( txtPorcentaje.Text);
+                    aux.Sueldo = int.Parse(txtSueldo.Text);
+                    aux.Porcentaje = int.Parse(txtPorcentaje.Text);
                     int id = especialistaNegocio.nuevoEsp(aux);
                     aux.IdEspecialista = id;
                 }
@@ -123,7 +123,6 @@ namespace SoftwareGestion_Myla
         {
             form.verGrilla();
         }
-
 
     }
 }
