@@ -77,7 +77,17 @@ namespace SoftwareGestion_Myla
                         banderaC = false;
                     }
 
-                    aux.Telefono = txtTel.Text;
+                    if (string.IsNullOrEmpty(txtTel.Text) && help.soloNum(txtTel.Text) && !(txtTel.Text.Contains(",") || txtTel.Text.Contains(".")))
+                    {
+                        aux.Telefono = txtTel.Text;
+                        lblErrorTel.Text = string.Empty;
+                    }
+                    else
+                    {
+                        lblErrorTel.Text = "Debe ingresar un numero válido como teléfono";
+                        banderaC = false;
+                    }
+
                     aux.Cumple = datePickerCumple.Value.Date;
                     if (banderaC)
                     {

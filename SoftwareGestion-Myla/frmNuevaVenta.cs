@@ -1,15 +1,5 @@
 ﻿using Dominio;
 using Negocio;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace SoftwareGestion_Myla
 {
@@ -22,17 +12,17 @@ namespace SoftwareGestion_Myla
         EspecialistaNegocio EspecialistaNegocio = new EspecialistaNegocio();
         Especialistas_Categorias_Negocio Especialistas_Categorias_Negocio = new Especialistas_Categorias_Negocio();
         HistoVentasNegocio ventasNegocio = new HistoVentasNegocio();
-        HistoVentas? venta = new HistoVentas();
+        HistoVentas? ventaImportada = new HistoVentas();
         List<Especialista> listaEsp = new List<Especialista>();
         public int indexCboCat { get; set; }
-        public frmNuevaVenta(Clientes cliente, frmPrincipal frmPrincipal, HistoVentas? venta = null)
+        public frmNuevaVenta(Clientes cliente, frmPrincipal frmPrincipal, HistoVentas? ventaImportada = null)
         {
             InitializeComponent();
             this.FrmPrincipal = frmPrincipal;
             this.cliente = cliente;
-            if (venta != null)
+            if (ventaImportada != null)
             {
-                this.venta = venta;
+                this.ventaImportada = ventaImportada;
             }
             indexCboCat = -1;
         }
@@ -46,18 +36,18 @@ namespace SoftwareGestion_Myla
             //cboEspecialista.DisplayMember = "Descripcion";
             //cboEspecialista.ValueMember = "IdEspecialista";
             cboEspecialista.SelectedIndex = -1;
-            if (venta != null)
+            if (ventaImportada != null)
             {
                 
-                cboCategoria.SelectedValue = venta.IdCat;
-                txtPrecio.Text = venta.Precio.ToString();
-                txtServAdc.Text = venta.ServicioAdicional.ToString();
-                txtCodigoTinte.Text = venta.CodigoTinte;
+                cboCategoria.SelectedValue = ventaImportada.IdCat;
+                txtPrecio.Text = ventaImportada.Precio.ToString();
+                txtServAdc.Text = ventaImportada.ServicioAdicional.ToString();
+                txtCodigoTinte.Text = ventaImportada.CodigoTinte;
 
                 int index = -1;
                 for(int i = 0; i < listaEsp.Count; i++)
                 {
-                    if (listaEsp[i].Nombre == venta.Especialista.Nombre)
+                    if (listaEsp[i].Nombre == ventaImportada.Especialista.Nombre)
                     {
                         index = i;
                         break;
@@ -86,13 +76,13 @@ namespace SoftwareGestion_Myla
                 cboSubCat.DataSource = subCategorias;
                 cboSubCat.DisplayMember = "Descripcion";
                 //cboSubCat.ValueMember = "IdSub";
-                cboSubCat.SelectedIndex = -1;
+                
                 int indexSub = -1;
-                if (venta != null && cboCategoria.SelectedIndex == indexCboCat )
+                if (ventaImportada != null && cboCategoria.SelectedIndex == indexCboCat && ventaImportada.IdSub != null )
                 {
                     for (int i = 0; i < subCategorias.Count; i++)
                     {
-                        if (subCategorias[i].IdSub == venta.IdSub.idCategoria)
+                        if (subCategorias[i].IdSub == ventaImportada.IdSub.idCategoria)
                         {
                             indexSub = i;
                             break;
@@ -136,6 +126,10 @@ namespace SoftwareGestion_Myla
                 if (result == DialogResult.OK)
                 {
                     HistoVentas venta = new HistoVentas();
+                    if (ventaImportada != null)
+                    {
+                        venta = ventaImportada;
+                    }
 
                     venta.IdCat = new Categorias();
                     Categorias cat = (Categorias)cboCategoria.SelectedValue;
@@ -157,7 +151,8 @@ namespace SoftwareGestion_Myla
                     venta.IdSub.IdSub = ((SubCategoria)cboSubCat.SelectedValue).IdSub;
 
                     venta.ServicioAdicional = txtServAdc.Text;
-                    ventasNegocio.nuevaVenta(venta);
+
+                    ventasNegocio.accionSobreVentas(venta);
                     FrmPrincipal.muestraHistorial(cliente);
                 }
                 else
@@ -176,12 +171,12 @@ namespace SoftwareGestion_Myla
                 cboCategoria.DataSource = listaCat;
                 cboCategoria.DisplayMember = "Descripcion";
 
-                if(venta != null)
+                if(ventaImportada != null)
                 {
                     indexCboCat = -1;
                     for (int i = 0; i < listaCat.Count; i++)
                     {
-                        if (listaCat[i].idCat == venta.IdCat.idCat)
+                        if (listaCat[i].idCat == ventaImportada.IdCat.idCat)
                         {
                             indexCboCat = i;
                             break;

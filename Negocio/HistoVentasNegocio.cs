@@ -18,12 +18,13 @@ namespace Negocio
             try
             {
                 datos.setearStoredProcedure("ObtenerVentasConIdSubCategoria");
-                //datos.setearConsulta("  SELECT IdCliente, IdEspecialista, E.Nombre as NombreEsp,HV.IdCategoria,IdSubcategoria, S.Descripcion, S.Id as IdSub,S.Descripcion as Subcategoria , C.Descripcion as Categoria ,DC.Nombre as Nombre, ServicioAdicional,CodigoTinte,Fecha,Precio from HISTORIAL_VENTAS as HV, CATEGORIAS as C, SUBCATEGORIA as S, DATOSCLIENTES as DC, ESPECIALISTAS as E where HV.IdCategoria = C.Id and IdSubcategoria = S.Id and E.Id = IdEspecialista and DC.Id = HV.IdCliente and IdCliente = 1");
+                //datos.setearConsulta("  SELECT IdVenta, IdCliente, IdEspecialista, E.Nombre as NombreEsp,HV.IdCategoria,IdSubcategoria, S.Descripcion, S.Id as IdSub,S.Descripcion as Subcategoria , C.Descripcion as Categoria ,DC.Nombre as Nombre, ServicioAdicional,CodigoTinte,Fecha,Precio from HISTORIAL_VENTAS as HV, CATEGORIAS as C, SUBCATEGORIA as S, DATOSCLIENTES as DC, ESPECIALISTAS as E where HV.IdCategoria = C.Id and IdSubcategoria = S.Id and E.Id = IdEspecialista and DC.Id = HV.IdCliente and IdCliente = 1");
                 datos.setearParametros("@IdCliente", idCliente);
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
                     HistoVentas aux = new HistoVentas();
+                    aux.IdVenta = (int)datos.Lector["IdVenta"];
                     aux.IdCliente = idCliente;
                     aux.Cliente = new Clientes();
                     aux.Cliente.Nombre = (string)datos.Lector["Nombre"];
@@ -65,12 +66,21 @@ namespace Negocio
             
         }
 
-        public void nuevaVenta(HistoVentas venta)
+        public void accionSobreVentas(HistoVentas venta)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("insert into HISTORIAL_VENTAS (IdCliente,IdEspecialista,IdCategoria,IdSubcategoria,ServicioAdicional,CodigoTinte,Fecha,Precio) values (@IdCliente,@IdEspecialista,@IdCategoria,@IdSubcategoria,@ServicioAdicional,@CodigoTinte,@Fecha,@Precio)  UPDATE DATOSCLIENTES  set UltimaVisita = '2023-08-27', UltimoContacto = '2023-08-27' where Id = @IdCliente");
+                if(venta.IdVenta != 0)
+                {
+                    datos.setearConsulta("update HISTORIAL_VENTAS set IdCliente = @IdCliente,  IdEspecialista = @IdEspecialista, IdCategoria = @IdCategoria, IdSubcategoria = @IdSubcategoria, ServicioAdicional = @ServicioAdicional, CodigoTinte = @CodigoTinte, Fecha = @Fecha,Precio = @Precio where IdVenta = @IdVenta ");
+                    datos.setearParametros("@IdVenta", venta.IdVenta);
+                }
+                else
+                {
+                    datos.setearConsulta("insert into HISTORIAL_VENTAS (IdCliente,IdEspecialista,IdCategoria,IdSubcategoria,ServicioAdicional,CodigoTinte,Fecha,Precio) values (@IdCliente,@IdEspecialista,@IdCategoria,@IdSubcategoria,@ServicioAdicional,@CodigoTinte,@Fecha,@Precio)  UPDATE DATOSCLIENTES  set UltimaVisita = '2023-08-27', UltimoContacto = '2023-08-27' where Id = @IdCliente");
+                }
+
                 datos.setearParametros("@IdCliente",venta.IdCliente);
                 datos.setearParametros("@IdEspecialista",venta.Especialista.IdEspecialista);
                 datos.setearParametros("@IdCategoria",venta.IdCat.idCat);
@@ -87,5 +97,6 @@ namespace Negocio
                 throw ex;
             }
         }
+        
     }
 }

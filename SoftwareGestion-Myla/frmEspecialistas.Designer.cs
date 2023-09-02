@@ -59,6 +59,11 @@
             txtEmail = new TextBox();
             txtTelefono = new TextBox();
             lblTelefono = new Label();
+            lblErrorApellido = new Label();
+            lblErrorTel = new Label();
+            lblErrorEmail = new Label();
+            lblErrorSueldo = new Label();
+            lblErrorPorcen = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvCat).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvNoCat).BeginInit();
             SuspendLayout();
@@ -87,7 +92,7 @@
             // 
             lblEsp.AutoSize = true;
             lblEsp.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblEsp.Location = new Point(142, 156);
+            lblEsp.Location = new Point(142, 168);
             lblEsp.Name = "lblEsp";
             lblEsp.Size = new Size(205, 18);
             lblEsp.TabIndex = 2;
@@ -97,7 +102,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(142, 232);
+            label1.Location = new Point(142, 244);
             label1.Name = "label1";
             label1.Size = new Size(187, 18);
             label1.TabIndex = 3;
@@ -122,7 +127,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(142, 307);
+            label2.Location = new Point(142, 319);
             label2.Name = "label2";
             label2.Size = new Size(71, 18);
             label2.TabIndex = 5;
@@ -132,7 +137,7 @@
             // 
             lblCumple.AutoSize = true;
             lblCumple.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCumple.Location = new Point(142, 532);
+            lblCumple.Location = new Point(142, 544);
             lblCumple.Name = "lblCumple";
             lblCumple.Size = new Size(168, 18);
             lblCumple.TabIndex = 9;
@@ -331,7 +336,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(142, 457);
+            label3.Location = new Point(142, 469);
             label3.Name = "label3";
             label3.Size = new Size(54, 18);
             label3.TabIndex = 7;
@@ -355,17 +360,72 @@
             // 
             lblTelefono.AutoSize = true;
             lblTelefono.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTelefono.Location = new Point(142, 382);
+            lblTelefono.Location = new Point(142, 395);
             lblTelefono.Name = "lblTelefono";
             lblTelefono.Size = new Size(77, 18);
             lblTelefono.TabIndex = 34;
             lblTelefono.Text = "Telefono:";
+            // 
+            // lblErrorApellido
+            // 
+            lblErrorApellido.AutoSize = true;
+            lblErrorApellido.Font = new Font("Segoe UI", 7.8F, FontStyle.Italic, GraphicsUnit.Point);
+            lblErrorApellido.ForeColor = Color.Red;
+            lblErrorApellido.Location = new Point(142, 370);
+            lblErrorApellido.Name = "lblErrorApellido";
+            lblErrorApellido.Size = new Size(0, 17);
+            lblErrorApellido.TabIndex = 36;
+            // 
+            // lblErrorTel
+            // 
+            lblErrorTel.AutoSize = true;
+            lblErrorTel.Font = new Font("Segoe UI", 7.8F, FontStyle.Italic, GraphicsUnit.Point);
+            lblErrorTel.ForeColor = Color.Red;
+            lblErrorTel.Location = new Point(142, 445);
+            lblErrorTel.Name = "lblErrorTel";
+            lblErrorTel.Size = new Size(0, 17);
+            lblErrorTel.TabIndex = 37;
+            // 
+            // lblErrorEmail
+            // 
+            lblErrorEmail.AutoSize = true;
+            lblErrorEmail.Font = new Font("Segoe UI", 7.8F, FontStyle.Italic, GraphicsUnit.Point);
+            lblErrorEmail.ForeColor = Color.Red;
+            lblErrorEmail.Location = new Point(142, 520);
+            lblErrorEmail.Name = "lblErrorEmail";
+            lblErrorEmail.Size = new Size(0, 17);
+            lblErrorEmail.TabIndex = 38;
+            // 
+            // lblErrorSueldo
+            // 
+            lblErrorSueldo.AutoSize = true;
+            lblErrorSueldo.Font = new Font("Segoe UI", 7.8F, FontStyle.Italic, GraphicsUnit.Point);
+            lblErrorSueldo.ForeColor = Color.Red;
+            lblErrorSueldo.Location = new Point(1094, 331);
+            lblErrorSueldo.Name = "lblErrorSueldo";
+            lblErrorSueldo.Size = new Size(0, 17);
+            lblErrorSueldo.TabIndex = 39;
+            // 
+            // lblErrorPorcen
+            // 
+            lblErrorPorcen.AutoSize = true;
+            lblErrorPorcen.Font = new Font("Segoe UI", 7.8F, FontStyle.Italic, GraphicsUnit.Point);
+            lblErrorPorcen.ForeColor = Color.Red;
+            lblErrorPorcen.Location = new Point(1094, 420);
+            lblErrorPorcen.Name = "lblErrorPorcen";
+            lblErrorPorcen.Size = new Size(0, 17);
+            lblErrorPorcen.TabIndex = 40;
             // 
             // frmEspecialistas
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1423, 750);
+            Controls.Add(lblErrorPorcen);
+            Controls.Add(lblErrorSueldo);
+            Controls.Add(lblErrorEmail);
+            Controls.Add(lblErrorTel);
+            Controls.Add(lblErrorApellido);
             Controls.Add(txtTelefono);
             Controls.Add(lblTelefono);
             Controls.Add(label9);
@@ -437,5 +497,10 @@
         private TextBox txtEmail;
         private TextBox txtTelefono;
         private Label lblTelefono;
+        private Label lblErrorApellido;
+        private Label lblErrorTel;
+        private Label lblErrorEmail;
+        private Label lblErrorSueldo;
+        private Label lblErrorPorcen;
     }
 }

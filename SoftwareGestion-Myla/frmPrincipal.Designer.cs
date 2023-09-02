@@ -78,7 +78,7 @@
             btnGeneral.Name = "btnGeneral";
             btnGeneral.Size = new Size(202, 60);
             btnGeneral.TabIndex = 5;
-            btnGeneral.Text = "Administración General";
+            btnGeneral.Text = "Turnos";
             btnGeneral.UseVisualStyleBackColor = true;
             // 
             // btnEditarEsp

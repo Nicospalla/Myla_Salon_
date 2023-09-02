@@ -1,4 +1,5 @@
-﻿using Dominio;
+﻿using Accesorios;
+using Dominio;
 using Negocio;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace SoftwareGestion_Myla
         CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
         SubCategoriaNegocio subCategoriaNegocio = new SubCategoriaNegocio();
         frmPrincipal frmPrincipal;
+        Helpers help = new Helpers();
         public List<int> listaCat { get; set; }
         public int indexPrev { get; set; }
         public frmEspecialistas(frmPrincipal frmPrincipal, Especialista? esp = null)
@@ -135,17 +137,56 @@ namespace SoftwareGestion_Myla
             EspecialistaNegocio especialistaNegocio = new EspecialistaNegocio();
             try
             {
+                bool bandera = true;
                 Especialista aux = new Especialista();
-                aux.Nombre = cboEsp.Text;
-                aux.Apellido = txtApellido.Text;
+
+                if (!string.IsNullOrEmpty(txtApellido.Text))
+                    aux.Apellido = txtApellido.Text;
+                else
+                {
+                    lblErrorApellido.Text = "El apellido es obligatorio";
+                    bandera = false;
+                }
                 aux.IdEspecialista = int.Parse(txtId.Text);
-                aux.Email = txtEmail.Text;
-                aux.Telefono = txtTelefono.Text;
+                if (help.validEmail(txtEmail.Text))
+                    aux.Email = txtEmail.Text;
+                else
+                {
+                    bandera = false;
+                    lblErrorEmail.Text = "Ingrese un Email válido";
+                }
+
+                if (string.IsNullOrEmpty(txtTelefono.Text) && help.soloNum(txtTelefono.Text) && !(txtTelefono.Text.Contains(",") || txtTelefono.Text.Contains(".")))
+                {
+                    aux.Telefono = txtTelefono.Text;
+                    lblErrorTel.Text = string.Empty;
+                }
+                else
+                {
+                    lblErrorTel.Text = "Debe ingresar un numero válido como teléfono";
+                    bandera = false;
+                }
                 aux.Cumple = dateCumple.Value;
-                if (txtSueldo.Text != "" && int.TryParse(txtSueldo.Text, out int val))
-                    aux.Sueldo = int.Parse(txtSueldo.Text);
-                if (txtPorcentaje.Text != "" && int.TryParse(txtPorcentaje.Text, out int valo))
-                    aux.Porcentaje = int.Parse(txtPorcentaje.Text);
+                if (help.soloNum(txtSueldo.Text))
+                {
+                    aux.Sueldo = txtSueldo.Text != "" ? Decimal.Parse(txtSueldo.Text) : 0;
+                    lblErrorSueldo.Text = string.Empty;
+                }
+                else
+                {
+                    lblErrorSueldo.Text = "Solo puede ingresar números enteros y un separador decimal.";
+                    bandera = false;
+                }
+                if (help.soloNum(txtPorcentaje.Text))
+                {
+                    aux.Porcentaje = txtPorcentaje.Text != "" ? double.Parse(txtPorcentaje.Text) : 0;
+                    lblErrorPorcen.Text = string.Empty;
+                }
+                else
+                {
+                    lblErrorPorcen.Text = "Solo puede ingresar números enteros y un separador decimal.";
+                    bandera = false;
+                }
                 especialistaNegocio.editarEspecialista(aux);
             }
             catch (Exception ex)
@@ -158,7 +199,7 @@ namespace SoftwareGestion_Myla
         private void btnEliminarEsp_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Está seguro que desea eliminar permanentemente a éste Especialista??", "Eliminar especialista", MessageBoxButtons.OKCancel);
-            if(result == DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 especialistaNegocio.eliminaEspecialista(esp.IdEspecialista);
 

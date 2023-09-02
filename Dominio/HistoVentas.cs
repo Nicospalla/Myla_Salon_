@@ -9,6 +9,7 @@ namespace Dominio
 {
     public class HistoVentas
     {
+        public int IdVenta { get; set; }
         [DisplayName("Numero de Cliente")]
         public int IdCliente { get; set; }
         public Clientes Cliente { get; set; }

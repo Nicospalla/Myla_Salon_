@@ -115,7 +115,7 @@ namespace SoftwareGestion_Myla
         public void nuevaVenta(Clientes cliente, HistoVentas? ventas = null)
         {
             limpiaPanel();
-            frmNuevaVenta frmNuevaVenta = new frmNuevaVenta(cliente, this,ventas);
+            frmNuevaVenta frmNuevaVenta = new frmNuevaVenta(cliente, this, ventas);
             frmNuevaVenta.TopLevel = false;
             panelPpal.Controls.Add(frmNuevaVenta);
             frmNuevaVenta.Dock = DockStyle.Fill;
