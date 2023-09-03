@@ -12,7 +12,7 @@ namespace SoftwareGestion_Myla
         EspecialistaNegocio EspecialistaNegocio = new EspecialistaNegocio();
         Especialistas_Categorias_Negocio Especialistas_Categorias_Negocio = new Especialistas_Categorias_Negocio();
         HistoVentasNegocio ventasNegocio = new HistoVentasNegocio();
-        HistoVentas? ventaImportada = new HistoVentas();
+        HistoVentas? ventaImportada;
         List<Especialista> listaEsp = new List<Especialista>();
         public int indexCboCat { get; set; }
         public frmNuevaVenta(Clientes cliente, frmPrincipal frmPrincipal, HistoVentas? ventaImportada = null)
@@ -38,14 +38,14 @@ namespace SoftwareGestion_Myla
             cboEspecialista.SelectedIndex = -1;
             if (ventaImportada != null)
             {
-                
+
                 cboCategoria.SelectedValue = ventaImportada.IdCat;
                 txtPrecio.Text = ventaImportada.Precio.ToString();
                 txtServAdc.Text = ventaImportada.ServicioAdicional.ToString();
                 txtCodigoTinte.Text = ventaImportada.CodigoTinte;
 
                 int index = -1;
-                for(int i = 0; i < listaEsp.Count; i++)
+                for (int i = 0; i < listaEsp.Count; i++)
                 {
                     if (listaEsp[i].Nombre == ventaImportada.Especialista.Nombre)
                     {
@@ -76,9 +76,9 @@ namespace SoftwareGestion_Myla
                 cboSubCat.DataSource = subCategorias;
                 cboSubCat.DisplayMember = "Descripcion";
                 //cboSubCat.ValueMember = "IdSub";
-                
+
                 int indexSub = -1;
-                if (ventaImportada != null && cboCategoria.SelectedIndex == indexCboCat && ventaImportada.IdSub != null )
+                if (ventaImportada != null && cboCategoria.SelectedIndex == indexCboCat && ventaImportada.IdSub != null)
                 {
                     for (int i = 0; i < subCategorias.Count; i++)
                     {
@@ -164,6 +164,49 @@ namespace SoftwareGestion_Myla
         private void cboEspecialista_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+            //if (cboEspecialista.SelectedIndex != -1)
+            //{
+            //    Especialista aux = (Especialista)cboEspecialista.SelectedValue;
+            //    List<Categorias> listaCat = categoriaNegocio.listarCat(aux.IdEspecialista, true);
+            //    cboCategoria.DataSource = listaCat;
+            //    cboCategoria.DisplayMember = "Descripcion";
+
+            //    if (ventaImportada != null)
+            //    {
+            //        indexCboCat = -1;
+            //        for (int i = 0; i < listaCat.Count; i++)
+            //        {
+            //            if (listaCat[i].idCat == ventaImportada.IdCat.idCat)
+            //            {
+            //                indexCboCat = i;
+            //                break;
+            //            }
+            //        }
+
+            //        cboCategoria.SelectedIndex = indexCboCat;
+            //    }
+            //    else
+            //    {
+            //        cboCategoria.SelectedIndex = -1;
+
+            //    }
+
+            //}
+            //else
+            //{
+            //    cboCategoria.DataSource = null;
+            //    cboCategoria.SelectedIndex = -1;
+            //}
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            FrmPrincipal.verGrilla();
+        }
+
+        private void cboEspecialista_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
             if (cboEspecialista.SelectedIndex != -1)
             {
                 Especialista aux = (Especialista)cboEspecialista.SelectedValue;
@@ -171,7 +214,7 @@ namespace SoftwareGestion_Myla
                 cboCategoria.DataSource = listaCat;
                 cboCategoria.DisplayMember = "Descripcion";
 
-                if(ventaImportada != null)
+                if (ventaImportada != null)
                 {
                     indexCboCat = -1;
                     for (int i = 0; i < listaCat.Count; i++)
@@ -197,11 +240,6 @@ namespace SoftwareGestion_Myla
                 cboCategoria.DataSource = null;
                 cboCategoria.SelectedIndex = -1;
             }
-        }
-
-        private void btnAtras_Click(object sender, EventArgs e)
-        {
-            FrmPrincipal.verGrilla();
         }
     }
 }

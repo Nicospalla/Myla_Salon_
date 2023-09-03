@@ -7,12 +7,20 @@ namespace Negocio
     {
         AccesoDatos datos = new AccesoDatos();
 
-        public List<Clientes> listar()
+        public List<Clientes> listar(int id = 0)
         {
             List<Clientes> lista = new List<Clientes>();
             try
             {
-                datos.setearConsulta("Select Id, Nombre, Apellido, Telefono,UltimaVisita,UltimoContacto, Cumple from DATOSCLIENTES");
+                if( id == 0)
+                {
+                    datos.setearConsulta("Select Id, Nombre, Apellido, Telefono,UltimaVisita, Cumple from DATOSCLIENTES");
+
+                }else if( id != 0)
+                {
+                    datos.setearConsulta("Select Id, Nombre, Apellido, Telefono,UltimaVisita,Cumple from DATOSCLIENTES where Id = @IdCliente " );
+                    datos.setearParametros("@IdCliente", id);
+                }
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -25,8 +33,7 @@ namespace Negocio
                         aux.Cumple = (DateTime)datos.Lector["Cumple"];
                     if (datos.Lector["UltimaVisita"] != DBNull.Value)
                         aux.UltVisita = (DateTime)datos.Lector["UltimaVisita"];
-                    if (datos.Lector["UltimoContacto"] != DBNull.Value)
-                        aux.UltContacto = (DateTime)datos.Lector["UltimoContacto"];
+                   
                     lista.Add(aux);
                 }
                 return lista;
@@ -47,13 +54,13 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("  INSERT into DATOSCLIENTES (Nombre,Apellido,Email,Telefono,Cumple, UltimoContacto) values (@Nombre, @Apellido, @Email, @Telefono, @Cumple, @UltimoContacto)");
+                datos.setearConsulta("  INSERT into DATOSCLIENTES (Nombre,Apellido,Email,Telefono,Cumple) values (@Nombre, @Apellido, @Email, @Telefono, @Cumple)");
                 datos.setearParametros("@Nombre",aux.Nombre);
                 datos.setearParametros("@Apellido", aux.Apellido);
                 datos.setearParametros("@Email",aux.Email);
                 datos.setearParametros("@Telefono", aux.Telefono);
                 datos.setearParametros("@Cumple",aux.Cumple);
-                datos.setearParametros("@UltimoContacto", aux.UltContacto);
+                
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

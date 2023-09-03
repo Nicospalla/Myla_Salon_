@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             panelIzq = new Panel();
-            btnGeneral = new Button();
+            btnTurnos = new Button();
             btnEditarEsp = new Button();
             btnNuevoEsp = new Button();
             btnGrillaClientes = new Button();
@@ -56,7 +56,7 @@
             // 
             panelIzq.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panelIzq.BackColor = SystemColors.ActiveCaption;
-            panelIzq.Controls.Add(btnGeneral);
+            panelIzq.Controls.Add(btnTurnos);
             panelIzq.Controls.Add(btnEditarEsp);
             panelIzq.Controls.Add(btnNuevoEsp);
             panelIzq.Controls.Add(btnGrillaClientes);
@@ -66,20 +66,20 @@
             panelIzq.Name = "panelIzq";
             panelIzq.Size = new Size(229, 629);
             panelIzq.TabIndex = 0;
-            panelIzq.Paint += panelIzq_Paint;
             // 
-            // btnGeneral
+            // btnTurnos
             // 
-            btnGeneral.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
-            btnGeneral.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
-            btnGeneral.FlatStyle = FlatStyle.Flat;
-            btnGeneral.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGeneral.Location = new Point(11, 371);
-            btnGeneral.Name = "btnGeneral";
-            btnGeneral.Size = new Size(202, 60);
-            btnGeneral.TabIndex = 5;
-            btnGeneral.Text = "Turnos";
-            btnGeneral.UseVisualStyleBackColor = true;
+            btnTurnos.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
+            btnTurnos.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btnTurnos.FlatStyle = FlatStyle.Flat;
+            btnTurnos.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnTurnos.Location = new Point(11, 371);
+            btnTurnos.Name = "btnTurnos";
+            btnTurnos.Size = new Size(202, 60);
+            btnTurnos.TabIndex = 5;
+            btnTurnos.Text = "Turnos";
+            btnTurnos.UseVisualStyleBackColor = true;
+            btnTurnos.Click += btnTurnos_Click;
             // 
             // btnEditarEsp
             // 
@@ -300,7 +300,7 @@
         private Button btnNuevo;
         private Button btnNuevoEsp;
         private Button btnEditarEsp;
-        private Button btnGeneral;
+        private Button btnTurnos;
         private PictureBox picBox;
     }
 }

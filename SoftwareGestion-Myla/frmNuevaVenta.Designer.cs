@@ -84,7 +84,7 @@
             cboEspecialista.Name = "cboEspecialista";
             cboEspecialista.Size = new Size(286, 28);
             cboEspecialista.TabIndex = 4;
-            cboEspecialista.SelectedIndexChanged += cboEspecialista_SelectedIndexChanged;
+            cboEspecialista.SelectionChangeCommitted += cboEspecialista_SelectionChangeCommitted;
             // 
             // cboCategoria
             // 

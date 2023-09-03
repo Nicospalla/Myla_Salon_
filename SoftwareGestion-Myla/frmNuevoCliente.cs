@@ -59,7 +59,7 @@ namespace SoftwareGestion_Myla
                         lblErrorNombre.Text = "El Nombre es obligatorio";
                         banderaC = false;
                     }
-                    if(!string.IsNullOrEmpty(txtApellido.Text))
+                    if (!string.IsNullOrEmpty(txtApellido.Text))
                         aux.Apellido = txtApellido.Text;
                     else
                     {

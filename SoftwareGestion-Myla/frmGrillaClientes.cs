@@ -30,7 +30,7 @@ namespace SoftwareGestion_Myla
         {
             InitializeComponent();
             this.frmPrincipal = frmPrincipal;
-    
+
         }
         private void frmGrillaClientes_Load(object sender, EventArgs e)
         {
@@ -181,6 +181,15 @@ namespace SoftwareGestion_Myla
         {
             lblInfo.Text = string.Empty; // Borra el texto del Label
             ((Timer)sender).Stop(); // Detiene el temporizador después de borrar el texto
+        }
+
+        private void btnTurno_Click(object sender, EventArgs e)
+        {
+            if (dgvGrillaClientes.CurrentRow.DataBoundItem != null)
+            {
+                Clientes cliente = (Clientes)dgvGrillaClientes.CurrentRow.DataBoundItem;
+                frmPrincipal.nuevoTurno(cliente);
+            }
         }
     }
 }

@@ -155,9 +155,19 @@ namespace SoftwareGestion_Myla
             Application.Exit();
         }
 
-        private void panelIzq_Paint(object sender, PaintEventArgs e)
+        private void btnTurnos_Click(object sender, EventArgs e)
         {
+            nuevoTurno();
+        }
 
+        public void nuevoTurno(Clientes? cliente = null)
+        {
+            limpiaPanel();
+            frmTurnos frmTurnos = new frmTurnos(cliente);
+            frmTurnos.TopLevel = false;
+            panelPpal.Controls.Add(frmTurnos);
+            frmTurnos.Dock = DockStyle.Fill;
+            frmTurnos.Show();
         }
     }
 }

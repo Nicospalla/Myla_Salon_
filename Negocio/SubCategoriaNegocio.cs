@@ -16,11 +16,15 @@ namespace Negocio
             List<SubCategoria> lista = new List<SubCategoria>();
             try
             {
-                if (idEsp != 0 && contiene ==true && idCat != 0)
+                if (idEsp != 0 && contiene && idCat != 0)
                 {
                     datos.setearConsulta("select S.Id, S.descripcion as Descripcion, S.IdCategoria as IdCategoria from SUBCATEGORIA S, CATEGORIAS C, ESPECIALISTAS_CATEGORIAS EC, ESPECIALISTAS E where s.IdCategoria = c.Id and C.Id = ec.idCat and ec.idEsp = E.Id and e.Id = @IdEsp and EC.IdCat = @IdCat ");
                     datos.setearParametros("@IdEsp", idEsp);
                     datos.setearParametros("@IdCat", idCat);
+                }else if(idEsp != 0 && contiene && idCat == 0)
+                {
+                    datos.setearConsulta("select S.Id, S.descripcion as Descripcion, S.IdCategoria as IdCategoria from SUBCATEGORIA S, CATEGORIAS C, ESPECIALISTAS_CATEGORIAS EC, ESPECIALISTAS E where s.IdCategoria = c.Id and C.Id = ec.idCat and ec.idEsp = E.Id and e.Id = @IdEsp");
+                    datos.setearParametros("@IdEsp", idEsp);
                 }
                 else
                 {

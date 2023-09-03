@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             btnHistorial = new Button();
             lblFiltroRap = new Label();
             txtFiltroRapido = new TextBox();
@@ -37,13 +37,14 @@
             lblFiltroID = new Label();
             txtFiltroId = new TextBox();
             lblInfo = new Label();
+            btnTurno = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvGrillaClientes).BeginInit();
             SuspendLayout();
             // 
             // btnHistorial
             // 
             btnHistorial.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnHistorial.Location = new Point(253, 500);
+            btnHistorial.Location = new Point(407, 503);
             btnHistorial.Name = "btnHistorial";
             btnHistorial.Size = new Size(148, 54);
             btnHistorial.TabIndex = 7;
@@ -81,14 +82,14 @@
             dgvGrillaClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvGrillaClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvGrillaClientes.Cursor = Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvGrillaClientes.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvGrillaClientes.DefaultCellStyle = dataGridViewCellStyle1;
             dgvGrillaClientes.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgvGrillaClientes.Location = new Point(90, 99);
             dgvGrillaClientes.MultiSelect = false;
@@ -106,7 +107,7 @@
             // btnVenta
             // 
             btnVenta.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnVenta.Location = new Point(90, 500);
+            btnVenta.Location = new Point(244, 503);
             btnVenta.Name = "btnVenta";
             btnVenta.Size = new Size(157, 54);
             btnVenta.TabIndex = 8;
@@ -144,12 +145,24 @@
             lblInfo.Size = new Size(0, 16);
             lblInfo.TabIndex = 11;
             // 
+            // btnTurno
+            // 
+            btnTurno.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnTurno.Location = new Point(90, 503);
+            btnTurno.Name = "btnTurno";
+            btnTurno.Size = new Size(148, 54);
+            btnTurno.TabIndex = 12;
+            btnTurno.Text = "Agendar Turno";
+            btnTurno.UseVisualStyleBackColor = true;
+            btnTurno.Click += btnTurno_Click;
+            // 
             // frmGrillaClientes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(881, 588);
+            Controls.Add(btnTurno);
             Controls.Add(lblInfo);
             Controls.Add(lblFiltroID);
             Controls.Add(txtFiltroId);
@@ -181,5 +194,6 @@
         private Button button3;
         private Button button4;
         private Label lblInfo;
+        private Button btnTurno;
     }
 }
