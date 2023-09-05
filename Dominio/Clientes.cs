@@ -18,7 +18,7 @@ namespace Dominio
         public DateTime Cumple { get; set; }
         [DisplayName("Última Visita *")]
         public DateTime UltVisita { get; set; }
-        [DisplayName("Último Contacto")]
+        
         public DateTime UltContacto { get; set; }
 
         public override string ToString()

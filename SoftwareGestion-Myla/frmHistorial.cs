@@ -15,7 +15,7 @@ namespace SoftwareGestion_Myla
     public partial class frmHistorial : Form
     {
         List<HistoVentas> listaVentas;
-        HistoVentasNegocio histoVentasNegocio = new HistoVentasNegocio();
+        HistoVentasNegocio histoVentasNegocio = new ();
         private frmPrincipal frm;
         public Clientes cliente { get; set; }
         public frmHistorial(Clientes clientes, frmPrincipal frm)
@@ -30,6 +30,8 @@ namespace SoftwareGestion_Myla
         {
             listaVentas = histoVentasNegocio.buscaHistorial(cliente.Id);
             dgvHistorial.DataSource = listaVentas;
+            dgvHistorial.Columns["IdVenta"].Visible = false;
+            dgvHistorial.Columns["IdCliente"].Visible = false;
         }
 
         private void btnAtras_Click(object sender, EventArgs e)

@@ -66,18 +66,18 @@ namespace SoftwareGestion_Myla
                         lblErrorApellid.Text = "El apellido es obligatorio";
                         banderaC = false;
                     }
-                    if (help.validEmail(txtEmail.Text))
+
+                    if (help.validEmail(txtEmail.Text) || string.IsNullOrEmpty(txtEmail.Text))
                     {
                         aux.Email = txtEmail.Text;
                         lblErrorMail.Text = string.Empty;
-                    }
-                    else
+                    }else
                     {
                         lblErrorMail.Text = "Ingrese un email correcto";
                         banderaC = false;
                     }
 
-                    if (string.IsNullOrEmpty(txtTel.Text) && help.soloNum(txtTel.Text) && !(txtTel.Text.Contains(",") || txtTel.Text.Contains(".")))
+                    if (!string.IsNullOrEmpty(txtTel.Text) && help.soloNum(txtTel.Text) && (!txtTel.Text.Contains(",") && !txtTel.Text.Contains(".")))
                     {
                         aux.Telefono = txtTel.Text;
                         lblErrorTel.Text = string.Empty;
@@ -93,6 +93,11 @@ namespace SoftwareGestion_Myla
                     {
                         aux.UltContacto = DateTime.Today;
                         clientesNegocio.crearCliente(aux);
+                        form.verGrilla();
+                    }
+                    else
+                    {
+                        return;
                     }
                 }
                 catch (Exception ex)
@@ -100,10 +105,7 @@ namespace SoftwareGestion_Myla
 
                     throw ex;
                 }
-                finally
-                {
-                    form.verGrilla();
-                }
+               
 
             }
             else if (!cliente)

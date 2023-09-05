@@ -36,6 +36,7 @@ namespace SoftwareGestion_Myla
         {
             listaClientes = clientesNegocio.listar();
             dgvGrillaClientes.DataSource = listaClientes;
+            dgvGrillaClientes.Columns.Remove("UltContacto");
 
             txtFiltroRapido.PlaceholderText = "Filtrar por Nombre, Apellido o Teléfono.";
             txtFiltroId.PlaceholderText = "Filtrar solo por Numero de Cliente";
@@ -50,10 +51,13 @@ namespace SoftwareGestion_Myla
             {
                 listaFiltrada = listaClientes.FindAll(x => x.Nombre.ToLower().Contains(filtro) || x.Id.ToString().Contains(filtro) || x.Apellido.ToLower().Contains(filtro) || x.Telefono.Contains(filtro));
                 dgvGrillaClientes.DataSource = listaFiltrada;
-
+                dgvGrillaClientes.Columns.Remove("UltContacto");
             }
             else
+            {
                 dgvGrillaClientes.DataSource = listaClientes;
+                dgvGrillaClientes.Columns.Remove("UltContacto");
+            }
         }
 
         private void btnHistorial_Click(object sender, EventArgs e)

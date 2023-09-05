@@ -86,8 +86,6 @@ namespace Accesorios
 
                 throw ex;
             }
-            
-            
             return idEsp;
         }
         public void setearParametros(string nombre, object valor)

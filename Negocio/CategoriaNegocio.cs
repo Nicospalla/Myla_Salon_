@@ -79,7 +79,7 @@ namespace Negocio
             catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }finally { datos.cerrarConn(); }
         }
     }

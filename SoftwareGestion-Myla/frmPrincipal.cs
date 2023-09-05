@@ -41,7 +41,8 @@ namespace SoftwareGestion_Myla
 
             }
 
-            verGrilla();
+            //verGrilla();
+            nuevoTurno();
         }
 
         private void eventoTimer(object sender, EventArgs e)

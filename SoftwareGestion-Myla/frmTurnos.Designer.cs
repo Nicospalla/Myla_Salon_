@@ -32,6 +32,10 @@
             calendarTurno = new MonthCalendar();
             btnNuevo = new Button();
             pnlEdit = new Panel();
+            lblErrorEsp = new Label();
+            lblErrorSubCat = new Label();
+            lblErrorHora = new Label();
+            lblTitulo = new Label();
             btnAtras = new Button();
             lblErrorId = new Label();
             btnBuscar = new Button();
@@ -49,11 +53,12 @@
             lblNombre = new Label();
             btnModif = new Button();
             btnEliminar = new Button();
-            btnVerTurnos = new Button();
             label4 = new Label();
             cboEspeVerTurnos = new ComboBox();
-            button1 = new Button();
+            btnTurnoReservado = new Button();
             pnlGrid = new Panel();
+            lblNombreEsp = new Label();
+            lblFecha = new Label();
             dgvTurnos = new DataGridView();
             pnlEdit.SuspendLayout();
             pnlGrid.SuspendLayout();
@@ -67,11 +72,12 @@
             calendarTurno.Name = "calendarTurno";
             calendarTurno.ShowTodayCircle = false;
             calendarTurno.TabIndex = 7;
+            calendarTurno.DateChanged += calendarTurno_DateChanged;
             // 
             // btnNuevo
             // 
             btnNuevo.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnNuevo.Location = new Point(18, 381);
+            btnNuevo.Location = new Point(18, 434);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new Size(290, 68);
             btnNuevo.TabIndex = 8;
@@ -81,6 +87,10 @@
             // 
             // pnlEdit
             // 
+            pnlEdit.Controls.Add(lblErrorEsp);
+            pnlEdit.Controls.Add(lblErrorSubCat);
+            pnlEdit.Controls.Add(lblErrorHora);
+            pnlEdit.Controls.Add(lblTitulo);
             pnlEdit.Controls.Add(btnAtras);
             pnlEdit.Controls.Add(lblErrorId);
             pnlEdit.Controls.Add(btnBuscar);
@@ -96,10 +106,49 @@
             pnlEdit.Controls.Add(btnCancelar);
             pnlEdit.Controls.Add(btnGuardar);
             pnlEdit.Controls.Add(lblNombre);
-            pnlEdit.Location = new Point(421, 61);
+            pnlEdit.Location = new Point(325, 42);
             pnlEdit.Name = "pnlEdit";
-            pnlEdit.Size = new Size(550, 603);
+            pnlEdit.Size = new Size(511, 659);
             pnlEdit.TabIndex = 9;
+            // 
+            // lblErrorEsp
+            // 
+            lblErrorEsp.AutoSize = true;
+            lblErrorEsp.Font = new Font("Verdana", 7.8F, FontStyle.Italic, GraphicsUnit.Point);
+            lblErrorEsp.ForeColor = Color.Red;
+            lblErrorEsp.Location = new Point(32, 339);
+            lblErrorEsp.Name = "lblErrorEsp";
+            lblErrorEsp.Size = new Size(0, 16);
+            lblErrorEsp.TabIndex = 21;
+            // 
+            // lblErrorSubCat
+            // 
+            lblErrorSubCat.AutoSize = true;
+            lblErrorSubCat.Font = new Font("Verdana", 7.8F, FontStyle.Italic, GraphicsUnit.Point);
+            lblErrorSubCat.ForeColor = Color.Red;
+            lblErrorSubCat.Location = new Point(32, 413);
+            lblErrorSubCat.Name = "lblErrorSubCat";
+            lblErrorSubCat.Size = new Size(0, 16);
+            lblErrorSubCat.TabIndex = 20;
+            // 
+            // lblErrorHora
+            // 
+            lblErrorHora.AutoSize = true;
+            lblErrorHora.Font = new Font("Verdana", 7.8F, FontStyle.Italic, GraphicsUnit.Point);
+            lblErrorHora.ForeColor = Color.Red;
+            lblErrorHora.Location = new Point(32, 494);
+            lblErrorHora.Name = "lblErrorHora";
+            lblErrorHora.Size = new Size(0, 16);
+            lblErrorHora.TabIndex = 19;
+            // 
+            // lblTitulo
+            // 
+            lblTitulo.AutoSize = true;
+            lblTitulo.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitulo.Location = new Point(166, 80);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(0, 18);
+            lblTitulo.TabIndex = 18;
             // 
             // btnAtras
             // 
@@ -114,10 +163,11 @@
             // 
             // lblErrorId
             // 
+            lblErrorId.AccessibleRole = AccessibleRole.None;
             lblErrorId.AutoSize = true;
             lblErrorId.Font = new Font("Verdana", 7.8F, FontStyle.Italic, GraphicsUnit.Point);
             lblErrorId.ForeColor = Color.Red;
-            lblErrorId.Location = new Point(166, 175);
+            lblErrorId.Location = new Point(32, 183);
             lblErrorId.Name = "lblErrorId";
             lblErrorId.Size = new Size(0, 16);
             lblErrorId.TabIndex = 11;
@@ -125,7 +175,7 @@
             // btnBuscar
             // 
             btnBuscar.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnBuscar.Location = new Point(316, 143);
+            btnBuscar.Location = new Point(258, 150);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(140, 29);
             btnBuscar.TabIndex = 9;
@@ -135,7 +185,7 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(166, 233);
+            txtNombre.Location = new Point(108, 240);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(290, 27);
             txtNombre.TabIndex = 8;
@@ -144,7 +194,7 @@
             // 
             lblHorario.AutoSize = true;
             lblHorario.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblHorario.Location = new Point(166, 430);
+            lblHorario.Location = new Point(108, 437);
             lblHorario.Name = "lblHorario";
             lblHorario.Size = new Size(70, 18);
             lblHorario.TabIndex = 7;
@@ -154,7 +204,7 @@
             // 
             cboHorarios.DropDownStyle = ComboBoxStyle.DropDownList;
             cboHorarios.FormattingEnabled = true;
-            cboHorarios.Location = new Point(166, 451);
+            cboHorarios.Location = new Point(108, 458);
             cboHorarios.Name = "cboHorarios";
             cboHorarios.Size = new Size(290, 28);
             cboHorarios.TabIndex = 6;
@@ -163,7 +213,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(166, 278);
+            label3.Location = new Point(108, 285);
             label3.Name = "label3";
             label3.Size = new Size(99, 18);
             label3.TabIndex = 5;
@@ -173,7 +223,7 @@
             // 
             cboEspe.DropDownStyle = ComboBoxStyle.DropDownList;
             cboEspe.FormattingEnabled = true;
-            cboEspe.Location = new Point(166, 299);
+            cboEspe.Location = new Point(108, 306);
             cboEspe.Name = "cboEspe";
             cboEspe.Size = new Size(290, 28);
             cboEspe.TabIndex = 4;
@@ -183,7 +233,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(166, 352);
+            label2.Location = new Point(108, 359);
             label2.Name = "label2";
             label2.Size = new Size(115, 18);
             label2.TabIndex = 3;
@@ -193,7 +243,7 @@
             // 
             cboSubCat.DropDownStyle = ComboBoxStyle.DropDownList;
             cboSubCat.FormattingEnabled = true;
-            cboSubCat.Location = new Point(166, 373);
+            cboSubCat.Location = new Point(108, 380);
             cboSubCat.Name = "cboSubCat";
             cboSubCat.Size = new Size(290, 28);
             cboSubCat.TabIndex = 2;
@@ -202,7 +252,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(166, 124);
+            label1.Location = new Point(108, 121);
             label1.Name = "label1";
             label1.Size = new Size(120, 18);
             label1.TabIndex = 1;
@@ -210,7 +260,8 @@
             // 
             // txtIdCliente
             // 
-            txtIdCliente.Location = new Point(166, 145);
+            txtIdCliente.AccessibleRole = AccessibleRole.None;
+            txtIdCliente.Location = new Point(108, 151);
             txtIdCliente.Name = "txtIdCliente";
             txtIdCliente.Size = new Size(140, 27);
             txtIdCliente.TabIndex = 0;
@@ -218,7 +269,7 @@
             // btnCancelar
             // 
             btnCancelar.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCancelar.Location = new Point(316, 499);
+            btnCancelar.Location = new Point(258, 550);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(140, 69);
             btnCancelar.TabIndex = 17;
@@ -229,7 +280,7 @@
             // btnGuardar
             // 
             btnGuardar.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnGuardar.Location = new Point(166, 500);
+            btnGuardar.Location = new Point(108, 551);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(140, 68);
             btnGuardar.TabIndex = 16;
@@ -241,7 +292,7 @@
             // 
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblNombre.Location = new Point(166, 212);
+            lblNombre.Location = new Point(108, 219);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(153, 18);
             lblNombre.TabIndex = 10;
@@ -250,39 +301,30 @@
             // btnModif
             // 
             btnModif.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnModif.Location = new Point(18, 457);
+            btnModif.Location = new Point(39, 738);
             btnModif.Name = "btnModif";
             btnModif.Size = new Size(290, 68);
             btnModif.TabIndex = 10;
             btnModif.Text = "Modificar Turno";
             btnModif.UseVisualStyleBackColor = true;
+            btnModif.Click += btnModif_Click;
             // 
             // btnEliminar
             // 
             btnEliminar.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnEliminar.Location = new Point(18, 533);
+            btnEliminar.Location = new Point(350, 738);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(290, 68);
             btnEliminar.TabIndex = 11;
             btnEliminar.Text = "Eliminar Turno";
             btnEliminar.UseVisualStyleBackColor = true;
-            // 
-            // btnVerTurnos
-            // 
-            btnVerTurnos.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnVerTurnos.Location = new Point(18, 307);
-            btnVerTurnos.Name = "btnVerTurnos";
-            btnVerTurnos.Size = new Size(138, 68);
-            btnVerTurnos.TabIndex = 12;
-            btnVerTurnos.Text = "Ver Turnos ";
-            btnVerTurnos.UseVisualStyleBackColor = true;
-            btnVerTurnos.Click += btnVerTurnos_Click;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(18, 244);
+            label4.Location = new Point(18, 252);
             label4.Name = "label4";
             label4.Size = new Size(99, 18);
             label4.TabIndex = 15;
@@ -292,29 +334,54 @@
             // 
             cboEspeVerTurnos.DropDownStyle = ComboBoxStyle.DropDownList;
             cboEspeVerTurnos.FormattingEnabled = true;
-            cboEspeVerTurnos.Location = new Point(18, 265);
+            cboEspeVerTurnos.Location = new Point(18, 273);
             cboEspeVerTurnos.Name = "cboEspeVerTurnos";
             cboEspeVerTurnos.Size = new Size(290, 28);
             cboEspeVerTurnos.TabIndex = 14;
-            cboEspeVerTurnos.SelectionChangeCommitted += cboEspeVerTurnos_SelectionChangeCommitted;
             // 
-            // button1
+            // btnTurnoReservado
             // 
-            button1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(170, 307);
-            button1.Name = "button1";
-            button1.Size = new Size(138, 68);
-            button1.TabIndex = 16;
-            button1.Text = "Ver Turnos ";
-            button1.UseVisualStyleBackColor = true;
+            btnTurnoReservado.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnTurnoReservado.Location = new Point(18, 320);
+            btnTurnoReservado.Name = "btnTurnoReservado";
+            btnTurnoReservado.Size = new Size(290, 68);
+            btnTurnoReservado.TabIndex = 16;
+            btnTurnoReservado.Text = "Ver Turnos Reservados";
+            btnTurnoReservado.UseVisualStyleBackColor = true;
+            btnTurnoReservado.Click += btnTurnoReservado_Click;
             // 
             // pnlGrid
             // 
+            pnlGrid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pnlGrid.Controls.Add(lblNombreEsp);
+            pnlGrid.Controls.Add(lblFecha);
             pnlGrid.Controls.Add(dgvTurnos);
-            pnlGrid.Location = new Point(986, 596);
+            pnlGrid.Controls.Add(btnModif);
+            pnlGrid.Controls.Add(btnEliminar);
+            pnlGrid.Location = new Point(314, 33);
             pnlGrid.Name = "pnlGrid";
-            pnlGrid.Size = new Size(401, 286);
+            pnlGrid.Size = new Size(1024, 820);
             pnlGrid.TabIndex = 18;
+            // 
+            // lblNombreEsp
+            // 
+            lblNombreEsp.AutoSize = true;
+            lblNombreEsp.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNombreEsp.Location = new Point(38, 66);
+            lblNombreEsp.Name = "lblNombreEsp";
+            lblNombreEsp.Size = new Size(59, 18);
+            lblNombreEsp.TabIndex = 7;
+            lblNombreEsp.Text = "Fecha:";
+            // 
+            // lblFecha
+            // 
+            lblFecha.AutoSize = true;
+            lblFecha.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblFecha.Location = new Point(38, 30);
+            lblFecha.Name = "lblFecha";
+            lblFecha.Size = new Size(59, 18);
+            lblFecha.TabIndex = 6;
+            lblFecha.Text = "Fecha:";
             // 
             // dgvTurnos
             // 
@@ -343,23 +410,19 @@
             dgvTurnos.RowHeadersWidth = 51;
             dgvTurnos.RowTemplate.Height = 29;
             dgvTurnos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvTurnos.Size = new Size(331, 71);
+            dgvTurnos.Size = new Size(972, 597);
             dgvTurnos.TabIndex = 5;
             // 
             // frmTurnos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(1399, 884);
             Controls.Add(pnlGrid);
-            Controls.Add(button1);
+            Controls.Add(btnTurnoReservado);
             Controls.Add(label4);
-            Controls.Add(btnVerTurnos);
             Controls.Add(cboEspeVerTurnos);
-            Controls.Add(btnEliminar);
-            Controls.Add(btnModif);
             Controls.Add(btnNuevo);
             Controls.Add(calendarTurno);
             Controls.Add(pnlEdit);
@@ -371,6 +434,7 @@
             pnlEdit.ResumeLayout(false);
             pnlEdit.PerformLayout();
             pnlGrid.ResumeLayout(false);
+            pnlGrid.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTurnos).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -382,7 +446,6 @@
         private Panel pnlEdit;
         private Button btnModif;
         private Button btnEliminar;
-        private Button btnVerTurnos;
         private Label label1;
         private TextBox txtIdCliente;
         private Label label2;
@@ -400,8 +463,14 @@
         private ComboBox cboEspeVerTurnos;
         private Button btnCancelar;
         private Button btnGuardar;
-        private Button button1;
+        private Button btnTurnoReservado;
         private Panel pnlGrid;
         private DataGridView dgvTurnos;
+        private Label lblFecha;
+        private Label lblNombreEsp;
+        private Label lblTitulo;
+        private Label lblErrorEsp;
+        private Label lblErrorSubCat;
+        private Label lblErrorHora;
     }
 }

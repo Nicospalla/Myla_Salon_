@@ -90,7 +90,6 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dgvGrillaClientes.DefaultCellStyle = dataGridViewCellStyle1;
-            dgvGrillaClientes.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgvGrillaClientes.Location = new Point(90, 99);
             dgvGrillaClientes.MultiSelect = false;
             dgvGrillaClientes.Name = "dgvGrillaClientes";
@@ -186,7 +185,6 @@
         private Button btnHistorial;
         private Label lblFiltroRap;
         private TextBox txtFiltroRapido;
-        private DataGridView dgvGrillaClientes;
         private Button btnVenta;
         private Label lblFiltroID;
         private TextBox txtFiltroId;
@@ -195,5 +193,6 @@
         private Button button4;
         private Label lblInfo;
         private Button btnTurno;
+        public DataGridView dgvGrillaClientes;
     }
 }

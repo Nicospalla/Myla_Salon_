@@ -73,7 +73,7 @@
             btnTurnos.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnTurnos.FlatStyle = FlatStyle.Flat;
             btnTurnos.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnTurnos.Location = new Point(11, 371);
+            btnTurnos.Location = new Point(10, 102);
             btnTurnos.Name = "btnTurnos";
             btnTurnos.Size = new Size(202, 60);
             btnTurnos.TabIndex = 5;
@@ -87,7 +87,7 @@
             btnEditarEsp.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnEditarEsp.FlatStyle = FlatStyle.Flat;
             btnEditarEsp.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEditarEsp.Location = new Point(11, 284);
+            btnEditarEsp.Location = new Point(12, 339);
             btnEditarEsp.Name = "btnEditarEsp";
             btnEditarEsp.Size = new Size(202, 60);
             btnEditarEsp.TabIndex = 4;
@@ -101,7 +101,7 @@
             btnNuevoEsp.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnNuevoEsp.FlatStyle = FlatStyle.Flat;
             btnNuevoEsp.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnNuevoEsp.Location = new Point(11, 197);
+            btnNuevoEsp.Location = new Point(12, 260);
             btnNuevoEsp.Name = "btnNuevoEsp";
             btnNuevoEsp.Size = new Size(202, 60);
             btnNuevoEsp.TabIndex = 3;
@@ -120,7 +120,7 @@
             btnGrillaClientes.Name = "btnGrillaClientes";
             btnGrillaClientes.Size = new Size(200, 60);
             btnGrillaClientes.TabIndex = 1;
-            btnGrillaClientes.Text = "Pantalla Principal";
+            btnGrillaClientes.Text = "Lista Clientes";
             btnGrillaClientes.UseVisualStyleBackColor = true;
             btnGrillaClientes.Click += btnGrillaClientes_Click;
             // 
@@ -130,7 +130,7 @@
             btnNuevo.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnNuevo.FlatStyle = FlatStyle.Flat;
             btnNuevo.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnNuevo.Location = new Point(11, 110);
+            btnNuevo.Location = new Point(12, 181);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new Size(202, 60);
             btnNuevo.TabIndex = 2;
@@ -253,6 +253,7 @@
             // panelPpal
             // 
             panelPpal.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panelPpal.BackColor = SystemColors.Control;
             panelPpal.Location = new Point(236, 117);
             panelPpal.Name = "panelPpal";
             panelPpal.Size = new Size(843, 621);
