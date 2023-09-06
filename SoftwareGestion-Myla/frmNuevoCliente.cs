@@ -18,37 +18,61 @@ namespace SoftwareGestion_Myla
     public partial class frmNuevoCliente : Form
     {
         private frmPrincipal form;
-        private bool cliente;
+        private bool esCliente;
         CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
         SubCategoriaNegocio subCategoriaNegocio = new SubCategoriaNegocio();
         Helpers help = new Helpers();
-        public frmNuevoCliente(frmPrincipal frmPrincipal, bool cliente)
+        Clientes? cliente;
+        public frmNuevoCliente(frmPrincipal frmPrincipal, bool EsCliente, Clientes cliente = null) 
         {
             InitializeComponent();
             this.form = frmPrincipal;
             Anchor = AnchorStyles.Right;
+            this.esCliente = EsCliente;
             this.cliente = cliente;
         }
         private void frmNuevoCliente_Load(object sender, EventArgs e)
         {
-            if (cliente)
+            if (esCliente && cliente == null)
             {
                 lblTitulo.Text = "Nuevo Cliente:";
                 pnlEsp.Visible = false;
+            }else if(esCliente && cliente != null)
+            {
+                lblTitulo.Text = "Editar Cliente:";
+                pnlEsp.Visible = false;
+                completarModif(cliente);
             }
-            else if (!cliente)
+            else if (!esCliente)
             {
                 lblTitulo.Text = "Nuevo Especialista:";
                 pnlEsp.Visible = true;
             }
         }
 
+        private void completarModif(Clientes cliente)
+        {
+            this.cliente = cliente;
+            txtNombre.Text = cliente.Nombre;
+            txtApellido.Text = cliente.Apellido;
+            txtEmail.Text = cliente.Email;
+            txtTel.Text = cliente.Telefono.ToString();
+            datePickerCumple.Value = cliente.Cumple;
+        }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (cliente)
+            if (esCliente)
             {
+                Clientes aux;
                 ClientesNegocio clientesNegocio = new ClientesNegocio();
-                Clientes aux = new Clientes();
+                if(cliente != null)
+                {
+                    aux = cliente;
+                }
+                else
+                {
+                     aux = new Clientes();
+                }
                 bool banderaC = true;
                 try
                 {
@@ -92,7 +116,14 @@ namespace SoftwareGestion_Myla
                     if (banderaC)
                     {
                         aux.UltContacto = DateTime.Today;
-                        clientesNegocio.crearCliente(aux);
+                        if( cliente != null)
+                        {
+                            clientesNegocio.editarCliente(aux);
+                        }
+                        else
+                        {
+                            clientesNegocio.crearCliente(aux);
+                        }
                         form.verGrilla();
                     }
                     else
@@ -108,7 +139,7 @@ namespace SoftwareGestion_Myla
                
 
             }
-            else if (!cliente)
+            else if (!esCliente)
             {
                 EspecialistaNegocio especialistaNegocio = new EspecialistaNegocio();
                 Especialista aux = new Especialista();
@@ -130,7 +161,7 @@ namespace SoftwareGestion_Myla
                         bandera = false;
                     }
                     aux.Cumple = datePickerCumple.Value.Date;
-                    if (help.validEmail(txtEmail.Text))
+                    if (help.validEmail(txtEmail.Text) || string.IsNullOrEmpty(txtEmail.Text))
                     {
                         aux.Email = txtEmail.Text;
                         lblErrorMail.Text = string.Empty;
@@ -190,7 +221,7 @@ namespace SoftwareGestion_Myla
                 {
                     form.editarEsp(aux);
                 }
-
+                
 
             }
 

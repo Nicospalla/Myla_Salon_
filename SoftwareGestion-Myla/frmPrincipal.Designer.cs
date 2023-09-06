@@ -70,10 +70,11 @@
             // btnTurnos
             // 
             btnTurnos.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
+            btnTurnos.FlatAppearance.BorderSize = 3;
             btnTurnos.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnTurnos.FlatStyle = FlatStyle.Flat;
             btnTurnos.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnTurnos.Location = new Point(10, 102);
+            btnTurnos.Location = new Point(14, 32);
             btnTurnos.Name = "btnTurnos";
             btnTurnos.Size = new Size(202, 60);
             btnTurnos.TabIndex = 5;
@@ -87,7 +88,7 @@
             btnEditarEsp.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnEditarEsp.FlatStyle = FlatStyle.Flat;
             btnEditarEsp.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEditarEsp.Location = new Point(12, 339);
+            btnEditarEsp.Location = new Point(11, 392);
             btnEditarEsp.Name = "btnEditarEsp";
             btnEditarEsp.Size = new Size(202, 60);
             btnEditarEsp.TabIndex = 4;
@@ -101,7 +102,7 @@
             btnNuevoEsp.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnNuevoEsp.FlatStyle = FlatStyle.Flat;
             btnNuevoEsp.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnNuevoEsp.Location = new Point(12, 260);
+            btnNuevoEsp.Location = new Point(11, 302);
             btnNuevoEsp.Name = "btnNuevoEsp";
             btnNuevoEsp.Size = new Size(202, 60);
             btnNuevoEsp.TabIndex = 3;
@@ -112,11 +113,10 @@
             // btnGrillaClientes
             // 
             btnGrillaClientes.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
-            btnGrillaClientes.FlatAppearance.BorderSize = 3;
             btnGrillaClientes.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnGrillaClientes.FlatStyle = FlatStyle.Flat;
             btnGrillaClientes.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGrillaClientes.Location = new Point(12, 23);
+            btnGrillaClientes.Location = new Point(14, 122);
             btnGrillaClientes.Name = "btnGrillaClientes";
             btnGrillaClientes.Size = new Size(200, 60);
             btnGrillaClientes.TabIndex = 1;
@@ -130,7 +130,7 @@
             btnNuevo.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnNuevo.FlatStyle = FlatStyle.Flat;
             btnNuevo.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnNuevo.Location = new Point(12, 181);
+            btnNuevo.Location = new Point(12, 212);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new Size(202, 60);
             btnNuevo.TabIndex = 2;

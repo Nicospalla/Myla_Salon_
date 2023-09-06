@@ -170,5 +170,18 @@ namespace SoftwareGestion_Myla
             frmTurnos.Dock = DockStyle.Fill;
             frmTurnos.Show();
         }
+
+        public void editarCliente(Clientes cliente)
+        {
+            limpiaPanel();
+            frmNuevoCliente frmNuevoCliente = new frmNuevoCliente(this, true, cliente);
+            frmNuevoCliente.TopLevel = false;
+            panelPpal.Controls.Add(frmNuevoCliente);
+            frmNuevoCliente.Dock = DockStyle.Fill;
+            frmNuevoCliente.Location = new Point((panelPpal.Width - frmNuevoCliente.Width) / 2, (panelPpal.Height - frmNuevoCliente.Height) / 2);
+            frmNuevoCliente.Show();
+
+        }
+
     }
 }

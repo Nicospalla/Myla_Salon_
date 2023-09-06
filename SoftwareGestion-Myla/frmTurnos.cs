@@ -23,6 +23,7 @@ namespace SoftwareGestion_Myla
         SubCategoriaNegocio SubCategoriaNegocio = new SubCategoriaNegocio();
         List<Especialista> listaEsp;
         List<SubCategoria> listaSubCat;
+        List<string> horariosDispo;
         public Turnos turno { get; set; }
         public bool Modificar { get; set; }
         public Clientes cliente { get; set; }
@@ -51,9 +52,14 @@ namespace SoftwareGestion_Myla
                 pnlGrid.Visible = false;
 
             }
+            cboEstado.Items.Add("Reservado");
+            cboEstado.Items.Add("Señado 10%");
+            cboEstado.Items.Add("Señado 20%");
+
 
             turnosReservados();
         }
+
         private void cargaCboEsp()
         {
             var especialistas = especialistaNegocio.listaEspecialista().ToList();
@@ -86,6 +92,20 @@ namespace SoftwareGestion_Myla
                 limpiaPlanilla();
                 lblErrorId.Text = "Ese número de Cliente parece no existir, intente con otro.";
             }
+            bloqueaCBOS();
+        }
+
+        private void bloqueaCBOS()
+        {
+            if (cboSubCat.Items.Count == 0)
+                cboSubCat.Enabled = false;
+            else { cboSubCat.Enabled = true; }
+            if (cboEspe.Items.Count == 0)
+                cboEspe.Enabled = false;
+            else { cboEspe.Enabled = true; }
+            if (cboHorarios.Items.Count == 0 && Modificar == false)
+                cboHorarios.Enabled = false;
+            else { cboHorarios.Enabled = true; }
         }
 
         private void limpiaPlanilla()
@@ -101,6 +121,8 @@ namespace SoftwareGestion_Myla
             lblErrorHora.Text = string.Empty;
             lblErrorSubCat.Text = string.Empty;
             lblErrorEsp.Text = string.Empty;
+            cboEstado.SelectedIndex = -1;
+            bloqueaCBOS();
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -113,6 +135,7 @@ namespace SoftwareGestion_Myla
             cboSubCat.DataSource = SubCategoriaNegocio.listarSubCat(idEsp, 0, true);
             cboSubCat.SelectedIndex = -1;
             cargaCboHorarios(calendarTurno.SelectionStart, idEsp);
+            bloqueaCBOS();
         }
         public void cargarCboSubCat()
         {
@@ -120,6 +143,7 @@ namespace SoftwareGestion_Myla
             listaSubCat = SubCategoriaNegocio.listarSubCat(idEsp, 0, true);
             cboSubCat.DataSource = listaSubCat;
             cboSubCat.SelectedIndex = -1;
+            bloqueaCBOS();
         }
         public void cargaCboHorarios(DateTime fecha, int idEsp, int idTurno = 0)
         {
@@ -129,6 +153,18 @@ namespace SoftwareGestion_Myla
             List<string> horariosDisponibles = new List<string>();
 
             TimeSpan intervalo = TimeSpan.FromMinutes(15);
+            if(calendarTurno.SelectionStart == DateTime.Today)
+            {
+                TimeSpan horaHoy = DateTime.Now.TimeOfDay;
+                int minutosRestantes = horaHoy.Minutes % 15;
+                int minutosAjustados = 0;
+                if(minutosRestantes != 0)
+                {
+                    minutosAjustados = horaHoy.Minutes + (15 - minutosRestantes);
+                }
+                TimeSpan horaRedondeada = new TimeSpan(horaHoy.Hours, minutosAjustados, horaHoy.Seconds);
+                horaInicio = horaRedondeada;
+            }
             while (horaInicio <= horaFin)
             {
                 string hora = horaInicio.ToString(@"hh\:mm");
@@ -139,6 +175,7 @@ namespace SoftwareGestion_Myla
                 horaInicio = horaInicio.Add(intervalo);
             }
             cboHorarios.DataSource = horariosDisponibles;
+            horariosDispo = horariosDisponibles;
         }
 
 
@@ -148,13 +185,14 @@ namespace SoftwareGestion_Myla
             limpiaPlanilla();
             pnlEdit.Visible = false;
             pnlGrid.Visible = true;
-
+            dgvTurnos.Focus();
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             limpiaPlanilla();
             pnlEdit.Visible = false;
             pnlGrid.Visible = true;
+            dgvTurnos.Focus();
             dgvTurnos.Visible = true;
         }
 
@@ -181,6 +219,7 @@ namespace SoftwareGestion_Myla
             turno.SubCategoria.IdSub = ((SubCategoria)cboSubCat.SelectedValue).IdSub;
             turno.SubCategoria.Duracion = ((SubCategoria)cboSubCat.SelectedValue).Duracion;
             turno.Fecha = calendarTurno.SelectionStart;
+            turno.Estado = cboEstado.SelectedItem.ToString();
             string horaI = cboHorarios.SelectedValue.ToString();
             turno.HoraInicio = TimeSpan.ParseExact(horaI, @"hh\:mm", CultureInfo.InvariantCulture);
             //turno.HoraInicio = TimeSpan.ParseExact(horaI, "HH:mm", CultureInfo.InvariantCulture);
@@ -286,13 +325,17 @@ namespace SoftwareGestion_Myla
 
         private void calendarTurno_DateChanged(object sender, DateRangeEventArgs e)
         {
-            //if (cboEspe.SelectedIndex != -1)
-            //{
-            //    int idEsp = ((Especialista)cboEspe.SelectedValue).IdEspecialista;
-            //    cboSubCat.DataSource = SubCategoriaNegocio.listarSubCat(idEsp, 0, true);
-            //    cboSubCat.SelectedIndex = -1;
-            //    cargaCboHorarios(calendarTurno.SelectionStart, idEsp);
-            //}
+            if (pnlGrid.Visible == true)
+            {
+                turnosReservados();
+            }
+            else
+            {
+                if(cboEspe.SelectedIndex != -1)
+                {
+                    cargaCboHorarios(calendarTurno.SelectionStart, ((Especialista)cboEspe.SelectedValue).IdEspecialista);
+                }
+            }
         }
 
         private void btnTurnoReservado_Click(object sender, EventArgs e)
@@ -303,16 +346,16 @@ namespace SoftwareGestion_Myla
         }
         private void turnosReservados()
         {
-            //pnlGrid.Visible = true; pnlEdit.Visible = false;
+            pnlGrid.Visible = true; pnlEdit.Visible = false;
 
             dgvTurnos.DataError += DgvTurnos_DataError;
             int idEsp = ((Especialista)cboEspeVerTurnos.SelectedValue).IdEspecialista;
             lblNombreEsp.Text = "Especialista seleccionado: " + cboEspeVerTurnos.SelectedValue.ToString();
             lblFecha.Text = "Fecha: " + calendarTurno.SelectionStart.Date.ToString("dd/MMM/yy");
             dgvTurnos.DataSource = null;
-            dgvTurnos.DataSource = turnosNegocio.listarTurnos(calendarTurno.SelectionStart, "Reservado", idEsp);
+            dgvTurnos.DataSource = turnosNegocio.listarTurnos(calendarTurno.SelectionStart, idEsp);
             dgvTurnos.Columns["IdTurno"].Visible = false;
-            
+            dgvTurnos.Focus();
 
         }
 
@@ -353,19 +396,37 @@ namespace SoftwareGestion_Myla
                 }
                 cboSubCat.SelectedIndex = index;
 
+                cboEstado.SelectedItem = turno.Estado;
+
                 calendarTurno.SelectionStart = turno.Fecha;
                 cargaCboHorarios(turno.Fecha, turno.Especialista.IdEspecialista, turno.IdTurno);
-
+                if (horariosDispo.Contains(turno.HoraInicio.ToString(@"hh\:mm")))
+                {
+                    cboHorarios.SelectedItem = turno.HoraInicio.ToString(@"hh\:mm");
+                }
             }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            dgvTurnos.Focus();
+            if (dgvTurnos.CurrentRow == null)
+                return;
+
             Turnos turno = (Turnos)dgvTurnos.CurrentRow.DataBoundItem;
             DialogResult resultado = MessageBox.Show("Seguro desea eliminar éste turno?", "Eliminar turno", MessageBoxButtons.OKCancel);
             if (resultado == DialogResult.OK)
             {
                 turnosNegocio.eliminarTurno(turno);
+            }
+            turnosReservados();
+        }
+
+        private void cboEspeVerTurnos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (pnlGrid.Visible == true)
+            {
+                turnosReservados();
             }
         }
     }

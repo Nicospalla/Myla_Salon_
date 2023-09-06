@@ -36,7 +36,8 @@ namespace SoftwareGestion_Myla
         {
             listaClientes = clientesNegocio.listar();
             dgvGrillaClientes.DataSource = listaClientes;
-            dgvGrillaClientes.Columns.Remove("UltContacto");
+            dgvGrillaClientes.Columns["UltContacto"].Visible = false;
+            
 
             txtFiltroRapido.PlaceholderText = "Filtrar por Nombre, Apellido o Teléfono.";
             txtFiltroId.PlaceholderText = "Filtrar solo por Numero de Cliente";
@@ -51,12 +52,12 @@ namespace SoftwareGestion_Myla
             {
                 listaFiltrada = listaClientes.FindAll(x => x.Nombre.ToLower().Contains(filtro) || x.Id.ToString().Contains(filtro) || x.Apellido.ToLower().Contains(filtro) || x.Telefono.Contains(filtro));
                 dgvGrillaClientes.DataSource = listaFiltrada;
-                dgvGrillaClientes.Columns.Remove("UltContacto");
+                dgvGrillaClientes.Columns["UltContacto"].Visible = false;
             }
             else
             {
                 dgvGrillaClientes.DataSource = listaClientes;
-                dgvGrillaClientes.Columns.Remove("UltContacto");
+                dgvGrillaClientes.Columns["UltContacto"].Visible = false;
             }
         }
 
@@ -86,23 +87,19 @@ namespace SoftwareGestion_Myla
             {
                 listaFiltrada = listaClientes.FindAll(x => x.Id.ToString().Contains(filtro));
                 dgvGrillaClientes.DataSource = listaFiltrada;
-
+                dgvGrillaClientes.Columns["UltContacto"].Visible = false;
             }
             else
+            {
                 dgvGrillaClientes.DataSource = listaClientes;
+                dgvGrillaClientes.Columns["UltContacto"].Visible = false;
+            }
         }
-
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtFiltroId.Text = string.Empty;
             txtFiltroRapido.Text = string.Empty;
         }
-
-        private void btnOrdenar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dgvGrillaClientes_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             List<Clientes> listaOrdenada;
@@ -131,6 +128,7 @@ namespace SoftwareGestion_Myla
                 else
                     indexUltimo = 0;
                 dgvGrillaClientes.DataSource = listaOrdenada;
+                dgvGrillaClientes.Columns["UltContacto"].Visible = false;
             }
             if (e.ColumnIndex == 2)
             {
@@ -143,6 +141,7 @@ namespace SoftwareGestion_Myla
                 else
                     indexUltimo = 0;
                 dgvGrillaClientes.DataSource = listaOrdenada;
+                dgvGrillaClientes.Columns["UltContacto"].Visible = false;
             }
             if (e.ColumnIndex == 5)
             {
@@ -155,6 +154,7 @@ namespace SoftwareGestion_Myla
                 else
                     indexUltimo = 0;
                 dgvGrillaClientes.DataSource = listaOrdenada;
+                dgvGrillaClientes.Columns["UltContacto"].Visible = false;
             }
             if (e.ColumnIndex == 6)
             {
@@ -167,6 +167,7 @@ namespace SoftwareGestion_Myla
                 else
                     indexUltimo = 0;
                 dgvGrillaClientes.DataSource = listaOrdenada;
+                dgvGrillaClientes.Columns["UltContacto"].Visible = false;
             }
 
 
@@ -194,6 +195,29 @@ namespace SoftwareGestion_Myla
                 Clientes cliente = (Clientes)dgvGrillaClientes.CurrentRow.DataBoundItem;
                 frmPrincipal.nuevoTurno(cliente);
             }
+        }
+
+        private void btnEditarCliente_Click(object sender, EventArgs e)
+        {
+            dgvGrillaClientes.Focus();
+            if (dgvGrillaClientes.CurrentRow != null)
+            {
+                frmPrincipal.editarCliente(((Clientes)dgvGrillaClientes.CurrentRow.DataBoundItem));
+            }
+        }
+
+        private void btnEliminarCliente_Click(object sender, EventArgs e)
+        {
+            dgvGrillaClientes.Focus();
+            if(dgvGrillaClientes.CurrentRow != null)
+            {
+                DialogResult result = MessageBox.Show("Seguro desea eliminar éste cliente?", "Eliminar Cliente", MessageBoxButtons.OKCancel);
+                if(result == DialogResult.OK)
+                {
+                    clientesNegocio.eliminarCliente((Clientes)dgvGrillaClientes.CurrentRow.DataBoundItem);
+                }
+            }
+            frmPrincipal.verGrilla();
         }
     }
 }

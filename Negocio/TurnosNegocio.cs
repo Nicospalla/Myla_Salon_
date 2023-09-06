@@ -11,29 +11,22 @@ namespace Negocio
 {
     public class TurnosNegocio
     {
-        public List<Turnos> listarTurnos(DateTime fecha, string Estado = "", int idEsp = 0)
+        public List<Turnos> listarTurnos(DateTime fecha, int idEsp = 0)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 
-                if(Estado == "Reservado" && idEsp ==0)
+                if( idEsp ==0)
                 {
                     datos.setearStoredProcedure("listarTurnosTodos");
-                }else if (Estado == "Reservado" && idEsp != 0)
+                }else if (idEsp != 0)
                 {
                     datos.setearStoredProcedure("listarTurnosIdEsp");
                     //datos.setearConsulta("select top 1 IdTurno, IdCliente, C.Nombre as NombreCliente, IdSubCategoria, s.Descripcion as Subcategoria, IdEspecialista, e.Nombre as Especialista,Fecha,HoraInicio, HoraFin,t.Estado as esta2 from TURNOS T, SUBCATEGORIA S, DATOSCLIENTES C, ESPECIALISTAS E where IdCliente = c.Id and IdSubCategoria = s.Id and IdEspecialista = e.Id and t.Fecha = @Fecha and IdEspecialista = @IdEsp and t.Estado = 'Reservado' and IdTurno = IdTurno");
                     datos.setearParametros("@IdEsp", idEsp);
                 }
-                else if(Estado == "Disponible" && idEsp == 0)
-                {
-                    datos.setearConsulta("select IdTurno, IdCliente, C.Nombre as NombreCliente, IdSubCategoria, s.Descripcion as Subcategoria, IdEspecialista, e.Nombre as Especialista,Fecha,HoraInicio, HoraFin,t.Estado as esta2 from TURNOS T, SUBCATEGORIA S, DATOSCLIENTES C, ESPECIALISTAS E where IdCliente = c.Id and IdSubCategoria = s.Id and IdEspecialista = e.Id and t.Fecha = @Fecha and t.Estado = 'Disponible'");
-                }else if(Estado == "Disponible" && idEsp != 0)
-                {
-                    datos.setearConsulta("select IdTurno, IdCliente, C.Nombre as NombreCliente, IdSubCategoria, s.Descripcion as Subcategoria, IdEspecialista, e.Nombre as Especialista,Fecha,HoraInicio, HoraFin,t.Estado as esta2 from TURNOS T, SUBCATEGORIA S, DATOSCLIENTES C, ESPECIALISTAS E where IdCliente = c.Id and IdSubCategoria = s.Id and IdEspecialista = e.Id and t.Fecha = @Fecha and IdEspecialista = @IdEsp and t.Estado = 'Disponible'");
-                    datos.setearParametros("@IdEsp", idEsp);
-                }else
+                else
                 {
                     datos.setearConsulta("select IdTurno, IdCliente, C.Nombre as NombreCliente, IdSubCategoria, s.Descripcion as Subcategoria, IdEspecialista, e.Nombre as Especialista,Fecha,HoraInicio, HoraFin,t.Estado as esta2 from TURNOS T, SUBCATEGORIA S, DATOSCLIENTES C, ESPECIALISTAS E where IdCliente = c.Id and IdSubCategoria = s.Id and IdEspecialista = e.Id and t.Fecha = @Fecha and t.Estado = 'Disponible'");
                 }
@@ -81,17 +74,17 @@ namespace Negocio
                     
                     consulta += "update TURNOS set IdTurno = 0 where id = (select top 1 id from TURNOS where IdTurno =  @IdTurno) " +
                         "delete from TURNOS where IdTurno = @IdTurno " +
-                        "update TURNOS set IdTurno = @IdTurno, IdCliente = @IdCliente, IdSubCategoria = @IdSubCategoria, IdEspecialista = @IdEspecialista, Fecha = @Fecha, HoraInicio = @HoraInicio, HoraFin = @HoraFin where IdTurno = 0 ";
+                        "update TURNOS set IdTurno = @IdTurno,Estado = @Estado, IdCliente = @IdCliente, IdSubCategoria = @IdSubCategoria, IdEspecialista = @IdEspecialista, Fecha = @Fecha, HoraInicio = @HoraInicio, HoraFin = @HoraFin where IdTurno = 0 ";
                     datos.setearConsulta(consulta);
                     Id = turno.IdTurno;
                 }
                 else if(idTurno == 0)
                 {
-                    consulta += "insert into TURNOS (IdCliente,IdSubCategoria,IdEspecialista,Fecha, HoraInicio, HoraFin, Estado) output inserted.Id  values (@IdCliente, @IdSubcategoria, @IdEspecialista, @Fecha, @HoraInicio, @HoraFin, 'Reservado' )";
+                    consulta += "insert into TURNOS (IdCliente, IdSubCategoria,IdEspecialista,Fecha, HoraInicio, HoraFin, Estado) output inserted.Id  values (@IdCliente, @IdSubcategoria , @IdEspecialista, @Fecha, @HoraInicio, @HoraFin, @Estado )";
                     datos.setearConsulta(consulta);
                 }else if(idTurno != 0)
                 {
-                    consulta += "insert into TURNOS (IdCliente,IdTurno,IdSubCategoria,IdEspecialista,Fecha, HoraInicio, HoraFin, Estado) values (@IdCliente,@IdTurno, @IdSubcategoria, @IdEspecialista, @Fecha, @HoraInicio, @HoraFin, 'Reservado' )";
+                    consulta += "insert into TURNOS (IdCliente,IdTurno,IdSubCategoria,IdEspecialista,Fecha, HoraInicio, HoraFin, Estado) values (@IdCliente,@IdTurno , @IdSubcategoria, @IdEspecialista, @Fecha, @HoraInicio, @HoraFin, @Estado)";
                     datos.setearConsulta(consulta);
                 }
                 datos.setearParametros("@IdCliente",turno.Cliente.Id);
@@ -100,6 +93,7 @@ namespace Negocio
                 datos.setearParametros("@Fecha", turno.Fecha);
                 datos.setearParametros("@HoraInicio", turno.HoraInicio);
                 datos.setearParametros("@HoraFin", turno.HoraFin);
+                datos.setearParametros("@Estado", turno.Estado);
                 if(idTurno == 0)
                 {
                     Id = datos.ejecutarAccionInt();

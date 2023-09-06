@@ -96,6 +96,7 @@ namespace SoftwareGestion_Myla
                 txtApellido.Text = esp.Apellido;
                 txtSueldo.Text = esp.Sueldo.ToString();
                 txtPorcentaje.Text = esp.Porcentaje.ToString();
+                txtTelefono.Text = esp.Telefono.ToString();
                 dateCumple.Value = esp.Cumple;
                 //Categorias cat = (Categorias)cboCategoria.SelectedValue;
                 //int id = cat.idCat;
@@ -138,7 +139,7 @@ namespace SoftwareGestion_Myla
             try
             {
                 bool bandera = true;
-                Especialista aux = new Especialista();
+                Especialista aux = esp;
 
                 if (!string.IsNullOrEmpty(txtApellido.Text))
                     aux.Apellido = txtApellido.Text;
@@ -147,7 +148,10 @@ namespace SoftwareGestion_Myla
                     lblErrorApellido.Text = "El apellido es obligatorio";
                     bandera = false;
                 }
+
+                aux.Nombre = aux.Nombre.ToString();
                 aux.IdEspecialista = int.Parse(txtId.Text);
+
                 if (help.validEmail(txtEmail.Text))
                     aux.Email = txtEmail.Text;
                 else
@@ -156,7 +160,7 @@ namespace SoftwareGestion_Myla
                     lblErrorEmail.Text = "Ingrese un Email válido";
                 }
 
-                if (string.IsNullOrEmpty(txtTelefono.Text) && help.soloNum(txtTelefono.Text) && !(txtTelefono.Text.Contains(",") || txtTelefono.Text.Contains(".")))
+                if (!string.IsNullOrEmpty(txtTelefono.Text) && help.soloNum(txtTelefono.Text) && !(txtTelefono.Text.Contains(",") || txtTelefono.Text.Contains(".")))
                 {
                     aux.Telefono = txtTelefono.Text;
                     lblErrorTel.Text = string.Empty;

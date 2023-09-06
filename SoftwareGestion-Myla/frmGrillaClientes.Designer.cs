@@ -38,13 +38,15 @@
             txtFiltroId = new TextBox();
             lblInfo = new Label();
             btnTurno = new Button();
+            btnEditarCliente = new Button();
+            btnEliminarCliente = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvGrillaClientes).BeginInit();
             SuspendLayout();
             // 
             // btnHistorial
             // 
-            btnHistorial.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnHistorial.Location = new Point(407, 503);
+            btnHistorial.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnHistorial.Location = new Point(682, 633);
             btnHistorial.Name = "btnHistorial";
             btnHistorial.Size = new Size(148, 54);
             btnHistorial.TabIndex = 7;
@@ -68,7 +70,7 @@
             txtFiltroRapido.Location = new Point(542, 66);
             txtFiltroRapido.MaximumSize = new Size(450, 27);
             txtFiltroRapido.Name = "txtFiltroRapido";
-            txtFiltroRapido.Size = new Size(200, 27);
+            txtFiltroRapido.Size = new Size(450, 27);
             txtFiltroRapido.TabIndex = 5;
             txtFiltroRapido.TextChanged += txtFiltroRapido_TextChanged;
             // 
@@ -98,7 +100,7 @@
             dgvGrillaClientes.RowHeadersWidth = 51;
             dgvGrillaClientes.RowTemplate.Height = 29;
             dgvGrillaClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvGrillaClientes.Size = new Size(701, 385);
+            dgvGrillaClientes.Size = new Size(1048, 515);
             dgvGrillaClientes.TabIndex = 4;
             dgvGrillaClientes.ColumnHeaderMouseClick += dgvGrillaClientes_ColumnHeaderMouseClick;
             dgvGrillaClientes.MouseHover += dgvGrillaClientes_MouseHover;
@@ -106,7 +108,7 @@
             // btnVenta
             // 
             btnVenta.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnVenta.Location = new Point(244, 503);
+            btnVenta.Location = new Point(244, 633);
             btnVenta.Name = "btnVenta";
             btnVenta.Size = new Size(157, 54);
             btnVenta.TabIndex = 8;
@@ -130,7 +132,7 @@
             txtFiltroId.Location = new Point(165, 66);
             txtFiltroId.MaximumSize = new Size(250, 27);
             txtFiltroId.Name = "txtFiltroId";
-            txtFiltroId.Size = new Size(200, 27);
+            txtFiltroId.Size = new Size(250, 27);
             txtFiltroId.TabIndex = 9;
             txtFiltroId.TextChanged += txtFiltroId_TextChanged;
             // 
@@ -147,7 +149,7 @@
             // btnTurno
             // 
             btnTurno.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnTurno.Location = new Point(90, 503);
+            btnTurno.Location = new Point(90, 633);
             btnTurno.Name = "btnTurno";
             btnTurno.Size = new Size(148, 54);
             btnTurno.TabIndex = 12;
@@ -155,12 +157,36 @@
             btnTurno.UseVisualStyleBackColor = true;
             btnTurno.Click += btnTurno_Click;
             // 
+            // btnEditarCliente
+            // 
+            btnEditarCliente.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnEditarCliente.Location = new Point(836, 633);
+            btnEditarCliente.Name = "btnEditarCliente";
+            btnEditarCliente.Size = new Size(148, 54);
+            btnEditarCliente.TabIndex = 13;
+            btnEditarCliente.Text = "Editar Cliente";
+            btnEditarCliente.UseVisualStyleBackColor = true;
+            btnEditarCliente.Click += btnEditarCliente_Click;
+            // 
+            // btnEliminarCliente
+            // 
+            btnEliminarCliente.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnEliminarCliente.Location = new Point(990, 633);
+            btnEliminarCliente.Name = "btnEliminarCliente";
+            btnEliminarCliente.Size = new Size(148, 54);
+            btnEliminarCliente.TabIndex = 14;
+            btnEliminarCliente.Text = "Eliminar Cliente";
+            btnEliminarCliente.UseVisualStyleBackColor = true;
+            btnEliminarCliente.Click += btnEliminarCliente_Click;
+            // 
             // frmGrillaClientes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(881, 588);
+            ClientSize = new Size(1228, 718);
+            Controls.Add(btnEliminarCliente);
+            Controls.Add(btnEditarCliente);
             Controls.Add(btnTurno);
             Controls.Add(lblInfo);
             Controls.Add(lblFiltroID);
@@ -194,5 +220,7 @@
         private Label lblInfo;
         private Button btnTurno;
         public DataGridView dgvGrillaClientes;
+        private Button btnEditarCliente;
+        private Button btnEliminarCliente;
     }
 }
