@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panelIzq = new Panel();
+            btnCategorias = new Button();
             btnTurnos = new Button();
             btnEditarEsp = new Button();
             btnNuevoEsp = new Button();
@@ -56,6 +57,7 @@
             // 
             panelIzq.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panelIzq.BackColor = SystemColors.ActiveCaption;
+            panelIzq.Controls.Add(btnCategorias);
             panelIzq.Controls.Add(btnTurnos);
             panelIzq.Controls.Add(btnEditarEsp);
             panelIzq.Controls.Add(btnNuevoEsp);
@@ -64,8 +66,22 @@
             panelIzq.Controls.Add(btnCerrar);
             panelIzq.Location = new Point(1, 109);
             panelIzq.Name = "panelIzq";
-            panelIzq.Size = new Size(229, 629);
+            panelIzq.Size = new Size(229, 774);
             panelIzq.TabIndex = 0;
+            // 
+            // btnCategorias
+            // 
+            btnCategorias.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
+            btnCategorias.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btnCategorias.FlatStyle = FlatStyle.Flat;
+            btnCategorias.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCategorias.Location = new Point(11, 468);
+            btnCategorias.Name = "btnCategorias";
+            btnCategorias.Size = new Size(202, 60);
+            btnCategorias.TabIndex = 6;
+            btnCategorias.Text = "Editar Categorias";
+            btnCategorias.UseVisualStyleBackColor = true;
+            btnCategorias.Click += btnCategorias_Click;
             // 
             // btnTurnos
             // 
@@ -77,7 +93,7 @@
             btnTurnos.Location = new Point(14, 32);
             btnTurnos.Name = "btnTurnos";
             btnTurnos.Size = new Size(202, 60);
-            btnTurnos.TabIndex = 5;
+            btnTurnos.TabIndex = 0;
             btnTurnos.Text = "Turnos";
             btnTurnos.UseVisualStyleBackColor = true;
             btnTurnos.Click += btnTurnos_Click;
@@ -145,10 +161,10 @@
             btnCerrar.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnCerrar.FlatStyle = FlatStyle.Flat;
             btnCerrar.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCerrar.Location = new Point(11, 555);
+            btnCerrar.Location = new Point(11, 700);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(202, 63);
-            btnCerrar.TabIndex = 0;
+            btnCerrar.TabIndex = 5;
             btnCerrar.Text = "Cerrar";
             btnCerrar.UseVisualStyleBackColor = true;
             btnCerrar.Click += btnCerrar_Click;
@@ -192,7 +208,7 @@
             btnCerrarSession.Location = new Point(343, 9);
             btnCerrarSession.Name = "btnCerrarSession";
             btnCerrarSession.Size = new Size(70, 70);
-            btnCerrarSession.TabIndex = 2;
+            btnCerrarSession.TabIndex = 0;
             btnCerrarSession.Text = "Cerrar Sesión";
             btnCerrarSession.UseVisualStyleBackColor = true;
             btnCerrarSession.Click += btnCerrarSession_Click;
@@ -256,14 +272,14 @@
             panelPpal.BackColor = SystemColors.Control;
             panelPpal.Location = new Point(236, 117);
             panelPpal.Name = "panelPpal";
-            panelPpal.Size = new Size(843, 621);
+            panelPpal.Size = new Size(843, 766);
             panelPpal.TabIndex = 8;
             // 
             // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1082, 739);
+            ClientSize = new Size(1082, 884);
             Controls.Add(panelPpal);
             Controls.Add(panelSup);
             Controls.Add(panelIzq);
@@ -303,5 +319,6 @@
         private Button btnEditarEsp;
         private Button btnTurnos;
         private PictureBox picBox;
+        private Button btnCategorias;
     }
 }

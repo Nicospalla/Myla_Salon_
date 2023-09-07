@@ -152,6 +152,10 @@
             // 
             // dgvCat
             // 
+            dgvCat.AllowUserToAddRows = false;
+            dgvCat.AllowUserToDeleteRows = false;
+            dgvCat.AllowUserToResizeColumns = false;
+            dgvCat.AllowUserToResizeRows = false;
             dgvCat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCat.ColumnHeadersVisible = false;
@@ -237,6 +241,10 @@
             // 
             // dgvNoCat
             // 
+            dgvNoCat.AllowUserToAddRows = false;
+            dgvNoCat.AllowUserToDeleteRows = false;
+            dgvNoCat.AllowUserToResizeColumns = false;
+            dgvNoCat.AllowUserToResizeRows = false;
             dgvNoCat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvNoCat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvNoCat.ColumnHeadersVisible = false;

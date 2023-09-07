@@ -183,5 +183,15 @@ namespace SoftwareGestion_Myla
 
         }
 
+        private void btnCategorias_Click(object sender, EventArgs e)
+        {
+            limpiaPanel();
+            frmCategorias frmCategorias = new frmCategorias();
+            frmCategorias.TopLevel = false;
+            panelPpal.Controls.Add(frmCategorias);
+            frmCategorias.Dock = DockStyle.Fill;
+            frmCategorias.Location = new Point((panelPpal.Width - frmCategorias.Width) / 2, (panelPpal.Height - frmCategorias.Height) / 2);
+            frmCategorias.Show();
+        }
     }
 }

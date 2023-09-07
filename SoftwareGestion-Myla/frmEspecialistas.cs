@@ -191,7 +191,7 @@ namespace SoftwareGestion_Myla
                     lblErrorPorcen.Text = "Solo puede ingresar números enteros y un separador decimal.";
                     bandera = false;
                 }
-                if(bandera)
+                if (bandera)
                     especialistaNegocio.editarEspecialista(aux);
             }
             catch (Exception ex)

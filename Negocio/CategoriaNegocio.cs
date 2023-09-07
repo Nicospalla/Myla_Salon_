@@ -82,5 +82,38 @@ namespace Negocio
                 throw ex;
             }finally { datos.cerrarConn(); }
         }
+
+        public void nuevaCat(string cat)
+        {
+            AccesoDatos datos = new();
+            try
+            {
+                datos.setearConsulta("insert into CATEGORIAS (Descripcion) values (@Descripcion)");
+                datos.setearParametros("@Descripcion",cat);
+                datos.ejecutarAccion();
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public void eliminarCat (Categorias cat)
+        {
+            AccesoDatos datos = new();
+            try
+            {
+                datos.setearConsulta("  delete from ESPECIALISTAS_CATEGORIAS where idCat = @idCat delete from SUBCATEGORIA where IdCategoria = @idCat delete from CATEGORIAS where Id = @idCat");
+                datos.setearParametros("@idCat", cat.idCat);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
