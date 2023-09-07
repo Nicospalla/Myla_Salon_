@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using Dominio;
 using System.Globalization;
 using Microsoft.VisualBasic;
+using Accesorios;
 
 namespace SoftwareGestion_Myla
 {
@@ -24,9 +25,12 @@ namespace SoftwareGestion_Myla
         List<Especialista> listaEsp;
         List<SubCategoria> listaSubCat;
         List<string> horariosDispo;
+        Helpers help = new();
+        List<Turnos> listaTurnos = new();
         public Turnos turno { get; set; }
         public bool Modificar { get; set; }
         public Clientes cliente { get; set; }
+        public int indexUltimo { get; set; }
         public frmTurnos(Clientes? cliente = null)
         {
             InitializeComponent();
@@ -69,7 +73,7 @@ namespace SoftwareGestion_Myla
         }
         private void chequeaId()
         {
-            if (txtIdCliente.Text.Length > 0)
+            if (txtIdCliente.Text.Length > 0 && help.soloNum(txtIdCliente.Text))
             {
                 List<Clientes> listaAux = ClientesNegocio.listar(int.Parse(txtIdCliente.Text));
                 if (listaAux.Count == 1)
@@ -153,12 +157,12 @@ namespace SoftwareGestion_Myla
             List<string> horariosDisponibles = new List<string>();
 
             TimeSpan intervalo = TimeSpan.FromMinutes(15);
-            if(calendarTurno.SelectionStart == DateTime.Today)
+            if (calendarTurno.SelectionStart == DateTime.Today)
             {
                 TimeSpan horaHoy = DateTime.Now.TimeOfDay;
                 int minutosRestantes = horaHoy.Minutes % 15;
                 int minutosAjustados = 0;
-                if(minutosRestantes != 0)
+                if (minutosRestantes != 0)
                 {
                     minutosAjustados = horaHoy.Minutes + (15 - minutosRestantes);
                 }
@@ -194,6 +198,7 @@ namespace SoftwareGestion_Myla
             pnlGrid.Visible = true;
             dgvTurnos.Focus();
             dgvTurnos.Visible = true;
+            turnosReservados();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -240,7 +245,7 @@ namespace SoftwareGestion_Myla
                 {
                     lblErrorHora.Text = "El turno se superpone con el horario de cierre.";
                     banderaHora = false;
-                    break;
+                    return;
                 }
                 else if (turnosNegocio.verifDisponible(turno.Fecha, hora, turno.Especialista.IdEspecialista, turno.IdTurno))
                 {
@@ -254,10 +259,8 @@ namespace SoftwareGestion_Myla
                 {
                     banderaHora = false;
                     lblErrorHora.Text = "El horario se superpone con otro reservado anteriormente";
-                    break;
+                    return;
                 }
-
-
 
             }
             if (banderaHora)
@@ -281,6 +284,7 @@ namespace SoftwareGestion_Myla
             {
                 return;
             }
+
             limpiaPlanilla();
             turnosReservados();
         }
@@ -320,7 +324,7 @@ namespace SoftwareGestion_Myla
             pnlEdit.Visible = true;
             pnlGrid.Visible = false;
             DateTime fecha = calendarTurno.SelectionStart.Date;
-
+            txtIdCliente.Enabled = true;
         }
 
         private void calendarTurno_DateChanged(object sender, DateRangeEventArgs e)
@@ -331,7 +335,7 @@ namespace SoftwareGestion_Myla
             }
             else
             {
-                if(cboEspe.SelectedIndex != -1)
+                if (cboEspe.SelectedIndex != -1)
                 {
                     cargaCboHorarios(calendarTurno.SelectionStart, ((Especialista)cboEspe.SelectedValue).IdEspecialista);
                 }
@@ -353,7 +357,8 @@ namespace SoftwareGestion_Myla
             lblNombreEsp.Text = "Especialista seleccionado: " + cboEspeVerTurnos.SelectedValue.ToString();
             lblFecha.Text = "Fecha: " + calendarTurno.SelectionStart.Date.ToString("dd/MMM/yy");
             dgvTurnos.DataSource = null;
-            dgvTurnos.DataSource = turnosNegocio.listarTurnos(calendarTurno.SelectionStart, idEsp);
+            listaTurnos = turnosNegocio.listarTurnos(calendarTurno.SelectionStart, idEsp);
+            dgvTurnos.DataSource = listaTurnos;
             dgvTurnos.Columns["IdTurno"].Visible = false;
             dgvTurnos.Focus();
 
@@ -361,6 +366,7 @@ namespace SoftwareGestion_Myla
 
         private void DgvTurnos_DataError(object? sender, DataGridViewDataErrorEventArgs e)
         {
+
             e.Cancel = true;
         }
 
@@ -427,6 +433,85 @@ namespace SoftwareGestion_Myla
             if (pnlGrid.Visible == true)
             {
                 turnosReservados();
+            }
+        }
+
+        private void dgvTurnos_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            List<Turnos> listaOrdenada;
+
+            if (e.ColumnIndex == 1)
+            {
+                listaOrdenada = listaTurnos.OrderBy(x => x.Cliente.Nombre).ToList();
+                if (indexUltimo == 0)
+                {
+                    listaOrdenada = listaTurnos.OrderByDescending(x => x.Cliente.Nombre).ToList();
+                    indexUltimo = -1;
+                }
+                else
+                    indexUltimo = 0;
+                dgvTurnos.DataSource = listaOrdenada;
+            }
+
+            if (e.ColumnIndex == 2)
+            {
+                listaOrdenada = listaTurnos.OrderBy(x => x.Especialista.Nombre).ToList();
+                if (indexUltimo == 0)
+                {
+                    listaOrdenada = listaOrdenada.OrderByDescending(x => x.Especialista.Nombre).ToList();
+                    indexUltimo = -1;
+                }
+                else
+                    indexUltimo = 0;
+                dgvTurnos.DataSource = listaOrdenada;
+            }
+            if (e.ColumnIndex == 3)
+            {
+                listaOrdenada = listaTurnos.OrderBy(x => x.SubCategoria.Descripcion).ToList();
+                if (indexUltimo == 0)
+                {
+                    listaOrdenada = listaOrdenada.OrderByDescending(x => x.SubCategoria.Descripcion).ToList();
+                    indexUltimo = -1;
+                }
+                else
+                    indexUltimo = 0;
+                dgvTurnos.DataSource = listaOrdenada;
+            }
+            if (e.ColumnIndex ==5 )
+            {
+                listaOrdenada = listaTurnos.OrderBy(x => x.HoraInicio).ToList();
+                if (indexUltimo == 0)
+                {
+                    listaOrdenada = listaOrdenada.OrderByDescending(x => x.HoraInicio).ToList();
+                    indexUltimo = -1;
+                }
+                else
+                    indexUltimo = 0;
+                dgvTurnos.DataSource = listaOrdenada;
+            }
+            if (e.ColumnIndex == 6)
+            {
+                listaOrdenada = listaTurnos.OrderBy(x => x.HoraFin).ToList();
+                if (indexUltimo == 0)
+                {
+                    listaOrdenada = listaOrdenada.OrderByDescending(x => x.HoraFin).ToList();
+                    indexUltimo = -1;
+                }
+                else
+                    indexUltimo = 0;
+                dgvTurnos.DataSource = listaOrdenada;
+            }
+            if (e.ColumnIndex == 7)
+            {
+                listaOrdenada = listaTurnos.OrderBy(x => x.Estado).ToList();
+                if (indexUltimo == 0)
+                {
+                    listaOrdenada = listaOrdenada.OrderByDescending(x => x.Estado).ToList();
+                    indexUltimo = -1;
+                }
+                else
+                    indexUltimo = 0;
+                dgvTurnos.DataSource = listaOrdenada;
             }
         }
     }
