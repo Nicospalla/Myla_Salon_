@@ -80,6 +80,8 @@ namespace SoftwareGestion_Myla
         private void cboEsp_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+            if (cboEsp.SelectedValue == null)
+                return;
             string a = cboEsp.SelectedValue.ToString();
             int numero;
             if (cboEsp.SelectedIndex != -1 && int.TryParse(a, out numero))

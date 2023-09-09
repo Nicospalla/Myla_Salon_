@@ -31,6 +31,7 @@
             dgvHistorial = new DataGridView();
             btnAtras = new Button();
             btnEditaVta = new Button();
+            btnEliminar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvHistorial).BeginInit();
             SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             dgvHistorial.RowTemplate.Height = 29;
             dgvHistorial.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvHistorial.Size = new Size(701, 385);
-            dgvHistorial.TabIndex = 5;
+            dgvHistorial.TabIndex = 0;
             // 
             // btnAtras
             // 
@@ -59,7 +60,7 @@
             btnAtras.Location = new Point(80, 444);
             btnAtras.Name = "btnAtras";
             btnAtras.Size = new Size(144, 42);
-            btnAtras.TabIndex = 6;
+            btnAtras.TabIndex = 1;
             btnAtras.Text = "Atrás";
             btnAtras.UseVisualStyleBackColor = true;
             btnAtras.Click += btnAtras_Click;
@@ -70,10 +71,21 @@
             btnEditaVta.Location = new Point(230, 444);
             btnEditaVta.Name = "btnEditaVta";
             btnEditaVta.Size = new Size(144, 42);
-            btnEditaVta.TabIndex = 7;
+            btnEditaVta.TabIndex = 2;
             btnEditaVta.Text = "Editar Venta";
             btnEditaVta.UseVisualStyleBackColor = true;
             btnEditaVta.Click += btnEditaVta_Click;
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnEliminar.Location = new Point(637, 444);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(144, 42);
+            btnEliminar.TabIndex = 3;
+            btnEliminar.Text = "Eliminar Venta";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // frmHistorial
             // 
@@ -81,6 +93,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(848, 521);
+            Controls.Add(btnEliminar);
             Controls.Add(btnEditaVta);
             Controls.Add(btnAtras);
             Controls.Add(dgvHistorial);
@@ -98,5 +111,6 @@
         private DataGridView dgvHistorial;
         private Button btnAtras;
         private Button btnEditaVta;
+        private Button btnEliminar;
     }
 }

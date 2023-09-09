@@ -23,7 +23,7 @@ namespace SoftwareGestion_Myla
         SubCategoriaNegocio subCategoriaNegocio = new SubCategoriaNegocio();
         Helpers help = new Helpers();
         Clientes? cliente;
-        public frmNuevoCliente(frmPrincipal frmPrincipal, bool EsCliente, Clientes cliente = null) 
+        public frmNuevoCliente(frmPrincipal frmPrincipal, bool EsCliente, Clientes cliente = null)
         {
             InitializeComponent();
             this.form = frmPrincipal;
@@ -37,7 +37,8 @@ namespace SoftwareGestion_Myla
             {
                 lblTitulo.Text = "Nuevo Cliente:";
                 pnlEsp.Visible = false;
-            }else if(esCliente && cliente != null)
+            }
+            else if (esCliente && cliente != null)
             {
                 lblTitulo.Text = "Editar Cliente:";
                 pnlEsp.Visible = false;
@@ -47,6 +48,10 @@ namespace SoftwareGestion_Myla
             {
                 lblTitulo.Text = "Nuevo Especialista:";
                 pnlEsp.Visible = true;
+            }
+            if (cliente != null)
+            {
+                btnLimpiar.Text = "Cancelar";               
             }
         }
 
@@ -65,13 +70,13 @@ namespace SoftwareGestion_Myla
             {
                 Clientes aux;
                 ClientesNegocio clientesNegocio = new ClientesNegocio();
-                if(cliente != null)
+                if (cliente != null)
                 {
                     aux = cliente;
                 }
                 else
                 {
-                     aux = new Clientes();
+                    aux = new Clientes();
                 }
                 bool banderaC = true;
                 try
@@ -95,7 +100,8 @@ namespace SoftwareGestion_Myla
                     {
                         aux.Email = txtEmail.Text;
                         lblErrorMail.Text = string.Empty;
-                    }else
+                    }
+                    else
                     {
                         lblErrorMail.Text = "Ingrese un email correcto";
                         banderaC = false;
@@ -116,7 +122,7 @@ namespace SoftwareGestion_Myla
                     if (banderaC)
                     {
                         aux.UltContacto = DateTime.Today;
-                        if( cliente != null)
+                        if (cliente != null)
                         {
                             clientesNegocio.editarCliente(aux);
                         }
@@ -136,7 +142,7 @@ namespace SoftwareGestion_Myla
 
                     throw ex;
                 }
-               
+
 
             }
             else if (!esCliente)
@@ -221,7 +227,7 @@ namespace SoftwareGestion_Myla
                 {
                     form.editarEsp(aux);
                 }
-                
+
 
             }
 
@@ -229,19 +235,30 @@ namespace SoftwareGestion_Myla
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Esta seguro que desea limpia la planilla?", "Limpiar Datos", MessageBoxButtons.OKCancel);
-            if (result == DialogResult.OK)
+            if(cliente!= null)
             {
-                txtNombre.Text = null;
-                txtApellido.Text = null;
-                txtEmail.Text = null;
-                txtTel.Text = null;
-                datePickerCumple.Value = DateTime.Now;
+                form.verGrilla();
             }
             else
             {
-                return;
+                DialogResult result = MessageBox.Show("Esta seguro que desea limpia la planilla?", "Limpiar Datos", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.OK)
+                {
+                    txtNombre.Text = null;
+                    txtApellido.Text = null;
+                    txtEmail.Text = null;
+                    txtTel.Text = null;
+                    datePickerCumple.Value = DateTime.Now;
+                }
+                else
+                {
+                    return;
+                }
+
             }
+
+
+
         }
 
         private void btnAtras_Click(object sender, EventArgs e)

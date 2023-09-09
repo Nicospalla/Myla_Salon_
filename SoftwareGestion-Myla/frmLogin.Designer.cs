@@ -42,7 +42,7 @@
             btnIngresar.Location = new Point(39, 247);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(189, 49);
-            btnIngresar.TabIndex = 0;
+            btnIngresar.TabIndex = 2;
             btnIngresar.Text = "Ingresar";
             btnIngresar.UseVisualStyleBackColor = true;
             btnIngresar.Click += btnIngresar_Click;
@@ -52,7 +52,7 @@
             btnCancelar.Location = new Point(273, 247);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(189, 49);
-            btnCancelar.TabIndex = 1;
+            btnCancelar.TabIndex = 3;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
@@ -62,14 +62,14 @@
             txtUser.Location = new Point(79, 87);
             txtUser.Name = "txtUser";
             txtUser.Size = new Size(334, 27);
-            txtUser.TabIndex = 2;
+            txtUser.TabIndex = 0;
             // 
             // txtPass
             // 
             txtPass.Location = new Point(79, 165);
             txtPass.Name = "txtPass";
             txtPass.Size = new Size(334, 27);
-            txtPass.TabIndex = 3;
+            txtPass.TabIndex = 1;
             txtPass.UseSystemPasswordChar = true;
             // 
             // lblUser

@@ -97,6 +97,21 @@ namespace Negocio
                 throw ex;
             }
         }
+        public void eliminarVenta(HistoVentas venta)
+        {
+            AccesoDatos datos = new();
+            try
+            {
+                datos.setearConsulta("delete from HISTORIAL_VENTAS where IdVenta = @IdVenta");
+                datos.setearParametros("@IdVenta",venta.IdVenta);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         
     }
 }

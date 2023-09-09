@@ -41,7 +41,7 @@ namespace SoftwareGestion_Myla
                 }
                 else
                     lblError.Text = "Datos incorrectos o usuario inexistente.";
-              
+
 
 
             }

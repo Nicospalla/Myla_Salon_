@@ -114,14 +114,14 @@
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
             txtId.Size = new Size(280, 27);
-            txtId.TabIndex = 4;
+            txtId.TabIndex = 1;
             // 
             // txtApellido
             // 
             txtApellido.Location = new Point(142, 340);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(280, 27);
-            txtApellido.TabIndex = 6;
+            txtApellido.TabIndex = 2;
             // 
             // label2
             // 
@@ -148,7 +148,7 @@
             dateCumple.Location = new Point(142, 565);
             dateCumple.Name = "dateCumple";
             dateCumple.Size = new Size(280, 27);
-            dateCumple.TabIndex = 10;
+            dateCumple.TabIndex = 5;
             // 
             // dgvCat
             // 
@@ -173,7 +173,7 @@
             dgvCat.RowTemplate.Height = 29;
             dgvCat.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCat.Size = new Size(238, 387);
-            dgvCat.TabIndex = 11;
+            dgvCat.TabIndex = 6;
             // 
             // btnAgregaCat
             // 
@@ -182,7 +182,7 @@
             btnAgregaCat.Location = new Point(720, 280);
             btnAgregaCat.Name = "btnAgregaCat";
             btnAgregaCat.Size = new Size(85, 85);
-            btnAgregaCat.TabIndex = 13;
+            btnAgregaCat.TabIndex = 7;
             btnAgregaCat.Text = "Agregar Categoría  <==";
             btnAgregaCat.UseVisualStyleBackColor = true;
             btnAgregaCat.Click += btnAgregaCat_Click;
@@ -224,7 +224,7 @@
             btnModifEsp.Location = new Point(328, 638);
             btnModifEsp.Name = "btnModifEsp";
             btnModifEsp.Size = new Size(204, 63);
-            btnModifEsp.TabIndex = 22;
+            btnModifEsp.TabIndex = 12;
             btnModifEsp.Text = "Guardar Cambios";
             btnModifEsp.UseVisualStyleBackColor = true;
             btnModifEsp.Click += btnModifEsp_Click;
@@ -234,7 +234,7 @@
             btnEliminarEsp.Location = new Point(580, 638);
             btnEliminarEsp.Name = "btnEliminarEsp";
             btnEliminarEsp.Size = new Size(204, 63);
-            btnEliminarEsp.TabIndex = 23;
+            btnEliminarEsp.TabIndex = 13;
             btnEliminarEsp.Text = "Eliminar Especialista";
             btnEliminarEsp.UseVisualStyleBackColor = true;
             btnEliminarEsp.Click += btnEliminarEsp_Click;
@@ -262,7 +262,7 @@
             dgvNoCat.RowTemplate.Height = 29;
             dgvNoCat.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvNoCat.Size = new Size(238, 387);
-            dgvNoCat.TabIndex = 24;
+            dgvNoCat.TabIndex = 9;
             // 
             // btnQuitarCat
             // 
@@ -270,7 +270,7 @@
             btnQuitarCat.Location = new Point(720, 430);
             btnQuitarCat.Name = "btnQuitarCat";
             btnQuitarCat.Size = new Size(85, 85);
-            btnQuitarCat.TabIndex = 26;
+            btnQuitarCat.TabIndex = 8;
             btnQuitarCat.Text = "Quitar Categoría  ==>";
             btnQuitarCat.UseVisualStyleBackColor = true;
             btnQuitarCat.Click += btnQuitarCat_Click;
@@ -281,14 +281,14 @@
             txtPorcentaje.Location = new Point(1094, 386);
             txtPorcentaje.Name = "txtPorcentaje";
             txtPorcentaje.Size = new Size(230, 27);
-            txtPorcentaje.TabIndex = 27;
+            txtPorcentaje.TabIndex = 11;
             // 
             // txtSueldo
             // 
             txtSueldo.Location = new Point(1094, 301);
             txtSueldo.Name = "txtSueldo";
             txtSueldo.Size = new Size(230, 27);
-            txtSueldo.TabIndex = 28;
+            txtSueldo.TabIndex = 10;
             // 
             // label4
             // 
@@ -355,14 +355,14 @@
             txtEmail.Location = new Point(142, 490);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(280, 27);
-            txtEmail.TabIndex = 8;
+            txtEmail.TabIndex = 4;
             // 
             // txtTelefono
             // 
             txtTelefono.Location = new Point(142, 415);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(280, 27);
-            txtTelefono.TabIndex = 35;
+            txtTelefono.TabIndex = 3;
             // 
             // lblTelefono
             // 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -9,6 +10,12 @@ namespace Accesorios
 {
     public class Helpers
     {
+        public string aMayus(string texto)
+        {
+            texto = texto.ToLower();
+            texto = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(texto);
+            return texto;
+        }
 
         public bool soloNum(string texto)
         {

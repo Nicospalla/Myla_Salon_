@@ -20,6 +20,9 @@ namespace SoftwareGestion_Myla
         ClientesNegocio clientesNegocio = new ClientesNegocio();
         List<Clientes> listaClientes = new List<Clientes>();
         private frmPrincipal frmPrincipal;
+        public bool eliminados { get; set; }
+
+
         public int indexUltimo { get; set; }
 
         public frmGrillaClientes()
@@ -34,14 +37,19 @@ namespace SoftwareGestion_Myla
         }
         private void frmGrillaClientes_Load(object sender, EventArgs e)
         {
-            listaClientes = clientesNegocio.listar();
-            dgvGrillaClientes.DataSource = listaClientes;
-            dgvGrillaClientes.Columns["UltContacto"].Visible = false;
-            
+            cargarDgv();
+
 
             txtFiltroRapido.PlaceholderText = "Filtrar por Nombre, Apellido o Teléfono.";
             txtFiltroId.PlaceholderText = "Filtrar solo por Numero de Cliente";
             indexUltimo = -1;
+        }
+
+        public void cargarDgv()
+        {
+            listaClientes = clientesNegocio.listar();
+            dgvGrillaClientes.DataSource = listaClientes;
+            dgvGrillaClientes.Columns["UltContacto"].Visible = false;
         }
 
         private void txtFiltroRapido_TextChanged(object sender, EventArgs e)
@@ -209,15 +217,47 @@ namespace SoftwareGestion_Myla
         private void btnEliminarCliente_Click(object sender, EventArgs e)
         {
             dgvGrillaClientes.Focus();
-            if(dgvGrillaClientes.CurrentRow != null)
+            if (dgvGrillaClientes.CurrentRow != null)
             {
                 DialogResult result = MessageBox.Show("Seguro desea eliminar éste cliente?", "Eliminar Cliente", MessageBoxButtons.OKCancel);
-                if(result == DialogResult.OK)
+                if (result == DialogResult.OK)
                 {
-                    clientesNegocio.eliminarCliente((Clientes)dgvGrillaClientes.CurrentRow.DataBoundItem);
+                    clientesNegocio.cambiaEstado((Clientes)dgvGrillaClientes.CurrentRow.DataBoundItem);
                 }
             }
             frmPrincipal.verGrilla();
+        }
+
+        private void btnVerEliminados_Click(object sender, EventArgs e)
+        {
+            eliminados = !eliminados;
+            eliminar();
+        }
+        private void eliminar()
+        {
+            if (eliminados)
+            {
+                dgvGrillaClientes.DataSource = null;
+                dgvGrillaClientes.DataSource = clientesNegocio.listar(0, false);
+                btnVerEliminados.Text = "Atrás";
+            }
+            else
+            {
+                btnVerEliminados.Text = "Ver Eliminados";
+                cargarDgv();
+            }
+
+        }
+
+        private void btnRecuperaEliminado_Click(object sender, EventArgs e)
+        {
+            if(eliminados && dgvGrillaClientes.CurrentRow != null)
+            {
+                clientesNegocio.cambiaEstado((Clientes)dgvGrillaClientes.CurrentRow.DataBoundItem, 1);
+            }
+            btnVerEliminados.Text = "Ver Eliminados";
+            eliminados = false;
+            cargarDgv();
         }
     }
 }

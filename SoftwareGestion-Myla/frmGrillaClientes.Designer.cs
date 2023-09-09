@@ -40,16 +40,19 @@
             btnTurno = new Button();
             btnEditarCliente = new Button();
             btnEliminarCliente = new Button();
+            btnRecuperaEliminado = new Button();
+            btnVerEliminados = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvGrillaClientes).BeginInit();
             SuspendLayout();
             // 
             // btnHistorial
             // 
             btnHistorial.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnHistorial.Location = new Point(682, 633);
+            btnHistorial.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnHistorial.Location = new Point(460, 633);
             btnHistorial.Name = "btnHistorial";
             btnHistorial.Size = new Size(148, 54);
-            btnHistorial.TabIndex = 7;
+            btnHistorial.TabIndex = 5;
             btnHistorial.Text = "Ver Historial ";
             btnHistorial.UseVisualStyleBackColor = true;
             btnHistorial.Click += btnHistorial_Click;
@@ -71,7 +74,7 @@
             txtFiltroRapido.MaximumSize = new Size(450, 27);
             txtFiltroRapido.Name = "txtFiltroRapido";
             txtFiltroRapido.Size = new Size(450, 27);
-            txtFiltroRapido.TabIndex = 5;
+            txtFiltroRapido.TabIndex = 1;
             txtFiltroRapido.TextChanged += txtFiltroRapido_TextChanged;
             // 
             // dgvGrillaClientes
@@ -101,17 +104,18 @@
             dgvGrillaClientes.RowTemplate.Height = 29;
             dgvGrillaClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvGrillaClientes.Size = new Size(1048, 515);
-            dgvGrillaClientes.TabIndex = 4;
+            dgvGrillaClientes.TabIndex = 2;
             dgvGrillaClientes.ColumnHeaderMouseClick += dgvGrillaClientes_ColumnHeaderMouseClick;
             dgvGrillaClientes.MouseHover += dgvGrillaClientes_MouseHover;
             // 
             // btnVenta
             // 
             btnVenta.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnVenta.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnVenta.Location = new Point(244, 633);
             btnVenta.Name = "btnVenta";
             btnVenta.Size = new Size(157, 54);
-            btnVenta.TabIndex = 8;
+            btnVenta.TabIndex = 4;
             btnVenta.Text = "Nueva Venta";
             btnVenta.UseVisualStyleBackColor = true;
             btnVenta.Click += btnVenta_Click;
@@ -133,7 +137,7 @@
             txtFiltroId.MaximumSize = new Size(250, 27);
             txtFiltroId.Name = "txtFiltroId";
             txtFiltroId.Size = new Size(250, 27);
-            txtFiltroId.TabIndex = 9;
+            txtFiltroId.TabIndex = 0;
             txtFiltroId.TextChanged += txtFiltroId_TextChanged;
             // 
             // lblInfo
@@ -149,10 +153,11 @@
             // btnTurno
             // 
             btnTurno.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnTurno.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnTurno.Location = new Point(90, 633);
             btnTurno.Name = "btnTurno";
             btnTurno.Size = new Size(148, 54);
-            btnTurno.TabIndex = 12;
+            btnTurno.TabIndex = 3;
             btnTurno.Text = "Agendar Turno";
             btnTurno.UseVisualStyleBackColor = true;
             btnTurno.Click += btnTurno_Click;
@@ -160,10 +165,11 @@
             // btnEditarCliente
             // 
             btnEditarCliente.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnEditarCliente.Location = new Point(836, 633);
+            btnEditarCliente.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEditarCliente.Location = new Point(615, 633);
             btnEditarCliente.Name = "btnEditarCliente";
             btnEditarCliente.Size = new Size(148, 54);
-            btnEditarCliente.TabIndex = 13;
+            btnEditarCliente.TabIndex = 6;
             btnEditarCliente.Text = "Editar Cliente";
             btnEditarCliente.UseVisualStyleBackColor = true;
             btnEditarCliente.Click += btnEditarCliente_Click;
@@ -171,13 +177,38 @@
             // btnEliminarCliente
             // 
             btnEliminarCliente.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnEliminarCliente.Location = new Point(990, 633);
+            btnEliminarCliente.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEliminarCliente.Location = new Point(770, 633);
             btnEliminarCliente.Name = "btnEliminarCliente";
             btnEliminarCliente.Size = new Size(148, 54);
-            btnEliminarCliente.TabIndex = 14;
+            btnEliminarCliente.TabIndex = 7;
             btnEliminarCliente.Text = "Eliminar Cliente";
             btnEliminarCliente.UseVisualStyleBackColor = true;
             btnEliminarCliente.Click += btnEliminarCliente_Click;
+            // 
+            // btnRecuperaEliminado
+            // 
+            btnRecuperaEliminado.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnRecuperaEliminado.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnRecuperaEliminado.Location = new Point(1035, 633);
+            btnRecuperaEliminado.Name = "btnRecuperaEliminado";
+            btnRecuperaEliminado.Size = new Size(103, 54);
+            btnRecuperaEliminado.TabIndex = 12;
+            btnRecuperaEliminado.Text = "Recuperar Eliminado";
+            btnRecuperaEliminado.UseVisualStyleBackColor = true;
+            btnRecuperaEliminado.Click += btnRecuperaEliminado_Click;
+            // 
+            // btnVerEliminados
+            // 
+            btnVerEliminados.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnVerEliminados.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnVerEliminados.Location = new Point(925, 633);
+            btnVerEliminados.Name = "btnVerEliminados";
+            btnVerEliminados.Size = new Size(103, 54);
+            btnVerEliminados.TabIndex = 13;
+            btnVerEliminados.Text = "Ver Eliminados";
+            btnVerEliminados.UseVisualStyleBackColor = true;
+            btnVerEliminados.Click += btnVerEliminados_Click;
             // 
             // frmGrillaClientes
             // 
@@ -185,6 +216,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(1228, 718);
+            Controls.Add(btnVerEliminados);
+            Controls.Add(btnRecuperaEliminado);
             Controls.Add(btnEliminarCliente);
             Controls.Add(btnEditarCliente);
             Controls.Add(btnTurno);
@@ -222,5 +255,7 @@
         public DataGridView dgvGrillaClientes;
         private Button btnEditarCliente;
         private Button btnEliminarCliente;
+        private Button btnRecuperaEliminado;
+        private Button btnVerEliminados;
     }
 }

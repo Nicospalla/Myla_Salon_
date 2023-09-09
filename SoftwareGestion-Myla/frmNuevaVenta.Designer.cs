@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             lblCliente = new Label();
             txtCliente = new TextBox();
             lblEspecialista = new Label();
@@ -47,13 +48,28 @@
             lblErrorCat = new Label();
             lblErrorEspe = new Label();
             btnAtras = new Button();
+            dgvVentas = new DataGridView();
+            sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
+            btnRegistrarVenta = new Button();
+            button1 = new Button();
+            txtPorcentaje = new TextBox();
+            label1 = new Label();
+            lblErrorSub = new Label();
+            lblErrorPrecio = new Label();
+            txtPrecioTotal = new TextBox();
+            label2 = new Label();
+            txtID = new TextBox();
+            lblBuscaId = new Label();
+            btnBuscar = new Button();
+            lblErrorID = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvVentas).BeginInit();
             SuspendLayout();
             // 
             // lblCliente
             // 
             lblCliente.AutoSize = true;
             lblCliente.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCliente.Location = new Point(137, 98);
+            lblCliente.Location = new Point(104, 148);
             lblCliente.Name = "lblCliente";
             lblCliente.Size = new Size(65, 18);
             lblCliente.TabIndex = 1;
@@ -61,16 +77,16 @@
             // 
             // txtCliente
             // 
-            txtCliente.Location = new Point(137, 146);
+            txtCliente.Location = new Point(104, 178);
             txtCliente.Name = "txtCliente";
-            txtCliente.Size = new Size(285, 27);
-            txtCliente.TabIndex = 2;
+            txtCliente.Size = new Size(228, 27);
+            txtCliente.TabIndex = 1;
             // 
             // lblEspecialista
             // 
             lblEspecialista.AutoSize = true;
             lblEspecialista.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblEspecialista.Location = new Point(137, 203);
+            lblEspecialista.Location = new Point(104, 254);
             lblEspecialista.Name = "lblEspecialista";
             lblEspecialista.Size = new Size(99, 18);
             lblEspecialista.TabIndex = 3;
@@ -80,27 +96,27 @@
             // 
             cboEspecialista.DropDownStyle = ComboBoxStyle.DropDownList;
             cboEspecialista.FormattingEnabled = true;
-            cboEspecialista.Location = new Point(137, 252);
+            cboEspecialista.Location = new Point(104, 284);
             cboEspecialista.Name = "cboEspecialista";
-            cboEspecialista.Size = new Size(286, 28);
-            cboEspecialista.TabIndex = 4;
+            cboEspecialista.Size = new Size(229, 28);
+            cboEspecialista.TabIndex = 2;
             cboEspecialista.SelectionChangeCommitted += cboEspecialista_SelectionChangeCommitted;
             // 
             // cboCategoria
             // 
             cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCategoria.FormattingEnabled = true;
-            cboCategoria.Location = new Point(137, 357);
+            cboCategoria.Location = new Point(104, 389);
             cboCategoria.Name = "cboCategoria";
-            cboCategoria.Size = new Size(286, 28);
-            cboCategoria.TabIndex = 6;
+            cboCategoria.Size = new Size(229, 28);
+            cboCategoria.TabIndex = 3;
             cboCategoria.SelectedValueChanged += cboCategoria_SelectedValueChanged;
             // 
             // lblCategoria
             // 
             lblCategoria.AutoSize = true;
             lblCategoria.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCategoria.Location = new Point(137, 309);
+            lblCategoria.Location = new Point(104, 357);
             lblCategoria.Name = "lblCategoria";
             lblCategoria.Size = new Size(87, 18);
             lblCategoria.TabIndex = 5;
@@ -110,16 +126,16 @@
             // 
             cboSubCat.DropDownStyle = ComboBoxStyle.DropDownList;
             cboSubCat.FormattingEnabled = true;
-            cboSubCat.Location = new Point(495, 145);
+            cboSubCat.Location = new Point(104, 494);
             cboSubCat.Name = "cboSubCat";
-            cboSubCat.Size = new Size(285, 28);
-            cboSubCat.TabIndex = 8;
+            cboSubCat.Size = new Size(229, 28);
+            cboSubCat.TabIndex = 5;
             // 
             // lblSubCat
             // 
             lblSubCat.AutoSize = true;
             lblSubCat.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblSubCat.Location = new Point(497, 98);
+            lblSubCat.Location = new Point(104, 463);
             lblSubCat.Name = "lblSubCat";
             lblSubCat.Size = new Size(120, 18);
             lblSubCat.TabIndex = 7;
@@ -127,16 +143,16 @@
             // 
             // txtServAdc
             // 
-            txtServAdc.Location = new Point(495, 252);
+            txtServAdc.Location = new Point(390, 178);
             txtServAdc.Name = "txtServAdc";
             txtServAdc.Size = new Size(285, 27);
-            txtServAdc.TabIndex = 10;
+            txtServAdc.TabIndex = 6;
             // 
             // lblSerAdc
             // 
             lblSerAdc.AutoSize = true;
             lblSerAdc.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblSerAdc.Location = new Point(497, 203);
+            lblSerAdc.Location = new Point(390, 148);
             lblSerAdc.Name = "lblSerAdc";
             lblSerAdc.Size = new Size(142, 18);
             lblSerAdc.TabIndex = 9;
@@ -144,16 +160,16 @@
             // 
             // txtCodigoTinte
             // 
-            txtCodigoTinte.Location = new Point(495, 358);
+            txtCodigoTinte.Location = new Point(390, 284);
             txtCodigoTinte.Name = "txtCodigoTinte";
             txtCodigoTinte.Size = new Size(285, 27);
-            txtCodigoTinte.TabIndex = 12;
+            txtCodigoTinte.TabIndex = 7;
             // 
             // lblCodigoTinte
             // 
             lblCodigoTinte.AutoSize = true;
             lblCodigoTinte.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCodigoTinte.Location = new Point(495, 309);
+            lblCodigoTinte.Location = new Point(390, 254);
             lblCodigoTinte.Name = "lblCodigoTinte";
             lblCodigoTinte.Size = new Size(131, 18);
             lblCodigoTinte.TabIndex = 11;
@@ -161,16 +177,16 @@
             // 
             // txtPrecio
             // 
-            txtPrecio.Location = new Point(137, 463);
+            txtPrecio.Location = new Point(390, 389);
             txtPrecio.Name = "txtPrecio";
-            txtPrecio.Size = new Size(285, 27);
-            txtPrecio.TabIndex = 14;
+            txtPrecio.Size = new Size(144, 27);
+            txtPrecio.TabIndex = 4;
             // 
             // lblPrecio
             // 
             lblPrecio.AutoSize = true;
             lblPrecio.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPrecio.Location = new Point(137, 415);
+            lblPrecio.Location = new Point(390, 357);
             lblPrecio.Name = "lblPrecio";
             lblPrecio.Size = new Size(60, 18);
             lblPrecio.TabIndex = 13;
@@ -178,20 +194,22 @@
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(254, 526);
+            btnAceptar.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAceptar.Location = new Point(104, 558);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(168, 64);
-            btnAceptar.TabIndex = 15;
-            btnAceptar.Text = "Aceptar";
+            btnAceptar.Size = new Size(286, 64);
+            btnAceptar.TabIndex = 8;
+            btnAceptar.Text = "Agregar Servicio";
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += btnAceptar_Click;
             // 
             // btnLimpiar
             // 
-            btnLimpiar.Location = new Point(487, 526);
+            btnLimpiar.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLimpiar.Location = new Point(454, 558);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(168, 64);
-            btnLimpiar.TabIndex = 16;
+            btnLimpiar.TabIndex = 9;
             btnLimpiar.Text = "Limpiar Datos";
             btnLimpiar.UseVisualStyleBackColor = true;
             btnLimpiar.Click += btnLimpiar_Click;
@@ -201,20 +219,22 @@
             lblErrorCat.AutoSize = true;
             lblErrorCat.Font = new Font("Verdana", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
             lblErrorCat.ForeColor = Color.Red;
-            lblErrorCat.Location = new Point(137, 283);
+            lblErrorCat.Location = new Point(104, 420);
             lblErrorCat.Name = "lblErrorCat";
-            lblErrorCat.Size = new Size(0, 16);
+            lblErrorCat.Size = new Size(43, 16);
             lblErrorCat.TabIndex = 17;
+            lblErrorCat.Text = "lblcat";
             // 
             // lblErrorEspe
             // 
             lblErrorEspe.AutoSize = true;
             lblErrorEspe.Font = new Font("Verdana", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
             lblErrorEspe.ForeColor = Color.Red;
-            lblErrorEspe.Location = new Point(137, 388);
+            lblErrorEspe.Location = new Point(104, 315);
             lblErrorEspe.Name = "lblErrorEspe";
-            lblErrorEspe.Size = new Size(0, 16);
+            lblErrorEspe.Size = new Size(60, 16);
             lblErrorEspe.TabIndex = 18;
+            lblErrorEspe.Text = "lblepspe";
             // 
             // btnAtras
             // 
@@ -223,10 +243,159 @@
             btnAtras.Location = new Point(12, 12);
             btnAtras.Name = "btnAtras";
             btnAtras.Size = new Size(90, 90);
-            btnAtras.TabIndex = 19;
+            btnAtras.TabIndex = 0;
             btnAtras.Text = "Atrás";
             btnAtras.UseVisualStyleBackColor = true;
             btnAtras.Click += btnAtras_Click;
+            // 
+            // dgvVentas
+            // 
+            dgvVentas.AllowUserToAddRows = false;
+            dgvVentas.AllowUserToDeleteRows = false;
+            dgvVentas.AllowUserToResizeColumns = false;
+            dgvVentas.AllowUserToResizeRows = false;
+            dgvVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvVentas.DefaultCellStyle = dataGridViewCellStyle1;
+            dgvVentas.Location = new Point(700, 129);
+            dgvVentas.Name = "dgvVentas";
+            dgvVentas.RowHeadersVisible = false;
+            dgvVentas.RowHeadersWidth = 51;
+            dgvVentas.RowTemplate.Height = 29;
+            dgvVentas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvVentas.Size = new Size(889, 288);
+            dgvVentas.TabIndex = 19;
+            // 
+            // sqlCommand1
+            // 
+            sqlCommand1.CommandTimeout = 30;
+            sqlCommand1.EnableOptimizedParameterBinding = false;
+            // 
+            // btnRegistrarVenta
+            // 
+            btnRegistrarVenta.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnRegistrarVenta.Location = new Point(822, 440);
+            btnRegistrarVenta.Name = "btnRegistrarVenta";
+            btnRegistrarVenta.Size = new Size(238, 64);
+            btnRegistrarVenta.TabIndex = 20;
+            btnRegistrarVenta.Text = "Registrar Venta";
+            btnRegistrarVenta.UseVisualStyleBackColor = true;
+            btnRegistrarVenta.Click += btnAgregarServicio_Click;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Location = new Point(700, 440);
+            button1.Name = "button1";
+            button1.Size = new Size(117, 64);
+            button1.TabIndex = 21;
+            button1.Text = "Borrar Servicio";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // txtPorcentaje
+            // 
+            txtPorcentaje.Location = new Point(390, 494);
+            txtPorcentaje.Name = "txtPorcentaje";
+            txtPorcentaje.Size = new Size(144, 27);
+            txtPorcentaje.TabIndex = 22;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(390, 463);
+            label1.Name = "label1";
+            label1.Size = new Size(131, 18);
+            label1.TabIndex = 23;
+            label1.Text = "% de Descuento";
+            // 
+            // lblErrorSub
+            // 
+            lblErrorSub.AutoSize = true;
+            lblErrorSub.Font = new Font("Verdana", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lblErrorSub.ForeColor = Color.Red;
+            lblErrorSub.Location = new Point(104, 525);
+            lblErrorSub.Name = "lblErrorSub";
+            lblErrorSub.Size = new Size(43, 16);
+            lblErrorSub.TabIndex = 24;
+            lblErrorSub.Text = "lblcat";
+            // 
+            // lblErrorPrecio
+            // 
+            lblErrorPrecio.AutoSize = true;
+            lblErrorPrecio.Font = new Font("Verdana", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lblErrorPrecio.ForeColor = Color.Red;
+            lblErrorPrecio.Location = new Point(390, 420);
+            lblErrorPrecio.Name = "lblErrorPrecio";
+            lblErrorPrecio.Size = new Size(43, 16);
+            lblErrorPrecio.TabIndex = 25;
+            lblErrorPrecio.Text = "lblcat";
+            // 
+            // txtPrecioTotal
+            // 
+            txtPrecioTotal.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            txtPrecioTotal.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            txtPrecioTotal.Location = new Point(1445, 423);
+            txtPrecioTotal.Name = "txtPrecioTotal";
+            txtPrecioTotal.Size = new Size(144, 27);
+            txtPrecioTotal.TabIndex = 26;
+            txtPrecioTotal.Tag = "$";
+            txtPrecioTotal.TextAlign = HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Verdana", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(1325, 425);
+            label2.Name = "label2";
+            label2.Size = new Size(114, 20);
+            label2.TabIndex = 27;
+            label2.Text = "Precio Total:";
+            // 
+            // txtID
+            // 
+            txtID.Location = new Point(238, 75);
+            txtID.Name = "txtID";
+            txtID.Size = new Size(171, 27);
+            txtID.TabIndex = 28;
+            // 
+            // lblBuscaId
+            // 
+            lblBuscaId.AutoSize = true;
+            lblBuscaId.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblBuscaId.Location = new Point(238, 48);
+            lblBuscaId.Name = "lblBuscaId";
+            lblBuscaId.Size = new Size(171, 18);
+            lblBuscaId.TabIndex = 29;
+            lblBuscaId.Text = "Buscar Cliente por ID:";
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.Location = new Point(415, 75);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(62, 29);
+            btnBuscar.TabIndex = 30;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
+            // 
+            // lblErrorID
+            // 
+            lblErrorID.AutoSize = true;
+            lblErrorID.Font = new Font("Verdana", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lblErrorID.ForeColor = Color.Red;
+            lblErrorID.Location = new Point(238, 105);
+            lblErrorID.Name = "lblErrorID";
+            lblErrorID.Size = new Size(60, 16);
+            lblErrorID.TabIndex = 31;
+            lblErrorID.Text = "lblepspe";
             // 
             // frmNuevaVenta
             // 
@@ -234,7 +403,20 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(929, 622);
+            ClientSize = new Size(1631, 802);
+            Controls.Add(lblErrorID);
+            Controls.Add(btnBuscar);
+            Controls.Add(lblBuscaId);
+            Controls.Add(txtID);
+            Controls.Add(label2);
+            Controls.Add(txtPrecioTotal);
+            Controls.Add(lblErrorPrecio);
+            Controls.Add(lblErrorSub);
+            Controls.Add(label1);
+            Controls.Add(txtPorcentaje);
+            Controls.Add(button1);
+            Controls.Add(btnRegistrarVenta);
+            Controls.Add(dgvVentas);
             Controls.Add(btnAtras);
             Controls.Add(lblErrorEspe);
             Controls.Add(lblErrorCat);
@@ -258,6 +440,7 @@
             Name = "frmNuevaVenta";
             Text = "frmNuevaVenta";
             Load += frmNuevaVenta_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvVentas).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -283,5 +466,19 @@
         private Label lblErrorCat;
         private Label lblErrorEspe;
         private Button btnAtras;
+        private DataGridView dgvVentas;
+        private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
+        private Button btnRegistrarVenta;
+        private Button button1;
+        private TextBox txtPorcentaje;
+        private Label label1;
+        private Label lblErrorSub;
+        private Label lblErrorPrecio;
+        private TextBox txtPrecioTotal;
+        private Label label2;
+        private TextBox txtID;
+        private Label lblBuscaId;
+        private Button btnBuscar;
+        private Label lblErrorID;
     }
 }

@@ -7,19 +7,22 @@ namespace Negocio
     {
         AccesoDatos datos = new AccesoDatos();
 
-        public List<Clientes> listar(int id = 0)
+        public List<Clientes> listar(int id = 0, bool Estado = true )
         {
             List<Clientes> lista = new List<Clientes>();
             try
             {
-                if( id == 0)
+                if( id == 0 && Estado == true)
                 {
                     datos.setearConsulta("Select Id, Nombre, Apellido, Telefono,UltimaVisita, Cumple, Email from DATOSCLIENTES where Estado = 1");
 
-                }else if( id != 0)
+                }else if( id != 0 && Estado == true)
                 {
                     datos.setearConsulta("Select Id, Nombre, Apellido, Telefono,UltimaVisita,Cumple, Email from DATOSCLIENTES where Id = @IdCliente and Estado = 1 " );
                     datos.setearParametros("@IdCliente", id);
+                }else if(Estado == false)
+                {
+                    datos.setearConsulta("Select Id, Nombre, Apellido, Telefono,UltimaVisita, Cumple, Email from DATOSCLIENTES where Estado = 0");
                 }
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
@@ -96,12 +99,15 @@ namespace Negocio
             }
             finally { datos.cerrarConn();}
         }
-        public void eliminarCliente(Clientes aux)
+        public void cambiaEstado(Clientes aux, int Estado = 0)
         {
             AccesoDatos datos = new();
             try
             {
-                datos.setearConsulta("UPDATE DATOSCLIENTES set Estado = 0 where Id = @Id");
+                if (Estado == 0)
+                    datos.setearConsulta("UPDATE DATOSCLIENTES set Estado = 0 where Id = @Id");
+                else
+                    datos.setearConsulta("UPDATE DATOSCLIENTES set Estado = 1 where Id = @Id");
                 datos.setearParametros("@Id",aux.Id);
                 datos.ejecutarAccion();
             }

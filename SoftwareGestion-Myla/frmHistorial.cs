@@ -15,7 +15,7 @@ namespace SoftwareGestion_Myla
     public partial class frmHistorial : Form
     {
         List<HistoVentas> listaVentas;
-        HistoVentasNegocio histoVentasNegocio = new ();
+        HistoVentasNegocio histoVentasNegocio = new();
         private frmPrincipal frm;
         public Clientes cliente { get; set; }
         public frmHistorial(Clientes clientes, frmPrincipal frm)
@@ -41,8 +41,27 @@ namespace SoftwareGestion_Myla
 
         private void btnEditaVta_Click(object sender, EventArgs e)
         {
-            HistoVentas venta = (HistoVentas)dgvHistorial.CurrentRow.DataBoundItem;
-            frm.nuevaVenta(cliente, venta);
+            if (dgvHistorial.CurrentRow != null)
+            {
+                HistoVentas venta = (HistoVentas)dgvHistorial.CurrentRow.DataBoundItem;
+                frm.nuevaVenta(cliente, venta);
+
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvHistorial.CurrentRow != null)
+            {
+                DialogResult result = MessageBox.Show("Seguro desea eliminar la venta?", "Eliminar venta", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.OK)
+                {
+                    histoVentasNegocio.eliminarVenta((HistoVentas)dgvHistorial.CurrentRow.DataBoundItem);
+                }
+                frm.muestraHistorial(cliente);
+
+            }
+
         }
     }
 }

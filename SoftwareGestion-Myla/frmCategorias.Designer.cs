@@ -78,7 +78,7 @@
             dgvCat.RowTemplate.Height = 29;
             dgvCat.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCat.Size = new Size(238, 387);
-            dgvCat.TabIndex = 12;
+            dgvCat.TabIndex = 0;
             dgvCat.SelectionChanged += dgvCat_SelectionChanged;
             // 
             // label1
@@ -107,7 +107,7 @@
             btnNuevaCat.Location = new Point(209, 543);
             btnNuevaCat.Name = "btnNuevaCat";
             btnNuevaCat.Size = new Size(238, 29);
-            btnNuevaCat.TabIndex = 16;
+            btnNuevaCat.TabIndex = 2;
             btnNuevaCat.Text = "Agregar";
             btnNuevaCat.UseVisualStyleBackColor = true;
             btnNuevaCat.Click += btnNuevaCat_Click;
@@ -117,7 +117,7 @@
             txtCategoria.Location = new Point(209, 501);
             txtCategoria.Name = "txtCategoria";
             txtCategoria.Size = new Size(238, 27);
-            txtCategoria.TabIndex = 17;
+            txtCategoria.TabIndex = 1;
             txtCategoria.TextChanged += txtCategoria_TextChanged;
             // 
             // btnElimiCat
@@ -126,7 +126,7 @@
             btnElimiCat.Location = new Point(209, 578);
             btnElimiCat.Name = "btnElimiCat";
             btnElimiCat.Size = new Size(238, 29);
-            btnElimiCat.TabIndex = 18;
+            btnElimiCat.TabIndex = 3;
             btnElimiCat.Text = "Eliminar";
             btnElimiCat.UseVisualStyleBackColor = true;
             btnElimiCat.Click += btnElimiCat_Click;
@@ -134,10 +134,10 @@
             // btnAgregarSub
             // 
             btnAgregarSub.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAgregarSub.Location = new Point(819, 99);
+            btnAgregarSub.Location = new Point(897, 99);
             btnAgregarSub.Name = "btnAgregarSub";
             btnAgregarSub.Size = new Size(217, 67);
-            btnAgregarSub.TabIndex = 19;
+            btnAgregarSub.TabIndex = 6;
             btnAgregarSub.Text = "Agregar nueva SubCategoría";
             btnAgregarSub.UseVisualStyleBackColor = true;
             btnAgregarSub.Click += btnAgregarSub_Click;
@@ -145,10 +145,10 @@
             // btnEliminaSub
             // 
             btnEliminaSub.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnEliminaSub.Location = new Point(557, 499);
+            btnEliminaSub.Location = new Point(553, 499);
             btnEliminaSub.Name = "btnEliminaSub";
             btnEliminaSub.Size = new Size(238, 29);
-            btnEliminaSub.TabIndex = 20;
+            btnEliminaSub.TabIndex = 5;
             btnEliminaSub.Text = "Eliminar";
             btnEliminaSub.UseVisualStyleBackColor = true;
             btnEliminaSub.Click += btnEliminaSub_Click;
@@ -170,14 +170,14 @@
             cboHorarios.Location = new Point(13, 160);
             cboHorarios.Name = "cboHorarios";
             cboHorarios.Size = new Size(204, 28);
-            cboHorarios.TabIndex = 22;
+            cboHorarios.TabIndex = 1;
             // 
             // txtSubCat
             // 
             txtSubCat.Location = new Point(13, 68);
             txtSubCat.Name = "txtSubCat";
             txtSubCat.Size = new Size(204, 27);
-            txtSubCat.TabIndex = 24;
+            txtSubCat.TabIndex = 0;
             // 
             // dgvSubCat
             // 
@@ -195,14 +195,14 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvSubCat.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvSubCat.Location = new Point(557, 99);
+            dgvSubCat.Location = new Point(553, 99);
             dgvSubCat.Name = "dgvSubCat";
             dgvSubCat.RowHeadersVisible = false;
             dgvSubCat.RowHeadersWidth = 51;
             dgvSubCat.RowTemplate.Height = 29;
             dgvSubCat.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvSubCat.Size = new Size(238, 387);
-            dgvSubCat.TabIndex = 27;
+            dgvSubCat.TabIndex = 4;
             dgvSubCat.CellContentClick += dgvSubCat_CellContentClick;
             dgvSubCat.SelectionChanged += dgvSubCat_SelectionChanged;
             // 
@@ -236,7 +236,7 @@
             pnlSubCat.Controls.Add(txtSubCat);
             pnlSubCat.Controls.Add(cboHorarios);
             pnlSubCat.Controls.Add(lblTiempo);
-            pnlSubCat.Location = new Point(819, 172);
+            pnlSubCat.Location = new Point(897, 172);
             pnlSubCat.Name = "pnlSubCat";
             pnlSubCat.Size = new Size(357, 314);
             pnlSubCat.TabIndex = 30;
@@ -257,7 +257,7 @@
             btnCancelar.Location = new Point(13, 259);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(204, 29);
-            btnCancelar.TabIndex = 32;
+            btnCancelar.TabIndex = 3;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
@@ -268,7 +268,7 @@
             btnGuardar.Location = new Point(13, 224);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(204, 29);
-            btnGuardar.TabIndex = 31;
+            btnGuardar.TabIndex = 2;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
@@ -277,7 +277,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1220, 696);
+            ClientSize = new Size(1295, 696);
             Controls.Add(pnlSubCat);
             Controls.Add(dgvSubCat);
             Controls.Add(btnEliminaSub);

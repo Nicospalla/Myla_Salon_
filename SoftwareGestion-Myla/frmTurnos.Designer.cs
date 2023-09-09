@@ -83,7 +83,7 @@
             btnNuevo.Location = new Point(18, 434);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new Size(290, 68);
-            btnNuevo.TabIndex = 8;
+            btnNuevo.TabIndex = 2;
             btnNuevo.Text = "Nuevo Turno";
             btnNuevo.UseVisualStyleBackColor = true;
             btnNuevo.Click += btnNuevo_Click;
@@ -402,7 +402,7 @@
             btnModif.Location = new Point(39, 631);
             btnModif.Name = "btnModif";
             btnModif.Size = new Size(290, 68);
-            btnModif.TabIndex = 10;
+            btnModif.TabIndex = 0;
             btnModif.Text = "Modificar Turno";
             btnModif.UseVisualStyleBackColor = true;
             btnModif.Click += btnModif_Click;
@@ -413,7 +413,7 @@
             btnEliminar.Location = new Point(358, 631);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(290, 68);
-            btnEliminar.TabIndex = 11;
+            btnEliminar.TabIndex = 1;
             btnEliminar.Text = "Eliminar Turno";
             btnEliminar.UseVisualStyleBackColor = true;
             btnEliminar.Click += btnEliminar_Click;
@@ -435,7 +435,7 @@
             cboEspeVerTurnos.Location = new Point(18, 273);
             cboEspeVerTurnos.Name = "cboEspeVerTurnos";
             cboEspeVerTurnos.Size = new Size(290, 28);
-            cboEspeVerTurnos.TabIndex = 14;
+            cboEspeVerTurnos.TabIndex = 0;
             cboEspeVerTurnos.SelectedIndexChanged += cboEspeVerTurnos_SelectedIndexChanged;
             // 
             // btnTurnoReservado
@@ -444,7 +444,7 @@
             btnTurnoReservado.Location = new Point(18, 320);
             btnTurnoReservado.Name = "btnTurnoReservado";
             btnTurnoReservado.Size = new Size(290, 68);
-            btnTurnoReservado.TabIndex = 16;
+            btnTurnoReservado.TabIndex = 1;
             btnTurnoReservado.Text = "Ver Turnos Reservados";
             btnTurnoReservado.UseVisualStyleBackColor = true;
             btnTurnoReservado.Click += btnTurnoReservado_Click;

@@ -1,4 +1,5 @@
-﻿using Dominio;
+﻿using Accesorios;
+using Dominio;
 using Negocio;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace SoftwareGestion_Myla
         SubCategoria subAux;
         List<string> listaHoras;
         bool nuevoSub = false;
+        Helpers help = new();
 
         public frmCategorias()
         {
@@ -69,12 +71,7 @@ namespace SoftwareGestion_Myla
             }
             cboHorarios.DataSource = listaHoras;
         }
-        private string aMayus(string texto)
-        {
-            texto = texto.ToLower();
-            texto = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(texto);
-            return texto;
-        }
+     
 
         private void txtCategoria_TextChanged(object sender, EventArgs e)
         {
@@ -88,7 +85,7 @@ namespace SoftwareGestion_Myla
 
         private void btnNuevaCat_Click(object sender, EventArgs e)
         {
-            string nuevaCat = aMayus(txtCategoria.Text);
+            string nuevaCat = help.aMayus(txtCategoria.Text);
             try
             {
                 categoriaNegocio.nuevaCat(nuevaCat);
@@ -139,14 +136,14 @@ namespace SoftwareGestion_Myla
                     lblErrorDuracion.Text = string.Empty;
 
                 }
-                SubCategoria aux = new() { idCategoria = ((Categorias)dgvCat.CurrentRow.DataBoundItem).idCat, Descripcion = aMayus(txtSubCat.Text), Duracion = TimeSpan.Parse(cboHorarios.SelectedItem.ToString()) };
+                SubCategoria aux = new() { idCategoria = ((Categorias)dgvCat.CurrentRow.DataBoundItem).idCat, Descripcion = help.aMayus(txtSubCat.Text), Duracion = TimeSpan.Parse(cboHorarios.SelectedItem.ToString()) };
                 subCategoriaNegocio.nuevaSubCat(aux);
             }
             else if (nuevoSub == false)
             {
                 lblSubCat.Text = "Editar SubCategoría:";
                 subAux.Duracion = TimeSpan.Parse(cboHorarios.SelectedItem.ToString());
-                subAux.Descripcion = aMayus(txtSubCat.Text);
+                subAux.Descripcion = help.aMayus(txtSubCat.Text);
                 subCategoriaNegocio.editarSubCat(subAux);
             }
             cargaSubCategorias();
@@ -184,7 +181,7 @@ namespace SoftwareGestion_Myla
             dgvSubCat.Focus();
             if (dgvSubCat.CurrentRow != null)
             {
-                DialogResult result = MessageBox.Show("Seguro desea eliminar la SubCategoría?", "Eliminar", MessageBoxButtons.OK);
+                DialogResult result = MessageBox.Show("Seguro desea eliminar la SubCategoría?", "Eliminar", MessageBoxButtons.OKCancel);
                 if (result == DialogResult.OK)
                 {
                     subCategoriaNegocio.eliminarSubCat((SubCategoria)dgvSubCat.CurrentRow.DataBoundItem);

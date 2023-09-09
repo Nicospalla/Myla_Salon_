@@ -1,4 +1,5 @@
-﻿using Dominio;
+﻿using Accesorios;
+using Dominio;
 using Negocio;
 
 namespace SoftwareGestion_Myla
@@ -13,13 +14,18 @@ namespace SoftwareGestion_Myla
         Especialistas_Categorias_Negocio Especialistas_Categorias_Negocio = new Especialistas_Categorias_Negocio();
         HistoVentasNegocio ventasNegocio = new HistoVentasNegocio();
         HistoVentas? ventaImportada;
+        ClientesNegocio ClientesNegocio = new();
         List<Especialista> listaEsp = new List<Especialista>();
+        List<HistoVentas> listaVentaActual = new();
+        Helpers help = new();
+        Decimal sumatoria;
         public int indexCboCat { get; set; }
-        public frmNuevaVenta(Clientes cliente, frmPrincipal frmPrincipal, HistoVentas? ventaImportada = null)
+        public frmNuevaVenta(frmPrincipal frmPrincipal, Clientes? cliente = null, HistoVentas? ventaImportada = null)
         {
             InitializeComponent();
             this.FrmPrincipal = frmPrincipal;
-            this.cliente = cliente;
+            if (cliente != null)
+                this.cliente = cliente;
             if (ventaImportada != null)
             {
                 this.ventaImportada = ventaImportada;
@@ -29,8 +35,12 @@ namespace SoftwareGestion_Myla
 
         private void frmNuevaVenta_Load(object sender, EventArgs e)
         {
+
+
             txtCliente.ReadOnly = true;
-            txtCliente.Text = cliente.Nombre;
+            if (cliente != null)
+                txtCliente.Text = cliente.Nombre;
+
             listaEsp = EspecialistaNegocio.listaEspecialista();
             cboEspecialista.DataSource = listaEsp;
             //cboEspecialista.DisplayMember = "Descripcion";
@@ -43,7 +53,6 @@ namespace SoftwareGestion_Myla
                 txtPrecio.Text = ventaImportada.Precio.ToString();
                 txtServAdc.Text = ventaImportada.ServicioAdicional.ToString();
                 txtCodigoTinte.Text = ventaImportada.CodigoTinte;
-
                 int index = -1;
                 for (int i = 0; i < listaEsp.Count; i++)
                 {
@@ -54,6 +63,8 @@ namespace SoftwareGestion_Myla
                     }
                 }
                 cboEspecialista.SelectedIndex = index;
+                cambiaCBOS();
+
 
 
 
@@ -63,6 +74,8 @@ namespace SoftwareGestion_Myla
             }
 
         }
+
+
 
         private void cboCategoria_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -116,13 +129,17 @@ namespace SoftwareGestion_Myla
             lblErrorCat.Text = cboCategoria.SelectedIndex == -1 ? "Debe seleccionar una Categoría" : "";
             status = cboEspecialista.SelectedIndex != -1 ? status : false;
             lblErrorEspe.Text = cboEspecialista.SelectedIndex == -1 ? "Debe seleccionar un Especialista" : "";
+            status = cboSubCat.SelectedIndex != -1 ? status : false;
+            lblErrorSub.Text = cboSubCat.SelectedIndex == -1 ? "Debe seleccionar una SubCategoría" : "";
+            status = !string.IsNullOrEmpty(txtPrecio.Text) ? status : false;
+            lblErrorPrecio.Text = string.IsNullOrEmpty(txtPrecio.Text) ? "Debe ingresar un precio al servicio" : "";
             if (status == false)
             {
                 MessageBox.Show("Por favor revise los datos.", "Faltan datos", MessageBoxButtons.OK);
             }
             else
             {
-                DialogResult result = MessageBox.Show("Esta segura de guardar ésta nueva venta?", "Nueva venta", MessageBoxButtons.OKCancel);
+                DialogResult result = MessageBox.Show("Está seguro de agregar éste servicio?", "Agregar servicio", MessageBoxButtons.OKCancel);
                 if (result == DialogResult.OK)
                 {
                     HistoVentas venta = new HistoVentas();
@@ -131,29 +148,48 @@ namespace SoftwareGestion_Myla
                         venta = ventaImportada;
                     }
 
+
                     venta.IdCat = new Categorias();
                     Categorias cat = (Categorias)cboCategoria.SelectedValue;
                     venta.IdCat.idCat = cat.idCat;
+                    venta.IdCat.Descripcion = cat.Descripcion;
 
+                    venta.Cliente = new Clientes();
+                    venta.Cliente.Nombre = cliente.Nombre;
                     venta.IdCliente = cliente.Id;
 
                     venta.Especialista = new Especialista();
                     //Especialista esp = (Especialista)cboEspecialista.SelectedValue;
                     venta.Especialista.IdEspecialista = ((Especialista)cboEspecialista.SelectedValue).IdEspecialista;
+                    venta.Especialista.Nombre = ((Especialista)cboEspecialista.SelectedValue).Nombre;
                     //venta.Especialista.IdEspecialista = (int)cboEspecialista.SelectedValue;
 
                     venta.CodigoTinte = txtCodigoTinte.Text;
-                    venta.Precio = txtPrecio.Text != "" ? Math.Truncate(Decimal.Parse(txtPrecio.Text) * 100) / 100 : 0;
                     venta.Fecha = DateTime.Today;
 
                     venta.IdSub = new SubCategoria();
                     //SubCategoria sub = (SubCategoria)cboSubCat.SelectedValue;
                     venta.IdSub.IdSub = ((SubCategoria)cboSubCat.SelectedValue).IdSub;
+                    venta.IdSub.Descripcion = ((SubCategoria)cboSubCat.SelectedValue).Descripcion;
 
                     venta.ServicioAdicional = txtServAdc.Text;
 
-                    ventasNegocio.accionSobreVentas(venta);
-                    FrmPrincipal.muestraHistorial(cliente);
+                    if (!string.IsNullOrEmpty(txtPorcentaje.Text) && help.soloNum(txtPorcentaje.Text) && help.soloNum(txtPrecio.Text))
+                    {
+                        Decimal auxPrecio = int.Parse(txtPrecio.Text) - ((int.Parse(txtPrecio.Text) * int.Parse(txtPorcentaje.Text)) / 100);
+                        venta.Precio = txtPrecio.Text != "" ? Math.Truncate(auxPrecio * 100) / 100 : 0;
+                    }
+                    else if (string.IsNullOrEmpty(txtPorcentaje.Text) && help.soloNum(txtPorcentaje.Text) && help.soloNum(txtPrecio.Text))
+                    {
+                        venta.Precio = txtPrecio.Text != "" ? Math.Truncate(Decimal.Parse(txtPrecio.Text) * 100) / 100 : 0;
+                    }
+                    sumatoria += venta.Precio;
+                    txtPrecioTotal.Text = sumatoria.ToString();
+
+                    listaVentaActual.Add(venta);
+                    actualizaLista();
+                    //ventasNegocio.accionSobreVentas(venta);
+                    //FrmPrincipal.muestraHistorial(cliente);
                 }
                 else
                     return;
@@ -161,6 +197,20 @@ namespace SoftwareGestion_Myla
             }
         }
 
+        public void actualizaLista()
+        {
+            cboEspecialista.SelectedIndex = -1;
+            cboCategoria.SelectedIndex = -1;
+            txtPrecio.Text = string.Empty;
+            txtServAdc.Text = string.Empty;
+            txtCodigoTinte.Text = string.Empty;
+            txtPorcentaje.Text = string.Empty;
+            dgvVentas.DataSource = null;
+            dgvVentas.DataSource = listaVentaActual;
+            dgvVentas.Columns["IdVenta"].Visible = false;
+            dgvVentas.Columns["IdCliente"].Visible = false;
+            dgvVentas.Refresh();
+        }
         private void cboEspecialista_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -201,12 +251,17 @@ namespace SoftwareGestion_Myla
 
         private void btnAtras_Click(object sender, EventArgs e)
         {
-            FrmPrincipal.verGrilla();
+            FrmPrincipal.muestraHistorial(cliente);
         }
 
         private void cboEspecialista_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            cambiaCBOS();
 
+        }
+
+        private void cambiaCBOS()
+        {
             if (cboEspecialista.SelectedIndex != -1)
             {
                 Especialista aux = (Especialista)cboEspecialista.SelectedValue;
@@ -239,6 +294,34 @@ namespace SoftwareGestion_Myla
             {
                 cboCategoria.DataSource = null;
                 cboCategoria.SelectedIndex = -1;
+            }
+        }
+
+        private void btnAgregarServicio_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Confirma la venta?", "Guardar venta", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK && listaVentaActual.Count > 0)
+            {
+                for (int i = 0; i < listaVentaActual.Count; i++)
+                {
+                    ventasNegocio.accionSobreVentas(listaVentaActual[i]);
+                }
+                FrmPrincipal.muestraHistorial(cliente);
+            }
+
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtID.Text) && help.soloNum(txtID.Text))
+            {
+                List<Clientes> lista0 = ClientesNegocio.listar(int.Parse(txtID.Text));
+                if(lista0.Count > 0)
+                {
+                    Clientes aux = lista0[0];
+                    txtCliente.Text = aux.Nombre.ToString();
+                    cliente = aux;
+                }
             }
         }
     }

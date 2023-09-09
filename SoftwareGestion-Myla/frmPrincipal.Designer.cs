@@ -46,6 +46,7 @@
             lblFecha = new Label();
             lblReloj = new Label();
             panelPpal = new Panel();
+            btnVenta = new Button();
             panelIzq.SuspendLayout();
             panelSup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBox).BeginInit();
@@ -57,6 +58,7 @@
             // 
             panelIzq.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panelIzq.BackColor = SystemColors.ActiveCaption;
+            panelIzq.Controls.Add(btnVenta);
             panelIzq.Controls.Add(btnCategorias);
             panelIzq.Controls.Add(btnTurnos);
             panelIzq.Controls.Add(btnEditarEsp);
@@ -67,7 +69,7 @@
             panelIzq.Location = new Point(1, 109);
             panelIzq.Name = "panelIzq";
             panelIzq.Size = new Size(229, 774);
-            panelIzq.TabIndex = 0;
+            panelIzq.TabIndex = 1;
             // 
             // btnCategorias
             // 
@@ -75,10 +77,10 @@
             btnCategorias.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnCategorias.FlatStyle = FlatStyle.Flat;
             btnCategorias.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCategorias.Location = new Point(11, 468);
+            btnCategorias.Location = new Point(14, 579);
             btnCategorias.Name = "btnCategorias";
             btnCategorias.Size = new Size(202, 60);
-            btnCategorias.TabIndex = 6;
+            btnCategorias.TabIndex = 5;
             btnCategorias.Text = "Editar Categorias";
             btnCategorias.UseVisualStyleBackColor = true;
             btnCategorias.Click += btnCategorias_Click;
@@ -104,7 +106,7 @@
             btnEditarEsp.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnEditarEsp.FlatStyle = FlatStyle.Flat;
             btnEditarEsp.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEditarEsp.Location = new Point(11, 392);
+            btnEditarEsp.Location = new Point(14, 497);
             btnEditarEsp.Name = "btnEditarEsp";
             btnEditarEsp.Size = new Size(202, 60);
             btnEditarEsp.TabIndex = 4;
@@ -118,7 +120,7 @@
             btnNuevoEsp.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnNuevoEsp.FlatStyle = FlatStyle.Flat;
             btnNuevoEsp.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnNuevoEsp.Location = new Point(11, 302);
+            btnNuevoEsp.Location = new Point(14, 415);
             btnNuevoEsp.Name = "btnNuevoEsp";
             btnNuevoEsp.Size = new Size(202, 60);
             btnNuevoEsp.TabIndex = 3;
@@ -132,7 +134,7 @@
             btnGrillaClientes.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnGrillaClientes.FlatStyle = FlatStyle.Flat;
             btnGrillaClientes.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGrillaClientes.Location = new Point(14, 122);
+            btnGrillaClientes.Location = new Point(14, 114);
             btnGrillaClientes.Name = "btnGrillaClientes";
             btnGrillaClientes.Size = new Size(200, 60);
             btnGrillaClientes.TabIndex = 1;
@@ -146,7 +148,7 @@
             btnNuevo.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnNuevo.FlatStyle = FlatStyle.Flat;
             btnNuevo.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnNuevo.Location = new Point(12, 212);
+            btnNuevo.Location = new Point(12, 278);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new Size(202, 60);
             btnNuevo.TabIndex = 2;
@@ -275,6 +277,20 @@
             panelPpal.Size = new Size(843, 766);
             panelPpal.TabIndex = 8;
             // 
+            // btnVenta
+            // 
+            btnVenta.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
+            btnVenta.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btnVenta.FlatStyle = FlatStyle.Flat;
+            btnVenta.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnVenta.Location = new Point(14, 196);
+            btnVenta.Name = "btnVenta";
+            btnVenta.Size = new Size(202, 60);
+            btnVenta.TabIndex = 6;
+            btnVenta.Text = "Venta";
+            btnVenta.UseVisualStyleBackColor = true;
+            btnVenta.Click += btnVenta_Click;
+            // 
             // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -320,5 +336,7 @@
         private Button btnTurnos;
         private PictureBox picBox;
         private Button btnCategorias;
+        private Button button1;
+        private Button btnVenta;
     }
 }

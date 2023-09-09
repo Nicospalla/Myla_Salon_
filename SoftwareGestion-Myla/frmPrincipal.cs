@@ -116,7 +116,7 @@ namespace SoftwareGestion_Myla
         public void nuevaVenta(Clientes cliente, HistoVentas? ventas = null)
         {
             limpiaPanel();
-            frmNuevaVenta frmNuevaVenta = new frmNuevaVenta(cliente, this, ventas);
+            frmNuevaVenta frmNuevaVenta = new frmNuevaVenta( this, cliente, ventas);
             frmNuevaVenta.TopLevel = false;
             panelPpal.Controls.Add(frmNuevaVenta);
             frmNuevaVenta.Dock = DockStyle.Fill;
@@ -193,5 +193,16 @@ namespace SoftwareGestion_Myla
             frmCategorias.Location = new Point((panelPpal.Width - frmCategorias.Width) / 2, (panelPpal.Height - frmCategorias.Height) / 2);
             frmCategorias.Show();
         }
-    }
+
+        private void btnVenta_Click(object sender, EventArgs e)
+        {
+            limpiaPanel();
+            frmNuevaVenta frmNuevaVenta = new frmNuevaVenta( this);
+            frmNuevaVenta.TopLevel = false;
+            panelPpal.Controls.Add(frmNuevaVenta);
+            frmNuevaVenta.Dock = DockStyle.Fill;
+            frmNuevaVenta.Location = new Point((panelPpal.Width - frmNuevaVenta.Width) / 2, (panelPpal.Height - frmNuevaVenta.Height) / 2);
+            frmNuevaVenta.Show();
+        }
+}
 }

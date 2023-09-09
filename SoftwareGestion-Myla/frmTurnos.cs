@@ -477,7 +477,7 @@ namespace SoftwareGestion_Myla
                     indexUltimo = 0;
                 dgvTurnos.DataSource = listaOrdenada;
             }
-            if (e.ColumnIndex ==5 )
+            if (e.ColumnIndex == 5)
             {
                 listaOrdenada = listaTurnos.OrderBy(x => x.HoraInicio).ToList();
                 if (indexUltimo == 0)

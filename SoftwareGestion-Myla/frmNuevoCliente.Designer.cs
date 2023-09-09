@@ -74,7 +74,7 @@
             txtNombre.Location = new Point(178, 255);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(285, 27);
-            txtNombre.TabIndex = 1;
+            txtNombre.TabIndex = 0;
             // 
             // lblNombre
             // 
@@ -101,7 +101,7 @@
             txtApellido.Location = new Point(174, 345);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(285, 27);
-            txtApellido.TabIndex = 3;
+            txtApellido.TabIndex = 1;
             // 
             // lblEmail
             // 
@@ -118,7 +118,7 @@
             txtEmail.Location = new Point(174, 438);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(285, 27);
-            txtEmail.TabIndex = 5;
+            txtEmail.TabIndex = 2;
             // 
             // lblTel
             // 
@@ -135,7 +135,7 @@
             txtTel.Location = new Point(512, 255);
             txtTel.Name = "txtTel";
             txtTel.Size = new Size(285, 27);
-            txtTel.TabIndex = 7;
+            txtTel.TabIndex = 3;
             // 
             // lblCumple
             // 
@@ -152,15 +152,15 @@
             datePickerCumple.Location = new Point(512, 343);
             datePickerCumple.Name = "datePickerCumple";
             datePickerCumple.Size = new Size(285, 27);
-            datePickerCumple.TabIndex = 10;
+            datePickerCumple.TabIndex = 4;
             // 
             // btnAgregar
             // 
             btnAgregar.Location = new Point(219, 515);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(204, 63);
-            btnAgregar.TabIndex = 11;
-            btnAgregar.Text = "Agregar";
+            btnAgregar.TabIndex = 5;
+            btnAgregar.Text = "Guardar";
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += btnAgregar_Click;
             // 
@@ -169,7 +169,7 @@
             btnLimpiar.Location = new Point(512, 515);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(204, 63);
-            btnLimpiar.TabIndex = 12;
+            btnLimpiar.TabIndex = 6;
             btnLimpiar.Text = "Limpiar Datos";
             btnLimpiar.UseVisualStyleBackColor = true;
             btnLimpiar.Click += btnLimpiar_Click;
@@ -181,7 +181,7 @@
             btnAtras.Location = new Point(12, 12);
             btnAtras.Name = "btnAtras";
             btnAtras.Size = new Size(90, 90);
-            btnAtras.TabIndex = 13;
+            btnAtras.TabIndex = 7;
             btnAtras.Text = "Atrás";
             btnAtras.UseVisualStyleBackColor = true;
             btnAtras.Click += btnAtras_Click;
@@ -277,14 +277,14 @@
             txtSueldo.Location = new Point(20, 123);
             txtSueldo.Name = "txtSueldo";
             txtSueldo.Size = new Size(170, 27);
-            txtSueldo.TabIndex = 38;
+            txtSueldo.TabIndex = 0;
             // 
             // txtPorcentaje
             // 
             txtPorcentaje.Location = new Point(20, 211);
             txtPorcentaje.Name = "txtPorcentaje";
             txtPorcentaje.Size = new Size(170, 27);
-            txtPorcentaje.TabIndex = 37;
+            txtPorcentaje.TabIndex = 1;
             // 
             // lblErrorTel
             // 
