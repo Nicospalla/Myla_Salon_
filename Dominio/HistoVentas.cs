@@ -23,5 +23,6 @@ namespace Dominio
         public string CodigoTinte { get; set; }
         public DateTime Fecha { get; set; }
         public Decimal Precio { get; set; }
+        
     }
 }

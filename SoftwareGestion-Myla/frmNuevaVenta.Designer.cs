@@ -49,9 +49,8 @@
             lblErrorEspe = new Label();
             btnAtras = new Button();
             dgvVentas = new DataGridView();
-            sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             btnRegistrarVenta = new Button();
-            button1 = new Button();
+            btnBorraServ = new Button();
             txtPorcentaje = new TextBox();
             label1 = new Label();
             lblErrorSub = new Label();
@@ -62,6 +61,9 @@
             lblBuscaId = new Label();
             btnBuscar = new Button();
             lblErrorID = new Label();
+            lblErrorPorcen = new Label();
+            lblMetodo = new Label();
+            cboMetodo = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvVentas).BeginInit();
             SuspendLayout();
             // 
@@ -129,7 +131,7 @@
             cboSubCat.Location = new Point(104, 494);
             cboSubCat.Name = "cboSubCat";
             cboSubCat.Size = new Size(229, 28);
-            cboSubCat.TabIndex = 5;
+            cboSubCat.TabIndex = 4;
             // 
             // lblSubCat
             // 
@@ -146,7 +148,7 @@
             txtServAdc.Location = new Point(390, 178);
             txtServAdc.Name = "txtServAdc";
             txtServAdc.Size = new Size(285, 27);
-            txtServAdc.TabIndex = 6;
+            txtServAdc.TabIndex = 5;
             // 
             // lblSerAdc
             // 
@@ -163,7 +165,7 @@
             txtCodigoTinte.Location = new Point(390, 284);
             txtCodigoTinte.Name = "txtCodigoTinte";
             txtCodigoTinte.Size = new Size(285, 27);
-            txtCodigoTinte.TabIndex = 7;
+            txtCodigoTinte.TabIndex = 6;
             // 
             // lblCodigoTinte
             // 
@@ -179,26 +181,26 @@
             // 
             txtPrecio.Location = new Point(390, 389);
             txtPrecio.Name = "txtPrecio";
-            txtPrecio.Size = new Size(144, 27);
-            txtPrecio.TabIndex = 4;
+            txtPrecio.Size = new Size(131, 27);
+            txtPrecio.TabIndex = 7;
             // 
             // lblPrecio
             // 
             lblPrecio.AutoSize = true;
-            lblPrecio.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPrecio.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
             lblPrecio.Location = new Point(390, 357);
             lblPrecio.Name = "lblPrecio";
-            lblPrecio.Size = new Size(60, 18);
+            lblPrecio.Size = new Size(64, 18);
             lblPrecio.TabIndex = 13;
             lblPrecio.Text = "Precio:";
             // 
             // btnAceptar
             // 
             btnAceptar.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAceptar.Location = new Point(104, 558);
+            btnAceptar.Location = new Point(104, 594);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(286, 64);
-            btnAceptar.TabIndex = 8;
+            btnAceptar.TabIndex = 9;
             btnAceptar.Text = "Agregar Servicio";
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += btnAceptar_Click;
@@ -206,10 +208,10 @@
             // btnLimpiar
             // 
             btnLimpiar.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnLimpiar.Location = new Point(454, 558);
+            btnLimpiar.Location = new Point(415, 594);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(168, 64);
-            btnLimpiar.TabIndex = 9;
+            btnLimpiar.TabIndex = 12;
             btnLimpiar.Text = "Limpiar Datos";
             btnLimpiar.UseVisualStyleBackColor = true;
             btnLimpiar.Click += btnLimpiar_Click;
@@ -221,9 +223,8 @@
             lblErrorCat.ForeColor = Color.Red;
             lblErrorCat.Location = new Point(104, 420);
             lblErrorCat.Name = "lblErrorCat";
-            lblErrorCat.Size = new Size(43, 16);
+            lblErrorCat.Size = new Size(0, 16);
             lblErrorCat.TabIndex = 17;
-            lblErrorCat.Text = "lblcat";
             // 
             // lblErrorEspe
             // 
@@ -232,9 +233,8 @@
             lblErrorEspe.ForeColor = Color.Red;
             lblErrorEspe.Location = new Point(104, 315);
             lblErrorEspe.Name = "lblErrorEspe";
-            lblErrorEspe.Size = new Size(60, 16);
+            lblErrorEspe.Size = new Size(0, 16);
             lblErrorEspe.TabIndex = 18;
-            lblErrorEspe.Text = "lblepspe";
             // 
             // btnAtras
             // 
@@ -243,7 +243,7 @@
             btnAtras.Location = new Point(12, 12);
             btnAtras.Name = "btnAtras";
             btnAtras.Size = new Size(90, 90);
-            btnAtras.TabIndex = 0;
+            btnAtras.TabIndex = 13;
             btnAtras.Text = "Atrás";
             btnAtras.UseVisualStyleBackColor = true;
             btnAtras.Click += btnAtras_Click;
@@ -273,44 +273,40 @@
             dgvVentas.Size = new Size(889, 288);
             dgvVentas.TabIndex = 19;
             // 
-            // sqlCommand1
-            // 
-            sqlCommand1.CommandTimeout = 30;
-            sqlCommand1.EnableOptimizedParameterBinding = false;
-            // 
             // btnRegistrarVenta
             // 
             btnRegistrarVenta.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnRegistrarVenta.Location = new Point(822, 440);
             btnRegistrarVenta.Name = "btnRegistrarVenta";
             btnRegistrarVenta.Size = new Size(238, 64);
-            btnRegistrarVenta.TabIndex = 20;
+            btnRegistrarVenta.TabIndex = 11;
             btnRegistrarVenta.Text = "Registrar Venta";
             btnRegistrarVenta.UseVisualStyleBackColor = true;
             btnRegistrarVenta.Click += btnAgregarServicio_Click;
             // 
-            // button1
+            // btnBorraServ
             // 
-            button1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(700, 440);
-            button1.Name = "button1";
-            button1.Size = new Size(117, 64);
-            button1.TabIndex = 21;
-            button1.Text = "Borrar Servicio";
-            button1.UseVisualStyleBackColor = true;
+            btnBorraServ.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBorraServ.Location = new Point(700, 440);
+            btnBorraServ.Name = "btnBorraServ";
+            btnBorraServ.Size = new Size(117, 64);
+            btnBorraServ.TabIndex = 10;
+            btnBorraServ.Text = "Borrar Servicio";
+            btnBorraServ.UseVisualStyleBackColor = true;
+            btnBorraServ.Click += btnBorraServ_Click;
             // 
             // txtPorcentaje
             // 
-            txtPorcentaje.Location = new Point(390, 494);
+            txtPorcentaje.Location = new Point(531, 390);
             txtPorcentaje.Name = "txtPorcentaje";
             txtPorcentaje.Size = new Size(144, 27);
-            txtPorcentaje.TabIndex = 22;
+            txtPorcentaje.TabIndex = 8;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(390, 463);
+            label1.Location = new Point(531, 359);
             label1.Name = "label1";
             label1.Size = new Size(131, 18);
             label1.TabIndex = 23;
@@ -323,9 +319,8 @@
             lblErrorSub.ForeColor = Color.Red;
             lblErrorSub.Location = new Point(104, 525);
             lblErrorSub.Name = "lblErrorSub";
-            lblErrorSub.Size = new Size(43, 16);
+            lblErrorSub.Size = new Size(0, 16);
             lblErrorSub.TabIndex = 24;
-            lblErrorSub.Text = "lblcat";
             // 
             // lblErrorPrecio
             // 
@@ -334,9 +329,8 @@
             lblErrorPrecio.ForeColor = Color.Red;
             lblErrorPrecio.Location = new Point(390, 420);
             lblErrorPrecio.Name = "lblErrorPrecio";
-            lblErrorPrecio.Size = new Size(43, 16);
+            lblErrorPrecio.Size = new Size(0, 16);
             lblErrorPrecio.TabIndex = 25;
-            lblErrorPrecio.Text = "lblcat";
             // 
             // txtPrecioTotal
             // 
@@ -364,7 +358,7 @@
             txtID.Location = new Point(238, 75);
             txtID.Name = "txtID";
             txtID.Size = new Size(171, 27);
-            txtID.TabIndex = 28;
+            txtID.TabIndex = 0;
             // 
             // lblBuscaId
             // 
@@ -393,9 +387,37 @@
             lblErrorID.ForeColor = Color.Red;
             lblErrorID.Location = new Point(238, 105);
             lblErrorID.Name = "lblErrorID";
-            lblErrorID.Size = new Size(60, 16);
+            lblErrorID.Size = new Size(0, 16);
             lblErrorID.TabIndex = 31;
-            lblErrorID.Text = "lblepspe";
+            // 
+            // lblErrorPorcen
+            // 
+            lblErrorPorcen.AutoSize = true;
+            lblErrorPorcen.Font = new Font("Verdana", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lblErrorPorcen.ForeColor = Color.Red;
+            lblErrorPorcen.Location = new Point(531, 421);
+            lblErrorPorcen.Name = "lblErrorPorcen";
+            lblErrorPorcen.Size = new Size(0, 16);
+            lblErrorPorcen.TabIndex = 32;
+            // 
+            // lblMetodo
+            // 
+            lblMetodo.AutoSize = true;
+            lblMetodo.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblMetodo.Location = new Point(700, 533);
+            lblMetodo.Name = "lblMetodo";
+            lblMetodo.Size = new Size(137, 18);
+            lblMetodo.TabIndex = 34;
+            lblMetodo.Text = "Método de pago:";
+            // 
+            // cboMetodo
+            // 
+            cboMetodo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboMetodo.FormattingEnabled = true;
+            cboMetodo.Location = new Point(700, 565);
+            cboMetodo.Name = "cboMetodo";
+            cboMetodo.Size = new Size(285, 28);
+            cboMetodo.TabIndex = 35;
             // 
             // frmNuevaVenta
             // 
@@ -404,6 +426,9 @@
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(1631, 802);
+            Controls.Add(cboMetodo);
+            Controls.Add(lblMetodo);
+            Controls.Add(lblErrorPorcen);
             Controls.Add(lblErrorID);
             Controls.Add(btnBuscar);
             Controls.Add(lblBuscaId);
@@ -414,7 +439,7 @@
             Controls.Add(lblErrorSub);
             Controls.Add(label1);
             Controls.Add(txtPorcentaje);
-            Controls.Add(button1);
+            Controls.Add(btnBorraServ);
             Controls.Add(btnRegistrarVenta);
             Controls.Add(dgvVentas);
             Controls.Add(btnAtras);
@@ -467,9 +492,8 @@
         private Label lblErrorEspe;
         private Button btnAtras;
         private DataGridView dgvVentas;
-        private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
         private Button btnRegistrarVenta;
-        private Button button1;
+        private Button btnBorraServ;
         private TextBox txtPorcentaje;
         private Label label1;
         private Label lblErrorSub;
@@ -480,5 +504,8 @@
         private Label lblBuscaId;
         private Button btnBuscar;
         private Label lblErrorID;
+        private Label lblErrorPorcen;
+        private Label lblMetodo;
+        private ComboBox cboMetodo;
     }
 }

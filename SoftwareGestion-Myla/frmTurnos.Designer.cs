@@ -73,7 +73,6 @@
             calendarTurno.Location = new Point(18, 33);
             calendarTurno.MaxSelectionCount = 1;
             calendarTurno.Name = "calendarTurno";
-            calendarTurno.ShowTodayCircle = false;
             calendarTurno.TabIndex = 7;
             calendarTurno.DateChanged += calendarTurno_DateChanged;
             // 

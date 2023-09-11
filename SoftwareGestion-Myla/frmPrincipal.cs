@@ -28,11 +28,12 @@ namespace SoftwareGestion_Myla
             string ruta = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imgs", "MYLA.jpeg");
             //picBox.ImageLocation = "D:\\Proyectos Csharp\\Myla Salon\\SoftwareGestion-Myla\\Imgs\\MYLA.jpeg";
             picBox.Load(ruta);
-
+            
 
             if (user.Admin == true)
             {
                 btnGrillaClientes.Enabled = true;
+                
             }
             else
             {
@@ -116,7 +117,7 @@ namespace SoftwareGestion_Myla
         public void nuevaVenta(Clientes cliente, HistoVentas? ventas = null)
         {
             limpiaPanel();
-            frmNuevaVenta frmNuevaVenta = new frmNuevaVenta( this, cliente, ventas);
+            frmNuevaVenta frmNuevaVenta = new frmNuevaVenta(this, cliente, ventas);
             frmNuevaVenta.TopLevel = false;
             panelPpal.Controls.Add(frmNuevaVenta);
             frmNuevaVenta.Dock = DockStyle.Fill;
@@ -197,12 +198,34 @@ namespace SoftwareGestion_Myla
         private void btnVenta_Click(object sender, EventArgs e)
         {
             limpiaPanel();
-            frmNuevaVenta frmNuevaVenta = new frmNuevaVenta( this);
+            frmNuevaVenta frmNuevaVenta = new frmNuevaVenta(this);
             frmNuevaVenta.TopLevel = false;
             panelPpal.Controls.Add(frmNuevaVenta);
             frmNuevaVenta.Dock = DockStyle.Fill;
             frmNuevaVenta.Location = new Point((panelPpal.Width - frmNuevaVenta.Width) / 2, (panelPpal.Height - frmNuevaVenta.Height) / 2);
             frmNuevaVenta.Show();
         }
-}
+
+        private void btnFinanzas_Click(object sender, EventArgs e)
+        {
+            limpiaPanel();
+            frmFinanzas frmFinanzas = new frmFinanzas(this);
+            frmFinanzas.TopLevel = false;
+            panelPpal.Controls.Add(frmFinanzas);
+            frmFinanzas.Dock = DockStyle.Fill;
+            frmFinanzas.Location = new Point((panelPpal.Width - frmFinanzas.Width) / 2, (panelPpal.Height - frmFinanzas.Height) / 2);
+            frmFinanzas.Show();
+        }
+
+        private void btnCaja_Click(object sender, EventArgs e)
+        {
+            limpiaPanel();
+            frmCaja frmCaja = new frmCaja(this);
+            frmCaja.TopLevel = false;
+            panelPpal.Controls.Add(frmCaja);
+            frmCaja.Dock = DockStyle.Fill;
+            frmCaja.Location = new Point((panelPpal.Width - frmCaja.Width) / 2, (panelPpal.Height - frmCaja.Height) / 2);
+            frmCaja.Show();
+        }
+    }
 }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panelIzq = new Panel();
+            btnFinanzas = new Button();
+            btnVenta = new Button();
             btnCategorias = new Button();
             btnTurnos = new Button();
             btnEditarEsp = new Button();
@@ -46,7 +48,7 @@
             lblFecha = new Label();
             lblReloj = new Label();
             panelPpal = new Panel();
-            btnVenta = new Button();
+            btnCaja = new Button();
             panelIzq.SuspendLayout();
             panelSup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBox).BeginInit();
@@ -58,6 +60,8 @@
             // 
             panelIzq.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panelIzq.BackColor = SystemColors.ActiveCaption;
+            panelIzq.Controls.Add(btnCaja);
+            panelIzq.Controls.Add(btnFinanzas);
             panelIzq.Controls.Add(btnVenta);
             panelIzq.Controls.Add(btnCategorias);
             panelIzq.Controls.Add(btnTurnos);
@@ -68,8 +72,36 @@
             panelIzq.Controls.Add(btnCerrar);
             panelIzq.Location = new Point(1, 109);
             panelIzq.Name = "panelIzq";
-            panelIzq.Size = new Size(229, 774);
+            panelIzq.Size = new Size(229, 847);
             panelIzq.TabIndex = 1;
+            // 
+            // btnFinanzas
+            // 
+            btnFinanzas.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
+            btnFinanzas.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btnFinanzas.FlatStyle = FlatStyle.Flat;
+            btnFinanzas.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnFinanzas.Location = new Point(9, 624);
+            btnFinanzas.Name = "btnFinanzas";
+            btnFinanzas.Size = new Size(202, 60);
+            btnFinanzas.TabIndex = 7;
+            btnFinanzas.Text = "Finanzas";
+            btnFinanzas.UseVisualStyleBackColor = true;
+            btnFinanzas.Click += btnFinanzas_Click;
+            // 
+            // btnVenta
+            // 
+            btnVenta.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
+            btnVenta.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btnVenta.FlatStyle = FlatStyle.Flat;
+            btnVenta.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnVenta.Location = new Point(11, 147);
+            btnVenta.Name = "btnVenta";
+            btnVenta.Size = new Size(202, 60);
+            btnVenta.TabIndex = 6;
+            btnVenta.Text = "Venta";
+            btnVenta.UseVisualStyleBackColor = true;
+            btnVenta.Click += btnVenta_Click;
             // 
             // btnCategorias
             // 
@@ -77,7 +109,7 @@
             btnCategorias.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnCategorias.FlatStyle = FlatStyle.Flat;
             btnCategorias.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCategorias.Location = new Point(14, 579);
+            btnCategorias.Location = new Point(11, 556);
             btnCategorias.Name = "btnCategorias";
             btnCategorias.Size = new Size(202, 60);
             btnCategorias.TabIndex = 5;
@@ -92,7 +124,7 @@
             btnTurnos.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnTurnos.FlatStyle = FlatStyle.Flat;
             btnTurnos.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnTurnos.Location = new Point(14, 32);
+            btnTurnos.Location = new Point(11, 11);
             btnTurnos.Name = "btnTurnos";
             btnTurnos.Size = new Size(202, 60);
             btnTurnos.TabIndex = 0;
@@ -106,7 +138,7 @@
             btnEditarEsp.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnEditarEsp.FlatStyle = FlatStyle.Flat;
             btnEditarEsp.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEditarEsp.Location = new Point(14, 497);
+            btnEditarEsp.Location = new Point(11, 488);
             btnEditarEsp.Name = "btnEditarEsp";
             btnEditarEsp.Size = new Size(202, 60);
             btnEditarEsp.TabIndex = 4;
@@ -120,7 +152,7 @@
             btnNuevoEsp.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnNuevoEsp.FlatStyle = FlatStyle.Flat;
             btnNuevoEsp.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnNuevoEsp.Location = new Point(14, 415);
+            btnNuevoEsp.Location = new Point(11, 420);
             btnNuevoEsp.Name = "btnNuevoEsp";
             btnNuevoEsp.Size = new Size(202, 60);
             btnNuevoEsp.TabIndex = 3;
@@ -134,7 +166,7 @@
             btnGrillaClientes.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnGrillaClientes.FlatStyle = FlatStyle.Flat;
             btnGrillaClientes.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGrillaClientes.Location = new Point(14, 114);
+            btnGrillaClientes.Location = new Point(11, 79);
             btnGrillaClientes.Name = "btnGrillaClientes";
             btnGrillaClientes.Size = new Size(200, 60);
             btnGrillaClientes.TabIndex = 1;
@@ -148,7 +180,7 @@
             btnNuevo.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnNuevo.FlatStyle = FlatStyle.Flat;
             btnNuevo.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnNuevo.Location = new Point(12, 278);
+            btnNuevo.Location = new Point(11, 283);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new Size(202, 60);
             btnNuevo.TabIndex = 2;
@@ -163,7 +195,7 @@
             btnCerrar.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnCerrar.FlatStyle = FlatStyle.Flat;
             btnCerrar.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCerrar.Location = new Point(11, 700);
+            btnCerrar.Location = new Point(11, 773);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(202, 63);
             btnCerrar.TabIndex = 5;
@@ -274,28 +306,28 @@
             panelPpal.BackColor = SystemColors.Control;
             panelPpal.Location = new Point(236, 117);
             panelPpal.Name = "panelPpal";
-            panelPpal.Size = new Size(843, 766);
+            panelPpal.Size = new Size(843, 839);
             panelPpal.TabIndex = 8;
             // 
-            // btnVenta
+            // btnCaja
             // 
-            btnVenta.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
-            btnVenta.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
-            btnVenta.FlatStyle = FlatStyle.Flat;
-            btnVenta.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnVenta.Location = new Point(14, 196);
-            btnVenta.Name = "btnVenta";
-            btnVenta.Size = new Size(202, 60);
-            btnVenta.TabIndex = 6;
-            btnVenta.Text = "Venta";
-            btnVenta.UseVisualStyleBackColor = true;
-            btnVenta.Click += btnVenta_Click;
+            btnCaja.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
+            btnCaja.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btnCaja.FlatStyle = FlatStyle.Flat;
+            btnCaja.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCaja.Location = new Point(9, 215);
+            btnCaja.Name = "btnCaja";
+            btnCaja.Size = new Size(202, 60);
+            btnCaja.TabIndex = 8;
+            btnCaja.Text = "Recuento Caja";
+            btnCaja.UseVisualStyleBackColor = true;
+            btnCaja.Click += btnCaja_Click;
             // 
             // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1082, 884);
+            ClientSize = new Size(1082, 957);
             Controls.Add(panelPpal);
             Controls.Add(panelSup);
             Controls.Add(panelIzq);
@@ -338,5 +370,7 @@
         private Button btnCategorias;
         private Button button1;
         private Button btnVenta;
+        private Button btnFinanzas;
+        private Button btnCaja;
     }
 }

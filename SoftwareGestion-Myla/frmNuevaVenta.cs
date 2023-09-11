@@ -64,14 +64,12 @@ namespace SoftwareGestion_Myla
                 }
                 cboEspecialista.SelectedIndex = index;
                 cambiaCBOS();
-
-
-
-
-
                 //int idEsp = aux.IdEspecialista;
                 //cboEspecialista.SelectedValue = idEsp;
             }
+            cboMetodo.Items.Add("Efectivo");
+            cboMetodo.Items.Add("Tarjeta");
+            cboMetodo.SelectedIndex = 0;
 
         }
 
@@ -118,12 +116,21 @@ namespace SoftwareGestion_Myla
             DialogResult result = MessageBox.Show("Está seguro que desea borrar los datos?", "Volver a grilla principal", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
-                FrmPrincipal.verGrilla();
+                txtCliente.Text = string.Empty;
+                txtID.Text = string.Empty;
+                txtCodigoTinte.Text = string.Empty;
+                txtPorcentaje.Text = string.Empty;
+                txtPrecio.Text = string.Empty;
+                txtPrecioTotal.Text = string.Empty;
+                txtServAdc.Text = string.Empty;
+                listaVentaActual.Clear();
+                actualizaLista();
             }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+
             bool status = true;
             status = cboCategoria.SelectedIndex != -1 ? status : false;
             lblErrorCat.Text = cboCategoria.SelectedIndex == -1 ? "Debe seleccionar una Categoría" : "";
@@ -133,6 +140,14 @@ namespace SoftwareGestion_Myla
             lblErrorSub.Text = cboSubCat.SelectedIndex == -1 ? "Debe seleccionar una SubCategoría" : "";
             status = !string.IsNullOrEmpty(txtPrecio.Text) ? status : false;
             lblErrorPrecio.Text = string.IsNullOrEmpty(txtPrecio.Text) ? "Debe ingresar un precio al servicio" : "";
+            if (!string.IsNullOrEmpty(txtPorcentaje.Text))
+            {
+                status = int.Parse(txtPorcentaje.Text) < 100 ? status : false;
+                lblErrorPorcen.Text = int.Parse(txtPorcentaje.Text) >= 100 ? "El porcentaje debe ser menor a 100" : "";
+
+            }
+            status = !string.IsNullOrEmpty(txtCliente.Text) ? status : false;
+            lblErrorID.Text = string.IsNullOrEmpty(txtCliente.Text) ? "Debe seleccionar un cliente" : "";
             if (status == false)
             {
                 MessageBox.Show("Por favor revise los datos.", "Faltan datos", MessageBoxButtons.OK);
@@ -147,7 +162,6 @@ namespace SoftwareGestion_Myla
                     {
                         venta = ventaImportada;
                     }
-
 
                     venta.IdCat = new Categorias();
                     Categorias cat = (Categorias)cboCategoria.SelectedValue;
@@ -174,7 +188,8 @@ namespace SoftwareGestion_Myla
 
                     venta.ServicioAdicional = txtServAdc.Text;
 
-                    if (!string.IsNullOrEmpty(txtPorcentaje.Text) && help.soloNum(txtPorcentaje.Text) && help.soloNum(txtPrecio.Text))
+
+                    if (!string.IsNullOrEmpty(txtPorcentaje.Text) && int.Parse(txtPorcentaje.Text) < 100 && help.soloNum(txtPorcentaje.Text) && help.soloNum(txtPrecio.Text))
                     {
                         Decimal auxPrecio = int.Parse(txtPrecio.Text) - ((int.Parse(txtPrecio.Text) * int.Parse(txtPorcentaje.Text)) / 100);
                         venta.Precio = txtPrecio.Text != "" ? Math.Truncate(auxPrecio * 100) / 100 : 0;
@@ -188,8 +203,7 @@ namespace SoftwareGestion_Myla
 
                     listaVentaActual.Add(venta);
                     actualizaLista();
-                    //ventasNegocio.accionSobreVentas(venta);
-                    //FrmPrincipal.muestraHistorial(cliente);
+
                 }
                 else
                     return;
@@ -197,20 +211,6 @@ namespace SoftwareGestion_Myla
             }
         }
 
-        public void actualizaLista()
-        {
-            cboEspecialista.SelectedIndex = -1;
-            cboCategoria.SelectedIndex = -1;
-            txtPrecio.Text = string.Empty;
-            txtServAdc.Text = string.Empty;
-            txtCodigoTinte.Text = string.Empty;
-            txtPorcentaje.Text = string.Empty;
-            dgvVentas.DataSource = null;
-            dgvVentas.DataSource = listaVentaActual;
-            dgvVentas.Columns["IdVenta"].Visible = false;
-            dgvVentas.Columns["IdCliente"].Visible = false;
-            dgvVentas.Refresh();
-        }
         private void cboEspecialista_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -316,13 +316,44 @@ namespace SoftwareGestion_Myla
             if (!string.IsNullOrEmpty(txtID.Text) && help.soloNum(txtID.Text))
             {
                 List<Clientes> lista0 = ClientesNegocio.listar(int.Parse(txtID.Text));
-                if(lista0.Count > 0)
+                if (lista0.Count > 0)
                 {
                     Clientes aux = lista0[0];
                     txtCliente.Text = aux.Nombre.ToString();
                     cliente = aux;
+                    lblErrorID.Text = "";
+                }
+                else
+                {
+                    lblErrorID.Text = "El cliente parece no existir, chequee el Nro de Cliente.";
                 }
             }
+        }
+
+        private void btnBorraServ_Click(object sender, EventArgs e)
+        {
+            dgvVentas.Focus();
+            if (dgvVentas.CurrentRow != null)
+            {
+                Decimal sumaTotal = int.Parse(txtPrecioTotal.Text) - ((HistoVentas)dgvVentas.CurrentRow.DataBoundItem).Precio;
+                txtPrecioTotal.Text = sumaTotal.ToString();
+                listaVentaActual.Remove((HistoVentas)dgvVentas.CurrentRow.DataBoundItem);
+                actualizaLista();
+            }
+        }
+        public void actualizaLista()
+        {
+            cboEspecialista.SelectedIndex = -1;
+            cboCategoria.SelectedIndex = -1;
+            txtPrecio.Text = string.Empty;
+            txtServAdc.Text = string.Empty;
+            txtCodigoTinte.Text = string.Empty;
+            txtPorcentaje.Text = string.Empty;
+            dgvVentas.DataSource = null;
+            dgvVentas.DataSource = listaVentaActual;
+            dgvVentas.Columns["IdVenta"].Visible = false;
+            dgvVentas.Columns["IdCliente"].Visible = false;
+            dgvVentas.Refresh();
         }
     }
 }

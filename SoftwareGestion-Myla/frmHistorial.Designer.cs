@@ -32,6 +32,7 @@
             btnAtras = new Button();
             btnEditaVta = new Button();
             btnEliminar = new Button();
+            lblTituloHisto = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvHistorial).BeginInit();
             SuspendLayout();
             // 
@@ -87,12 +88,23 @@
             btnEliminar.UseVisualStyleBackColor = true;
             btnEliminar.Click += btnEliminar_Click;
             // 
+            // lblTituloHisto
+            // 
+            lblTituloHisto.AutoSize = true;
+            lblTituloHisto.Font = new Font("Verdana", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTituloHisto.Location = new Point(80, 19);
+            lblTituloHisto.Name = "lblTituloHisto";
+            lblTituloHisto.Size = new Size(267, 20);
+            lblTituloHisto.TabIndex = 4;
+            lblTituloHisto.Text = "Historial de ventas por cliente";
+            // 
             // frmHistorial
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(848, 521);
+            Controls.Add(lblTituloHisto);
             Controls.Add(btnEliminar);
             Controls.Add(btnEditaVta);
             Controls.Add(btnAtras);
@@ -104,6 +116,7 @@
             Load += frmHistorial_Load;
             ((System.ComponentModel.ISupportInitialize)dgvHistorial).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -112,5 +125,6 @@
         private Button btnAtras;
         private Button btnEditaVta;
         private Button btnEliminar;
+        private Label lblTituloHisto;
     }
 }

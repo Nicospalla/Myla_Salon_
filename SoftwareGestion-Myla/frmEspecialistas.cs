@@ -137,6 +137,11 @@ namespace SoftwareGestion_Myla
 
         private void btnModifEsp_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Desea guardar los cambios?", "Guardar cambios", MessageBoxButtons.OKCancel);
+            if(result == DialogResult.Cancel)
+            {
+                return;
+            }
             EspecialistaNegocio especialistaNegocio = new EspecialistaNegocio();
             try
             {
