@@ -8,5 +8,19 @@ namespace Dominio
 {
     public class Caja
     {
+        public int IdCaja { get; set; }
+        public int Inicio { get; set; }
+        public int Retiro { get; set; }
+        public string RetiroMotivo { get; set; }
+        public int PagoProv { get; set; }
+        public string NombreProv { get; set; }
+        public int Ingreso { get; set; }
+        public int PagoTarjeta { get; set; }
+        public int PagoEfectivo { get; set; }
+        public int IdCliente { get; set; }
+        public int IdEspe { get; set; }
+        public bool Estado { get; set; }
+        public DateTime Fecha { get; set; }
+
     }
 }

@@ -1,5 +1,6 @@
 
 using Dominio;
+using Negocio;
 using System.Globalization;
 using Timer = System.Windows.Forms.Timer;
 
@@ -11,7 +12,7 @@ namespace SoftwareGestion_Myla
     {
 
         public User user { get; set; }
-
+        CajaNegocio cajaNegocio = new();
         private Timer ti;
         public frmPrincipal(User user)
         {
@@ -28,7 +29,8 @@ namespace SoftwareGestion_Myla
             string ruta = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imgs", "MYLA.jpeg");
             //picBox.ImageLocation = "D:\\Proyectos Csharp\\Myla Salon\\SoftwareGestion-Myla\\Imgs\\MYLA.jpeg";
             picBox.Load(ruta);
-            
+
+           
 
             if (user.Admin == true)
             {

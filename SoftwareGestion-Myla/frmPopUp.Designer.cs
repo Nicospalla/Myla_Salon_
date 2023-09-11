@@ -32,12 +32,13 @@
             txtEft = new TextBox();
             btnGuardar = new Button();
             btnSalir = new Button();
+            lblErrorEft = new Label();
             SuspendLayout();
             // 
             // lblEft
             // 
             lblEft.AutoSize = true;
-            lblEft.Location = new Point(53, 83);
+            lblEft.Location = new Point(92, 104);
             lblEft.Name = "lblEft";
             lblEft.Size = new Size(116, 20);
             lblEft.TabIndex = 9;
@@ -45,7 +46,7 @@
             // 
             // txtEft
             // 
-            txtEft.Location = new Point(53, 116);
+            txtEft.Location = new Point(92, 137);
             txtEft.Name = "txtEft";
             txtEft.Size = new Size(334, 27);
             txtEft.TabIndex = 6;
@@ -53,7 +54,7 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(13, 198);
+            btnGuardar.Location = new Point(51, 213);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(189, 49);
             btnGuardar.TabIndex = 7;
@@ -63,7 +64,7 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(247, 198);
+            btnSalir.Location = new Point(285, 213);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(189, 49);
             btnSalir.TabIndex = 8;
@@ -71,17 +72,31 @@
             btnSalir.UseVisualStyleBackColor = true;
             btnSalir.Click += btnSalir_Click;
             // 
+            // lblErrorEft
+            // 
+            lblErrorEft.AutoSize = true;
+            lblErrorEft.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lblErrorEft.ForeColor = Color.Red;
+            lblErrorEft.Location = new Point(51, 166);
+            lblErrorEft.Name = "lblErrorEft";
+            lblErrorEft.Size = new Size(22, 17);
+            lblErrorEft.TabIndex = 10;
+            lblErrorEft.Text = "lbl";
+            // 
             // frmPopUp
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(470, 331);
+            ClientSize = new Size(489, 326);
+            Controls.Add(lblErrorEft);
             Controls.Add(lblEft);
             Controls.Add(txtEft);
             Controls.Add(btnSalir);
             Controls.Add(btnGuardar);
-            FormBorderStyle = FormBorderStyle.None;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmPopUp";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmPopUp";
             ResumeLayout(false);
             PerformLayout();
@@ -93,5 +108,6 @@
         private TextBox txtEft;
         private Button btnGuardar;
         private Button btnSalir;
+        private Label lblErrorEft;
     }
 }

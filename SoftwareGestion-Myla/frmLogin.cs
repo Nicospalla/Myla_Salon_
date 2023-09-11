@@ -15,6 +15,7 @@ namespace SoftwareGestion_Myla
 {
     public partial class frmLogin : Form
     {
+        CajaNegocio cajaNegocio = new();
         public frmLogin()
         {
             InitializeComponent();
@@ -34,9 +35,19 @@ namespace SoftwareGestion_Myla
                 aux = userNegocio.getUser(txtUser.Text, txtPass.Text);
                 if (aux.Id != 0)
                 {
-                    frmPrincipal frmPrincipal = new frmPrincipal(aux);
-                    frmPrincipal.Show();
-                    this.Hide();
+                    if(cajaNegocio.cajaActiva(DateTime.Today) == false)
+                    {
+                        frmPopUp popUp = new frmPopUp(aux);
+                        popUp.ShowDialog();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        frmPrincipal frmPrincipal = new frmPrincipal(aux);
+                        frmPrincipal.Show();
+                        this.Hide();
+
+                    }
 
                 }
                 else
