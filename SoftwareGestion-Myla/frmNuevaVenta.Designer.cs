@@ -64,6 +64,7 @@
             lblErrorPorcen = new Label();
             lblMetodo = new Label();
             cboMetodo = new ComboBox();
+            lblErrorMetodo = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvVentas).BeginInit();
             SuspendLayout();
             // 
@@ -419,6 +420,16 @@
             cboMetodo.Size = new Size(285, 28);
             cboMetodo.TabIndex = 35;
             // 
+            // lblErrorMetodo
+            // 
+            lblErrorMetodo.AutoSize = true;
+            lblErrorMetodo.Font = new Font("Verdana", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lblErrorMetodo.ForeColor = Color.Red;
+            lblErrorMetodo.Location = new Point(700, 596);
+            lblErrorMetodo.Name = "lblErrorMetodo";
+            lblErrorMetodo.Size = new Size(0, 16);
+            lblErrorMetodo.TabIndex = 36;
+            // 
             // frmNuevaVenta
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -426,6 +437,7 @@
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(1631, 802);
+            Controls.Add(lblErrorMetodo);
             Controls.Add(cboMetodo);
             Controls.Add(lblMetodo);
             Controls.Add(lblErrorPorcen);
@@ -507,5 +519,6 @@
         private Label lblErrorPorcen;
         private Label lblMetodo;
         private ComboBox cboMetodo;
+        private Label lblErrorMetodo;
     }
 }

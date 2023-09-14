@@ -30,18 +30,16 @@ namespace SoftwareGestion_Myla
             //picBox.ImageLocation = "D:\\Proyectos Csharp\\Myla Salon\\SoftwareGestion-Myla\\Imgs\\MYLA.jpeg";
             picBox.Load(ruta);
 
-           
 
-            if (user.Admin == true)
-            {
-                btnGrillaClientes.Enabled = true;
-                
-            }
-            else
+
+            if (user.Admin == false)
+           
             {
                 btnEditarEsp.Enabled = false;
                 btnNuevoEsp.Enabled = false;
-
+                btnCategorias.Enabled = false;
+                btnFinanzas.Enabled = false;
+                btnUsuarios.Enabled = false;
             }
 
             //verGrilla();
@@ -129,6 +127,8 @@ namespace SoftwareGestion_Myla
 
         private void btnNuevoEsp_Click(object sender, EventArgs e)
         {
+            if(user.Admin == false)
+                btnNuevoEsp.Enabled = false;
             limpiaPanel();
             frmNuevoCliente frmNuevoCliente = new frmNuevoCliente(this, false);
             frmNuevoCliente.TopLevel = false;
@@ -140,6 +140,7 @@ namespace SoftwareGestion_Myla
 
         public void editarEsp(Especialista esp)
         {
+
             limpiaPanel();
             frmEspecialistas frmEspecialistas = new frmEspecialistas(this, esp);
             frmEspecialistas.TopLevel = false;
@@ -228,6 +229,17 @@ namespace SoftwareGestion_Myla
             frmCaja.Dock = DockStyle.Fill;
             frmCaja.Location = new Point((panelPpal.Width - frmCaja.Width) / 2, (panelPpal.Height - frmCaja.Height) / 2);
             frmCaja.Show();
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            limpiaPanel();
+            frmUsuarios frmUsuarios = new frmUsuarios(this);
+            frmUsuarios.TopLevel = false;
+            panelPpal.Controls.Add(frmUsuarios);
+            frmUsuarios.Dock = DockStyle.Fill;
+            frmUsuarios.Location = new Point((panelPpal.Width - frmUsuarios.Width) / 2, (panelPpal.Height - frmUsuarios.Height) / 2);
+            frmUsuarios.Show();
         }
     }
 }

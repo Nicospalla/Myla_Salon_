@@ -38,7 +38,7 @@
             // lblEft
             // 
             lblEft.AutoSize = true;
-            lblEft.Location = new Point(92, 104);
+            lblEft.Location = new Point(84, 81);
             lblEft.Name = "lblEft";
             lblEft.Size = new Size(116, 20);
             lblEft.TabIndex = 9;
@@ -46,15 +46,14 @@
             // 
             // txtEft
             // 
-            txtEft.Location = new Point(92, 137);
+            txtEft.Location = new Point(84, 114);
             txtEft.Name = "txtEft";
             txtEft.Size = new Size(334, 27);
             txtEft.TabIndex = 6;
-            txtEft.UseSystemPasswordChar = true;
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(51, 213);
+            btnGuardar.Location = new Point(43, 190);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(189, 49);
             btnGuardar.TabIndex = 7;
@@ -64,7 +63,7 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(285, 213);
+            btnSalir.Location = new Point(277, 190);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(189, 49);
             btnSalir.TabIndex = 8;
@@ -77,7 +76,7 @@
             lblErrorEft.AutoSize = true;
             lblErrorEft.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
             lblErrorEft.ForeColor = Color.Red;
-            lblErrorEft.Location = new Point(51, 166);
+            lblErrorEft.Location = new Point(43, 143);
             lblErrorEft.Name = "lblErrorEft";
             lblErrorEft.Size = new Size(22, 17);
             lblErrorEft.TabIndex = 10;

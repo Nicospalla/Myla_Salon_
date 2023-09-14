@@ -178,7 +178,7 @@ namespace SoftwareGestion_Myla
                         bandera = false;
                     }
 
-                    if (string.IsNullOrEmpty(txtTel.Text) && help.soloNum(txtTel.Text) && !(txtTel.Text.Contains(",") || txtTel.Text.Contains(".")))
+                    if (!string.IsNullOrEmpty(txtTel.Text) && help.soloNum(txtTel.Text) && !txtTel.Text.Contains(",") && !txtTel.Text.Contains("."))
                     {
                         aux.Telefono = txtTel.Text;
                         lblErrorTel.Text = string.Empty;
@@ -216,17 +216,16 @@ namespace SoftwareGestion_Myla
                     {
                         int id = especialistaNegocio.nuevoEsp(aux);
                         aux.IdEspecialista = id;
+                        form.editarEsp(aux);
                     }
+                    else { return; }
                 }
                 catch (Exception ex)
                 {
 
                     throw ex;
                 }
-                finally
-                {
-                    form.editarEsp(aux);
-                }
+                
 
 
             }

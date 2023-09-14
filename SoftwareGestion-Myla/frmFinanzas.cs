@@ -47,6 +47,10 @@ namespace SoftwareGestion_Myla
             var especialistas = especialistaNegocio.listaEspecialista().ToList();
             especialistas.Insert(0, new Especialista { IdEspecialista = 0, Nombre = "Todos" });
             cboEspe.DataSource = especialistas;
+            if (txtCostoFijo.Text.Length == 0)
+            {
+                txtCostoFijo.Text = "0";
+            }
         }
 
         private void muestraGrid()
@@ -103,6 +107,10 @@ namespace SoftwareGestion_Myla
             defineEsp();
             muestraGrid();
             calculaPagar();
+            if(txtCostoFijo.Text.Length == 0) 
+            {
+                txtCostoFijo.Text = "0";
+            }
         }
 
         private void cboEspe_SelectionChangeCommitted(object sender, EventArgs e)
@@ -125,30 +133,19 @@ namespace SoftwareGestion_Myla
         {
             Especialista esp = (Especialista)cboEspe.SelectedItem;
             Decimal totalPagar = 0;
+            Decimal totalFacturado = totalFact;
+            
             if (help.soloNum(txtCostoFijo.Text) && txtCostoFijo.Text != "")
             {
-                totalPagar = (totalFact - esp.Sueldo) - (((totalFact - esp.Sueldo) * (Decimal)esp.Porcentaje) / 100);
-                totalPagar = totalPagar - (totalPagar * decimal.Parse(txtCostoFijo.Text)) / 100;
-                if (totalPagar > 0)
-                {
-                    txtResta.Text = totalPagar.ToString();
-
-                }
-                else txtResta.Text = "0";
-
-
+                totalFacturado = totalFacturado - (totalFacturado * decimal.Parse(txtCostoFijo.Text)) / 100;
             }
-            else
-            {
-                totalPagar = (totalFact - esp.Sueldo) - (((totalFact - esp.Sueldo) * (Decimal)esp.Porcentaje) / 100);
-                if (totalPagar > 0)
-                {
-                    txtResta.Text = totalPagar.ToString();
+            totalPagar = (totalFacturado - esp.Sueldo);
+            totalPagar = Math.Truncate((totalPagar * (Decimal)esp.Porcentaje) / 100);
+            if(totalPagar < 0) 
+                totalPagar = 0;
 
-                }
-                else txtResta.Text = "0";
+            txtResta.Text = totalPagar.ToString();
             }
-        }
 
         private void btnAtras_Click(object sender, EventArgs e)
         {

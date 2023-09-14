@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
+using Negocio;
 
 namespace SoftwareGestion_Myla
 {
@@ -17,6 +18,7 @@ namespace SoftwareGestion_Myla
     {
         Helpers help = new();
         bool status = false;
+        CajaNegocio cajaNegocio = new();
         User aux;
         public frmPopUp(User user)
         {
@@ -27,7 +29,11 @@ namespace SoftwareGestion_Myla
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult result = MessageBox.Show("Seguro desea salir?", "Cerrar programa", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.Cancel)
+                return;
+            else
+                Application.Exit();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -42,6 +48,9 @@ namespace SoftwareGestion_Myla
                         return;
                     }
                 }
+                cajaNegocio.activarCaja(DateTime.Today, int.Parse(txtEft.Text), aux);
+                DateTime fechaA90 = (DateTime.Today).AddDays(-90) ;
+                cajaNegocio.eliminarRegistros(fechaA90);
                 frmPrincipal frmPrincipal = new frmPrincipal(aux);
                 frmPrincipal.Show();
                 this.Hide();

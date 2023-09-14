@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panelIzq = new Panel();
+            btnUsuarios = new Button();
+            btnCaja = new Button();
             btnFinanzas = new Button();
             btnVenta = new Button();
             btnCategorias = new Button();
@@ -48,7 +50,6 @@
             lblFecha = new Label();
             lblReloj = new Label();
             panelPpal = new Panel();
-            btnCaja = new Button();
             panelIzq.SuspendLayout();
             panelSup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBox).BeginInit();
@@ -60,6 +61,7 @@
             // 
             panelIzq.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panelIzq.BackColor = SystemColors.ActiveCaption;
+            panelIzq.Controls.Add(btnUsuarios);
             panelIzq.Controls.Add(btnCaja);
             panelIzq.Controls.Add(btnFinanzas);
             panelIzq.Controls.Add(btnVenta);
@@ -75,13 +77,41 @@
             panelIzq.Size = new Size(229, 847);
             panelIzq.TabIndex = 1;
             // 
+            // btnUsuarios
+            // 
+            btnUsuarios.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
+            btnUsuarios.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btnUsuarios.FlatStyle = FlatStyle.Flat;
+            btnUsuarios.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUsuarios.Location = new Point(9, 688);
+            btnUsuarios.Name = "btnUsuarios";
+            btnUsuarios.Size = new Size(202, 60);
+            btnUsuarios.TabIndex = 9;
+            btnUsuarios.Text = "Usuarios";
+            btnUsuarios.UseVisualStyleBackColor = true;
+            btnUsuarios.Click += btnUsuarios_Click;
+            // 
+            // btnCaja
+            // 
+            btnCaja.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
+            btnCaja.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btnCaja.FlatStyle = FlatStyle.Flat;
+            btnCaja.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCaja.Location = new Point(9, 215);
+            btnCaja.Name = "btnCaja";
+            btnCaja.Size = new Size(202, 60);
+            btnCaja.TabIndex = 8;
+            btnCaja.Text = "Recuento Caja";
+            btnCaja.UseVisualStyleBackColor = true;
+            btnCaja.Click += btnCaja_Click;
+            // 
             // btnFinanzas
             // 
             btnFinanzas.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
             btnFinanzas.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnFinanzas.FlatStyle = FlatStyle.Flat;
             btnFinanzas.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnFinanzas.Location = new Point(9, 624);
+            btnFinanzas.Location = new Point(9, 621);
             btnFinanzas.Name = "btnFinanzas";
             btnFinanzas.Size = new Size(202, 60);
             btnFinanzas.TabIndex = 7;
@@ -109,7 +139,7 @@
             btnCategorias.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnCategorias.FlatStyle = FlatStyle.Flat;
             btnCategorias.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCategorias.Location = new Point(11, 556);
+            btnCategorias.Location = new Point(11, 554);
             btnCategorias.Name = "btnCategorias";
             btnCategorias.Size = new Size(202, 60);
             btnCategorias.TabIndex = 5;
@@ -138,7 +168,7 @@
             btnEditarEsp.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnEditarEsp.FlatStyle = FlatStyle.Flat;
             btnEditarEsp.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEditarEsp.Location = new Point(11, 488);
+            btnEditarEsp.Location = new Point(11, 487);
             btnEditarEsp.Name = "btnEditarEsp";
             btnEditarEsp.Size = new Size(202, 60);
             btnEditarEsp.TabIndex = 4;
@@ -309,20 +339,6 @@
             panelPpal.Size = new Size(843, 839);
             panelPpal.TabIndex = 8;
             // 
-            // btnCaja
-            // 
-            btnCaja.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
-            btnCaja.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
-            btnCaja.FlatStyle = FlatStyle.Flat;
-            btnCaja.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCaja.Location = new Point(9, 215);
-            btnCaja.Name = "btnCaja";
-            btnCaja.Size = new Size(202, 60);
-            btnCaja.TabIndex = 8;
-            btnCaja.Text = "Recuento Caja";
-            btnCaja.UseVisualStyleBackColor = true;
-            btnCaja.Click += btnCaja_Click;
-            // 
             // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -372,5 +388,6 @@
         private Button btnVenta;
         private Button btnFinanzas;
         private Button btnCaja;
+        private Button btnUsuarios;
     }
 }

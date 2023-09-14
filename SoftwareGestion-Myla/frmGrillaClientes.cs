@@ -39,7 +39,7 @@ namespace SoftwareGestion_Myla
         {
             cargarDgv();
 
-
+            btnRecuperaEliminado.Enabled = false;
             txtFiltroRapido.PlaceholderText = "Filtrar por Nombre, Apellido o Teléfono.";
             txtFiltroId.PlaceholderText = "Filtrar solo por Numero de Cliente";
             indexUltimo = -1;
@@ -216,6 +216,7 @@ namespace SoftwareGestion_Myla
 
         private void btnEliminarCliente_Click(object sender, EventArgs e)
         {
+            
             dgvGrillaClientes.Focus();
             if (dgvGrillaClientes.CurrentRow != null)
             {
@@ -240,9 +241,13 @@ namespace SoftwareGestion_Myla
                 dgvGrillaClientes.DataSource = null;
                 dgvGrillaClientes.DataSource = clientesNegocio.listar(0, false);
                 btnVerEliminados.Text = "Atrás";
+                btnRecuperaEliminado.Enabled=true;
+                btnEliminarCliente.Enabled=false;
             }
             else
             {
+                btnEliminarCliente.Enabled = true;
+                btnRecuperaEliminado.Enabled = false;
                 btnVerEliminados.Text = "Ver Eliminados";
                 cargarDgv();
             }

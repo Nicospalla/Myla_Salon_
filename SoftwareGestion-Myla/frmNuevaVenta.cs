@@ -18,6 +18,7 @@ namespace SoftwareGestion_Myla
         List<Especialista> listaEsp = new List<Especialista>();
         List<HistoVentas> listaVentaActual = new();
         Helpers help = new();
+        CajaNegocio cajaNegocio = new();
         Decimal sumatoria;
         public int indexCboCat { get; set; }
         public frmNuevaVenta(frmPrincipal frmPrincipal, Clientes? cliente = null, HistoVentas? ventaImportada = null)
@@ -138,8 +139,8 @@ namespace SoftwareGestion_Myla
             lblErrorEspe.Text = cboEspecialista.SelectedIndex == -1 ? "Debe seleccionar un Especialista" : "";
             status = cboSubCat.SelectedIndex != -1 ? status : false;
             lblErrorSub.Text = cboSubCat.SelectedIndex == -1 ? "Debe seleccionar una SubCategoría" : "";
-            status = !string.IsNullOrEmpty(txtPrecio.Text) ? status : false;
-            lblErrorPrecio.Text = string.IsNullOrEmpty(txtPrecio.Text) ? "Debe ingresar un precio al servicio" : "";
+            status = !string.IsNullOrEmpty(txtPrecio.Text) && help.soloNum(txtPrecio.Text) ? status : false;
+            lblErrorPrecio.Text = string.IsNullOrEmpty(txtPrecio.Text) || !help.soloNum(txtPrecio.Text) ? "Debe ingresar un precio válido al servicio" : "";
             if (!string.IsNullOrEmpty(txtPorcentaje.Text))
             {
                 status = int.Parse(txtPorcentaje.Text) < 100 ? status : false;
@@ -299,13 +300,43 @@ namespace SoftwareGestion_Myla
 
         private void btnAgregarServicio_Click(object sender, EventArgs e)
         {
+            bool status = false;
+            if (cboMetodo.SelectedIndex > -1)
+            {
+                status = true;
+                lblErrorMetodo.Text = string.Empty;
+            }
+            else
+            {
+                lblErrorMetodo.Text = "Debe seleccionar un Método de pago";
+            }
+
+            if (status == false)
+                return;
             DialogResult result = MessageBox.Show("Confirma la venta?", "Guardar venta", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK && listaVentaActual.Count > 0)
             {
                 for (int i = 0; i < listaVentaActual.Count; i++)
                 {
                     ventasNegocio.accionSobreVentas(listaVentaActual[i]);
+                    Caja caja = new();
+                    if (cboMetodo.SelectedItem.ToString() == "Efectivo")
+                    {
+                        caja.PagoEfectivo = int.Parse(txtPrecioTotal.Text);
+                    }
+                    else if (cboMetodo.SelectedItem.ToString() == "Tarjeta")
+                    {
+                        caja.PagoTarjeta = int.Parse(txtPrecioTotal.Text);
+                    }
+                    caja.Fecha = DateTime.Today;
+                    string Metodo = (string)cboMetodo.SelectedItem;
+                    caja.Cliente = new Clientes();
+                    caja.Cliente.Id = cliente.Id;
+                    caja.Especialista = new Especialista();
+                    caja.Especialista.IdEspecialista = listaVentaActual[i].Especialista.IdEspecialista;
+                    cajaNegocio.nuevaVenta(caja, Metodo);
                 }
+
                 FrmPrincipal.muestraHistorial(cliente);
             }
 
