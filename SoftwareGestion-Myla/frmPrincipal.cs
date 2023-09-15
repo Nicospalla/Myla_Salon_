@@ -30,7 +30,7 @@ namespace SoftwareGestion_Myla
             //picBox.ImageLocation = "D:\\Proyectos Csharp\\Myla Salon\\SoftwareGestion-Myla\\Imgs\\MYLA.jpeg";
             picBox.Load(ruta);
 
-            
+
 
 
             if (user.Admin == false)

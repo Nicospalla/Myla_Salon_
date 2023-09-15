@@ -41,7 +41,6 @@
             rbRetiro = new RadioButton();
             rbPago = new RadioButton();
             rbIngreso = new RadioButton();
-            lblTitulo = new Label();
             rbCambioCaja = new RadioButton();
             txtCaja = new TextBox();
             btnGuardar = new Button();
@@ -70,6 +69,7 @@
             lblErrorIngreso = new Label();
             lblErrorRetiro = new Label();
             lblErrorPago = new Label();
+            lblTitulo = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvCaja).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -205,16 +205,6 @@
             rbIngreso.Text = "Ingreso de efectivo:";
             rbIngreso.UseVisualStyleBackColor = true;
             rbIngreso.CheckedChanged += rbIngreso_CheckedChanged;
-            // 
-            // lblTitulo
-            // 
-            lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Verdana", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTitulo.Location = new Point(112, 402);
-            lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(240, 20);
-            lblTitulo.TabIndex = 17;
-            lblTitulo.Text = "Seleccione la operación:";
             // 
             // rbCambioCaja
             // 
@@ -493,12 +483,24 @@
             lblErrorPago.TabIndex = 47;
             lblErrorPago.Text = "label4";
             // 
+            // lblTitulo
+            // 
+            lblTitulo.AutoSize = true;
+            lblTitulo.Font = new Font("Verdana", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitulo.Location = new Point(112, 402);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(240, 20);
+            lblTitulo.TabIndex = 17;
+            lblTitulo.Text = "Seleccione la operación:";
+            // 
             // frmCaja
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             AutoSize = true;
             ClientSize = new Size(1391, 885);
+            Controls.Add(lblTitulo);
             Controls.Add(lblErrorPago);
             Controls.Add(lblErrorRetiro);
             Controls.Add(lblErrorIngreso);
@@ -508,7 +510,6 @@
             Controls.Add(btnGuardar);
             Controls.Add(txtCaja);
             Controls.Add(rbCambioCaja);
-            Controls.Add(lblTitulo);
             Controls.Add(rbIngreso);
             Controls.Add(rbPago);
             Controls.Add(rbRetiro);
@@ -524,6 +525,7 @@
             Controls.Add(calendar);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
+            MinimizeBox = false;
             Name = "frmCaja";
             Text = "frmCaja";
             Load += frmCaja_Load;
@@ -552,7 +554,6 @@
         private RadioButton rbRetiro;
         private RadioButton rbPago;
         private RadioButton rbIngreso;
-        private Label lblTitulo;
         private RadioButton rbCambioCaja;
         private TextBox txtCaja;
         private Button btnGuardar;
@@ -581,5 +582,6 @@
         private Label lblErrorIngreso;
         private Label lblErrorRetiro;
         private Label lblErrorPago;
+        private Label lblTitulo;
     }
 }

@@ -1,0 +1,12 @@
+D:\Proyectos Csharp\Myla Salon\Accesorios\bin\Debug\net6.0\Accesorios.deps.json
+D:\Proyectos Csharp\Myla Salon\Accesorios\bin\Debug\net6.0\Accesorios.dll
+D:\Proyectos Csharp\Myla Salon\Accesorios\bin\Debug\net6.0\Accesorios.pdb
+D:\Proyectos Csharp\Myla Salon\Accesorios\obj\Debug\net6.0\Accesorios.csproj.AssemblyReference.cache
+D:\Proyectos Csharp\Myla Salon\Accesorios\obj\Debug\net6.0\Accesorios.GeneratedMSBuildEditorConfig.editorconfig
+D:\Proyectos Csharp\Myla Salon\Accesorios\obj\Debug\net6.0\Accesorios.AssemblyInfoInputs.cache
+D:\Proyectos Csharp\Myla Salon\Accesorios\obj\Debug\net6.0\Accesorios.AssemblyInfo.cs
+D:\Proyectos Csharp\Myla Salon\Accesorios\obj\Debug\net6.0\Accesorios.csproj.CoreCompileInputs.cache
+D:\Proyectos Csharp\Myla Salon\Accesorios\obj\Debug\net6.0\Accesorios.dll
+D:\Proyectos Csharp\Myla Salon\Accesorios\obj\Debug\net6.0\refint\Accesorios.dll
+D:\Proyectos Csharp\Myla Salon\Accesorios\obj\Debug\net6.0\Accesorios.pdb
+D:\Proyectos Csharp\Myla Salon\Accesorios\obj\Debug\net6.0\ref\Accesorios.dll

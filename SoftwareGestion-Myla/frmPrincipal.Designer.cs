@@ -43,22 +43,26 @@
             panelSup = new Panel();
             picBox = new PictureBox();
             panelLogin = new Panel();
+            panel1 = new Panel();
             btnCerrarSession = new Button();
-            lblUser = new Label();
+            panel2 = new Panel();
             lblUserActivo = new Label();
+            lblUser = new Label();
             panelReloj = new Panel();
             lblFecha = new Label();
             lblReloj = new Label();
-            panelPpal = new Panel();
+            panelPpal = new FlowLayoutPanel();
             panelIzq.SuspendLayout();
             panelSup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBox).BeginInit();
             panelLogin.SuspendLayout();
+            panel2.SuspendLayout();
             panelReloj.SuspendLayout();
             SuspendLayout();
             // 
             // panelIzq
             // 
+            panelIzq.AutoScroll = true;
             panelIzq.BackColor = SystemColors.ActiveCaption;
             panelIzq.Controls.Add(btnUsuarios);
             panelIzq.Controls.Add(btnCaja);
@@ -258,44 +262,62 @@
             // 
             panelLogin.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             panelLogin.BorderStyle = BorderStyle.Fixed3D;
+            panelLogin.Controls.Add(panel1);
             panelLogin.Controls.Add(btnCerrarSession);
-            panelLogin.Controls.Add(lblUser);
-            panelLogin.Controls.Add(lblUserActivo);
-            panelLogin.Location = new Point(239, 12);
+            panelLogin.Controls.Add(panel2);
+            panelLogin.Location = new Point(209, 12);
             panelLogin.Name = "panelLogin";
             panelLogin.Size = new Size(437, 88);
             panelLogin.TabIndex = 7;
             // 
+            // panel1
+            // 
+            panel1.Dock = DockStyle.Left;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(63, 84);
+            panel1.TabIndex = 2;
+            // 
             // btnCerrarSession
             // 
+            btnCerrarSession.Dock = DockStyle.Right;
             btnCerrarSession.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCerrarSession.Location = new Point(343, 9);
+            btnCerrarSession.Location = new Point(363, 0);
             btnCerrarSession.Name = "btnCerrarSession";
-            btnCerrarSession.Size = new Size(70, 70);
+            btnCerrarSession.Size = new Size(70, 84);
             btnCerrarSession.TabIndex = 0;
             btnCerrarSession.Text = "Cerrar Sesión";
             btnCerrarSession.UseVisualStyleBackColor = true;
             btnCerrarSession.Click += btnCerrarSession_Click;
             // 
-            // lblUser
+            // panel2
             // 
-            lblUser.AutoSize = true;
-            lblUser.Font = new Font("Verdana", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            lblUser.Location = new Point(108, 44);
-            lblUser.Name = "lblUser";
-            lblUser.Size = new Size(17, 22);
-            lblUser.TabIndex = 1;
-            lblUser.Text = ".";
+            panel2.Controls.Add(lblUserActivo);
+            panel2.Controls.Add(lblUser);
+            panel2.Location = new Point(69, 3);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(288, 79);
+            panel2.TabIndex = 3;
             // 
             // lblUserActivo
             // 
             lblUserActivo.AutoSize = true;
             lblUserActivo.Font = new Font("Verdana", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            lblUserActivo.Location = new Point(23, 18);
+            lblUserActivo.Location = new Point(25, 11);
             lblUserActivo.Name = "lblUserActivo";
             lblUserActivo.Size = new Size(147, 22);
             lblUserActivo.TabIndex = 0;
             lblUserActivo.Text = "Usuario Activo:";
+            // 
+            // lblUser
+            // 
+            lblUser.AutoSize = true;
+            lblUser.Font = new Font("Verdana", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUser.Location = new Point(52, 42);
+            lblUser.Name = "lblUser";
+            lblUser.Size = new Size(17, 22);
+            lblUser.TabIndex = 1;
+            lblUser.Text = ".";
             // 
             // panelReloj
             // 
@@ -303,17 +325,17 @@
             panelReloj.BorderStyle = BorderStyle.Fixed3D;
             panelReloj.Controls.Add(lblFecha);
             panelReloj.Controls.Add(lblReloj);
-            panelReloj.Location = new Point(682, 12);
+            panelReloj.Location = new Point(652, 12);
             panelReloj.Name = "panelReloj";
-            panelReloj.Size = new Size(159, 88);
+            panelReloj.Size = new Size(189, 88);
             panelReloj.TabIndex = 8;
             // 
             // lblFecha
             // 
-            lblFecha.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblFecha.AutoSize = true;
+            lblFecha.Dock = DockStyle.Bottom;
             lblFecha.Font = new Font("Microsoft JhengHei", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            lblFecha.Location = new Point(49, 44);
+            lblFecha.Location = new Point(0, 49);
             lblFecha.Name = "lblFecha";
             lblFecha.Size = new Size(92, 35);
             lblFecha.TabIndex = 2;
@@ -321,10 +343,10 @@
             // 
             // lblReloj
             // 
-            lblReloj.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblReloj.AutoSize = true;
+            lblReloj.Dock = DockStyle.Top;
             lblReloj.Font = new Font("Microsoft JhengHei", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            lblReloj.Location = new Point(60, 9);
+            lblReloj.Location = new Point(0, 0);
             lblReloj.Name = "lblReloj";
             lblReloj.Size = new Size(81, 35);
             lblReloj.TabIndex = 1;
@@ -332,15 +354,11 @@
             // 
             // panelPpal
             // 
-            panelPpal.AutoScroll = true;
-            panelPpal.AutoScrollMinSize = new Size(900, 720);
-            panelPpal.AutoSize = true;
-            panelPpal.BackColor = SystemColors.Control;
             panelPpal.Dock = DockStyle.Fill;
             panelPpal.Location = new Point(229, 114);
             panelPpal.Name = "panelPpal";
             panelPpal.Size = new Size(853, 843);
-            panelPpal.TabIndex = 8;
+            panelPpal.TabIndex = 2;
             // 
             // frmPrincipal
             // 
@@ -353,6 +371,8 @@
             Controls.Add(panelPpal);
             Controls.Add(panelSup);
             Controls.Add(panelIzq);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             MinimumSize = new Size(800, 600);
             Name = "frmPrincipal";
             StartPosition = FormStartPosition.CenterScreen;
@@ -364,11 +384,11 @@
             panelSup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picBox).EndInit();
             panelLogin.ResumeLayout(false);
-            panelLogin.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             panelReloj.ResumeLayout(false);
             panelReloj.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -380,7 +400,6 @@
         private Button btnCerrar;
         private Button btnGrillaClientes;
         private Panel panelLogin;
-        private Panel panelPpal;
         private Panel panelReloj;
         private Button btnCerrarSession;
         private Label lblUser;
@@ -396,5 +415,8 @@
         private Button btnFinanzas;
         private Button btnCaja;
         private Button btnUsuarios;
+        private FlowLayoutPanel panelPpal;
+        private Panel panel1;
+        private Panel panel2;
     }
 }
