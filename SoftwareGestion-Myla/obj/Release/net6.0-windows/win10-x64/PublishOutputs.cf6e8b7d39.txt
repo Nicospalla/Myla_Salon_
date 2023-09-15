@@ -1,0 +1,13 @@
+C:\Users\nicos\Desktop\prueba\prueba2\SoftwareGestion-Myla.pdb
+C:\Users\nicos\Desktop\prueba\prueba2\Imgs\MYLA.jpeg
+C:\Users\nicos\Desktop\prueba\prueba2\SoftwareGestion-Myla.dll.config
+C:\Users\nicos\Desktop\prueba\prueba2\D3DCompiler_47_cor3.dll
+C:\Users\nicos\Desktop\prueba\prueba2\PenImc_cor3.dll
+C:\Users\nicos\Desktop\prueba\prueba2\PresentationNative_cor3.dll
+C:\Users\nicos\Desktop\prueba\prueba2\vcruntime140_cor3.dll
+C:\Users\nicos\Desktop\prueba\prueba2\wpfgfx_cor3.dll
+C:\Users\nicos\Desktop\prueba\prueba2\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\nicos\Desktop\prueba\prueba2\Accesorios.pdb
+C:\Users\nicos\Desktop\prueba\prueba2\Dominio.pdb
+C:\Users\nicos\Desktop\prueba\prueba2\Negocio.pdb
+C:\Users\nicos\Desktop\prueba\prueba2\SoftwareGestion-Myla.exe

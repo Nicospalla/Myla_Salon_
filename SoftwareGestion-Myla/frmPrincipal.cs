@@ -30,10 +30,11 @@ namespace SoftwareGestion_Myla
             //picBox.ImageLocation = "D:\\Proyectos Csharp\\Myla Salon\\SoftwareGestion-Myla\\Imgs\\MYLA.jpeg";
             picBox.Load(ruta);
 
+            
 
 
             if (user.Admin == false)
-           
+
             {
                 btnEditarEsp.Enabled = false;
                 btnNuevoEsp.Enabled = false;
@@ -127,7 +128,7 @@ namespace SoftwareGestion_Myla
 
         private void btnNuevoEsp_Click(object sender, EventArgs e)
         {
-            if(user.Admin == false)
+            if (user.Admin == false)
                 btnNuevoEsp.Enabled = false;
             limpiaPanel();
             frmNuevoCliente frmNuevoCliente = new frmNuevoCliente(this, false);
@@ -241,5 +242,6 @@ namespace SoftwareGestion_Myla
             frmUsuarios.Location = new Point((panelPpal.Width - frmUsuarios.Width) / 2, (panelPpal.Height - frmUsuarios.Height) / 2);
             frmUsuarios.Show();
         }
+
     }
 }

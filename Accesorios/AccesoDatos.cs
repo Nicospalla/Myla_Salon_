@@ -16,6 +16,7 @@ namespace Accesorios
         {
             try
             {
+                //conn = new SqlConnection("workstation id=MYLA_DB.mssql.somee.com;packet size=4096;user id=flomaza_SQLLogin_1;pwd=sn3d2lepjq;data source=MYLA_DB.mssql.somee.com;persist security info=False;initial catalog=MYLA_DB; Encrypt=False");
                 conn = new SqlConnection("server = .\\SQLEXPRESS ; database = MYLA_DB ; integrated security = true;Encrypt=False ; Trusted_Connection=True ");
                 cmd = new SqlCommand();
             }

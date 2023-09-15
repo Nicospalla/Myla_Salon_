@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>SoftwareGestion-Myla</id>
+    <version>1.0.0</version>
+    <authors>SoftwareGestion-Myla</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0-windows7.0">
+        <dependency id="Accesorios" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Dominio" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Negocio" version="1.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net6.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WindowsForms" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Debug\net6.0-windows\SoftwareGestion-Myla.runtimeconfig.json" target="lib\net6.0-windows7.0\SoftwareGestion-Myla.runtimeconfig.json" />
+    <file src="D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Debug\net6.0-windows\SoftwareGestion-Myla.dll" target="lib\net6.0-windows7.0\SoftwareGestion-Myla.dll" />
+  </files>
+</package>

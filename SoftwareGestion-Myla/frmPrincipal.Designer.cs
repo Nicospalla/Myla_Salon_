@@ -59,7 +59,6 @@
             // 
             // panelIzq
             // 
-            panelIzq.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panelIzq.BackColor = SystemColors.ActiveCaption;
             panelIzq.Controls.Add(btnUsuarios);
             panelIzq.Controls.Add(btnCaja);
@@ -72,9 +71,10 @@
             panelIzq.Controls.Add(btnGrillaClientes);
             panelIzq.Controls.Add(btnNuevo);
             panelIzq.Controls.Add(btnCerrar);
-            panelIzq.Location = new Point(1, 109);
+            panelIzq.Dock = DockStyle.Left;
+            panelIzq.Location = new Point(0, 0);
             panelIzq.Name = "panelIzq";
-            panelIzq.Size = new Size(229, 847);
+            panelIzq.Size = new Size(229, 957);
             panelIzq.TabIndex = 1;
             // 
             // btnUsuarios
@@ -83,7 +83,7 @@
             btnUsuarios.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnUsuarios.FlatStyle = FlatStyle.Flat;
             btnUsuarios.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnUsuarios.Location = new Point(9, 688);
+            btnUsuarios.Location = new Point(10, 788);
             btnUsuarios.Name = "btnUsuarios";
             btnUsuarios.Size = new Size(202, 60);
             btnUsuarios.TabIndex = 9;
@@ -97,7 +97,7 @@
             btnCaja.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnCaja.FlatStyle = FlatStyle.Flat;
             btnCaja.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCaja.Location = new Point(9, 215);
+            btnCaja.Location = new Point(10, 315);
             btnCaja.Name = "btnCaja";
             btnCaja.Size = new Size(202, 60);
             btnCaja.TabIndex = 8;
@@ -111,7 +111,7 @@
             btnFinanzas.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnFinanzas.FlatStyle = FlatStyle.Flat;
             btnFinanzas.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnFinanzas.Location = new Point(9, 621);
+            btnFinanzas.Location = new Point(10, 721);
             btnFinanzas.Name = "btnFinanzas";
             btnFinanzas.Size = new Size(202, 60);
             btnFinanzas.TabIndex = 7;
@@ -125,7 +125,7 @@
             btnVenta.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnVenta.FlatStyle = FlatStyle.Flat;
             btnVenta.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnVenta.Location = new Point(11, 147);
+            btnVenta.Location = new Point(12, 247);
             btnVenta.Name = "btnVenta";
             btnVenta.Size = new Size(202, 60);
             btnVenta.TabIndex = 6;
@@ -139,7 +139,7 @@
             btnCategorias.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnCategorias.FlatStyle = FlatStyle.Flat;
             btnCategorias.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCategorias.Location = new Point(11, 554);
+            btnCategorias.Location = new Point(12, 654);
             btnCategorias.Name = "btnCategorias";
             btnCategorias.Size = new Size(202, 60);
             btnCategorias.TabIndex = 5;
@@ -154,7 +154,7 @@
             btnTurnos.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnTurnos.FlatStyle = FlatStyle.Flat;
             btnTurnos.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnTurnos.Location = new Point(11, 11);
+            btnTurnos.Location = new Point(12, 111);
             btnTurnos.Name = "btnTurnos";
             btnTurnos.Size = new Size(202, 60);
             btnTurnos.TabIndex = 0;
@@ -168,7 +168,7 @@
             btnEditarEsp.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnEditarEsp.FlatStyle = FlatStyle.Flat;
             btnEditarEsp.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEditarEsp.Location = new Point(11, 487);
+            btnEditarEsp.Location = new Point(12, 587);
             btnEditarEsp.Name = "btnEditarEsp";
             btnEditarEsp.Size = new Size(202, 60);
             btnEditarEsp.TabIndex = 4;
@@ -182,7 +182,7 @@
             btnNuevoEsp.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnNuevoEsp.FlatStyle = FlatStyle.Flat;
             btnNuevoEsp.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnNuevoEsp.Location = new Point(11, 420);
+            btnNuevoEsp.Location = new Point(12, 520);
             btnNuevoEsp.Name = "btnNuevoEsp";
             btnNuevoEsp.Size = new Size(202, 60);
             btnNuevoEsp.TabIndex = 3;
@@ -196,7 +196,7 @@
             btnGrillaClientes.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnGrillaClientes.FlatStyle = FlatStyle.Flat;
             btnGrillaClientes.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGrillaClientes.Location = new Point(11, 79);
+            btnGrillaClientes.Location = new Point(12, 179);
             btnGrillaClientes.Name = "btnGrillaClientes";
             btnGrillaClientes.Size = new Size(200, 60);
             btnGrillaClientes.TabIndex = 1;
@@ -210,7 +210,7 @@
             btnNuevo.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnNuevo.FlatStyle = FlatStyle.Flat;
             btnNuevo.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnNuevo.Location = new Point(11, 283);
+            btnNuevo.Location = new Point(12, 383);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new Size(202, 60);
             btnNuevo.TabIndex = 2;
@@ -225,7 +225,7 @@
             btnCerrar.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnCerrar.FlatStyle = FlatStyle.Flat;
             btnCerrar.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCerrar.Location = new Point(11, 773);
+            btnCerrar.Location = new Point(11, 883);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(202, 63);
             btnCerrar.TabIndex = 5;
@@ -235,14 +235,14 @@
             // 
             // panelSup
             // 
-            panelSup.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelSup.BackColor = SystemColors.ActiveCaption;
             panelSup.Controls.Add(picBox);
             panelSup.Controls.Add(panelLogin);
             panelSup.Controls.Add(panelReloj);
-            panelSup.Location = new Point(1, 0);
+            panelSup.Dock = DockStyle.Top;
+            panelSup.Location = new Point(229, 0);
             panelSup.Name = "panelSup";
-            panelSup.Size = new Size(1081, 114);
+            panelSup.Size = new Size(853, 114);
             panelSup.TabIndex = 0;
             // 
             // picBox
@@ -261,7 +261,7 @@
             panelLogin.Controls.Add(btnCerrarSession);
             panelLogin.Controls.Add(lblUser);
             panelLogin.Controls.Add(lblUserActivo);
-            panelLogin.Location = new Point(467, 12);
+            panelLogin.Location = new Point(239, 12);
             panelLogin.Name = "panelLogin";
             panelLogin.Size = new Size(437, 88);
             panelLogin.TabIndex = 7;
@@ -303,7 +303,7 @@
             panelReloj.BorderStyle = BorderStyle.Fixed3D;
             panelReloj.Controls.Add(lblFecha);
             panelReloj.Controls.Add(lblReloj);
-            panelReloj.Location = new Point(910, 12);
+            panelReloj.Location = new Point(682, 12);
             panelReloj.Name = "panelReloj";
             panelReloj.Size = new Size(159, 88);
             panelReloj.TabIndex = 8;
@@ -332,22 +332,28 @@
             // 
             // panelPpal
             // 
-            panelPpal.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panelPpal.AutoScroll = true;
+            panelPpal.AutoScrollMinSize = new Size(900, 720);
+            panelPpal.AutoSize = true;
             panelPpal.BackColor = SystemColors.Control;
-            panelPpal.Location = new Point(236, 117);
+            panelPpal.Dock = DockStyle.Fill;
+            panelPpal.Location = new Point(229, 114);
             panelPpal.Name = "panelPpal";
-            panelPpal.Size = new Size(843, 839);
+            panelPpal.Size = new Size(853, 843);
             panelPpal.TabIndex = 8;
             // 
             // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
+            AutoScrollMinSize = new Size(800, 600);
+            AutoSize = true;
             ClientSize = new Size(1082, 957);
             Controls.Add(panelPpal);
             Controls.Add(panelSup);
             Controls.Add(panelIzq);
-            MinimumSize = new Size(1100, 700);
+            MinimumSize = new Size(800, 600);
             Name = "frmPrincipal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Myla Salon Studio";
@@ -362,6 +368,7 @@
             panelReloj.ResumeLayout(false);
             panelReloj.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

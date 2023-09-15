@@ -1,0 +1,11 @@
+D:\Proyectos Csharp\Myla Salon\Dominio\bin\Release\net6.0\win10-x64\Dominio.deps.json
+D:\Proyectos Csharp\Myla Salon\Dominio\bin\Release\net6.0\win10-x64\Dominio.dll
+D:\Proyectos Csharp\Myla Salon\Dominio\bin\Release\net6.0\win10-x64\Dominio.pdb
+D:\Proyectos Csharp\Myla Salon\Dominio\obj\Release\net6.0\win10-x64\Dominio.GeneratedMSBuildEditorConfig.editorconfig
+D:\Proyectos Csharp\Myla Salon\Dominio\obj\Release\net6.0\win10-x64\Dominio.AssemblyInfoInputs.cache
+D:\Proyectos Csharp\Myla Salon\Dominio\obj\Release\net6.0\win10-x64\Dominio.AssemblyInfo.cs
+D:\Proyectos Csharp\Myla Salon\Dominio\obj\Release\net6.0\win10-x64\Dominio.csproj.CoreCompileInputs.cache
+D:\Proyectos Csharp\Myla Salon\Dominio\obj\Release\net6.0\win10-x64\Dominio.dll
+D:\Proyectos Csharp\Myla Salon\Dominio\obj\Release\net6.0\win10-x64\refint\Dominio.dll
+D:\Proyectos Csharp\Myla Salon\Dominio\obj\Release\net6.0\win10-x64\Dominio.pdb
+D:\Proyectos Csharp\Myla Salon\Dominio\obj\Release\net6.0\win10-x64\ref\Dominio.dll

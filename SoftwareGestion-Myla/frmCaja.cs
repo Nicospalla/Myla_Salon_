@@ -207,13 +207,13 @@ namespace SoftwareGestion_Myla
         private void cargarResultados()
         {
             txtFecha.Text = calendar.SelectionStart.ToString("dd/MMM/yy");
-            int apertura =0;
-            int ingresos =0;
-            int pagos =0;
-            int retiros =0;
-            int totalPagoEft =0;
-            int totalTarjeta =0;
-            int TOTAL =0;
+            int apertura = 0;
+            int ingresos = 0;
+            int pagos = 0;
+            int retiros = 0;
+            int totalPagoEft = 0;
+            int totalTarjeta = 0;
+            int TOTAL = 0;
             for (int i = 0; i < listaGrid.Count; i++)
             {
                 apertura += listaGrid[i].Inicio;
@@ -224,8 +224,8 @@ namespace SoftwareGestion_Myla
                 totalPagoEft += listaGrid[i].PagoEfectivo;
 
             }
-            
-            TOTAL =  totalTarjeta + totalPagoEft + apertura + ingresos - pagos - retiros; ;
+
+            TOTAL = totalTarjeta + totalPagoEft + apertura + ingresos - pagos - retiros; ;
             txtApertura.Text = apertura.ToString();
             txtIngresos.Text = ingresos.ToString();
             txtPagos.Text = pagos.ToString();

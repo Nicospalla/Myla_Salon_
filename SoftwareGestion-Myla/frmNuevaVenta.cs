@@ -252,7 +252,13 @@ namespace SoftwareGestion_Myla
 
         private void btnAtras_Click(object sender, EventArgs e)
         {
-            FrmPrincipal.muestraHistorial(cliente);
+            if (cliente != null)
+            {
+                FrmPrincipal.muestraHistorial(cliente);
+
+            }
+            else
+                FrmPrincipal.nuevoTurno();
         }
 
         private void cboEspecialista_SelectionChangeCommitted(object sender, EventArgs e)

@@ -7,6 +7,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName>
+    <ApplicationIcon>MYLA.ico</ApplicationIcon>
+    <SignAssembly>False</SignAssembly>
+    <Description>Software de gestión de Peluquerías</Description>
+    <Copyright>Spalla Nicolás</Copyright>
+    <PackageIcon>MYLA.jpeg</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,14 +29,37 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="MYLA.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\MYLA.jpeg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Accesorios\Accesorios.csproj" />
     <ProjectReference Include="..\Dominio\Dominio.csproj" />
     <ProjectReference Include="..\Negocio\Negocio.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Imgs\MYLA.jpeg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
