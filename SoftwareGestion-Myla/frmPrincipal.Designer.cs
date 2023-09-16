@@ -51,7 +51,7 @@
             panelReloj = new Panel();
             lblFecha = new Label();
             lblReloj = new Label();
-            panelPpal = new FlowLayoutPanel();
+            panelPpal = new Panel();
             panelIzq.SuspendLayout();
             panelSup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBox).BeginInit();
@@ -415,8 +415,8 @@
         private Button btnFinanzas;
         private Button btnCaja;
         private Button btnUsuarios;
-        private FlowLayoutPanel panelPpal;
         private Panel panel1;
         private Panel panel2;
+        private Panel panelPpal;
     }
 }
