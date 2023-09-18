@@ -22,6 +22,8 @@ namespace SoftwareGestion_Myla
         {
             InitializeComponent();
             this.form = form;
+            lblErrorPass.Text = string.Empty;
+            lblErrorUser.Text = string.Empty;
 
 
         }
@@ -41,8 +43,7 @@ namespace SoftwareGestion_Myla
             dgvUser.DataSource = userNegocio.listarUser(form.user);
 
         }
-
-        private void lblNuevo_Click(object sender, EventArgs e)
+        private bool camposVacios()
         {
             bool status = true;
             if (string.IsNullOrEmpty(txtUsuario.Text))
@@ -60,6 +61,15 @@ namespace SoftwareGestion_Myla
             else
                 lblErrorPass.Text = string.Empty;
             if (!status)
+                return false;
+            else
+                return true;
+        }
+
+        private void lblNuevo_Click(object sender, EventArgs e)
+        {
+   
+            if (!camposVacios())
                 return;
             User aux = new();
             aux.Usuario = txtUsuario.Text.ToLower();
@@ -83,6 +93,7 @@ namespace SoftwareGestion_Myla
         private void btnEditar_Click(object sender, EventArgs e)
         {
             dgvUser.Focus();
+            limpiaCampos();
             btnGuardar.Visible = Visible;
             if (dgvUser.CurrentRow != null)
             {
@@ -115,7 +126,8 @@ namespace SoftwareGestion_Myla
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            
+            if (!camposVacios())
+                return;
             User aux = this.aux;
             aux.Usuario = txtUsuario.Text.ToLower();
             aux.Password = txtPassword.Text;
@@ -141,6 +153,14 @@ namespace SoftwareGestion_Myla
             btnGuardar.Visible = Visible;
             txtPassword.Text = aux.Password;
             txtUsuario.Text = aux.Usuario.ToLower();
+            if(aux.Admin == true)
+            {
+                rbSI.Checked = true;
+            }
+            else
+            {
+                rbNO.Checked = true;
+            }
             rbNO.Enabled = false;
             rbSI.Enabled = false;
             

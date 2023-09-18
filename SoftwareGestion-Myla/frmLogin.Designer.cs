@@ -118,6 +118,7 @@
             Name = "frmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MYLA Salon Studio";
+            Load += frmLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }

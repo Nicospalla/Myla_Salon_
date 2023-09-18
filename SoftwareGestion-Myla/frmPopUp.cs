@@ -25,6 +25,7 @@ namespace SoftwareGestion_Myla
             this.Visible = false;
             InitializeComponent();
             this.aux = user;
+            lblErrorEft.Text = string.Empty;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

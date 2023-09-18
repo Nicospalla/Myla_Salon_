@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="BBDD\MYLA_DBB.bak" />
     <None Remove="o3yd0coa.rld~" />
   </ItemGroup>
 
@@ -56,6 +57,9 @@
   <ItemGroup>
     <None Update="Imgs\MYLA.jpeg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="BBDD\MYLA_DB.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

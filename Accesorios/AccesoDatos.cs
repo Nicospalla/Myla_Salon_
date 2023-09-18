@@ -8,6 +8,7 @@ namespace Accesorios
         private SqlConnection conn;
         private SqlCommand cmd;
         private SqlDataReader lector;
+        public string connString { get; set; }
         public SqlDataReader Lector
         {
             get { return lector; }
@@ -17,7 +18,8 @@ namespace Accesorios
             try
             {
                 //conn = new SqlConnection("workstation id=MYLA_DB.mssql.somee.com;packet size=4096;user id=flomaza_SQLLogin_1;pwd=sn3d2lepjq;data source=MYLA_DB.mssql.somee.com;persist security info=False;initial catalog=MYLA_DB; Encrypt=False");
-                conn = new SqlConnection("server = .\\SQLEXPRESS ; database = MYLA_DB ; integrated security = true;Encrypt=False ; Trusted_Connection=True ");
+                connString = "server = .\\SQLEXPRESS ; database = MYLA_DB ; integrated security = true;Encrypt=False ; Trusted_Connection=True ";
+                conn = new SqlConnection(connString);
                 cmd = new SqlCommand();
             }
             catch (Exception ex)
@@ -26,7 +28,22 @@ namespace Accesorios
             }
         }
 
-        public void setearConsulta (string consulta)
+        public bool verificarExisteciaDDBB()
+        {
+            try
+            {
+                cmd.Connection = conn;
+                conn.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void setearConsulta(string consulta)
         {
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = consulta;
@@ -56,7 +73,7 @@ namespace Accesorios
             {
                 throw ex;
             }
-            
+
         }
         public void ejecutarAccion()
         {
@@ -71,7 +88,7 @@ namespace Accesorios
 
                 throw ex;
             }
-            
+
         }
         public int ejecutarAccionInt()
         {
@@ -114,6 +131,6 @@ namespace Accesorios
                 throw ex;
             }
         }
-        
+
     }
 }
