@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Accesorios</id>
+    <version>1.0.0</version>
+    <authors>Accesorios</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="Microsoft.Data.SqlClient" version="5.1.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\Proyectos Csharp\Myla Salon\Accesorios\bin\Debug\net6.0\Accesorios.dll" target="lib\net6.0\Accesorios.dll" />
+  </files>
+</package>

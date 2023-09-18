@@ -60,3 +60,7 @@ D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Release\net6.0-windows\S
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Release\net6.0-windows\SoftwareGestion-Myla.genruntimeconfig.cache
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Release\net6.0-windows\ref\SoftwareGestion-Myla.dll
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\SoftwareGestion-Myla.dll.config
+D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\SoftwareGestion-Myla.dll.manifest
+D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\SoftwareGestion-Myla.application
+D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Release\net6.0-windows\SoftwareGestion-Myla.dll.manifest
+D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Release\net6.0-windows\SoftwareGestion-Myla.application
