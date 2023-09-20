@@ -52,6 +52,7 @@
             lblFecha = new Label();
             lblReloj = new Label();
             panelPpal = new Panel();
+            btnAdmin = new Button();
             panelIzq.SuspendLayout();
             panelSup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBox).BeginInit();
@@ -64,6 +65,7 @@
             // 
             panelIzq.AutoScroll = true;
             panelIzq.BackColor = SystemColors.ActiveCaption;
+            panelIzq.Controls.Add(btnAdmin);
             panelIzq.Controls.Add(btnUsuarios);
             panelIzq.Controls.Add(btnCaja);
             panelIzq.Controls.Add(btnFinanzas);
@@ -78,7 +80,7 @@
             panelIzq.Dock = DockStyle.Left;
             panelIzq.Location = new Point(0, 0);
             panelIzq.Name = "panelIzq";
-            panelIzq.Size = new Size(229, 957);
+            panelIzq.Size = new Size(229, 1055);
             panelIzq.TabIndex = 1;
             // 
             // btnUsuarios
@@ -229,7 +231,7 @@
             btnCerrar.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
             btnCerrar.FlatStyle = FlatStyle.Flat;
             btnCerrar.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCerrar.Location = new Point(11, 883);
+            btnCerrar.Location = new Point(11, 981);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(202, 63);
             btnCerrar.TabIndex = 5;
@@ -357,8 +359,21 @@
             panelPpal.Dock = DockStyle.Fill;
             panelPpal.Location = new Point(229, 114);
             panelPpal.Name = "panelPpal";
-            panelPpal.Size = new Size(853, 843);
+            panelPpal.Size = new Size(853, 941);
             panelPpal.TabIndex = 2;
+            // 
+            // btnAdmin
+            // 
+            btnAdmin.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
+            btnAdmin.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btnAdmin.FlatStyle = FlatStyle.Flat;
+            btnAdmin.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAdmin.Location = new Point(11, 854);
+            btnAdmin.Name = "btnAdmin";
+            btnAdmin.Size = new Size(202, 60);
+            btnAdmin.TabIndex = 10;
+            btnAdmin.Text = "Administracion General";
+            btnAdmin.UseVisualStyleBackColor = true;
             // 
             // frmPrincipal
             // 
@@ -367,7 +382,7 @@
             AutoScroll = true;
             AutoScrollMinSize = new Size(800, 600);
             AutoSize = true;
-            ClientSize = new Size(1082, 957);
+            ClientSize = new Size(1082, 1055);
             Controls.Add(panelPpal);
             Controls.Add(panelSup);
             Controls.Add(panelIzq);
@@ -418,5 +433,6 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panelPpal;
+        private Button btnAdmin;
     }
 }

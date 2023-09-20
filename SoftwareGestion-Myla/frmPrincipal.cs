@@ -1,4 +1,5 @@
 
+using Accesorios;
 using Dominio;
 using Negocio;
 using System.Globalization;
@@ -30,9 +31,6 @@ namespace SoftwareGestion_Myla
             //picBox.ImageLocation = "D:\\Proyectos Csharp\\Myla Salon\\SoftwareGestion-Myla\\Imgs\\MYLA.jpeg";
             picBox.Load(ruta);
 
-
-
-
             if (user.Admin == false)
 
             {
@@ -43,8 +41,16 @@ namespace SoftwareGestion_Myla
                 btnUsuarios.Enabled = false;
             }
 
+            //TurnosNegocio turnos = new TurnosNegocio();
+            //List<Turnos> listaT = turnos.listarTurnos(DateTime.Today, 0, true);
+            //string consulta = listaT.ToString();
+            //MessageBox.Show(consulta);
+
+
             //verGrilla();
             nuevoTurno();
+
+
         }
 
         private void eventoTimer(object sender, EventArgs e)
@@ -158,6 +164,16 @@ namespace SoftwareGestion_Myla
 
         private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
+            AccesoDatos datos = new();
+            try
+            {
+                //datos.setearConsulta
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
             Application.Exit();
         }
 

@@ -11,16 +11,23 @@ namespace Negocio
 {
     public class TurnosNegocio
     {
-        public List<Turnos> listarTurnos(DateTime fecha, int idEsp = 0)
+        public List<Turnos> listarTurnos(DateTime fecha, int idEsp = 0, bool mensaje = true)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
+
                 
                 if( idEsp ==0)
                 {
                     datos.setearStoredProcedure("listarTurnosTodos");
-                }else if (idEsp != 0)
+                }else if (mensaje == true)
+                {
+                    datos.setearStoredProcedure("listarTurnosEntreFechas");
+                    DateTime fechaFin = DateTime.Today.AddDays(2);
+                    datos.setearParametros("@FechaFin", fechaFin);
+                }
+                else if (idEsp != 0)
                 {
                     datos.setearStoredProcedure("listarTurnosIdEsp");
                     //datos.setearConsulta("select top 1 IdTurno, IdCliente, C.Nombre as NombreCliente, IdSubCategoria, s.Descripcion as Subcategoria, IdEspecialista, e.Nombre as Especialista,Fecha,HoraInicio, HoraFin,t.Estado as esta2 from TURNOS T, SUBCATEGORIA S, DATOSCLIENTES C, ESPECIALISTAS E where IdCliente = c.Id and IdSubCategoria = s.Id and IdEspecialista = e.Id and t.Fecha = @Fecha and IdEspecialista = @IdEsp and t.Estado = 'Reservado' and IdTurno = IdTurno");

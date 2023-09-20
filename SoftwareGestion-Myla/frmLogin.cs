@@ -12,7 +12,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
 using Microsoft.Win32;
 
 namespace SoftwareGestion_Myla
@@ -24,6 +23,8 @@ namespace SoftwareGestion_Myla
         {
 
             InitializeComponent();
+            Helpers help = new();
+            help.creakBackUp();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -53,13 +54,10 @@ namespace SoftwareGestion_Myla
                         this.Hide();
 
                     }
-
+                    
                 }
                 else
                     lblError.Text = "Datos incorrectos o usuario inexistente.";
-
-
-
             }
             catch (Exception ex)
             {
@@ -73,12 +71,19 @@ namespace SoftwareGestion_Myla
                 return key != null;
             }
         }
+
+        private void bloqueoAccion()
+        {
+            btnIngresar.Enabled = false;
+            txtPass.Enabled = false;
+            txtUser.Enabled = false;
+        }
         private void frmLogin_Load(object sender, EventArgs e)
         {
             if(!SQLInstalado() )
             {
                 MessageBox.Show("Debe instalar SQL Server 2019 antes de utilizar la aplicación.");
-                btnIngresar.Enabled = false;
+                bloqueoAccion();
                 return;
             }
             AccesoDatos datos = new();
@@ -90,7 +95,6 @@ namespace SoftwareGestion_Myla
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally { datos.cerrarConn(); }
@@ -115,13 +119,10 @@ namespace SoftwareGestion_Myla
 
                         ejecutar.WaitForExit();
 
-                        if (ejecutar.ExitCode == 0)
-                        {
-                            Console.WriteLine("Script SQL ejecutado con éxito.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Error al ejecutar el script SQL.");
+                        if (ejecutar.ExitCode != 0) 
+                        { 
+                            MessageBox.Show("Error al ejecutar el script SQL, contacte a su desarrollador.", "Error", MessageBoxButtons.OKCancel,MessageBoxIcon.Error);
+                            bloqueoAccion();
                         }
                     }
                     catch (Exception ex)
@@ -130,6 +131,7 @@ namespace SoftwareGestion_Myla
                     }
                 }
             }
+            
         }
     }
 }

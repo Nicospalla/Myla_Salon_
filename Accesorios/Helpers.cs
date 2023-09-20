@@ -53,5 +53,25 @@ namespace Accesorios
 
             return false;
         }
+
+        public void creakBackUp()
+        {
+            AccesoDatos datos = new();
+            try
+            {
+                string dirActual = AppDomain.CurrentDomain.BaseDirectory;
+                string rutaDDBB = Path.Combine(dirActual, "BBDD\\MylaBackUp.bak");
+
+                datos.setearConsulta($"backup database MYLA_DB to disk ='{rutaDDBB}'");
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally  {datos.cerrarConn(); }
+        }
     }
 }
