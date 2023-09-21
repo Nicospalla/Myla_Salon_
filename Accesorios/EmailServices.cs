@@ -22,15 +22,21 @@ namespace Accesorios
             smtpClient.Port = 587;
             smtpClient.Host = "smtp.gmail.com";
         }
-        public void armarCorreo(string emailDestino, string asunto, string cuerpo, string filePath)
+        public async void armarCorreo(string emailDestino, string asunto, string filePath = "", string cuerpo = "")
         {
             email = new MailMessage();
             email.From = new MailAddress("itdevspa@gmail.com", "itdevspa@gmail.com");
             email.To.Add(emailDestino);
             email.Subject = asunto;
             email.Body = cuerpo;
-            Attachment file = new Attachment(filePath);      
-            email.Attachments.Add(file);
+            if(filePath != "")
+            {
+                Attachment file = new Attachment(filePath);
+                email.Attachments.Add(file);
+                await Task.Yield();
+
+            }
+
         }
         public void enviarMail()
         {

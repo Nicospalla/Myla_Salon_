@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panelIzq = new Panel();
+            btnAdmin = new Button();
             btnUsuarios = new Button();
             btnCaja = new Button();
             btnFinanzas = new Button();
@@ -52,7 +53,6 @@
             lblFecha = new Label();
             lblReloj = new Label();
             panelPpal = new Panel();
-            btnAdmin = new Button();
             panelIzq.SuspendLayout();
             panelSup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBox).BeginInit();
@@ -82,6 +82,20 @@
             panelIzq.Name = "panelIzq";
             panelIzq.Size = new Size(229, 1055);
             panelIzq.TabIndex = 1;
+            // 
+            // btnAdmin
+            // 
+            btnAdmin.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
+            btnAdmin.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btnAdmin.FlatStyle = FlatStyle.Flat;
+            btnAdmin.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAdmin.Location = new Point(11, 854);
+            btnAdmin.Name = "btnAdmin";
+            btnAdmin.Size = new Size(202, 60);
+            btnAdmin.TabIndex = 10;
+            btnAdmin.Text = "Administracion General";
+            btnAdmin.UseVisualStyleBackColor = true;
+            btnAdmin.Click += btnAdmin_Click;
             // 
             // btnUsuarios
             // 
@@ -361,19 +375,6 @@
             panelPpal.Name = "panelPpal";
             panelPpal.Size = new Size(853, 941);
             panelPpal.TabIndex = 2;
-            // 
-            // btnAdmin
-            // 
-            btnAdmin.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
-            btnAdmin.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
-            btnAdmin.FlatStyle = FlatStyle.Flat;
-            btnAdmin.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnAdmin.Location = new Point(11, 854);
-            btnAdmin.Name = "btnAdmin";
-            btnAdmin.Size = new Size(202, 60);
-            btnAdmin.TabIndex = 10;
-            btnAdmin.Text = "Administracion General";
-            btnAdmin.UseVisualStyleBackColor = true;
             // 
             // frmPrincipal
             // 

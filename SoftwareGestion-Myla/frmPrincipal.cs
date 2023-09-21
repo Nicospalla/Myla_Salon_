@@ -15,6 +15,7 @@ namespace SoftwareGestion_Myla
         public User user { get; set; }
         CajaNegocio cajaNegocio = new();
         private Timer ti;
+        Helpers help;
         public frmPrincipal(User user)
         {
             ti = new Timer();
@@ -167,7 +168,10 @@ namespace SoftwareGestion_Myla
             AccesoDatos datos = new();
             try
             {
-                //datos.setearConsulta
+                if(DateTime.Today.DayOfWeek == DayOfWeek.Saturday)
+                {
+                    help.creakBackUp();
+                }
             }
             catch (Exception ex)
             {
@@ -259,5 +263,16 @@ namespace SoftwareGestion_Myla
             frmUsuarios.Show();
         }
 
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            limpiaPanel();
+            frmAdmin frmAdmin = new frmAdmin(this);
+            frmAdmin.TopLevel = false;
+            panelPpal.Controls.Add(frmAdmin);
+            frmAdmin.Dock = DockStyle.Fill;
+            frmAdmin.Location = new Point((panelPpal.Width - frmAdmin.Width) / 2, (panelPpal.Height - frmAdmin.Height) / 2);
+            frmAdmin.Show();
+
+        }
     }
 }
