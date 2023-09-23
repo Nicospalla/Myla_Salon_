@@ -11,7 +11,7 @@ namespace Negocio
 {
     public class TurnosNegocio
     {
-        public List<Turnos> listarTurnos(DateTime fecha, int idEsp = 0, bool mensaje = true)
+        public List<Turnos> listarTurnos(DateTime fecha, int idEsp = 0, bool mensaje = false)
         {
             AccesoDatos datos = new AccesoDatos();
             try
@@ -169,6 +169,39 @@ namespace Negocio
             finally
             {
                 datos.cerrarConn();
+            }
+        }
+        public List<Turnos> turnosWSAPP(DateTime fecha, int sumaDia)
+        {
+            AccesoDatos datos = new();
+            List<Turnos> lista =new();
+            try
+            {
+                datos.setearStoredProcedure("turnosWSAPP");
+                datos.setearParametros("@Fecha",fecha);
+                datos.setearParametros("@SumaDia",sumaDia);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Turnos turno = new();
+                    turno.Fecha = (DateTime)datos.Lector["Fecha"];
+                    turno.HoraInicio = (TimeSpan)datos.Lector["HoraInicio"];
+                    turno.Especialista = new Especialista();
+                    turno.Especialista.Nombre = (string)datos.Lector["NombreEspecialista"];
+                    turno.Especialista.IdEspecialista = (int)datos.Lector["IdEspecialista"];
+                    turno.Cliente = new Clientes();
+                    turno.Cliente.Nombre= (string)datos.Lector["NombreCliente"];
+                    turno.Cliente.Telefono = (string)datos.Lector["TelefonoCliente"];
+                    turno.Cliente.Email = (string)datos.Lector["EmailCliente"];
+                    lista.Add(turno);
+                } 
+                return lista;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
         }
     }

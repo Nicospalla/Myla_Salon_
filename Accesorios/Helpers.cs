@@ -55,54 +55,84 @@ namespace Accesorios
             return false;
         }
 
-        public void creakBackUp()
+        public void creakBackUp(string path = "")
         {
             AccesoDatos datos = new();
+            AccesoDatos datos2 = new();
+            AccesoDatos datos3 = new();
+            string date = DateTime.Today.ToString("dd-MM-yy");
             try
             {
                 string dirActual = AppDomain.CurrentDomain.BaseDirectory;
-                string rutaDDBB = Path.Combine(dirActual, "BBDD\\MylaBackUp.bak");
+                string rutaDDBB = Path.Combine(dirActual, $"BBDD\\MylaBackUp-{date}.bak");
 
-                datos.setearConsulta($"backup database MYLA_DB to disk ='{rutaDDBB}'");
-                datos.ejecutarAccion();
-
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            finally { datos.cerrarConn(); }
-        }
-
-        public void enviarBackUp()
-        {
-            AccesoDatos datos = new();
-            string mail;
-            EmailServices services = new EmailServices();
-            try
-            {
-                string dirActual = AppDomain.CurrentDomain.BaseDirectory;
-                string rutaBAK = Path.Combine(dirActual, "BBDD\\MylaBackUp.bak");
-                string rutaMail = Path.Combine(dirActual, "BBDD\\mailBackUp.txt");
-                if(File.Exists(rutaBAK))
+                //Eliminar los .bak si hay mas de 10
+                int maximo = 2;
+                DirectoryInfo directorio = new DirectoryInfo(Path.Combine(dirActual, "BBDD"));
+                if(directorio.Exists)
                 {
-                    StreamReader sr = new StreamReader(rutaMail);
-                    mail = sr.ReadToEnd();
-                    sr.Close();
+                    FileInfo[] archivos = directorio.GetFiles("*.bak");
+                    var archivosOrdenados = archivos.OrderBy(f => f.CreationTimeUtc);
 
-                    DateTime dia = DateTime.Today;
-                    services.armarCorreo(mail, $"BackUp{dia}",rutaBAK);
-                    services.enviarMail();
+                    foreach (var archivo in archivosOrdenados)
+                    {
+                        if (archivos.Length >= maximo)
+                        {
+                            archivo.Delete();
+                        }
 
+                    }
                 }
+
+
+                //Genera los querys para la creacion del nuevo BackUp
+                datos.setearConsulta($"USE master; ALTER DATABASE MYLA_DB SET SINGLE_USER WITH ROLLBACK IMMEDIATE;");
+                datos.ejecutarAccion();
+                datos.cerrarConn();
+                datos2.setearConsulta($"backup database MYLA_DB to disk ='{rutaDDBB}'");
+                datos2.ejecutarAccion();
+                datos2.cerrarConn();
+                datos3.setearConsulta(" ALTER DATABASE MYLA_DB SET MULTI_USER");
+                datos3.ejecutarAccion();
+                datos3.cerrarConn();
+
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
+
         }
+
+        //public void enviarBackUp()
+        //{
+        //    AccesoDatos datos = new();
+        //    string mail;
+        //    EmailServices services = new EmailServices();
+        //    try
+        //    {
+        //        string dirActual = AppDomain.CurrentDomain.BaseDirectory;
+        //        string rutaBAK = Path.Combine(dirActual, "BBDD\\MylaBackUp.bak");
+        //        string rutaMail = Path.Combine(dirActual, "BBDD\\mailBackUp.txt");
+        //        if(File.Exists(rutaBAK))
+        //        {
+        //            StreamReader sr = new StreamReader(rutaMail);
+        //            mail = sr.ReadToEnd();
+        //            sr.Close();
+
+        //            DateTime dia = DateTime.Today;
+        //            services.armarCorreo(mail, $"BackUp{dia}",rutaBAK);
+        //            services.enviarMail();
+
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        throw ex;
+        //    }
+        //}
         public void restaurarBBDD()
         {
             AccesoDatos datos = new();

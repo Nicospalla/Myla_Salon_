@@ -4,9 +4,6 @@
     <_LastSelectedProfileId>D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\Properties\PublishProfiles\ClickOnceProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="frmAdmin.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="frmCaja.cs">
       <SubType>Form</SubType>
     </Compile>

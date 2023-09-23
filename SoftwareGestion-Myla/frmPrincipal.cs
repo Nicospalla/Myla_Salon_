@@ -3,6 +3,9 @@ using Accesorios;
 using Dominio;
 using Negocio;
 using System.Globalization;
+using Twilio.TwiML.Voice;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+using Application = System.Windows.Forms.Application;
 using Timer = System.Windows.Forms.Timer;
 
 
@@ -15,7 +18,11 @@ namespace SoftwareGestion_Myla
         public User user { get; set; }
         CajaNegocio cajaNegocio = new();
         private Timer ti;
-        Helpers help;
+        private Timer timer;
+        Helpers help = new();
+        WhatsappServices servicesSMS = new WhatsappServices();
+        EmailServices servicesMail = new();
+        TurnosNegocio turnosNegocio = new();
         public frmPrincipal(User user)
         {
             ti = new Timer();
@@ -23,14 +30,21 @@ namespace SoftwareGestion_Myla
             InitializeComponent();
             ti.Enabled = true;
             this.user = user;
+
+            timer = new Timer();
+            timer.Interval = 1000;
+            timer.Tick += Timer_Tick;
+            timer.Start();
+
+
         }
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             TextInfo textInfo = new CultureInfo("en-US").TextInfo;
             lblUser.Text = textInfo.ToTitleCase(user.Usuario);
             string ruta = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imgs", "MYLA.jpeg");
-            //picBox.ImageLocation = "D:\\Proyectos Csharp\\Myla Salon\\SoftwareGestion-Myla\\Imgs\\MYLA.jpeg";
             picBox.Load(ruta);
+
 
             if (user.Admin == false)
 
@@ -42,13 +56,6 @@ namespace SoftwareGestion_Myla
                 btnUsuarios.Enabled = false;
             }
 
-            //TurnosNegocio turnos = new TurnosNegocio();
-            //List<Turnos> listaT = turnos.listarTurnos(DateTime.Today, 0, true);
-            //string consulta = listaT.ToString();
-            //MessageBox.Show(consulta);
-
-
-            //verGrilla();
             nuevoTurno();
 
 
@@ -60,6 +67,48 @@ namespace SoftwareGestion_Myla
             lblReloj.Text = dt.ToString("HH:mm:ss");
             lblFecha.Text = dt.ToString("dd/MM/yy");
         }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            lblReloj.Text = dt.ToString("HH:mm:ss");
+            lblFecha.Text = dt.ToString("dd/MM/yy");
+
+            if (dt.Hour == 11 && dt.Minute == 15 && dt.Second == 00)
+            {
+                enviarWhatsapp();
+            }
+        }
+        public void enviarWhatsapp()
+        {
+            List<Turnos> proxTurnos = new();
+            try
+            {
+                if (DateTime.Today.DayOfWeek != DayOfWeek.Saturday)
+                {
+                    proxTurnos = turnosNegocio.turnosWSAPP(DateTime.Today, 1);
+                }
+                else if (DateTime.Today.DayOfWeek == DayOfWeek.Saturday)
+                {
+                    proxTurnos = turnosNegocio.turnosWSAPP(DateTime.Today, 3);
+                }
+                foreach (Turnos turno in proxTurnos)
+                {
+                    string fechisima = turno.Fecha.ToString("dd/MM/yy");
+
+                    //Este servicio esta pensado para envio de WHATSAPP pero hay que darse de alta en TWILLIO
+                    //DateTime date = DateTime.ParseExact(fechisima, "dd/MM/yy", CultureInfo.InvariantCulture);
+                    //servicesSMS.enviarWSAPP(turno.Fecha, turno.HoraInicio, turno.Cliente.Nombre, "631616408", turno.Especialista.Nombre);
+                    
+                    string cuerpo = @$"Hola {turno.Cliente.Nombre}! Te enviamos un recordatorio de tu cita para el dia {fechisima} a las {turno.HoraInicio} con {turno.Especialista.Nombre}. Te esperamos!!";
+                    servicesMail.armarCorreo(turno.Cliente.Email, "Recordatorio de cita en MYLA Salon", "", cuerpo);
+                    servicesMail.enviarMail();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         private void btnGrillaClientes_Click(object sender, EventArgs e)
         {
@@ -67,7 +116,6 @@ namespace SoftwareGestion_Myla
         }
         public void verGrilla()
         {
-
             limpiaPanel();
             frmGrillaClientes frmGrillaClientes = new frmGrillaClientes(this);
             frmGrillaClientes.TopLevel = false;
@@ -90,7 +138,6 @@ namespace SoftwareGestion_Myla
             this.Hide();
             frmLogin frmLogin = new frmLogin();
             frmLogin.ShowDialog();
-
         }
 
         private void limpiaPanel()
@@ -168,9 +215,11 @@ namespace SoftwareGestion_Myla
             AccesoDatos datos = new();
             try
             {
-                if(DateTime.Today.DayOfWeek == DayOfWeek.Saturday)
+                if (DateTime.Today.DayOfWeek == DayOfWeek.Thursday)
                 {
+
                     help.creakBackUp();
+
                 }
             }
             catch (Exception ex)
@@ -189,7 +238,7 @@ namespace SoftwareGestion_Myla
         public void nuevoTurno(Clientes? cliente = null)
         {
             limpiaPanel();
-            frmTurnos frmTurnos = new frmTurnos(cliente);
+            frmTurnos frmTurnos = new frmTurnos(this, cliente);
             frmTurnos.TopLevel = false;
             panelPpal.Controls.Add(frmTurnos);
             frmTurnos.Dock = DockStyle.Fill;
@@ -263,16 +312,6 @@ namespace SoftwareGestion_Myla
             frmUsuarios.Show();
         }
 
-        private void btnAdmin_Click(object sender, EventArgs e)
-        {
-            limpiaPanel();
-            frmAdmin frmAdmin = new frmAdmin(this);
-            frmAdmin.TopLevel = false;
-            panelPpal.Controls.Add(frmAdmin);
-            frmAdmin.Dock = DockStyle.Fill;
-            frmAdmin.Location = new Point((panelPpal.Width - frmAdmin.Width) / 2, (panelPpal.Height - frmAdmin.Height) / 2);
-            frmAdmin.Show();
 
-        }
     }
 }

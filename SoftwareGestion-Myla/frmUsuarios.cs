@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 using System.Runtime.Intrinsics.X86;
+using Accesorios;
 
 namespace SoftwareGestion_Myla
 {
@@ -17,6 +18,8 @@ namespace SoftwareGestion_Myla
     {
         frmPrincipal form;
         UserNegocio userNegocio = new();
+        frmPrincipal principal;
+        Helpers help = new();
         public User aux { get; set; }
         public frmUsuarios(frmPrincipal form)
         {
@@ -68,7 +71,7 @@ namespace SoftwareGestion_Myla
 
         private void lblNuevo_Click(object sender, EventArgs e)
         {
-   
+
             if (!camposVacios())
                 return;
             User aux = new();
@@ -144,7 +147,7 @@ namespace SoftwareGestion_Myla
             recargaGrid();
             limpiaCampos();
             btnGuardar.Visible = false;
-        }  
+        }
 
         private void btnEditarActivo_Click(object sender, EventArgs e)
         {
@@ -153,7 +156,7 @@ namespace SoftwareGestion_Myla
             btnGuardar.Visible = Visible;
             txtPassword.Text = aux.Password;
             txtUsuario.Text = aux.Usuario.ToLower();
-            if(aux.Admin == true)
+            if (aux.Admin == true)
             {
                 rbSI.Checked = true;
             }
@@ -163,7 +166,55 @@ namespace SoftwareGestion_Myla
             }
             rbNO.Enabled = false;
             rbSI.Enabled = false;
-            
+
+        }
+
+
+        private void btnGenerar_Click_1(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Desea generar un nuevo BackUp?", "Nuevo BackUp", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                help.creakBackUp();
+            }
+
+        }
+
+        private void btnRestaurar_Click_1(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Esta seguro que desea restaurar la BBDD?\nEsta acción es irreversible!", "Restaurar BBDD", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            if (result == DialogResult.OK)
+            {
+                result = MessageBox.Show("Lo siento, pero debemos repetir el consetimiento.\nEstá seguro de restaurar la BBDD?", "Restaurar BBDD", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result == DialogResult.OK)
+                {
+                    try
+                    {
+                        help.restaurarBBDD();
+                        principal.nuevoTurno();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+
+        }
+
+        private void btnOpenFile_Click_1(object sender, EventArgs e)
+        {
+            FileDialog file = new OpenFileDialog();
+            file.Title = "Seleccionar BackUp";
+            file.Filter = "Archivos de copia de seguridad (*.bak)|*.bak";
+
+            if (file.ShowDialog() == DialogResult.OK)
+            {
+                txtFile.Text = string.Empty;
+                string filePath = file.FileName;
+                txtFile.Text = filePath;
+            }
+
         }
     }
 }

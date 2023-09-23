@@ -31,9 +31,11 @@ namespace SoftwareGestion_Myla
         public bool Modificar { get; set; }
         public Clientes cliente { get; set; }
         public int indexUltimo { get; set; }
-        public frmTurnos(Clientes? cliente = null)
+        frmPrincipal principal;
+        public frmTurnos(frmPrincipal principal, Clientes? cliente = null)
         {
             InitializeComponent();
+            this.principal = principal;
             if (cliente != null)
             {
                 this.cliente = cliente;
@@ -59,9 +61,10 @@ namespace SoftwareGestion_Myla
             cboEstado.Items.Add("Reservado");
             cboEstado.Items.Add("Señado 10%");
             cboEstado.Items.Add("Señado 20%");
+            cboEstado.SelectedIndex = 0;
 
 
-            turnosReservados();
+            //turnosReservados();
         }
 
         private void cargaCboEsp()
@@ -125,7 +128,7 @@ namespace SoftwareGestion_Myla
             lblErrorHora.Text = string.Empty;
             lblErrorSubCat.Text = string.Empty;
             lblErrorEsp.Text = string.Empty;
-            cboEstado.SelectedIndex = -1;
+            cboEstado.SelectedIndex = 0;
             bloqueaCBOS();
         }
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -185,7 +188,10 @@ namespace SoftwareGestion_Myla
 
         private void btnAtras_Click(object sender, EventArgs e)
         {
-
+            if (cliente != null)
+            {
+                principal.verGrilla();
+            }
             limpiaPlanilla();
             pnlEdit.Visible = false;
             pnlGrid.Visible = true;
@@ -350,7 +356,8 @@ namespace SoftwareGestion_Myla
         }
         private void turnosReservados()
         {
-            pnlGrid.Visible = true; pnlEdit.Visible = false;
+            pnlGrid.Visible = true;
+            pnlEdit.Visible = false;
 
             dgvTurnos.DataError += DgvTurnos_DataError;
             int idEsp = ((Especialista)cboEspeVerTurnos.SelectedValue).IdEspecialista;

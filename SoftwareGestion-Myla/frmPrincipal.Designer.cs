@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             panelIzq = new Panel();
-            btnAdmin = new Button();
             btnUsuarios = new Button();
             btnCaja = new Button();
             btnFinanzas = new Button();
@@ -65,7 +64,6 @@
             // 
             panelIzq.AutoScroll = true;
             panelIzq.BackColor = SystemColors.ActiveCaption;
-            panelIzq.Controls.Add(btnAdmin);
             panelIzq.Controls.Add(btnUsuarios);
             panelIzq.Controls.Add(btnCaja);
             panelIzq.Controls.Add(btnFinanzas);
@@ -82,20 +80,6 @@
             panelIzq.Name = "panelIzq";
             panelIzq.Size = new Size(229, 1055);
             panelIzq.TabIndex = 1;
-            // 
-            // btnAdmin
-            // 
-            btnAdmin.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
-            btnAdmin.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
-            btnAdmin.FlatStyle = FlatStyle.Flat;
-            btnAdmin.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnAdmin.Location = new Point(11, 854);
-            btnAdmin.Name = "btnAdmin";
-            btnAdmin.Size = new Size(202, 60);
-            btnAdmin.TabIndex = 10;
-            btnAdmin.Text = "Administracion General";
-            btnAdmin.UseVisualStyleBackColor = true;
-            btnAdmin.Click += btnAdmin_Click;
             // 
             // btnUsuarios
             // 
@@ -434,6 +418,5 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panelPpal;
-        private Button btnAdmin;
     }
 }

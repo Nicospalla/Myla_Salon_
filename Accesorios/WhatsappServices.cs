@@ -17,16 +17,16 @@ namespace Accesorios
     public class WhatsappServices
     {
 
-        public void enviarWSAPP(DateTime dia,DateTime hora, string nombre, string tel, string esp)
+        public void enviarWSAPP(DateTime dia,TimeSpan hora, string nombre, string tel, string esp)
         {
             var accountSid = "AC0203e032870f1d909e452226e7646f42";
-            var authToken = "4db1407e2cdaea8eed4448a7fb518202";
+            var authToken = "aef97f031b2f85477acb141050224448";
             TwilioClient.Init(accountSid, authToken);
             
             var messageOptions = new CreateMessageOptions(
               new PhoneNumber($"whatsapp:+34{tel}"));
             messageOptions.From = new PhoneNumber("whatsapp:+14155238886");
-            messageOptions.Body = @$"Hola {nombre}! Te enviamos un recordatorio de tu cita para el dia {dia} a las {hora} con {esp}";
+            messageOptions.Body = @$"Hola {nombre}! Te enviamos un recordatorio de tu cita para el dia {dia} a las {hora} con {esp}. Te esperamos!!";
 
 
             var message = MessageResource.Create(messageOptions);

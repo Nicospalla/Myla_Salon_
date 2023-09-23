@@ -89,6 +89,7 @@
             // 
             // pnlEdit
             // 
+            pnlEdit.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlEdit.Controls.Add(lblErrorEstado);
             pnlEdit.Controls.Add(cboEstado);
             pnlEdit.Controls.Add(lblEstado);
@@ -342,7 +343,7 @@
             pnlGrid.Controls.Add(btnEliminar);
             pnlGrid.Location = new Point(314, 33);
             pnlGrid.Name = "pnlGrid";
-            pnlGrid.Size = new Size(1073, 705);
+            pnlGrid.Size = new Size(1073, 793);
             pnlGrid.TabIndex = 18;
             // 
             // lblNombreEsp
@@ -391,14 +392,15 @@
             dgvTurnos.RowHeadersWidth = 51;
             dgvTurnos.RowTemplate.Height = 29;
             dgvTurnos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvTurnos.Size = new Size(1021, 520);
+            dgvTurnos.Size = new Size(1021, 608);
             dgvTurnos.TabIndex = 5;
             dgvTurnos.ColumnHeaderMouseClick += dgvTurnos_ColumnHeaderMouseClick;
             // 
             // btnModif
             // 
+            btnModif.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnModif.Font = new Font("Verdana", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            btnModif.Location = new Point(39, 631);
+            btnModif.Location = new Point(39, 719);
             btnModif.Name = "btnModif";
             btnModif.Size = new Size(290, 68);
             btnModif.TabIndex = 0;
@@ -408,8 +410,9 @@
             // 
             // btnEliminar
             // 
+            btnEliminar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnEliminar.Font = new Font("Verdana", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            btnEliminar.Location = new Point(358, 631);
+            btnEliminar.Location = new Point(358, 719);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(290, 68);
             btnEliminar.TabIndex = 1;
