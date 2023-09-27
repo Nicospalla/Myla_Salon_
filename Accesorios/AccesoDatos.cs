@@ -13,12 +13,19 @@ namespace Accesorios
         {
             get { return lector; }
         }
-        public AccesoDatos()
+        public AccesoDatos(int creation = 0)
         {
             try
             {
                 //conn = new SqlConnection("workstation id=MYLA_DB.mssql.somee.com;packet size=4096;user id=flomaza_SQLLogin_1;pwd=sn3d2lepjq;data source=MYLA_DB.mssql.somee.com;persist security info=False;initial catalog=MYLA_DB; Encrypt=False");
-                connString = "server = .\\SQLEXPRESS ; database = MYLA_DB ; integrated security = true;Encrypt=False ; Trusted_Connection=True ";
+                if (creation != 0)
+                {
+                    connString = "server = .\\SQLEXPRESS ; integrated security= true ; Encrypt = false ;  Trusted_Connection = true";
+                }
+                else
+                {
+                    connString = "server = .\\SQLEXPRESS ; database = MYLA_DB ; integrated security = true;Encrypt=False ; Trusted_Connection=True ";
+                }
                 conn = new SqlConnection(connString);
                 cmd = new SqlCommand();
             }

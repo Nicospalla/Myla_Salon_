@@ -13,6 +13,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using Microsoft.SqlServer.Management.Common;
+using Microsoft.SqlServer.Management.Smo;
+using User = Dominio.User;
 
 namespace SoftwareGestion_Myla
 {
@@ -23,8 +26,7 @@ namespace SoftwareGestion_Myla
         {
 
             InitializeComponent();
-            Helpers help = new();
-            help.creakBackUp();
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -54,7 +56,7 @@ namespace SoftwareGestion_Myla
                         this.Hide();
 
                     }
-                    
+
                 }
                 else
                     lblError.Text = "Datos incorrectos o usuario inexistente.";
@@ -66,7 +68,7 @@ namespace SoftwareGestion_Myla
         }
         static bool SQLInstalado()
         {
-            using(RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Microsoft SQL Server"))
+            using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Microsoft SQL Server"))
             {
                 return key != null;
             }
@@ -78,26 +80,38 @@ namespace SoftwareGestion_Myla
             txtPass.Enabled = false;
             txtUser.Enabled = false;
         }
-        private void frmLogin_Load(object sender, EventArgs e)
+        
+        private void mensajeHiper()
         {
-            if(!SQLInstalado() )
+            var custom = new frmError();
+            custom.ShowDialog();
+        }
+        private async void frmLogin_Load(object sender, EventArgs e)
+        {
+            if (SQLInstalado())
             {
-                MessageBox.Show("Debe instalar SQL Server 2019 antes de utilizar la aplicación.");
+
+                // Parámetros de línea de comandos para la instalación de SQL Server
+
+                //MessageBox.Show("Debe instalar SQL Server 2019 antes de utilizar la aplicación.\nPuede hacerlo desde: ");
+                mensajeHiper();
                 bloqueoAccion();
                 return;
             }
-            AccesoDatos datos = new();
-            bool existeDDBB;
+
+            AccesoDatos datosCreation = new AccesoDatos(1);
+            bool existeDDBB = true;
             try
             {
-                datos.setearConsulta("SELECT COUNT(*) FROM sys.databases WHERE name = 'MYLA_DB'");
-                existeDDBB = datos.verificarExisteciaDDBB();
+                datosCreation.setearConsulta("SELECT COUNT(*) FROM sys.databases WHERE name = 'MYLA_DBB'");
+                existeDDBB = datosCreation.verificarExisteciaDDBB();
+
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            finally { datos.cerrarConn(); }
+            finally { datosCreation.cerrarConn(); }
 
 
             if (!existeDDBB)
@@ -106,6 +120,7 @@ namespace SoftwareGestion_Myla
                 string rutaDDBB = Path.Combine(dirActual, "BBDD\\MYLA_DB.sql");
                 if (File.Exists(rutaDDBB))
                 {
+                    MessageBox.Show("Existe el archivo");
                     try
                     {
                         string script = File.ReadAllText(rutaDDBB);
@@ -119,9 +134,9 @@ namespace SoftwareGestion_Myla
 
                         ejecutar.WaitForExit();
 
-                        if (ejecutar.ExitCode != 0) 
-                        { 
-                            MessageBox.Show("Error al ejecutar el script SQL, contacte a su desarrollador.", "Error", MessageBoxButtons.OKCancel,MessageBoxIcon.Error);
+                        if (ejecutar.ExitCode != 0)
+                        {
+                            MessageBox.Show("Error al ejecutar el script SQL, contacte a su desarrollador.", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                             bloqueoAccion();
                         }
                     }
@@ -130,8 +145,18 @@ namespace SoftwareGestion_Myla
                         throw ex;
                     }
                 }
+                else
+                {
+                    MessageBox.Show("No existe el archivo de Instalacion de la  DDBB.\n Contáctese con el desarrollador.");
+                }
             }
-            
+
+            if (SQLInstalado() && DateTime.Now.DayOfWeek == DayOfWeek.Saturday)
+            {
+                Helpers help = new();
+                help.creakBackUp();
+            }
+
         }
     }
 }

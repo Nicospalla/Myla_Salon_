@@ -42,7 +42,9 @@ namespace SoftwareGestion_Myla
         {
             TextInfo textInfo = new CultureInfo("en-US").TextInfo;
             lblUser.Text = textInfo.ToTitleCase(user.Usuario);
-            string ruta = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imgs", "MYLA.jpeg");
+            string dirActual = AppDomain.CurrentDomain.BaseDirectory;
+            string ruta = Path.Combine(dirActual, "Imgs\\MYLA.jpeg");
+            //string ruta = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imgs", "MYLA.jpeg");
             picBox.Load(ruta);
 
 
@@ -100,8 +102,11 @@ namespace SoftwareGestion_Myla
                     //servicesSMS.enviarWSAPP(turno.Fecha, turno.HoraInicio, turno.Cliente.Nombre, "631616408", turno.Especialista.Nombre);
                     
                     string cuerpo = @$"Hola {turno.Cliente.Nombre}! Te enviamos un recordatorio de tu cita para el dia {fechisima} a las {turno.HoraInicio} con {turno.Especialista.Nombre}. Te esperamos!!";
-                    servicesMail.armarCorreo(turno.Cliente.Email, "Recordatorio de cita en MYLA Salon", "", cuerpo);
-                    servicesMail.enviarMail();
+                    if(turno.Cliente.Email != "")
+                    {
+                        servicesMail.armarCorreo(turno.Cliente.Email, "Recordatorio de cita en MYLA Salon", "", cuerpo);
+                        servicesMail.enviarMail();
+                    }
                 }
             }
             catch (Exception ex)

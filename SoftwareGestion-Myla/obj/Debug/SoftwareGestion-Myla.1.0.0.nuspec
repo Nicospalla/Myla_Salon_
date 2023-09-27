@@ -4,12 +4,15 @@
     <id>SoftwareGestion-Myla</id>
     <version>1.0.0</version>
     <authors>SoftwareGestion-Myla</authors>
-    <description>Package Description</description>
+    <icon>MYLA.jpeg</icon>
+    <description>Software de gestión de Peluquerías</description>
+    <copyright>Spalla Nicolás</copyright>
     <dependencies>
       <group targetFramework="net6.0-windows7.0">
         <dependency id="Accesorios" version="1.0.0" exclude="Build,Analyzers" />
         <dependency id="Dominio" version="1.0.0" exclude="Build,Analyzers" />
         <dependency id="Negocio" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.SqlServer.SqlManagementObjects" version="170.18.0" exclude="Build,Analyzers" />
       </group>
     </dependencies>
     <frameworkReferences>
@@ -17,9 +20,15 @@
         <frameworkReference name="Microsoft.WindowsDesktop.App.WindowsForms" />
       </group>
     </frameworkReferences>
+    <contentFiles>
+      <files include="any/net6.0-windows7.0/MYLA.ico" buildAction="Content" />
+    </contentFiles>
   </metadata>
   <files>
     <file src="D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Debug\net6.0-windows\SoftwareGestion-Myla.runtimeconfig.json" target="lib\net6.0-windows7.0\SoftwareGestion-Myla.runtimeconfig.json" />
     <file src="D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Debug\net6.0-windows\SoftwareGestion-Myla.dll" target="lib\net6.0-windows7.0\SoftwareGestion-Myla.dll" />
+    <file src="D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\MYLA.ico" target="content\MYLA.ico" />
+    <file src="D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\MYLA.ico" target="contentFiles\any\net6.0-windows7.0\MYLA.ico" />
+    <file src="D:\Proyectos Csharp\MYLA.jpeg" target="\MYLA.jpeg" />
   </files>
 </package>

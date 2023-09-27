@@ -1,7 +1,7 @@
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\app.publish\BBDD\MYLA_DB.sql
+D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\app.publish\Imgs\MYLA.jpeg
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\app.publish\SoftwareGestion-Myla.exe
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\app.publish\BBDD\MylaBackUp.bak
-D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\app.publish\Imgs\MYLA.jpeg
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\app.publish\SoftwareGestion-Myla.dll
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\app.publish\SoftwareGestion-Myla.deps.json
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\app.publish\SoftwareGestion-Myla.runtimeconfig.json

@@ -25,12 +25,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="BBDD\MylaBackUp.bak" />
+    <None Remove="BBDD\MYLA_DB.sql" />
     <None Remove="BBDD\MYLA_DBB.bak" />
+    <None Remove="Imgs\MYLA.jpeg" />
     <None Remove="o3yd0coa.rld~" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="BBDD\MylaBackUp.bak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="MYLA.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="BBDD\MYLA_DB.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -51,6 +63,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Imgs\MYLA.jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
@@ -59,15 +77,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="BBDD\MylaBackUp.bak">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Imgs\MYLA.jpeg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="BBDD\MYLA_DB.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

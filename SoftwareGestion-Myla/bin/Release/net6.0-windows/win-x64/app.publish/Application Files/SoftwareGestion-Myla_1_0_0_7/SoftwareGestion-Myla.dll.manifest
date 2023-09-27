@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="SoftwareGestion-Myla.exe" version="1.0.0.7" publicKeyToken="90bda4de54c661bc" language="es-AR" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="MYLA.ico" asmv2:publisher="Nicolas Spalla" asmv2:product="Software de Gestion Peluquerias" asmv2:supportUrl="https://nicospalla.github.io/" xmlns="urn:schemas-microsoft-com:asm.v1">Software de gestión de Peluquerías</description>
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="Launcher" version="8.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="Launcher.exe" parameters="" />
+  </entryPoint>
+  <co.v1:useManifestForTrust xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          Opciones del manifiesto de Control de cuentas de usuario
+          Si quiere cambiar el nivel de Control de cuentas de usuario de Windows, reemplace el
+          nodo requestedExecutionLevel por alguno de los siguientes.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         Si desea usar la virtualización de archivos y del Registro para la
+         compatibilidad con versiones anteriores, elimine el nodo requestedExecutionLevel.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Launcher.exe" size="17376">
+      <assemblyIdentity name="Launcher" version="8.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>YRpFuzM+4+EVOIjkGW3lPo4U0YjCBpIhDEUw46PDh5E=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Accesorios.pdb" size="13556">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>I6u26l6HEf6PR5x0VRqMysuvxWPp5NcTjHPcgT7Zx6Y=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="BBDD\MYLA_DB.sql" size="80474">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>yYThT4etE2E6ep/TFAFSOafH7QQ8WuvRuu78ekNiLdU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="BBDD\MylaBackUp.bak" size="10314240">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>UiffQnUgDmuulpAY1U0ieHdBmOO/HZHFEyTixvePzik=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Dominio.pdb" size="14140">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>8yF+5mbZe2yj/gB1Nr4N+xjmeVzbb7V6GYnVKHD7Zu4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Imgs\MYLA.jpeg" size="25910">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>tm1E9TQgZRqVDtXJcSRxlLickHxvgdGO6bKI3n+3fOw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Microsoft.Data.SqlClient.SNI.dll" size="506272">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>o8m7ypcH1dHUVBObsUDQp81nRcKqP7lREvIlSOVmSPY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="MYLA.ico" size="265118">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>rOuBrMdG/CFgucyLzttiRYC5ngLGqISnI4Vw1b746d4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Negocio.pdb" size="16932">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SKIzLE8fUPV0d9GSq9tYG9SIRPrTrz+LOqyvQ+Myxcw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SoftwareGestion-Myla.dll.config" size="77">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>sRXPO8NcIiuVI4ajMrs7gnxty0j6ChK7OorE6bM0xfQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SoftwareGestion-Myla.exe" size="22995112">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>rwDm5NkeBLcK+M9HikuqnXOYctoXGbfVQVeDw795wTo=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=DESKTOP-A3QD080\nicos" issuerKeyHash="362aeeaa3484af3b58f9d9b937d09cfe4d2233eb" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>r7Hm3FA99ULysqElCQvuURm8/omqkPZ/ZlgO4pykqgM=</DigestValue></Reference></SignedInfo><SignatureValue>eJx/RpEPASIjdw77tyE1CcMl0NP7ohQ2jPE6hAviPi5sZA5xAuY9GCD54X/kX8IkNIOUykPsb+nUlX6pk+4qVW6kJYNcWxuqVQvInwVvUlp2TFY6LrTqjk7T0A6MXdlsGKjmrEVqRjoJKa+JOLYgzIE6MkD41ZISVnd9rJzZlXE=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>4DPM55UXFdNI7349EaTBO4Aam7SGbew7uMNV2fbUzybHd2CNc/gIhs/R41SsaUWQt0H86N9vhREtI+ACJ4Dbro3aUryGz7szxTxfcesSNhP3n+YhdJNejwY/+dIV/yXYZa7fcmB7lUFatqGjceMuKovEuyN8HljkVdw+25UGXY0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="03aaa49ce20e58667ff690aa89febc1951ee0b0925a1b2f242f53d50dce6b1af" Description="" Url=""><as:assemblyIdentity name="SoftwareGestion-Myla.exe" version="1.0.0.7" publicKeyToken="90bda4de54c661bc" language="es-AR" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-A3QD080\nicos</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>WMXsiXlKiAMABwHmhb1pc2siV3rT+A/MPeOnYJf9Zr8=</DigestValue></Reference></SignedInfo><SignatureValue>TqVEPAL8WxtqpHPwHzY+RDLPqS4p0HWJVh1/I3/jyWbHeenY/VOqtg+fPv7rTDl1VszRhVW/NMBl9WK5B3HzH3rS/324T6BSqRYxBDJp2QOd7/aOB9kyyDI+xOuQgeF1uieAdus8AqlMP5g/YgrlapjG5XlOE409ZaZUM4ojQJ0=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>4DPM55UXFdNI7349EaTBO4Aam7SGbew7uMNV2fbUzybHd2CNc/gIhs/R41SsaUWQt0H86N9vhREtI+ACJ4Dbro3aUryGz7szxTxfcesSNhP3n+YhdJNejwY/+dIV/yXYZa7fcmB7lUFatqGjceMuKovEuyN8HljkVdw+25UGXY0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB7TCCAVagAwIBAgIQb1blFGtx3alG2o7znWkVWDANBgkqhkiG9w0BAQsFADA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtAEEAMwBRAEQAMAA4ADAAXABuAGkAYwBvAHMwHhcNMjMwOTE3MDkzMDE3WhcNMjQwOTE2MTUzMDE3WjA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtAEEAMwBRAEQAMAA4ADAAXABuAGkAYwBvAHMwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAOAzzOeVFxXTSO9+PRGkwTuAGpu0hm3sO7jDVdn21M8mx3dgjXP4CIbP0eNUrGlFkLdB/Ojfb4URLSPgAieA266N2lK8hs+7M8U8X3HrEjYT95/mIXSTXo8GP/nSFf8l2GWu33Jge5VBWraho3HjLiqLxLsjfB5Y5FXcPtuVBl2NAgMBAAEwDQYJKoZIhvcNAQELBQADgYEAQxfQI33wY3jYSj6mrISre6F5n3mLYJPzGwX7f699HYjBZ8w56HXszyjpMrsOmeo/ETZKxwrnpu5ac0dt5a8+o8vMHjgoxni3EBcWElRmntBr4XxwNjOZnR25roxmt/S2yZw74cFiCNHw52ifSutkzzwGl85Bf1xvnyaAAfkom9I=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

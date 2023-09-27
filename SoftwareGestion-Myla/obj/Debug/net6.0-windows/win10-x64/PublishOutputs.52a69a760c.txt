@@ -1,0 +1,15 @@
+D:\Proyectos Csharp\Myla Salon\output\SoftwareGestion-Myla.pdb
+D:\Proyectos Csharp\Myla Salon\output\BBDD\MYLA_DB.sql
+D:\Proyectos Csharp\Myla Salon\output\BBDD\MylaBackUp.bak
+D:\Proyectos Csharp\Myla Salon\output\Imgs\MYLA.jpeg
+D:\Proyectos Csharp\Myla Salon\output\SoftwareGestion-Myla.dll.config
+D:\Proyectos Csharp\Myla Salon\output\D3DCompiler_47_cor3.dll
+D:\Proyectos Csharp\Myla Salon\output\PenImc_cor3.dll
+D:\Proyectos Csharp\Myla Salon\output\PresentationNative_cor3.dll
+D:\Proyectos Csharp\Myla Salon\output\vcruntime140_cor3.dll
+D:\Proyectos Csharp\Myla Salon\output\wpfgfx_cor3.dll
+D:\Proyectos Csharp\Myla Salon\output\Microsoft.Data.SqlClient.SNI.dll
+D:\Proyectos Csharp\Myla Salon\output\Accesorios.pdb
+D:\Proyectos Csharp\Myla Salon\output\Dominio.pdb
+D:\Proyectos Csharp\Myla Salon\output\Negocio.pdb
+D:\Proyectos Csharp\Myla Salon\output\SoftwareGestion-Myla.exe

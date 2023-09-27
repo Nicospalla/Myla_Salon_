@@ -1,4 +1,3 @@
-D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\Imgs\MYLA.jpeg
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\SoftwareGestion-Myla.exe
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\SoftwareGestion-Myla.deps.json
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\SoftwareGestion-Myla.runtimeconfig.json
@@ -61,7 +60,6 @@ D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Release\net6.0-windows\S
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Release\net6.0-windows\ref\SoftwareGestion-Myla.dll
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\SoftwareGestion-Myla.dll.config
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\BBDD\MylaBackUp.bak
-D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\BBDD\MYLA_DB.sql
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\Microsoft.SqlServer.Assessment.dll
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\Microsoft.SqlServer.Assessment.Types.dll
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\Microsoft.Data.Tools.Sql.BatchParser.dll
@@ -94,7 +92,9 @@ D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\S
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\Twilio.dll
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\runtimes\win\lib\net6.0\System.Data.OleDb.dll
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\runtimes\win\lib\net6.0\System.Management.dll
-D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Release\net6.0-windows\SoftwareGestion_Myla.frmAdmin.resources
+D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\BBDD\MYLA_DB.sql
+D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\Imgs\MYLA.jpeg
+D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Release\net6.0-windows\SoftwareGestion_Myla.frmError.resources
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\SoftwareGestion-Myla.dll.manifest
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\SoftwareGestion-Myla.application
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Release\net6.0-windows\SoftwareGestion-Myla.dll.manifest

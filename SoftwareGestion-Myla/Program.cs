@@ -17,8 +17,11 @@ namespace SoftwareGestion_Myla
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new frmPrincipal(ADMIN));
-            //Application.Run(new frmLogin());
+
+            //.Run de prueba con un User creado manualmente para etapa de desarrollo.
+            //Application.Run(new frmPrincipal(ADMIN));
+
+            Application.Run(new frmLogin());
 
         }
     }

@@ -1,0 +1,17 @@
+D:\Proyectos Csharp\Myla Salon\Negocio\bin\Debug\net6.0\win10-x64\Negocio.deps.json
+D:\Proyectos Csharp\Myla Salon\Negocio\bin\Debug\net6.0\win10-x64\Negocio.dll
+D:\Proyectos Csharp\Myla Salon\Negocio\bin\Debug\net6.0\win10-x64\Negocio.pdb
+D:\Proyectos Csharp\Myla Salon\Negocio\bin\Debug\net6.0\win10-x64\Accesorios.dll
+D:\Proyectos Csharp\Myla Salon\Negocio\bin\Debug\net6.0\win10-x64\Dominio.dll
+D:\Proyectos Csharp\Myla Salon\Negocio\bin\Debug\net6.0\win10-x64\Accesorios.pdb
+D:\Proyectos Csharp\Myla Salon\Negocio\bin\Debug\net6.0\win10-x64\Dominio.pdb
+D:\Proyectos Csharp\Myla Salon\Negocio\obj\Debug\net6.0\win10-x64\Negocio.csproj.AssemblyReference.cache
+D:\Proyectos Csharp\Myla Salon\Negocio\obj\Debug\net6.0\win10-x64\Negocio.GeneratedMSBuildEditorConfig.editorconfig
+D:\Proyectos Csharp\Myla Salon\Negocio\obj\Debug\net6.0\win10-x64\Negocio.AssemblyInfoInputs.cache
+D:\Proyectos Csharp\Myla Salon\Negocio\obj\Debug\net6.0\win10-x64\Negocio.AssemblyInfo.cs
+D:\Proyectos Csharp\Myla Salon\Negocio\obj\Debug\net6.0\win10-x64\Negocio.csproj.CoreCompileInputs.cache
+D:\Proyectos Csharp\Myla Salon\Negocio\obj\Debug\net6.0\win10-x64\Negocio.csproj.CopyComplete
+D:\Proyectos Csharp\Myla Salon\Negocio\obj\Debug\net6.0\win10-x64\Negocio.dll
+D:\Proyectos Csharp\Myla Salon\Negocio\obj\Debug\net6.0\win10-x64\refint\Negocio.dll
+D:\Proyectos Csharp\Myla Salon\Negocio\obj\Debug\net6.0\win10-x64\Negocio.pdb
+D:\Proyectos Csharp\Myla Salon\Negocio\obj\Debug\net6.0\win10-x64\ref\Negocio.dll
