@@ -31,13 +31,13 @@
     <Compile Update="frmPopUp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="frmPrincipal.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmNuevoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmTurnos.cs">

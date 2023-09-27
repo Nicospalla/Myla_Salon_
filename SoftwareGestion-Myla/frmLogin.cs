@@ -88,7 +88,7 @@ namespace SoftwareGestion_Myla
         }
         private async void frmLogin_Load(object sender, EventArgs e)
         {
-            if (SQLInstalado())
+            if (!SQLInstalado())
             {
 
                 // Parámetros de línea de comandos para la instalación de SQL Server
@@ -103,7 +103,7 @@ namespace SoftwareGestion_Myla
             bool existeDDBB = true;
             try
             {
-                datosCreation.setearConsulta("SELECT COUNT(*) FROM sys.databases WHERE name = 'MYLA_DBB'");
+                datosCreation.setearConsulta("SELECT COUNT(*) FROM sys.databases WHERE name = 'MYLA_DB'");
                 existeDDBB = datosCreation.verificarExisteciaDDBB();
 
             }
@@ -120,10 +120,10 @@ namespace SoftwareGestion_Myla
                 string rutaDDBB = Path.Combine(dirActual, "BBDD\\MYLA_DB.sql");
                 if (File.Exists(rutaDDBB))
                 {
-                    MessageBox.Show("Existe el archivo");
                     try
                     {
                         string script = File.ReadAllText(rutaDDBB);
+                        Thread.Sleep(100);
                         ProcessStartInfo info = new ProcessStartInfo("sqlcmd", $"-S .\\SQLEXPRESS -i \"{rutaDDBB}\"");
                         info.UseShellExecute = false;
                         info.CreateNoWindow = true;
@@ -139,6 +139,7 @@ namespace SoftwareGestion_Myla
                             MessageBox.Show("Error al ejecutar el script SQL, contacte a su desarrollador.", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                             bloqueoAccion();
                         }
+
                     }
                     catch (Exception ex)
                     {

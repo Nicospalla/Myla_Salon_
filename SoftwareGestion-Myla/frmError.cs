@@ -34,6 +34,10 @@ namespace SoftwareGestion_Myla
 
                 throw exx;
             }
+            finally
+            {
+                Application.Exit();
+            }
         }
 
         private void frmError_FormClosed(object sender, FormClosedEventArgs e)
