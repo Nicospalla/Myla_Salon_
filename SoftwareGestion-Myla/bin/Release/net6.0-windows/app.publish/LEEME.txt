@@ -1,0 +1,6 @@
+Una vez descargado el SQL EXPRESS desde la web de Microsoft, generar la instalación básica y darle todo a siguiente.
+Una vez que termine el proceso de instalación ir al Buscador de Windows y escribir Servicios O Services (Si el SO está en inglés),
+allí buscar en la lista el item llamado "SQL Server (SQLEXPRESS)" y verificar que el tipo de inicio sea AUTOMATICO,
+caso contrario hacer click derecho sobre él, y modificar el Tipo de inicio. Luego, sobre el la misma ventana (Del click derecho),
+ir a la pestaña de LOGON o Iniciar Sesión y tildar el primer item (SIN User ni Password).  
+APLICAR CAMBIOS y cerrar todo.

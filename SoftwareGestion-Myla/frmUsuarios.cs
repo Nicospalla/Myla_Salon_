@@ -18,8 +18,8 @@ namespace SoftwareGestion_Myla
     {
         frmPrincipal form;
         UserNegocio userNegocio = new();
-        frmPrincipal principal;
         Helpers help = new();
+        string filePath;
         public User aux { get; set; }
         public frmUsuarios(frmPrincipal form)
         {
@@ -190,8 +190,12 @@ namespace SoftwareGestion_Myla
                 {
                     try
                     {
-                        help.restaurarBBDD();
-                        principal.nuevoTurno();
+                        if(filePath != null)
+                        {
+                            help.restaurarBBDD(filePath);
+                            form.nuevoTurno();
+
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -205,13 +209,17 @@ namespace SoftwareGestion_Myla
         private void btnOpenFile_Click_1(object sender, EventArgs e)
         {
             FileDialog file = new OpenFileDialog();
+            string dirActual = AppDomain.CurrentDomain.BaseDirectory;
+            string rutaDDBB = Path.Combine(dirActual, "BBDD");
+
             file.Title = "Seleccionar BackUp";
-            file.Filter = "Archivos de copia de seguridad (*.bak)|*.bak";
+            file.Filter = "Copia de seguridad (*.bak)|*.bak";
+            file.InitialDirectory = rutaDDBB;
 
             if (file.ShowDialog() == DialogResult.OK)
             {
                 txtFile.Text = string.Empty;
-                string filePath = file.FileName;
+                filePath = file.FileName;
                 txtFile.Text = filePath;
             }
 

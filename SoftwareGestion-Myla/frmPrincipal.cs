@@ -220,7 +220,7 @@ namespace SoftwareGestion_Myla
             AccesoDatos datos = new();
             try
             {
-                if (DateTime.Today.DayOfWeek == DayOfWeek.Thursday)
+                if (DateTime.Today.DayOfWeek == DayOfWeek.Saturday)
                 {
 
                     help.creakBackUp();

@@ -39,7 +39,7 @@ namespace SoftwareGestion_Myla
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtEft.Text) && help.soloNum(txtEft.Text))
+            if (!string.IsNullOrEmpty(txtEft.Text) && help.soloNum(txtEft.Text) && !txtEft.Text.Contains(",")  && !txtEft.Text.Contains("."))
             {
                 if (int.Parse(txtEft.Text) == 0)
                 {
@@ -58,7 +58,7 @@ namespace SoftwareGestion_Myla
 
             }
             else
-                lblErrorEft.Text = "Debe ingresar el efectivo existente en caja, o 0 para iniciar la caja vacía";
+                lblErrorEft.Text = "Debe ingresar el efectivo existente en caja, sin decimales\n o 0 para iniciar la caja vacía";
         }
     }
 }

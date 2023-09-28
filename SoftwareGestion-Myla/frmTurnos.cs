@@ -129,6 +129,7 @@ namespace SoftwareGestion_Myla
             lblErrorSubCat.Text = string.Empty;
             lblErrorEsp.Text = string.Empty;
             cboEstado.SelectedIndex = 0;
+            cboEspeVerTurnos.SelectedIndex = 0;
             bloqueaCBOS();
         }
         private void btnBuscar_Click(object sender, EventArgs e)

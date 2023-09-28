@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Globalization;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -66,24 +67,37 @@ namespace Accesorios
                 string dirActual = AppDomain.CurrentDomain.BaseDirectory;
                 string rutaDDBB = Path.Combine(dirActual, $"BBDD\\MylaBackUp-{date}.bak");
 
-                //Eliminar los .bak si hay mas de 10
-                int maximo = 2;
+                
+                //Eliminar los .bak si hay mas de 5
+                int maximo = 5;
                 DirectoryInfo directorio = new DirectoryInfo(Path.Combine(dirActual, "BBDD"));
-                if(directorio.Exists)
+                if (directorio.Exists)
                 {
                     FileInfo[] archivos = directorio.GetFiles("*.bak");
                     var archivosOrdenados = archivos.OrderBy(f => f.CreationTimeUtc);
 
-                    foreach (var archivo in archivosOrdenados)
-                    {
-                        if (archivos.Length >= maximo)
-                        {
-                            archivo.Delete();
-                        }
+                    int cantidadArchivos = archivosOrdenados.Count();
 
+                    if (cantidadArchivos > maximo)
+                    {
+                        // Calcular cuántos archivos exceden el límite
+                        int archivosExcedentes = cantidadArchivos - maximo;
+
+                        // Eliminar los archivos más antiguos hasta llegar al límite
+                        foreach (var archivo in archivosOrdenados)
+                        {
+                            if (archivosExcedentes > 0)
+                            {
+                                archivo.Delete();
+                                archivosExcedentes--;
+                            }
+                            else
+                            {
+                                break; // Salir del bucle cuando se alcance el límite
+                            }
+                        }
                     }
                 }
-
 
                 //Genera los querys para la creacion del nuevo BackUp
                 datos.setearConsulta($"USE master; ALTER DATABASE MYLA_DB SET SINGLE_USER WITH ROLLBACK IMMEDIATE;");
@@ -105,41 +119,20 @@ namespace Accesorios
 
         }
 
-        //public void enviarBackUp()
-        //{
-        //    AccesoDatos datos = new();
-        //    string mail;
-        //    EmailServices services = new EmailServices();
-        //    try
-        //    {
-        //        string dirActual = AppDomain.CurrentDomain.BaseDirectory;
-        //        string rutaBAK = Path.Combine(dirActual, "BBDD\\MylaBackUp.bak");
-        //        string rutaMail = Path.Combine(dirActual, "BBDD\\mailBackUp.txt");
-        //        if(File.Exists(rutaBAK))
-        //        {
-        //            StreamReader sr = new StreamReader(rutaMail);
-        //            mail = sr.ReadToEnd();
-        //            sr.Close();
-
-        //            DateTime dia = DateTime.Today;
-        //            services.armarCorreo(mail, $"BackUp{dia}",rutaBAK);
-        //            services.enviarMail();
-
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        throw ex;
-        //    }
-        //}
-        public void restaurarBBDD()
+        public void restaurarBBDD(string filePath = "")
         {
             AccesoDatos datos = new();
             try
             {
-                string dirActual = AppDomain.CurrentDomain.BaseDirectory;
-                string rutaDDBB = Path.Combine(dirActual, "BBDD\\MylaBackUp.bak");
+                string rutaDDBB = "";
+                if(filePath != "")
+                {
+                    rutaDDBB = filePath;
+                }else
+                {
+                    string dirActual = AppDomain.CurrentDomain.BaseDirectory;
+                    rutaDDBB = Path.Combine(dirActual, "BBDD\\MylaBackUp.bak");
+                }
 
                 datos.setearConsulta($"USE master; ALTER DATABASE MYLA_DB SET SINGLE_USER WITH ROLLBACK IMMEDIATE; RESTORE DATABASE MYLA_DB from DISK='{rutaDDBB}' WITH REPLACE, RECOVERY ALTER DATABASE MYLA_DB SET MULTI_USER;");
                 datos.ejecutarAccion();

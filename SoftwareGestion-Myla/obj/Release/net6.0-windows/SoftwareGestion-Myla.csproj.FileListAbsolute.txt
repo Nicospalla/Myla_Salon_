@@ -95,6 +95,7 @@ D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\r
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\BBDD\MYLA_DB.sql
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\Imgs\MYLA.jpeg
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Release\net6.0-windows\SoftwareGestion_Myla.frmError.resources
+D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\LEEME.txt
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\SoftwareGestion-Myla.dll.manifest
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\bin\Release\net6.0-windows\SoftwareGestion-Myla.application
 D:\Proyectos Csharp\Myla Salon\SoftwareGestion-Myla\obj\Release\net6.0-windows\SoftwareGestion-Myla.dll.manifest

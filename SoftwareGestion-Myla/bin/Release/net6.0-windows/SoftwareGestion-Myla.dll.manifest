@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="SoftwareGestion-Myla.exe" version="1.0.0.24" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="SoftwareGestion-Myla.exe" version="1.0.0.37" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="MYLA.ico" xmlns="urn:schemas-microsoft-com:asm.v1">Software de gestión de Peluquerías</description>
   <application />
   <entryPoint>
@@ -60,7 +60,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>jn8quXeu8/44Sqy6f7QivVEmdW9+UlCGZJTUMwcn1Tk=</dsig:DigestValue>
+      <dsig:DigestValue>tmLTEkXQECZcVpCmIotrhR7Sgry14m5lCPYVq7ibcyg=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Azure.Core.dll" size="321424">
@@ -115,6 +115,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>tm1E9TQgZRqVDtXJcSRxlLickHxvgdGO6bKI3n+3fOw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="LEEME.txt" size="632" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>5HsUJ1Ojigo4CUTnr6WtdiJx3Yht4bMs5PYe7NalEA8=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Microsoft.Bcl.AsyncInterfaces.dll" size="14720">
@@ -465,7 +474,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>MNdIfP+19MnB490/upteJf0yJwk6jEyn4zBLsjIXSFY=</dsig:DigestValue>
+      <dsig:DigestValue>FVIJYY3T8lmcGjrDMTcyy7yJd+35/e25ikknIcDLzXY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Newtonsoft.Json.dll" size="695336">
@@ -567,13 +576,13 @@
       <dsig:DigestValue>4LC5pmkdf9kYY/r+c0ggF6DtjelUphfpsIZ6phMtEhM=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SoftwareGestion-Myla.dll" size="401376">
+  <file name="SoftwareGestion-Myla.dll" size="402400">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>QEiq7X3AZAprVlmCFI+SZU2Lmkq+Ch3QTnzFh5vA+Z0=</dsig:DigestValue>
+      <dsig:DigestValue>lD1bEbxUmDOtca2R9fT4vdnczbx78VnXRjSjY2hxHt0=</dsig:DigestValue>
     </hash>
   </file>
   <file name="SoftwareGestion-Myla.dll.config" size="77">
@@ -585,13 +594,13 @@
       <dsig:DigestValue>sRXPO8NcIiuVI4ajMrs7gnxty0j6ChK7OorE6bM0xfQ=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SoftwareGestion-Myla.exe" size="415712">
+  <file name="SoftwareGestion-Myla.exe" size="416224">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>svVhdKUqv48d7fS06uIEKSK0mXcki8aBCvdgOPsfN5I=</dsig:DigestValue>
+      <dsig:DigestValue>pV0NmmlXMJ8AtbwyIvwslgOp6NExq+9eAQwNn+slP1Q=</dsig:DigestValue>
     </hash>
   </file>
   <file name="SoftwareGestion-Myla.runtimeconfig.json" size="372">

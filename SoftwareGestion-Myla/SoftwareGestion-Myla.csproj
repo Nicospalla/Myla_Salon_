@@ -29,12 +29,16 @@
     <None Remove="BBDD\MYLA_DB.sql" />
     <None Remove="BBDD\MYLA_DBB.bak" />
     <None Remove="Imgs\MYLA.jpeg" />
+    <None Remove="LEEME.txt" />
     <None Remove="o3yd0coa.rld~" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="BBDD\MylaBackUp.bak">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LEEME.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="MYLA.ico" />
   </ItemGroup>

@@ -139,8 +139,13 @@ namespace SoftwareGestion_Myla
                 lblErrorIngreso.Text = string.Empty;
             if (!help.soloNum(txtCaja.Text))
             {
-                lblErrorCaja.Text = "Solo números";
-                status = false;
+                if (txtCaja.Text.Contains("-") && txtCaja.Text.Count(c => c == '-') != 1)
+                {
+                    lblErrorCaja.Text = "Solo números positivos, o negativos con un ( - )";
+                    status = false;
+
+                }
+
             }
             else
                 lblErrorCaja.Text = string.Empty;
@@ -202,6 +207,8 @@ namespace SoftwareGestion_Myla
                 cajaNegocio.movimientosCaja(efectivo, index, fecha, user, motivo);
             }
             cargaGrid();
+            cargarResultados();
+            cambiosRb();
         }
 
         private void cargarResultados()

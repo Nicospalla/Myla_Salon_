@@ -44,7 +44,6 @@
             txtPrecio = new TextBox();
             lblPrecio = new Label();
             btnAceptar = new Button();
-            btnLimpiar = new Button();
             lblErrorCat = new Label();
             lblErrorEspe = new Label();
             btnAtras = new Button();
@@ -205,17 +204,6 @@
             btnAceptar.Text = "Agregar Servicio";
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += btnAceptar_Click;
-            // 
-            // btnLimpiar
-            // 
-            btnLimpiar.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnLimpiar.Location = new Point(415, 594);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(168, 64);
-            btnLimpiar.TabIndex = 12;
-            btnLimpiar.Text = "Limpiar Datos";
-            btnLimpiar.UseVisualStyleBackColor = true;
-            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // lblErrorCat
             // 
@@ -457,7 +445,6 @@
             Controls.Add(btnAtras);
             Controls.Add(lblErrorEspe);
             Controls.Add(lblErrorCat);
-            Controls.Add(btnLimpiar);
             Controls.Add(btnAceptar);
             Controls.Add(txtPrecio);
             Controls.Add(lblPrecio);
@@ -499,7 +486,6 @@
         private TextBox txtPrecio;
         private Label lblPrecio;
         private Button btnAceptar;
-        private Button btnLimpiar;
         private Label lblErrorCat;
         private Label lblErrorEspe;
         private Button btnAtras;

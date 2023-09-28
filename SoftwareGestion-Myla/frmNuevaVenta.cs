@@ -30,13 +30,15 @@ namespace SoftwareGestion_Myla
             if (ventaImportada != null)
             {
                 this.ventaImportada = ventaImportada;
+                txtID.Enabled = false;
             }
             indexCboCat = -1;
         }
 
         private void frmNuevaVenta_Load(object sender, EventArgs e)
         {
-
+            btnBorraServ.Enabled = false;
+            btnRegistrarVenta.Enabled = false;
 
             txtCliente.ReadOnly = true;
             if (cliente != null)
@@ -112,26 +114,26 @@ namespace SoftwareGestion_Myla
             }
         }
 
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Está seguro que desea borrar los datos?", "Volver a grilla principal", MessageBoxButtons.OKCancel);
-            if (result == DialogResult.OK)
-            {
-                txtCliente.Text = string.Empty;
-                txtID.Text = string.Empty;
-                txtCodigoTinte.Text = string.Empty;
-                txtPorcentaje.Text = string.Empty;
-                txtPrecio.Text = string.Empty;
-                txtPrecioTotal.Text = string.Empty;
-                txtServAdc.Text = string.Empty;
-                listaVentaActual.Clear();
-                actualizaLista();
-            }
-        }
+        //private void btnLimpiar_Click(object sender, EventArgs e)
+        //{
+        //    DialogResult result = MessageBox.Show("Está seguro que desea borrar los datos?", "Volver a grilla principal", MessageBoxButtons.OKCancel);
+        //    if (result == DialogResult.OK)
+        //    {
+        //        txtCliente.Text = string.Empty;
+        //        txtID.Text = string.Empty;
+        //        txtCodigoTinte.Text = string.Empty;
+        //        txtPorcentaje.Text = string.Empty;
+        //        txtPrecio.Text = string.Empty;
+        //        txtPrecioTotal.Text = string.Empty;
+        //        txtServAdc.Text = string.Empty;
+        //        listaVentaActual.Clear();
+        //        actualizaLista();
+        //    }
+        //}
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-
+          
             bool status = true;
             status = cboCategoria.SelectedIndex != -1 ? status : false;
             lblErrorCat.Text = cboCategoria.SelectedIndex == -1 ? "Debe seleccionar una Categoría" : "";
@@ -203,6 +205,12 @@ namespace SoftwareGestion_Myla
                     txtPrecioTotal.Text = sumatoria.ToString();
 
                     listaVentaActual.Add(venta);
+
+                    if(ventaImportada != null && listaVentaActual.Count > 0)
+                    {
+                        btnAceptar.Enabled = false;
+                    }
+
                     actualizaLista();
 
                 }
@@ -391,7 +399,19 @@ namespace SoftwareGestion_Myla
             dgvVentas.Columns["IdVenta"].Visible = false;
             dgvVentas.Columns["IdCliente"].Visible = false;
             dgvVentas.Refresh();
+            if (listaVentaActual.Count > 0)
+            {
+                btnBorraServ.Enabled = true;
+                btnRegistrarVenta.Enabled = true;
+            }
+            else
+            {
+                btnBorraServ.Enabled = false;
+                btnRegistrarVenta.Enabled = false;
+            }
         }
+
+
     }
 }
 

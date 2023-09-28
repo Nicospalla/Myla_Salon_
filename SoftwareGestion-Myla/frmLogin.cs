@@ -54,9 +54,7 @@ namespace SoftwareGestion_Myla
                         frmPrincipal frmPrincipal = new frmPrincipal(aux);
                         frmPrincipal.Show();
                         this.Hide();
-
                     }
-
                 }
                 else
                     lblError.Text = "Datos incorrectos o usuario inexistente.";
@@ -90,10 +88,6 @@ namespace SoftwareGestion_Myla
         {
             if (!SQLInstalado())
             {
-
-                // Parámetros de línea de comandos para la instalación de SQL Server
-
-                //MessageBox.Show("Debe instalar SQL Server 2019 antes de utilizar la aplicación.\nPuede hacerlo desde: ");
                 mensajeHiper();
                 bloqueoAccion();
                 return;
